@@ -1,6 +1,7 @@
 import { ImageResponse } from 'next/og';
 import { NextResponse } from 'next/server';
 
+import { Trans } from '@lingui/macro';
 import { P, match } from 'ts-pattern';
 
 import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
@@ -119,7 +120,7 @@ export async function GET(_request: Request, { params: { slug } }: SharePageOpen
               fontWeight: 700,
             }}
           >
-            {isRecipient ? 'Document Signed!' : 'Document Sent!'}
+            {isRecipient ? <Trans>Document Signed!</Trans> : <Trans>Document Sent!</Trans>}
           </h2>
         </div>
       </div>

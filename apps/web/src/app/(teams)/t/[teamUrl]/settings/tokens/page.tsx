@@ -44,7 +44,9 @@ export default async function ApiTokensPage({ params }: ApiTokensPageProps) {
         <p className="text-muted-foreground mt-2 text-sm">
           {match(error.code)
             .with(AppErrorCode.UNAUTHORIZED, () => error.message)
-            .otherwise(() => 'Something went wrong.')}
+            .otherwise(() => (
+              <Trans>Something went wrong.</Trans>
+            ))}
         </p>
       </div>
     );

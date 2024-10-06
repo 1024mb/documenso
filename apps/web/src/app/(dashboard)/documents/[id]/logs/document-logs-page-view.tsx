@@ -155,7 +155,9 @@ export const DocumentLogsPageView = async ({ params, team }: DocumentLogsPageVie
           ))}
 
           <div className="text-foreground text-sm">
-            <h3 className="font-semibold">Recipients</h3>
+            <h3 className="font-semibold">
+              <Trans>Recipients</Trans>
+            </h3>
             <ul className="text-muted-foreground list-inside list-disc">
               {recipients.map((recipient) => (
                 <li key={`recipient-${recipient.id}`}>

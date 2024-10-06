@@ -1,5 +1,7 @@
 'use client';
 
+import { msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
 import { DateTime } from 'luxon';
 import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 
@@ -18,6 +20,8 @@ export const SignerConversionChart = ({
   title,
   cummulative = false,
 }: SignerConversionChartProps) => {
+  const { _ } = useLingui();
+
   const formattedData = [...data].reverse().map(({ month, count, cume_count }) => {
     return {
       month: DateTime.fromFormat(month, 'yyyy-MM').toFormat('MMM yyyy'),
@@ -54,7 +58,7 @@ export const SignerConversionChart = ({
               fill="hsl(var(--primary))"
               radius={[4, 4, 0, 0]}
               maxBarSize={60}
-              label="Recipients"
+              label={_(msg`Recipients`)}
             />
           </BarChart>
         </ResponsiveContainer>

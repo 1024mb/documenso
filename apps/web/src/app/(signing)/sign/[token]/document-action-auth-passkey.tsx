@@ -127,9 +127,10 @@ export const DocumentActionAuthPasskey = ({
       <div className="space-y-4">
         <Alert variant="warning">
           <AlertDescription>
-            {/* Todo: Translate */}
-            Your browser does not support passkeys, which is required to {actionVerb.toLowerCase()}{' '}
-            this {actionTarget.toLowerCase()}.
+            <Trans>
+              Your browser does not support passkeys, which is required to{' '}
+              {actionVerb.toLowerCase()} this {actionTarget.toLowerCase()}.
+            </Trans>
           </AlertDescription>
         </Alert>
 
@@ -177,10 +178,11 @@ export const DocumentActionAuthPasskey = ({
       <div className="space-y-4">
         <Alert variant="warning">
           <AlertDescription>
-            {/* Todo: Translate */}
             {recipient.role === RecipientRole.VIEWER && actionTarget === 'DOCUMENT'
-              ? 'You need to setup a passkey to mark this document as viewed.'
-              : `You need to setup a passkey to ${actionVerb.toLowerCase()} this ${actionTarget.toLowerCase()}.`}
+              ? _(msg`You need to setup a passkey to mark this document as viewed.`)
+              : _(
+                  msg`You need to setup a passkey to ${actionVerb.toLowerCase()} this ${actionTarget.toLowerCase()}.`,
+                )}
           </AlertDescription>
         </Alert>
 
@@ -212,7 +214,9 @@ export const DocumentActionAuthPasskey = ({
               name="passkeyId"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel required>Passkey</FormLabel>
+                  <FormLabel required>
+                    <Trans>Passkey</Trans>
+                  </FormLabel>
 
                   <FormControl>
                     <Select {...field} onValueChange={field.onChange}>
@@ -240,20 +244,24 @@ export const DocumentActionAuthPasskey = ({
 
             {formErrorCode && (
               <Alert variant="destructive">
-                <AlertTitle>Unauthorized</AlertTitle>
+                <AlertTitle>
+                  <Trans>Unauthorized</Trans>
+                </AlertTitle>
                 <AlertDescription>
-                  We were unable to verify your details. Please try again or contact support
+                  <Trans>
+                    We were unable to verify your details. Please try again or contact support
+                  </Trans>
                 </AlertDescription>
               </Alert>
             )}
 
             <DialogFooter>
               <Button type="button" variant="secondary" onClick={() => onOpenChange(false)}>
-                Cancel
+                <Trans>Cancel</Trans>
               </Button>
 
               <Button type="submit" loading={isCurrentlyAuthenticating}>
-                Sign
+                <Trans>Sign</Trans>
               </Button>
             </DialogFooter>
           </div>

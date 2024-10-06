@@ -141,7 +141,9 @@ export const DocumentActionAuth2FA = ({
               name="token"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel required>2FA token</FormLabel>
+                  <FormLabel required>
+                    <Trans>2FA token</Trans>
+                  </FormLabel>
 
                   <FormControl>
                     <PinInput {...field} value={field.value ?? ''} maxLength={6}>

@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState, useTransition } from 'react';
 
 import Link from 'next/link';
 
-import { msg } from '@lingui/macro';
+import { Trans, msg } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 import { Edit, Loader } from 'lucide-react';
 
@@ -58,7 +58,7 @@ export const UsersDataTable = ({
   const columns = useMemo(() => {
     return [
       {
-        header: 'ID',
+        header: _(msg`ID`),
         accessorKey: 'id',
         cell: ({ row }) => <div>{row.original.id}</div>,
       },
@@ -85,7 +85,7 @@ export const UsersDataTable = ({
             individualPriceIds.includes(sub.priceId),
           );
 
-          return foundIndividualSubscription?.status ?? 'NONE';
+          return foundIndividualSubscription?.status ?? _(msg`NONE`);
         },
       },
       {
@@ -103,7 +103,7 @@ export const UsersDataTable = ({
             <Button className="w-24" asChild>
               <Link href={`/admin/users/${row.original.id}`}>
                 <Edit className="-ml-1 mr-2 h-4 w-4" />
-                Edit
+                <Trans>Edit</Trans>
               </Link>
             </Button>
           );

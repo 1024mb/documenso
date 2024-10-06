@@ -1,5 +1,6 @@
 'use client';
 
+import { Trans } from '@lingui/macro';
 import { DateTime } from 'luxon';
 import type { DateTimeFormatOptions } from 'luxon';
 import { UAParser } from 'ua-parser-js';
@@ -36,11 +37,21 @@ export const AuditLogDataTable = ({ logs }: AuditLogDataTableProps) => {
     <Table overflowHidden>
       <TableHeader>
         <TableRow>
-          <TableHead>Time</TableHead>
-          <TableHead>User</TableHead>
-          <TableHead>Action</TableHead>
-          <TableHead>IP Address</TableHead>
-          <TableHead>Browser</TableHead>
+          <TableHead>
+            <Trans>Time</Trans>
+          </TableHead>
+          <TableHead>
+            <Trans>User</Trans>
+          </TableHead>
+          <TableHead>
+            <Trans>Action</Trans>
+          </TableHead>
+          <TableHead>
+            <Trans>IP Address</Trans>
+          </TableHead>
+          <TableHead>
+            <Trans>Browser</Trans>
+          </TableHead>
         </TableRow>
       </TableHeader>
 
@@ -69,7 +80,9 @@ export const AuditLogDataTable = ({ logs }: AuditLogDataTableProps) => {
                   )}
                 </div>
               ) : (
-                <p>N/A</p>
+                <p>
+                  <Trans>N/A</Trans>
+                </p>
               )}
             </TableCell>
 
@@ -80,7 +93,7 @@ export const AuditLogDataTable = ({ logs }: AuditLogDataTableProps) => {
             <TableCell>{log.ipAddress}</TableCell>
 
             <TableCell>
-              {log.userAgent ? parser.setUA(log.userAgent).getBrowser().name : 'N/A'}
+              {log.userAgent ? parser.setUA(log.userAgent).getBrowser().name : <Trans>N/A</Trans>}
             </TableCell>
           </TableRow>
         ))}

@@ -1,7 +1,11 @@
+import { Trans } from '@lingui/macro';
+
 export const EmbedPaywall = () => {
   return (
     <div>
-      <h1>Paywall</h1>
+      <h1>
+        <Trans>Paywall</Trans>
+      </h1>
     </div>
   );
 };

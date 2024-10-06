@@ -65,7 +65,7 @@ export const RecipientItem = ({ recipient }: RecipientItemProps) => {
   const columns = useMemo(() => {
     return [
       {
-        header: 'ID',
+        header: _(msg`ID`),
         accessorKey: 'id',
         cell: ({ row }) => <div>{row.original.id}</div>,
       },
@@ -77,7 +77,9 @@ export const RecipientItem = ({ recipient }: RecipientItemProps) => {
       {
         header: _(msg`Inserted`),
         accessorKey: 'inserted',
-        cell: ({ row }) => <div>{row.original.inserted ? 'True' : 'False'}</div>,
+        cell: ({ row }) => (
+          <div>{row.original.inserted ? <Trans>True</Trans> : <Trans>False</Trans>}</div>
+        ),
       },
       {
         header: _(msg`Value`),
