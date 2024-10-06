@@ -89,19 +89,19 @@ export const NumberField = ({ field, recipient, onSignField, onUnsignField }: Nu
       const validationErrors = validateNumberField(text, parsedFieldMeta, true);
       setErrors({
         isNumber: validationErrors
-          .filter((error) => error.message.includes('valid number'))
+          .filter((error) => (error.message || '').includes('valid number'))
           .map((error) => _(error)),
         required: validationErrors
-          .filter((error) => error.message.includes('required'))
+          .filter((error) => (error.message || '').includes('required'))
           .map((error) => _(error)),
         minValue: validationErrors
-          .filter((error) => error.message.includes('minimum value'))
+          .filter((error) => (error.message || '').includes('minimum value'))
           .map((error) => _(error)),
         maxValue: validationErrors
-          .filter((error) => error.message.includes('maximum value'))
+          .filter((error) => (error.message || '').includes('maximum value'))
           .map((error) => _(error)),
         numberFormat: validationErrors
-          .filter((error) => error.message.includes('number format'))
+          .filter((error) => (error.message || '').includes('number format'))
           .map((error) => _(error)),
       });
     } else {
@@ -109,7 +109,7 @@ export const NumberField = ({ field, recipient, onSignField, onUnsignField }: Nu
       setErrors((prevErrors) => ({
         ...prevErrors,
         isNumber: validationErrors
-          .filter((error) => error.message.includes('valid number'))
+          .filter((error) => (error.message || '').includes('valid number'))
           .map((error) => _(error)),
       }));
     }
@@ -172,19 +172,19 @@ export const NumberField = ({ field, recipient, onSignField, onUnsignField }: Nu
       const validationErrors = validateNumberField(localNumber, parsedFieldMeta, true);
       setErrors({
         isNumber: validationErrors
-          .filter((error) => error.message.includes('valid number'))
+          .filter((error) => (error.message || '').includes('valid number'))
           .map((error) => _(error)),
         required: validationErrors
-          .filter((error) => error.message.includes('required'))
+          .filter((error) => (error.message || '').includes('required'))
           .map((error) => _(error)),
         minValue: validationErrors
-          .filter((error) => error.message.includes('minimum value'))
+          .filter((error) => (error.message || '').includes('minimum value'))
           .map((error) => _(error)),
         maxValue: validationErrors
-          .filter((error) => error.message.includes('maximum value'))
+          .filter((error) => (error.message || '').includes('maximum value'))
           .map((error) => _(error)),
         numberFormat: validationErrors
-          .filter((error) => error.message.includes('number format'))
+          .filter((error) => (error.message || '').includes('number format'))
           .map((error) => _(error)),
       });
     }
