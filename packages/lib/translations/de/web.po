@@ -423,6 +423,7 @@ msgstr "Ein Fehler ist aufgetreten, während die Vorlage verschoben wurde."
 #: apps/web/src/app/(signing)/sign/[token]/date-field.tsx:126
 #: apps/web/src/app/(signing)/sign/[token]/dropdown-field.tsx:137
 #: apps/web/src/app/(signing)/sign/[token]/email-field.tsx:110
+#: apps/web/src/app/(signing)/sign/[token]/initials-field.tsx:116
 #: apps/web/src/app/(signing)/sign/[token]/name-field.tsx:148
 #: apps/web/src/app/(signing)/sign/[token]/number-field.tsx:217
 #: apps/web/src/app/(signing)/sign/[token]/radio-field.tsx:129
@@ -1529,6 +1530,7 @@ msgstr "Geben Sie hier Ihren Text ein"
 #: apps/web/src/app/(signing)/sign/[token]/email-field.tsx:83
 #: apps/web/src/app/(signing)/sign/[token]/email-field.tsx:109
 #: apps/web/src/app/(signing)/sign/[token]/initials-field.tsx:89
+#: apps/web/src/app/(signing)/sign/[token]/initials-field.tsx:115
 #: apps/web/src/app/(signing)/sign/[token]/name-field.tsx:121
 #: apps/web/src/app/(signing)/sign/[token]/name-field.tsx:147
 #: apps/web/src/app/(signing)/sign/[token]/number-field.tsx:161
