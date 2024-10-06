@@ -1,3 +1,5 @@
+import { msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
 import { match } from 'ts-pattern';
 
 import type {
@@ -274,103 +276,109 @@ export const formatDocumentAuditLogAction = (auditLog: TDocumentAuditLog, userId
 
   const description = match(auditLog)
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.FIELD_CREATED }, () => ({
-      anonymous: 'A field was added',
-      identified: 'added a field',
+      anonymous: useLingui()._(msg`A field was added`),
+      identified: useLingui()._(msg`added a field`),
     }))
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.FIELD_DELETED }, () => ({
-      anonymous: 'A field was removed',
-      identified: 'removed a field',
+      anonymous: useLingui()._(msg`A field was removed`),
+      identified: useLingui()._(msg`removed a field`),
     }))
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.FIELD_UPDATED }, () => ({
-      anonymous: 'A field was updated',
-      identified: 'updated a field',
+      anonymous: useLingui()._(msg`A field was updated`),
+      identified: useLingui()._(msg`updated a field`),
     }))
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.RECIPIENT_CREATED }, () => ({
-      anonymous: 'A recipient was added',
-      identified: 'added a recipient',
+      anonymous: useLingui()._(msg`A recipient was added`),
+      identified: useLingui()._(msg`added a recipient`),
     }))
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.RECIPIENT_DELETED }, () => ({
-      anonymous: 'A recipient was removed',
-      identified: 'removed a recipient',
+      anonymous: useLingui()._(msg`A recipient was removed`),
+      identified: useLingui()._(msg`removed a recipient`),
     }))
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.RECIPIENT_UPDATED }, () => ({
-      anonymous: 'A recipient was updated',
-      identified: 'updated a recipient',
+      anonymous: useLingui()._(msg`A recipient was updated`),
+      identified: useLingui()._(msg`updated a recipient`),
     }))
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.DOCUMENT_CREATED }, () => ({
-      anonymous: 'Document created',
-      identified: 'created the document',
+      anonymous: useLingui()._(msg`Document created`),
+      identified: useLingui()._(msg`created the document`),
     }))
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.DOCUMENT_DELETED }, () => ({
-      anonymous: 'Document deleted',
-      identified: 'deleted the document',
+      anonymous: useLingui()._(msg`Document deleted`),
+      identified: useLingui()._(msg`deleted the document`),
     }))
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.DOCUMENT_FIELD_INSERTED }, () => ({
-      anonymous: 'Field signed',
-      identified: 'signed a field',
+      anonymous: useLingui()._(msg`Field signed`),
+      identified: useLingui()._(msg`signed a field`),
     }))
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.DOCUMENT_FIELD_UNINSERTED }, () => ({
-      anonymous: 'Field unsigned',
-      identified: 'unsigned a field',
+      anonymous: useLingui()._(msg`Field unsigned`),
+      identified: useLingui()._(msg`unsigned a field`),
     }))
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.DOCUMENT_VISIBILITY_UPDATED }, () => ({
-      anonymous: 'Document visibility updated',
-      identified: 'updated the document visibility',
+      anonymous: useLingui()._(msg`Document visibility updated`),
+      identified: useLingui()._(msg`updated the document visibility`),
     }))
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.DOCUMENT_GLOBAL_AUTH_ACCESS_UPDATED }, () => ({
-      anonymous: 'Document access auth updated',
-      identified: 'updated the document access auth requirements',
+      anonymous: useLingui()._(msg`Document access auth updated`),
+      identified: useLingui()._(msg`updated the document access auth requirements`),
     }))
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.DOCUMENT_GLOBAL_AUTH_ACTION_UPDATED }, () => ({
-      anonymous: 'Document signing auth updated',
-      identified: 'updated the document signing auth requirements',
+      anonymous: useLingui()._(msg`Document signing auth updated`),
+      identified: useLingui()._(msg`updated the document signing auth requirements`),
     }))
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.DOCUMENT_META_UPDATED }, () => ({
-      anonymous: 'Document updated',
-      identified: 'updated the document',
+      anonymous: useLingui()._(msg`Document updated`),
+      identified: useLingui()._(msg`updated the document`),
     }))
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.DOCUMENT_OPENED }, () => ({
-      anonymous: 'Document opened',
-      identified: 'opened the document',
+      anonymous: useLingui()._(msg`Document opened`),
+      identified: useLingui()._(msg`opened the document`),
     }))
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.DOCUMENT_TITLE_UPDATED }, () => ({
-      anonymous: 'Document title updated',
-      identified: 'updated the document title',
+      anonymous: useLingui()._(msg`Document title updated`),
+      identified: useLingui()._(msg`updated the document title`),
     }))
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.DOCUMENT_EXTERNAL_ID_UPDATED }, () => ({
-      anonymous: 'Document external ID updated',
-      identified: 'updated the document external ID',
+      anonymous: useLingui()._(msg`Document external ID updated`),
+      identified: useLingui()._(msg`updated the document external ID`),
     }))
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.DOCUMENT_SENT }, () => ({
-      anonymous: 'Document sent',
-      identified: 'sent the document',
+      anonymous: useLingui()._(msg`Document sent`),
+      identified: useLingui()._(msg`sent the document`),
     }))
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.DOCUMENT_MOVED_TO_TEAM }, () => ({
-      anonymous: 'Document moved to team',
-      identified: 'moved the document to team',
+      anonymous: useLingui()._(msg`Document moved to team`),
+      identified: useLingui()._(msg`moved the document to team`),
     }))
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.DOCUMENT_RECIPIENT_COMPLETED }, ({ data }) => {
       // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
       const action = RECIPIENT_ROLES_DESCRIPTION_ENG[data.recipientRole as RecipientRole]?.actioned;
 
-      const value = action ? `${action.toLowerCase()} the document` : 'completed their task';
+      const value = action
+        ? useLingui()._(msg`${action.toLowerCase()} the document`)
+        : useLingui()._(msg`completed their task`);
 
       return {
-        anonymous: `Recipient ${value}`,
+        anonymous: useLingui()._(msg`Recipient ${value}`),
         identified: value,
       };
     })
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.EMAIL_SENT }, ({ data }) => ({
-      anonymous: `Email ${data.isResending ? 'resent' : 'sent'}`,
-      identified: `${data.isResending ? 'resent' : 'sent'} an email`,
+      anonymous: useLingui()._(
+        msg`Email ${data.isResending ? useLingui()._(msg`resent`) : useLingui()._(msg`sent`)}`,
+      ),
+      identified: useLingui()._(
+        msg`${data.isResending ? useLingui()._(msg`resent`) : useLingui()._(msg`sent`)} an email`,
+      ),
     }))
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.DOCUMENT_COMPLETED }, () => {
       // Clear the prefix since this should be considered an 'anonymous' event.
       prefix = '';
 
       return {
-        anonymous: 'Document completed',
-        identified: 'Document completed',
+        anonymous: useLingui()._(msg`Document completed`),
+        identified: useLingui()._(msg`Document completed`),
       };
     })
     .exhaustive();

@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Trans } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
 import { InfoIcon } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 
@@ -78,6 +79,8 @@ export const AddSettingsFormPartial = ({
   currentTeamMemberRole,
   onSubmit,
 }: AddSettingsFormProps) => {
+  const { _ } = useLingui();
+
   const { documentAuthOption } = extractDocumentAuthMethods({
     documentAuth: document.authOptions,
   });
@@ -284,7 +287,7 @@ export const AddSettingsFormPartial = ({
                               <SelectContent>
                                 {DATE_FORMATS.map((format) => (
                                   <SelectItem key={format.key} value={format.value}>
-                                    {format.label}
+                                    {_(format.label)}
                                   </SelectItem>
                                 ))}
                               </SelectContent>

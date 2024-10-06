@@ -37,7 +37,7 @@ export const DocumentHistorySheet = ({
   onMenuOpenChange,
   children,
 }: DocumentHistorySheetProps) => {
-  const { i18n } = useLingui();
+  const { _, i18n } = useLingui();
 
   const [isUserDetailsVisible, setIsUserDetailsVisible] = useState(false);
 
@@ -246,11 +246,11 @@ export const DocumentHistorySheet = ({
                         values={[
                           {
                             key: 'Old',
-                            value: DOCUMENT_AUTH_TYPES[data.from || '']?.value || 'None',
+                            value: _(DOCUMENT_AUTH_TYPES[data.from || '']?.value || 'None'),
                           },
                           {
                             key: 'New',
-                            value: DOCUMENT_AUTH_TYPES[data.to || '']?.value || 'None',
+                            value: _(DOCUMENT_AUTH_TYPES[data.to || '']?.value || 'None'),
                           },
                         ]}
                       />
@@ -326,7 +326,7 @@ export const DocumentHistorySheet = ({
                       values={[
                         {
                           key: 'Type',
-                          value: DOCUMENT_AUDIT_LOG_EMAIL_FORMAT[data.emailType].description,
+                          value: _(DOCUMENT_AUDIT_LOG_EMAIL_FORMAT[data.emailType].description),
                         },
                         {
                           key: 'Sent to',

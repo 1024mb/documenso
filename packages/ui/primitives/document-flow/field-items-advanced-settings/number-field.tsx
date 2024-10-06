@@ -52,7 +52,7 @@ export const NumberFieldAdvancedSettings = ({
       required,
       numberFormat,
     });
-    handleErrors(valueErrors);
+    handleErrors(valueErrors.map((error) => _(error) || ''));
 
     handleFieldChange(field, value);
   };

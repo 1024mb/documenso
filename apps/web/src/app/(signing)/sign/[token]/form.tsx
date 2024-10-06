@@ -4,7 +4,8 @@ import { useMemo, useState } from 'react';
 
 import { useRouter } from 'next/navigation';
 
-import { Trans } from '@lingui/macro';
+import { Trans, msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
 import { useSession } from 'next-auth/react';
 import { useForm } from 'react-hook-form';
 
@@ -42,6 +43,8 @@ export const SigningForm = ({
   const router = useRouter();
   const analytics = useAnalytics();
   const { data: session } = useSession();
+
+  const { _ } = useLingui();
 
   const { fullName, signature, setFullName, setSignature } = useRequiredSigningContext();
 
@@ -123,9 +126,9 @@ export const SigningForm = ({
       >
         <div className={cn('flex flex-1 flex-col')}>
           <h3 className="text-foreground text-2xl font-semibold">
-            {recipient.role === RecipientRole.VIEWER && 'View Document'}
-            {recipient.role === RecipientRole.SIGNER && 'Sign Document'}
-            {recipient.role === RecipientRole.APPROVER && 'Approve Document'}
+            {recipient.role === RecipientRole.VIEWER && _(msg`View Document`)}
+            {recipient.role === RecipientRole.SIGNER && _(msg`Sign Document`)}
+            {recipient.role === RecipientRole.APPROVER && _(msg`Approve Document`)}
           </h3>
 
           {recipient.role === RecipientRole.VIEWER ? (
@@ -165,7 +168,7 @@ export const SigningForm = ({
           ) : (
             <>
               <p className="text-muted-foreground mt-2 text-sm">
-                Please review the document before signing.
+                <Trans>Please review the document before signing.</Trans>
               </p>
 
               <hr className="border-border mb-8 mt-4" />
@@ -173,7 +176,9 @@ export const SigningForm = ({
               <div className="-mx-2 flex flex-1 flex-col gap-4 overflow-y-auto px-2">
                 <div className="flex flex-1 flex-col gap-y-4">
                   <div>
-                    <Label htmlFor="full-name">Full Name</Label>
+                    <Label htmlFor="full-name">
+                      <Trans>Full Name</Trans>
+                    </Label>
 
                     <Input
                       type="text"
@@ -185,7 +190,9 @@ export const SigningForm = ({
                   </div>
 
                   <div>
-                    <Label htmlFor="Signature">Signature</Label>
+                    <Label htmlFor="Signature">
+                      <Trans>Signature</Trans>
+                    </Label>
 
                     <Card className="mt-2" gradient degrees={-120}>
                       <CardContent className="p-0">
@@ -211,7 +218,7 @@ export const SigningForm = ({
                     disabled={typeof window !== 'undefined' && window.history.length <= 1}
                     onClick={() => router.back()}
                   >
-                    Cancel
+                    <Trans>Cancel</Trans>
                   </Button>
 
                   <SignDialog

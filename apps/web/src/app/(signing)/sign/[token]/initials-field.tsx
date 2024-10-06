@@ -4,6 +4,8 @@ import { useTransition } from 'react';
 
 import { useRouter } from 'next/navigation';
 
+import { msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
 import { Loader } from 'lucide-react';
 
 import { DO_NOT_INVALIDATE_QUERY_ON_MUTATION } from '@documenso/lib/constants/trpc';
@@ -35,6 +37,7 @@ export const InitialsField = ({
   onSignField,
   onUnsignField,
 }: InitialsFieldProps) => {
+  const { _ } = useLingui();
   const router = useRouter();
   const { toast } = useToast();
 
@@ -83,8 +86,8 @@ export const InitialsField = ({
       console.error(err);
 
       toast({
-        title: 'Error',
-        description: 'An error occurred while signing the document.',
+        title: _(msg`Error`),
+        description: _(msg`An error occurred while signing the document.`),
         variant: 'destructive',
       });
     }
@@ -126,7 +129,7 @@ export const InitialsField = ({
 
       {!field.inserted && (
         <p className="group-hover:text-primary text-muted-foreground duration-200 group-hover:text-yellow-300">
-          Initials
+          {_(msg`Initials`)}
         </p>
       )}
 

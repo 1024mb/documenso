@@ -37,7 +37,7 @@ export const DocumentGlobalAuthActionSelect = forwardRef<HTMLButtonElement, Sele
             .filter((auth) => auth !== DocumentAuth.ACCOUNT)
             .map((authType) => (
               <SelectItem key={authType} value={authType}>
-                {DOCUMENT_AUTH_TYPES[authType].value}
+                {_(DOCUMENT_AUTH_TYPES[authType].value)}
               </SelectItem>
             ))}
 

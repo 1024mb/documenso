@@ -237,14 +237,14 @@ export const ApiContractV1Implementation = createNextRoute(ApiContractV1, {
       }
 
       const dateFormat = body.meta.dateFormat
-        ? DATE_FORMATS.find((format) => format.label === body.meta.dateFormat)
+        ? DATE_FORMATS.find((format) => format.label.message === body.meta.dateFormat)
         : DATE_FORMATS.find((format) => format.value === DEFAULT_DOCUMENT_DATE_FORMAT);
       const timezone = body.meta.timezone
         ? TIME_ZONES.find((tz) => tz === body.meta.timezone)
         : DEFAULT_DOCUMENT_TIME_ZONE;
 
       const isDateFormatValid = body.meta.dateFormat
-        ? DATE_FORMATS.some((format) => format.label === dateFormat?.label)
+        ? DATE_FORMATS.some((format) => format.label.message === dateFormat?.label)
         : true;
       const isTimeZoneValid = body.meta.timezone ? TIME_ZONES.includes(String(timezone)) : true;
 

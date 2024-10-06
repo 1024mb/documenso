@@ -5,6 +5,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Caveat } from 'next/font/google';
 
 import { Trans, msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
 import {
   CalendarDays,
   CheckSquare,
@@ -85,6 +86,8 @@ export const AddTemplateFieldsFormPartial = ({
   onSubmit,
   teamId,
 }: AddTemplateFieldsFormProps) => {
+  const { _ } = useLingui();
+
   const { isWithinPageBounds, getFieldPosition, getPage } = useDocumentElement();
   const { currentStep, totalSteps, previousStep } = useStep();
   const [showAdvancedSettings, setShowAdvancedSettings] = useState(false);
@@ -400,7 +403,7 @@ export const AddTemplateFieldsFormPartial = ({
       {showAdvancedSettings && currentField ? (
         <FieldAdvancedSettings
           title={msg`Advanced settings`}
-          description={msg`Configure the ${FRIENDLY_FIELD_TYPE[currentField.type]} field`}
+          description={msg`Configure the ${_(FRIENDLY_FIELD_TYPE[currentField.type])} field`}
           field={currentField}
           fields={localFields}
           onAdvancedSettings={handleAdvancedSettings}
@@ -432,7 +435,7 @@ export const AddTemplateFieldsFormPartial = ({
                     width: fieldBounds.current.width,
                   }}
                 >
-                  {FRIENDLY_FIELD_TYPE[selectedField]}
+                  {_(FRIENDLY_FIELD_TYPE[selectedField])}
                 </div>
               )}
 
@@ -828,10 +831,10 @@ export const AddTemplateFieldsFormPartial = ({
                   <Trans>
                     To proceed further, please set at least one value for the{' '}
                     {emptyCheckboxFields.length > 0
-                      ? 'Checkbox'
+                      ? _(msg`Checkbox`)
                       : emptyRadioFields.length > 0
-                      ? 'Radio'
-                      : 'Select'}{' '}
+                      ? _(msg`Radio`)
+                      : _(msg`Select`)}{' '}
                     field.
                   </Trans>
                 </li>

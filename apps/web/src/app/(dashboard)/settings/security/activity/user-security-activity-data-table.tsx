@@ -117,7 +117,7 @@ export const UserSecurityActivityDataTable = () => {
       {
         header: _(msg`Action`),
         accessorKey: 'type',
-        cell: ({ row }) => USER_SECURITY_AUDIT_LOG_MAP[row.original.type],
+        cell: ({ row }) => _(USER_SECURITY_AUDIT_LOG_MAP[row.original.type]),
       },
     ] satisfies DataTableColumnDef<(typeof results)['data'][number]>[];
   }, []);

@@ -120,7 +120,7 @@ export const MoveDocumentDialog = ({ documentId, open, onOpenChange }: MoveDocum
             Cancel
           </Button>
           <Button onClick={onMove} loading={isLoading} disabled={!selectedTeamId || isLoading}>
-            {isLoading ? 'Moving...' : 'Move'}
+            {isLoading ? _(msg`Moving...`) : _(msg`Move`)}
           </Button>
         </DialogFooter>
       </DialogContent>

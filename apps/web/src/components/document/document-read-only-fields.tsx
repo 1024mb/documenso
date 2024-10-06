@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 
+import { msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
 import { EyeOffIcon } from 'lucide-react';
 import { P, match } from 'ts-pattern';
 
@@ -28,6 +30,7 @@ export type DocumentReadOnlyFieldsProps = {
 };
 
 export const DocumentReadOnlyFields = ({ documentMeta, fields }: DocumentReadOnlyFieldsProps) => {
+  const { _ } = useLingui();
   const [hiddenFieldIds, setHiddenFieldIds] = useState<Record<string, boolean>>({});
 
   const handleHideField = (fieldId: string) => {
@@ -58,8 +61,10 @@ export const DocumentReadOnlyFields = ({ documentMeta, fields }: DocumentReadOnl
                   }}
                 >
                   <p className="font-semibold">
-                    {field.Recipient.signingStatus === SigningStatus.SIGNED ? 'Signed' : 'Pending'}{' '}
-                    {FRIENDLY_FIELD_TYPE[field.type].toLowerCase()} field
+                    {field.Recipient.signingStatus === SigningStatus.SIGNED
+                      ? _(msg`Signed`)
+                      : _(msg`Pending`)}{' '}
+                    {_(FRIENDLY_FIELD_TYPE[field.type]).toLowerCase()} {_(msg`field`)}
                   </p>
 
                   <p className="text-muted-foreground text-xs">
@@ -71,7 +76,7 @@ export const DocumentReadOnlyFields = ({ documentMeta, fields }: DocumentReadOnl
                   <button
                     className="absolute right-0 top-0 my-1 p-2 focus:outline-none focus-visible:ring-0"
                     onClick={() => handleHideField(field.secondaryId)}
-                    title="Hide field"
+                    title={_(msg`Hide field`)}
                   >
                     <EyeOffIcon className="h-3 w-3" />
                   </button>
@@ -127,7 +132,7 @@ export const DocumentReadOnlyFields = ({ documentMeta, fields }: DocumentReadOnl
                         field.type === FieldType.FREE_SIGNATURE,
                     })}
                   >
-                    {FRIENDLY_FIELD_TYPE[field.type]}
+                    {_(FRIENDLY_FIELD_TYPE[field.type])}
                   </p>
                 )}
               </div>

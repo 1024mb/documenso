@@ -119,7 +119,7 @@ export const AdminDocumentResults = () => {
         },
       },
       {
-        header: 'Last updated',
+        header: _(msg`Last updated`),
         accessorKey: 'updatedAt',
         cell: ({ row }) => i18n.date(row.original.updatedAt),
       },

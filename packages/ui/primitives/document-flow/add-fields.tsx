@@ -5,6 +5,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Caveat } from 'next/font/google';
 
 import { Trans, msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
 import {
   CalendarDays,
   Check,
@@ -112,6 +113,8 @@ export const AddFieldsFormPartial = ({
   isDocumentPdfLoaded,
   teamId,
 }: AddFieldsFormProps) => {
+  const { _ } = useLingui();
+
   const { toast } = useToast();
 
   const [isMissingSignatureDialogVisible, setIsMissingSignatureDialogVisible] = useState(false);
@@ -387,8 +390,8 @@ export const AddFieldsFormPartial = ({
           setFieldClipboard(lastActiveField);
 
           toast({
-            title: 'Copied field',
-            description: 'Copied field to clipboard',
+            title: _(msg`Copied field`),
+            description: _(msg`Copied field to clipboard`),
           });
 
           return;
@@ -520,12 +523,19 @@ export const AddFieldsFormPartial = ({
     }
   };
 
+  const fieldType =
+    emptyCheckboxFields.length > 0
+      ? _(msg`Checkbox`)
+      : emptyRadioFields.length > 0
+      ? _(msg`Radio`)
+      : _(msg`Select`);
+
   return (
     <>
       {showAdvancedSettings && currentField ? (
         <FieldAdvancedSettings
           title={msg`Advanced settings`}
-          description={msg`Configure the ${FRIENDLY_FIELD_TYPE[currentField.type]} field`}
+          description={msg`Configure the ${_(FRIENDLY_FIELD_TYPE[currentField.type])} field`}
           field={currentField}
           fields={localFields}
           onAdvancedSettings={handleAdvancedSettings}
@@ -559,7 +569,7 @@ export const AddFieldsFormPartial = ({
                     width: fieldBounds.current.width,
                   }}
                 >
-                  {FRIENDLY_FIELD_TYPE[selectedField]}
+                  {_(FRIENDLY_FIELD_TYPE[selectedField])}
                 </div>
               )}
 
@@ -988,13 +998,7 @@ export const AddFieldsFormPartial = ({
               <ul>
                 <li className="text-sm text-red-500">
                   <Trans>
-                    To proceed further, please set at least one value for the{' '}
-                    {emptyCheckboxFields.length > 0
-                      ? 'Checkbox'
-                      : emptyRadioFields.length > 0
-                      ? 'Radio'
-                      : 'Select'}{' '}
-                    field.
+                    To proceed further, please set at least one value for the {fieldType} field.
                   </Trans>
                 </li>
               </ul>

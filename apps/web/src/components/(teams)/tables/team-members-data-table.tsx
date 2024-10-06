@@ -140,7 +140,7 @@ export const TeamMembersDataTable = ({
                       !isTeamRoleWithinUserHierarchy(currentUserTeamRole, row.original.role)
                     }
                     onSelect={(e) => e.preventDefault()}
-                    title="Update team member role"
+                    title={_(msg`Update team member role`)}
                   >
                     <Edit className="mr-2 h-4 w-4" />
                     <Trans>Update role</Trans>

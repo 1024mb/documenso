@@ -201,7 +201,7 @@ msgstr "Action"
 msgid "Actions"
 msgstr "Actions"
 
-#: apps/web/src/app/(teams)/t/[teamUrl]/settings/page.tsx:101
+#: apps/web/src/app/(teams)/t/[teamUrl]/settings/page.tsx:106
 #: apps/web/src/components/(teams)/tables/teams-member-page-data-table.tsx:76
 #: apps/web/src/components/(teams)/tables/user-settings-teams-page-data-table.tsx:71
 msgid "Active"
@@ -419,7 +419,7 @@ msgstr "An error occurred while moving the template."
 #: apps/web/src/app/(signing)/sign/[token]/dropdown-field.tsx:137
 #: apps/web/src/app/(signing)/sign/[token]/email-field.tsx:110
 #: apps/web/src/app/(signing)/sign/[token]/name-field.tsx:148
-#: apps/web/src/app/(signing)/sign/[token]/number-field.tsx:195
+#: apps/web/src/app/(signing)/sign/[token]/number-field.tsx:217
 #: apps/web/src/app/(signing)/sign/[token]/radio-field.tsx:129
 #: apps/web/src/app/(signing)/sign/[token]/signature-field.tsx:175
 msgid "An error occurred while removing the signature."
@@ -441,8 +441,9 @@ msgstr "An error occurred while sending your confirmation email"
 #: apps/web/src/app/(signing)/sign/[token]/date-field.tsx:100
 #: apps/web/src/app/(signing)/sign/[token]/dropdown-field.tsx:106
 #: apps/web/src/app/(signing)/sign/[token]/email-field.tsx:84
+#: apps/web/src/app/(signing)/sign/[token]/initials-field.tsx:90
 #: apps/web/src/app/(signing)/sign/[token]/name-field.tsx:122
-#: apps/web/src/app/(signing)/sign/[token]/number-field.tsx:150
+#: apps/web/src/app/(signing)/sign/[token]/number-field.tsx:162
 #: apps/web/src/app/(signing)/sign/[token]/radio-field.tsx:102
 #: apps/web/src/app/(signing)/sign/[token]/signature-field.tsx:149
 #: apps/web/src/app/(signing)/sign/[token]/text-field.tsx:168
@@ -538,6 +539,10 @@ msgstr "App Version"
 msgid "Approve"
 msgstr "Approve"
 
+#: apps/web/src/app/(signing)/sign/[token]/form.tsx:131
+msgid "Approve Document"
+msgstr "Approve Document"
+
 #: apps/web/src/app/(dashboard)/documents/[id]/document-page-view-recipients.tsx:78
 msgid "Approved"
 msgstr "Approved"
@@ -585,7 +590,7 @@ msgstr "Avatar"
 msgid "Avatar Updated"
 msgstr "Avatar Updated"
 
-#: apps/web/src/app/(teams)/t/[teamUrl]/settings/page.tsx:121
+#: apps/web/src/app/(teams)/t/[teamUrl]/settings/page.tsx:126
 msgid "Awaiting email confirmation"
 msgstr "Awaiting email confirmation"
 
@@ -645,6 +650,10 @@ msgstr "By deleting this document, the following will occur:"
 msgid "By enabling 2FA, you will be required to enter a code from your authenticator app every time you sign in."
 msgstr "By enabling 2FA, you will be required to enter a code from your authenticator app every time you sign in."
 
+#: apps/web/src/components/general/signing-disclosure.tsx:14
+msgid "By proceeding with your electronic signature, you acknowledge and consent that it will be used to sign the given document and holds the same legal validity as a handwritten signature. By completing the electronic signing process, you affirm your understanding and acceptance of these conditions."
+msgstr "By proceeding with your electronic signature, you acknowledge and consent that it will be used to sign the given document and holds the same legal validity as a handwritten signature. By completing the electronic signing process, you affirm your understanding and acceptance of these conditions."
+
 #: apps/web/src/app/(dashboard)/documents/_action-items/resend-document.tsx:186
 #: apps/web/src/app/(dashboard)/documents/delete-document-dialog.tsx:190
 #: apps/web/src/app/(dashboard)/documents/duplicate-document-dialog.tsx:108
@@ -660,9 +669,10 @@ msgstr "By enabling 2FA, you will be required to enter a code from your authenti
 #: apps/web/src/app/(signing)/sign/[token]/document-action-auth-account.tsx:71
 #: apps/web/src/app/(signing)/sign/[token]/document-action-auth-passkey.tsx:164
 #: apps/web/src/app/(signing)/sign/[token]/document-action-auth-passkey.tsx:189
-#: apps/web/src/app/(signing)/sign/[token]/form.tsx:150
+#: apps/web/src/app/(signing)/sign/[token]/form.tsx:153
+#: apps/web/src/app/(signing)/sign/[token]/form.tsx:221
 #: apps/web/src/app/(signing)/sign/[token]/name-field.tsx:215
-#: apps/web/src/app/(signing)/sign/[token]/number-field.tsx:327
+#: apps/web/src/app/(signing)/sign/[token]/number-field.tsx:349
 #: apps/web/src/app/(signing)/sign/[token]/sign-dialog.tsx:113
 #: apps/web/src/app/(signing)/sign/[token]/signature-field.tsx:250
 #: apps/web/src/app/(signing)/sign/[token]/text-field.tsx:333
@@ -747,7 +757,7 @@ msgid "Click to copy signing link for sending to recipient"
 msgstr "Click to copy signing link for sending to recipient"
 
 #: apps/web/src/app/(recipient)/d/[token]/sign-direct-template.tsx:175
-#: apps/web/src/app/(signing)/sign/[token]/form.tsx:114
+#: apps/web/src/app/(signing)/sign/[token]/form.tsx:117
 #: apps/web/src/app/embed/direct/[[...url]]/client.tsx:435
 #: apps/web/src/app/embed/sign/[[...url]]/client.tsx:314
 msgid "Click to insert field"
@@ -864,6 +874,10 @@ msgstr "Continue to login"
 #: apps/web/src/components/forms/public-profile-form.tsx:117
 msgid "Copied to clipboard"
 msgstr "Copied to clipboard"
+
+#: apps/web/src/app/(dashboard)/templates/template-direct-link-badge.tsx:38
+msgid "Copy direct link"
+msgstr "Copy direct link"
 
 #: apps/web/src/app/(dashboard)/settings/public-profile/public-templates-data-table.tsx:169
 msgid "Copy sharable link"
@@ -1069,7 +1083,7 @@ msgstr "Delete Document"
 msgid "Delete passkey"
 msgstr "Delete passkey"
 
-#: apps/web/src/app/(teams)/t/[teamUrl]/settings/page.tsx:191
+#: apps/web/src/app/(teams)/t/[teamUrl]/settings/page.tsx:196
 #: apps/web/src/components/(teams)/dialogs/delete-team-dialog.tsx:118
 msgid "Delete team"
 msgstr "Delete team"
@@ -1508,10 +1522,11 @@ msgstr "Enter your text here"
 #: apps/web/src/app/(signing)/sign/[token]/dropdown-field.tsx:136
 #: apps/web/src/app/(signing)/sign/[token]/email-field.tsx:83
 #: apps/web/src/app/(signing)/sign/[token]/email-field.tsx:109
+#: apps/web/src/app/(signing)/sign/[token]/initials-field.tsx:89
 #: apps/web/src/app/(signing)/sign/[token]/name-field.tsx:121
 #: apps/web/src/app/(signing)/sign/[token]/name-field.tsx:147
-#: apps/web/src/app/(signing)/sign/[token]/number-field.tsx:149
-#: apps/web/src/app/(signing)/sign/[token]/number-field.tsx:194
+#: apps/web/src/app/(signing)/sign/[token]/number-field.tsx:161
+#: apps/web/src/app/(signing)/sign/[token]/number-field.tsx:216
 #: apps/web/src/app/(signing)/sign/[token]/radio-field.tsx:101
 #: apps/web/src/app/(signing)/sign/[token]/radio-field.tsx:128
 #: apps/web/src/app/(signing)/sign/[token]/signature-field.tsx:148
@@ -1535,7 +1550,7 @@ msgstr "Everyone has signed! You will receive an Email copy of the signed docume
 msgid "Exceeded timeout"
 msgstr "Exceeded timeout"
 
-#: apps/web/src/app/(teams)/t/[teamUrl]/settings/page.tsx:114
+#: apps/web/src/app/(teams)/t/[teamUrl]/settings/page.tsx:119
 msgid "Expired"
 msgstr "Expired"
 
@@ -1570,6 +1585,10 @@ msgstr "Failed to update recipient"
 msgid "Failed to update webhook"
 msgstr "Failed to update webhook"
 
+#: apps/web/src/components/document/document-read-only-fields.tsx:67
+msgid "field"
+msgstr "field"
+
 #: apps/web/src/app/(dashboard)/admin/documents/[id]/recipient-item.tsx:190
 msgid "Fields"
 msgstr "Fields"
@@ -1584,6 +1603,7 @@ msgid "Forgot your password?"
 msgstr "Forgot your password?"
 
 #: apps/web/src/app/(recipient)/d/[token]/sign-direct-template.tsx:326
+#: apps/web/src/app/(signing)/sign/[token]/form.tsx:180
 #: apps/web/src/app/(signing)/sign/[token]/name-field.tsx:193
 #: apps/web/src/app/embed/direct/[[...url]]/client.tsx:361
 #: apps/web/src/app/embed/sign/[[...url]]/client.tsx:241
@@ -1599,6 +1619,10 @@ msgstr "Full Name"
 #: apps/web/src/components/(teams)/settings/layout/mobile-nav.tsx:51
 msgid "General"
 msgstr "General"
+
+#: apps/web/src/app/(teams)/t/[teamUrl]/settings/page.tsx:47
+msgid "General settings"
+msgstr "General settings"
 
 #: apps/web/src/app/(profile)/p/[url]/not-found.tsx:30
 #: apps/web/src/app/(recipient)/d/[token]/not-found.tsx:33
@@ -1632,6 +1656,10 @@ msgstr "Go to your <0>public profile settings</0> to add documents."
 msgid "Here you can edit your personal details."
 msgstr "Here you can edit your personal details."
 
+#: apps/web/src/app/(teams)/t/[teamUrl]/settings/page.tsx:48
+msgid "Here you can edit your team's details."
+msgstr "Here you can edit your team's details."
+
 #: apps/web/src/app/(dashboard)/settings/security/page.tsx:35
 msgid "Here you can manage your password and security settings."
 msgstr "Here you can manage your password and security settings."
@@ -1653,6 +1681,10 @@ msgstr "Hide"
 #: apps/web/src/components/document/document-history-sheet.tsx:111
 msgid "Hide additional information"
 msgstr "Hide additional information"
+
+#: apps/web/src/components/document/document-read-only-fields.tsx:79
+msgid "Hide field"
+msgstr "Hide field"
 
 #: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:40
 #~ msgid "I am the owner of this document"
@@ -1690,6 +1722,10 @@ msgstr "Inbox documents"
 #: apps/web/src/app/(dashboard)/documents/[id]/document-page-view-information.tsx:53
 msgid "Information"
 msgstr "Information"
+
+#: apps/web/src/app/(signing)/sign/[token]/initials-field.tsx:132
+msgid "Initials"
+msgstr "Initials"
 
 #: apps/web/src/app/(dashboard)/admin/documents/[id]/recipient-item.tsx:78
 msgid "Inserted"
@@ -1797,6 +1833,7 @@ msgstr "Last 7 days"
 msgid "Last modified"
 msgstr "Last modified"
 
+#: apps/web/src/app/(dashboard)/admin/documents/document-results.tsx:122
 #: apps/web/src/app/(dashboard)/documents/[id]/logs/document-logs-page-view.tsx:91
 msgid "Last updated"
 msgstr "Last updated"
@@ -1971,6 +2008,7 @@ msgstr "Monthly Active Users: Users that created at least one Document"
 msgid "Monthly Active Users: Users that had at least one of their documents completed"
 msgstr "Monthly Active Users: Users that had at least one of their documents completed"
 
+#: apps/web/src/app/(dashboard)/documents/move-document-dialog.tsx:123
 #: apps/web/src/app/(dashboard)/templates/move-template-dialog.tsx:122
 msgid "Move"
 msgstr "Move"
@@ -1988,6 +2026,7 @@ msgstr "Move Template to Team"
 msgid "Move to Team"
 msgstr "Move to Team"
 
+#: apps/web/src/app/(dashboard)/documents/move-document-dialog.tsx:123
 #: apps/web/src/app/(dashboard)/templates/move-template-dialog.tsx:122
 msgid "Moving..."
 msgstr "Moving..."
@@ -2096,7 +2135,7 @@ msgstr "Not supported"
 msgid "Nothing to do"
 msgstr "Nothing to do"
 
-#: apps/web/src/app/(signing)/sign/[token]/number-field.tsx:270
+#: apps/web/src/app/(signing)/sign/[token]/number-field.tsx:292
 msgid "Number"
 msgstr "Number"
 
@@ -2233,6 +2272,7 @@ msgstr "Payment overdue"
 #: apps/web/src/app/(dashboard)/documents/[id]/document-page-view-recipients.tsx:115
 #: apps/web/src/components/(teams)/tables/teams-member-page-data-table.tsx:82
 #: apps/web/src/components/(teams)/tables/user-settings-teams-page-data-table.tsx:77
+#: apps/web/src/components/document/document-read-only-fields.tsx:66
 #: apps/web/src/components/formatter/document-status.tsx:22
 msgid "Pending"
 msgstr "Pending"
@@ -2289,7 +2329,7 @@ msgstr "Please contact support if you would like to revert this action."
 msgid "Please enter a meaningful name for your token. This will help you identify it later."
 msgstr "Please enter a meaningful name for your token. This will help you identify it later."
 
-#: apps/web/src/app/(signing)/sign/[token]/form.tsx:134
+#: apps/web/src/app/(signing)/sign/[token]/form.tsx:137
 msgid "Please mark as viewed to complete"
 msgstr "Please mark as viewed to complete"
 
@@ -2328,6 +2368,10 @@ msgstr "Please provide a token from the authenticator, or a backup code. If you 
 #: apps/web/src/components/forms/2fa/view-recovery-codes-dialog.tsx:120
 msgid "Please provide a token from your authenticator, or a backup code."
 msgstr "Please provide a token from your authenticator, or a backup code."
+
+#: apps/web/src/app/(signing)/sign/[token]/form.tsx:171
+msgid "Please review the document before signing."
+msgstr "Please review the document before signing."
 
 #: apps/web/src/components/forms/send-confirmation-email.tsx:64
 msgid "Please try again and make sure you enter the correct email address."
@@ -2410,6 +2454,10 @@ msgstr "Public templates are connected to your public profile. Any modifications
 #: apps/web/src/app/(signing)/sign/[token]/signing-field-container.tsx:144
 msgid "Read only field"
 msgstr "Read only field"
+
+#: apps/web/src/components/general/signing-disclosure.tsx:21
+msgid "Read the full <0>signature disclosure</0>."
+msgstr "Read the full <0>signature disclosure</0>."
 
 #: apps/web/src/app/(dashboard)/documents/[id]/document-page-view-recipients.tsx:90
 msgid "Ready"
@@ -2585,7 +2633,7 @@ msgid "Roles"
 msgstr "Roles"
 
 #: apps/web/src/app/(dashboard)/templates/template-direct-link-dialog.tsx:444
-#: apps/web/src/app/(signing)/sign/[token]/number-field.tsx:336
+#: apps/web/src/app/(signing)/sign/[token]/number-field.tsx:358
 #: apps/web/src/app/(signing)/sign/[token]/text-field.tsx:342
 msgid "Save"
 msgstr "Save"
@@ -2748,6 +2796,10 @@ msgstr "Sign as<0>{0} <1>({1})</1></0>"
 msgid "Sign document"
 msgstr "Sign document"
 
+#: apps/web/src/app/(signing)/sign/[token]/form.tsx:130
+msgid "Sign Document"
+msgstr "Sign Document"
+
 #: apps/web/src/app/(signing)/sign/[token]/document-action-auth-dialog.tsx:59
 msgid "Sign field"
 msgstr "Sign field"
@@ -2797,6 +2849,7 @@ msgstr "Sign Up with OIDC"
 
 #: apps/web/src/app/(dashboard)/admin/documents/[id]/recipient-item.tsx:88
 #: apps/web/src/app/(recipient)/d/[token]/sign-direct-template.tsx:338
+#: apps/web/src/app/(signing)/sign/[token]/form.tsx:194
 #: apps/web/src/app/(signing)/sign/[token]/signature-field.tsx:197
 #: apps/web/src/app/(signing)/sign/[token]/signature-field.tsx:227
 #: apps/web/src/app/embed/direct/[[...url]]/client.tsx:391
@@ -2814,8 +2867,13 @@ msgid "Signatures will appear once the document has been completed"
 msgstr "Signatures will appear once the document has been completed"
 
 #: apps/web/src/app/(dashboard)/documents/[id]/document-page-view-recipients.tsx:98
+#: apps/web/src/components/document/document-read-only-fields.tsx:65
 msgid "Signed"
 msgstr "Signed"
+
+#: apps/web/src/app/(dashboard)/admin/stats/page.tsx:149
+msgid "Signers that Signed Up"
+msgstr "Signers that Signed Up"
 
 #: apps/web/src/components/forms/signin.tsx:383
 #: apps/web/src/components/forms/signin.tsx:510
@@ -2986,8 +3044,8 @@ msgstr "Team"
 msgid "Team checkout"
 msgstr "Team checkout"
 
-#: apps/web/src/app/(teams)/t/[teamUrl]/settings/page.tsx:61
-#: apps/web/src/app/(teams)/t/[teamUrl]/settings/page.tsx:140
+#: apps/web/src/app/(teams)/t/[teamUrl]/settings/page.tsx:66
+#: apps/web/src/app/(teams)/t/[teamUrl]/settings/page.tsx:145
 msgid "Team email"
 msgstr "Team email"
 
@@ -3358,7 +3416,7 @@ msgstr "This price includes minimum 5 seats."
 msgid "This session has expired. Please try again."
 msgstr "This session has expired. Please try again."
 
-#: apps/web/src/app/(teams)/t/[teamUrl]/settings/page.tsx:195
+#: apps/web/src/app/(teams)/t/[teamUrl]/settings/page.tsx:200
 msgid "This team, and any associated data excluding billing invoices will be permanently deleted."
 msgstr "This team, and any associated data excluding billing invoices will be permanently deleted."
 
@@ -3482,7 +3540,7 @@ msgstr "Total Documents"
 msgid "Total Recipients"
 msgstr "Total Recipients"
 
-#: apps/web/src/app/(dashboard)/admin/stats/page.tsx:150
+#: apps/web/src/app/(dashboard)/admin/stats/page.tsx:153
 msgid "Total Signers that Signed Up"
 msgstr "Total Signers that Signed Up"
 
@@ -3494,13 +3552,13 @@ msgstr "Total Users"
 msgid "Transfer ownership of this team to a selected team member."
 msgstr "Transfer ownership of this team to a selected team member."
 
-#: apps/web/src/app/(teams)/t/[teamUrl]/settings/page.tsx:169
+#: apps/web/src/app/(teams)/t/[teamUrl]/settings/page.tsx:174
 #: apps/web/src/components/(teams)/dialogs/transfer-team-dialog.tsx:147
 #: apps/web/src/components/(teams)/dialogs/transfer-team-dialog.tsx:156
 msgid "Transfer team"
 msgstr "Transfer team"
 
-#: apps/web/src/app/(teams)/t/[teamUrl]/settings/page.tsx:173
+#: apps/web/src/app/(teams)/t/[teamUrl]/settings/page.tsx:178
 msgid "Transfer the ownership of the team to another team member."
 msgstr "Transfer the ownership of the team to another team member."
 
@@ -3690,6 +3748,10 @@ msgstr "Update team email"
 msgid "Update team member"
 msgstr "Update team member"
 
+#: apps/web/src/components/(teams)/tables/team-members-data-table.tsx:143
+msgid "Update team member role"
+msgstr "Update team member role"
+
 #: apps/web/src/app/(dashboard)/admin/users/[id]/page.tsx:147
 msgid "Update user"
 msgstr "Update user"
@@ -3818,7 +3880,11 @@ msgstr "View all security activity related to your account."
 msgid "View Codes"
 msgstr "View Codes"
 
-#: apps/web/src/app/(teams)/t/[teamUrl]/settings/page.tsx:150
+#: apps/web/src/app/(signing)/sign/[token]/form.tsx:129
+msgid "View Document"
+msgstr "View Document"
+
+#: apps/web/src/app/(teams)/t/[teamUrl]/settings/page.tsx:155
 msgid "View documents associated with this email"
 msgstr "View documents associated with this email"
 
@@ -4203,7 +4269,7 @@ msgstr "You can claim your profile later on by going to your profile settings!"
 msgid "You can update the profile URL by updating the team URL in the general settings page."
 msgstr "You can update the profile URL by updating the team URL in the general settings page."
 
-#: apps/web/src/app/(teams)/t/[teamUrl]/settings/page.tsx:65
+#: apps/web/src/app/(teams)/t/[teamUrl]/settings/page.tsx:70
 msgid "You can view documents associated with this email and use this identity when sending documents."
 msgstr "You can view documents associated with this email and use this identity when sending documents."
 

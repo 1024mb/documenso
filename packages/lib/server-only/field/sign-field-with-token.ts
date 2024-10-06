@@ -104,7 +104,8 @@ export const signFieldWithToken = async ({
     const errors = validateNumberField(value, numberFieldParsedMeta, true);
 
     if (errors.length > 0) {
-      throw new Error(errors.join(', '));
+      const errorMessages = errors.map((error) => error.message).join(', ');
+      throw new Error(errorMessages);
     }
   }
 

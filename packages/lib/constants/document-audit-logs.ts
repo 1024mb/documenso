@@ -1,19 +1,21 @@
+import { msg } from '@lingui/macro';
+
 import { DOCUMENT_EMAIL_TYPE } from '../types/document-audit-logs';
 
 export const DOCUMENT_AUDIT_LOG_EMAIL_FORMAT = {
   [DOCUMENT_EMAIL_TYPE.SIGNING_REQUEST]: {
-    description: 'Signing request',
+    description: msg`Signing request`,
   },
   [DOCUMENT_EMAIL_TYPE.VIEW_REQUEST]: {
-    description: 'Viewing request',
+    description: msg`Viewing request`,
   },
   [DOCUMENT_EMAIL_TYPE.APPROVE_REQUEST]: {
-    description: 'Approval request',
+    description: msg`Approval request`,
   },
   [DOCUMENT_EMAIL_TYPE.CC]: {
-    description: 'CC',
+    description: msg`CC`,
   },
   [DOCUMENT_EMAIL_TYPE.DOCUMENT_COMPLETED]: {
-    description: 'Document completed',
+    description: msg`Document completed`,
   },
 } satisfies Record<keyof typeof DOCUMENT_EMAIL_TYPE, unknown>;
