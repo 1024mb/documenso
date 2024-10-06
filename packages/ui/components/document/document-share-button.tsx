@@ -89,6 +89,7 @@ export const DocumentShareButton = ({
     setIsOpen(false);
   };
 
+  const sharingAction = token ? _(msg`signed`) : _(msg`sent`);
   const onTweetClick = async () => {
     let { slug = '' } = shareLink || {};
 
@@ -109,7 +110,7 @@ export const DocumentShareButton = ({
 
     window.open(
       generateTwitterIntent(
-        `I just ${token ? 'signed' : 'sent'} a document in style with @documenso. Check it out!`,
+        _(msg`I just ${sharingAction} a document in style with @documenso. Check it out!`),
         `${NEXT_PUBLIC_WEBAPP_URL()}/share/${slug}`,
       ),
       '_blank',
@@ -139,20 +140,24 @@ export const DocumentShareButton = ({
 
       <DialogContent position="end">
         <DialogHeader>
-          <DialogTitle>Share your signing experience!</DialogTitle>
+          <DialogTitle>
+            <Trans>Share your signing experience!</Trans>
+          </DialogTitle>
 
           <DialogDescription className="mt-4">
-            Rest assured, your document is strictly confidential and will never be shared. Only your
-            signing experience will be highlighted. Share your personalized signing card to showcase
-            your signature!
+            <Trans>
+              Rest assured, your document is strictly confidential and will never be shared. Only
+              your signing experience will be highlighted. Share your personalized signing card to
+              showcase your signature!
+            </Trans>
           </DialogDescription>
         </DialogHeader>
 
         <div className="flex w-full flex-col">
           <div className="rounded-md border p-4">
-            I just {token ? 'signed' : 'sent'} a document in style with{' '}
-            <span className="font-medium text-blue-400">@documenso</span>
-            . Check it out!
+            <Trans>I just {sharingAction} a document in style with</Trans>{' '}
+            <span className="font-medium text-blue-400">@documenso</span>.{' '}
+            <Trans>Check it out!</Trans>
             <span className="mt-2 block" />
             <span
               className={cn('break-all font-medium text-blue-400', {
@@ -182,12 +187,12 @@ export const DocumentShareButton = ({
           <div className="mt-6 flex items-center gap-4">
             <Button variant="outline" className="flex-1" onClick={onTweetClick}>
               <FaXTwitter className="mr-2 h-4 w-4" />
-              Tweet
+              <Trans>Tweet</Trans>
             </Button>
 
             <Button variant="outline" className="flex-1" onClick={onCopyClick}>
               <Copy className="mr-2 h-4 w-4" />
-              Copy Link
+              <Trans>Copy Link</Trans>
             </Button>
           </div>
         </div>

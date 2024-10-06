@@ -288,7 +288,7 @@ export const AddTemplateSettingsFormPartial = ({
                               <SelectContent>
                                 {DATE_FORMATS.map((format) => (
                                   <SelectItem key={format.key} value={format.value}>
-                                    {format.label}
+                                    {_(format.label)}
                                   </SelectItem>
                                 ))}
                               </SelectContent>

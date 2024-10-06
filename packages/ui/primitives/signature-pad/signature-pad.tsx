@@ -5,7 +5,8 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { Caveat } from 'next/font/google';
 
-import { Trans } from '@lingui/macro';
+import { Trans, msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
 import { Undo2 } from 'lucide-react';
 import type { StrokeOptions } from 'perfect-freehand';
 import { getStroke } from 'perfect-freehand';
@@ -49,6 +50,7 @@ export const SignaturePad = ({
   allowTypedSignature,
   ...props
 }: SignaturePadProps) => {
+  const { _ } = useLingui();
   const $el = useRef<HTMLCanvasElement>(null);
   const $imageData = useRef<ImageData | null>(null);
 
@@ -416,7 +418,7 @@ export const SignaturePad = ({
         <div className="absolute bottom-4 left-4 flex gap-2">
           <button
             type="button"
-            title="undo"
+            title={_(msg`undo`)}
             className="focus-visible:ring-ring ring-offset-background text-muted-foreground/60 hover:text-muted-foreground rounded-full p-0 text-[0.688rem] focus-visible:outline-none focus-visible:ring-2"
             onClick={onUndoClick}
           >

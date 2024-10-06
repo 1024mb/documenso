@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react';
 
+import { useLingui } from '@lingui/react';
 import type { SelectProps } from '@radix-ui/react-select';
 import { InfoIcon } from 'lucide-react';
 
@@ -20,6 +21,8 @@ export type DocumentVisibilitySelectType = SelectProps & {
 
 export const DocumentVisibilitySelect = forwardRef<HTMLButtonElement, DocumentVisibilitySelectType>(
   ({ currentMemberRole, ...props }, ref) => {
+    const { _ } = useLingui();
+
     const canUpdateVisibility = currentMemberRole === 'ADMIN' || currentMemberRole === 'MANAGER';
 
     return (
@@ -30,18 +33,18 @@ export const DocumentVisibilitySelect = forwardRef<HTMLButtonElement, DocumentVi
 
         <SelectContent position="popper">
           <SelectItem value={DocumentVisibility.EVERYONE}>
-            {DOCUMENT_VISIBILITY.EVERYONE.value}
+            {_(DOCUMENT_VISIBILITY.EVERYONE.value)}
           </SelectItem>
 
           {(currentMemberRole === 'ADMIN' || currentMemberRole === 'MANAGER') && (
             <SelectItem value={DocumentVisibility.MANAGER_AND_ABOVE}>
-              {DOCUMENT_VISIBILITY.MANAGER_AND_ABOVE.value}
+              {_(DOCUMENT_VISIBILITY.MANAGER_AND_ABOVE.value)}
             </SelectItem>
           )}
 
           {currentMemberRole === 'ADMIN' && (
             <SelectItem value={DocumentVisibility.ADMIN}>
-              {DOCUMENT_VISIBILITY.ADMIN.value}
+              {_(DOCUMENT_VISIBILITY.ADMIN.value)}
             </SelectItem>
           )}
         </SelectContent>

@@ -1,4 +1,5 @@
-import { Trans } from '@lingui/macro';
+import { Trans, msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
 import {
   CalendarDays,
   CheckSquare,
@@ -24,15 +25,15 @@ type FieldIconProps = {
 };
 
 const fieldIcons = {
-  [FieldType.INITIALS]: { icon: Contact, label: 'Initials' },
-  [FieldType.EMAIL]: { icon: Mail, label: 'Email' },
-  [FieldType.NAME]: { icon: User, label: 'Name' },
-  [FieldType.DATE]: { icon: CalendarDays, label: 'Date' },
-  [FieldType.TEXT]: { icon: Type, label: 'Text' },
-  [FieldType.NUMBER]: { icon: Hash, label: 'Number' },
-  [FieldType.RADIO]: { icon: Disc, label: 'Radio' },
-  [FieldType.CHECKBOX]: { icon: CheckSquare, label: 'Checkbox' },
-  [FieldType.DROPDOWN]: { icon: ChevronDown, label: 'Select' },
+  [FieldType.INITIALS]: { icon: Contact, label: msg`Initials` },
+  [FieldType.EMAIL]: { icon: Mail, label: msg`Email` },
+  [FieldType.NAME]: { icon: User, label: msg`Name` },
+  [FieldType.DATE]: { icon: CalendarDays, label: msg`Date` },
+  [FieldType.TEXT]: { icon: Type, label: msg`Text` },
+  [FieldType.NUMBER]: { icon: Hash, label: msg`Number` },
+  [FieldType.RADIO]: { icon: Disc, label: msg`Radio` },
+  [FieldType.CHECKBOX]: { icon: CheckSquare, label: msg`Checkbox` },
+  [FieldType.DROPDOWN]: { icon: ChevronDown, label: msg`Select` },
 };
 
 export const FieldIcon = ({
@@ -41,6 +42,8 @@ export const FieldIcon = ({
   signerEmail,
   fontCaveatClassName,
 }: FieldIconProps) => {
+  const { _ } = useLingui();
+
   if (type === 'SIGNATURE' || type === 'FREE_SIGNATURE') {
     return (
       <div
@@ -64,15 +67,15 @@ export const FieldIcon = ({
         label =
           fieldMeta.label.length > 10 ? fieldMeta.label.substring(0, 10) + '...' : fieldMeta.label;
       } else {
-        label = fieldIcons[type]?.label;
+        label = _(fieldIcons[type]?.label);
       }
     } else {
-      label = fieldIcons[type]?.label;
+      label = _(fieldIcons[type]?.label);
     }
 
     return (
       <div className="text-field-card-foreground flex items-center justify-center gap-x-1.5 text-[clamp(0.625rem,1cqw,0.825rem)]">
-        <Icon className="h-4 w-4" /> {label}
+        <Icon className="h-4 w-4" /> {_(label)}
       </div>
     );
   }

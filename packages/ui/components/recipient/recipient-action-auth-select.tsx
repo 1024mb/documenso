@@ -91,7 +91,7 @@ export const RecipientActionAuthSelect = (props: RecipientActionAuthSelectProps)
           .filter((auth) => auth !== RecipientActionAuth.ACCOUNT)
           .map((authType) => (
             <SelectItem key={authType} value={authType}>
-              {DOCUMENT_AUTH_TYPES[authType].value}
+              {_(DOCUMENT_AUTH_TYPES[authType].value)}
             </SelectItem>
           ))}
       </SelectContent>

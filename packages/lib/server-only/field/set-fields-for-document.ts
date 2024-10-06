@@ -152,7 +152,8 @@ export const setFieldsForDocument = async ({
           );
 
           if (errors.length > 0) {
-            throw new Error(errors.join(', '));
+            const errorMessages = errors.map((error) => error.message).join(', ');
+            throw new Error(errorMessages);
           }
         }
 

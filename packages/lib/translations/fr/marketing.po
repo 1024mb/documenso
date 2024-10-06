@@ -213,6 +213,11 @@ msgstr "Pour les entreprises cherchant à se développer au sein de plusieurs é
 msgid "For small teams and individuals with basic needs."
 msgstr "Pour les petites équipes et les individus ayant des besoins de base."
 
+#: apps/marketing/src/app/(marketing)/open/page.tsx:189
+#: apps/marketing/src/app/(marketing)/open/page.tsx:243
+msgid "Forks"
+msgstr ""
+
 #: apps/marketing/src/components/(marketing)/pricing-table.tsx:80
 msgid "Free"
 msgstr "Gratuit"
@@ -249,6 +254,10 @@ msgstr "Commencez aujourd'hui."
 #: apps/marketing/src/app/(marketing)/blog/page.tsx:30
 msgid "Get the latest news from Documenso, including product updates, team announcements and more!"
 msgstr "Obtenez les dernières nouvelles de Documenso, y compris les mises à jour de produits, les annonces d'équipe et plus encore !"
+
+#: apps/marketing/src/app/(marketing)/open/page.tsx:242
+msgid "GitHub: Total Forks"
+msgstr ""
 
 #: apps/marketing/src/app/(marketing)/open/page.tsx:233
 msgid "GitHub: Total Merged PRs"
@@ -481,6 +490,10 @@ msgstr "Intelligent."
 #: apps/marketing/src/components/(marketing)/hero.tsx:132
 msgid "Star on GitHub"
 msgstr "Étoile sur GitHub"
+
+#: apps/marketing/src/app/(marketing)/open/page.tsx:184
+msgid "Stargazers"
+msgstr ""
 
 #: apps/marketing/src/app/(marketing)/open/page.tsx:226
 msgid "Stars"

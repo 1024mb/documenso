@@ -1,3 +1,4 @@
+import { msg } from '@lingui/macro';
 import { DateTime } from 'luxon';
 
 import { DEFAULT_DOCUMENT_TIME_ZONE } from './time-zones';
@@ -7,52 +8,52 @@ export const DEFAULT_DOCUMENT_DATE_FORMAT = 'yyyy-MM-dd hh:mm a';
 export const DATE_FORMATS = [
   {
     key: 'yyyy-MM-dd_hh:mm_a',
-    label: 'YYYY-MM-DD HH:mm a',
+    label: msg`YYYY-MM-DD HH:mm a`,
     value: DEFAULT_DOCUMENT_DATE_FORMAT,
   },
   {
     key: 'YYYYMMDD',
-    label: 'YYYY-MM-DD',
+    label: msg`YYYY-MM-DD`,
     value: 'yyyy-MM-dd',
   },
   {
     key: 'DDMMYYYY',
-    label: 'DD/MM/YYYY',
+    label: msg`DD/MM/YYYY`,
     value: 'dd/MM/yyyy hh:mm a',
   },
   {
     key: 'MMDDYYYY',
-    label: 'MM/DD/YYYY',
+    label: msg`MM/DD/YYYY`,
     value: 'MM/dd/yyyy hh:mm a',
   },
   {
     key: 'YYYYMMDDHHmm',
-    label: 'YYYY-MM-DD HH:mm',
+    label: msg`YYYY-MM-DD HH:mm`,
     value: 'yyyy-MM-dd HH:mm',
   },
   {
     key: 'YYMMDD',
-    label: 'YY-MM-DD',
+    label: msg`YY-MM-DD`,
     value: 'yy-MM-dd hh:mm a',
   },
   {
     key: 'YYYYMMDDhhmmss',
-    label: 'YYYY-MM-DD HH:mm:ss',
+    label: msg`YYYY-MM-DD HH:mm:ss`,
     value: 'yyyy-MM-dd HH:mm:ss',
   },
   {
     key: 'MonthDateYear',
-    label: 'Month Date, Year',
+    label: msg`Month Date, Year`,
     value: 'MMMM dd, yyyy hh:mm a',
   },
   {
     key: 'DayMonthYear',
-    label: 'Day, Month Year',
+    label: msg`Day, Month Year`,
     value: 'EEEE, MMMM dd, yyyy hh:mm a',
   },
   {
     key: 'ISO8601',
-    label: 'ISO 8601',
+    label: msg`ISO 8601`,
     value: "yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
   },
 ];

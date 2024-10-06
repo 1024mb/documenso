@@ -55,7 +55,7 @@ export const NumberFieldAdvancedSettings = ({
       fontSize,
       type: 'number',
     });
-    handleErrors(valueErrors);
+    handleErrors(valueErrors.map((error) => _(error) || ''));
 
     handleFieldChange(field, value);
   };

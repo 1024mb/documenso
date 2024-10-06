@@ -34,7 +34,7 @@ export const DocumentGlobalAuthAccessSelect = forwardRef<HTMLButtonElement, Sele
         <SelectContent position="popper">
           {Object.values(DocumentAccessAuth).map((authType) => (
             <SelectItem key={authType} value={authType}>
-              {DOCUMENT_AUTH_TYPES[authType].value}
+              {_(DOCUMENT_AUTH_TYPES[authType].value)}
             </SelectItem>
           ))}
 

@@ -181,12 +181,12 @@ export default async function OpenPage() {
           <div className="col-span-12 grid grid-cols-4 gap-4">
             <MetricCard
               className="col-span-2 lg:col-span-1"
-              title="Stargazers"
+              title={_(msg`Stargazers`)}
               value={stargazersCount.toLocaleString('en-US')}
             />
             <MetricCard
               className="col-span-2 lg:col-span-1"
-              title="Forks"
+              title={_(msg`Forks`)}
               value={forksCount.toLocaleString('en-US')}
             />
             <MetricCard
@@ -239,8 +239,8 @@ export default async function OpenPage() {
           <BarMetric<StargazersType>
             data={STARGAZERS_DATA}
             metricKey="forks"
-            title="GitHub: Total Forks"
-            label="Forks"
+            title={_(msg`GitHub: Total Forks`)}
+            label={_(msg`Forks`)}
             chartHeight={400}
             className="col-span-12 lg:col-span-6"
           />

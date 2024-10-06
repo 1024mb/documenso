@@ -1,3 +1,6 @@
+import { msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
+
 import config from '@documenso/tailwind-config';
 
 import { Body, Container, Head, Html, Img, Preview, Section, Tailwind } from '../components';
@@ -9,7 +12,9 @@ export const ConfirmEmailTemplate = ({
   confirmationLink,
   assetBaseUrl = 'http://localhost:3002',
 }: TemplateConfirmationEmailProps) => {
-  const previewText = `Please confirm your email address`;
+  const { _ } = useLingui();
+
+  const previewText = _(msg`Please confirm your email address`);
 
   const getAssetUrl = (path: string) => {
     return new URL(path, assetBaseUrl).toString();

@@ -2,6 +2,7 @@
 
 import { Caveat } from 'next/font/google';
 
+import { useLingui } from '@lingui/react';
 import type { Prisma } from '@prisma/client';
 import { createPortal } from 'react-dom';
 
@@ -25,6 +26,8 @@ export type ShowFieldItemProps = {
 };
 
 export const ShowFieldItem = ({ field, recipients }: ShowFieldItemProps) => {
+  const { _ } = useLingui();
+
   const coords = useFieldPageCoords(field);
 
   const signerEmail =
@@ -47,7 +50,7 @@ export const ShowFieldItem = ({ field, recipients }: ShowFieldItemProps) => {
             field.type === FieldType.SIGNATURE && fontCaveat.className,
           )}
         >
-          {FRIENDLY_FIELD_TYPE[field.type]}
+          {_(FRIENDLY_FIELD_TYPE[field.type])}
 
           <p className="text-muted-foreground/50 w-full truncate text-center text-xs">
             {signerEmail}

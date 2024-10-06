@@ -1,4 +1,5 @@
-import { Trans } from '@lingui/macro';
+import { Trans, msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
 import { CheckCircle2, Clock } from 'lucide-react';
 import { P, match } from 'ts-pattern';
 
@@ -29,6 +30,7 @@ export type TeamsSettingsPageProps = {
 
 export default async function TeamsSettingsPage({ params }: TeamsSettingsPageProps) {
   setupI18nSSR();
+  const { _ } = useLingui();
 
   const { teamUrl } = params;
 
@@ -41,7 +43,10 @@ export default async function TeamsSettingsPage({ params }: TeamsSettingsPagePro
 
   return (
     <div>
-      <SettingsHeader title="General settings" subtitle="Here you can edit your team's details." />
+      <SettingsHeader
+        title={_(msg`General settings`)}
+        subtitle={_(msg`Here you can edit your team's details.`)}
+      />
 
       <TeamTransferStatus
         className="mb-4"
