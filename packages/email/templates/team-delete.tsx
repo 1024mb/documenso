@@ -1,3 +1,6 @@
+import { msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
+
 import { formatTeamUrl } from '@documenso/lib/utils/teams';
 import config from '@documenso/tailwind-config';
 
@@ -18,17 +21,21 @@ export const TeamDeleteEmailTemplate = ({
   teamUrl = 'demo',
   isOwner = false,
 }: TeamDeleteEmailProps) => {
+  const { _ } = useLingui();
+
   const previewText = isOwner
-    ? 'Your team has been deleted'
-    : 'A team you were a part of has been deleted';
+    ? _(msg`Your team has been deleted`)
+    : _(msg`A team you were a part of has been deleted`);
 
   const title = isOwner
-    ? 'Your team has been deleted'
-    : 'A team you were a part of has been deleted';
+    ? _(msg`Your team has been deleted`)
+    : _(msg`A team you were a part of has been deleted`);
 
   const description = isOwner
-    ? 'The following team has been deleted by you'
-    : 'The following team has been deleted by its owner. You will no longer be able to access this team and its documents';
+    ? _(msg`The following team has been deleted by you`)
+    : _(
+        msg`The following team has been deleted by its owner. You will no longer be able to access this team and its documents`,
+      );
 
   return (
     <Html>

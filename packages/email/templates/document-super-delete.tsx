@@ -1,3 +1,6 @@
+import { msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
+
 import config from '@documenso/tailwind-config';
 
 import { Body, Container, Head, Hr, Html, Img, Preview, Section, Tailwind } from '../components';
@@ -14,7 +17,9 @@ export const DocumentSuperDeleteEmailTemplate = ({
   assetBaseUrl = 'http://localhost:3002',
   reason = 'Unknown',
 }: DocumentDeleteEmailTemplateProps) => {
-  const previewText = `An admin has deleted your document "${documentName}".`;
+  const { _ } = useLingui();
+
+  const previewText = _(msg`An admin has deleted your document "${documentName}".`);
 
   const getAssetUrl = (path: string) => {
     return new URL(path, assetBaseUrl).toString();

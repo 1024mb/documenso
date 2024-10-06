@@ -1,3 +1,6 @@
+import { msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
+
 import { RECIPIENT_ROLES_DESCRIPTION_ENG } from '@documenso/lib/constants/recipient-roles';
 import type { RecipientRole } from '@documenso/prisma/client';
 import config from '@documenso/tailwind-config';
@@ -40,13 +43,15 @@ export const DocumentInviteEmailTemplate = ({
   isTeamInvite = false,
   teamName,
 }: DocumentInviteEmailTemplateProps) => {
+  const { _ } = useLingui();
+
   const action = RECIPIENT_ROLES_DESCRIPTION_ENG[role].actionVerb.toLowerCase();
 
   const previewText = selfSigner
-    ? `Please ${action} your document ${documentName}`
+    ? _(msg`Please ${action} your document ${documentName}`)
     : isTeamInvite
-    ? `${inviterName} on behalf of ${teamName} has invited you to ${action} ${documentName}`
-    : `${inviterName} has invited you to ${action} ${documentName}`;
+    ? _(msg`${inviterName} on behalf of ${teamName} has invited you to ${action} ${documentName}`)
+    : _(msg`${inviterName} has invited you to ${action} ${documentName}`);
 
   const getAssetUrl = (path: string) => {
     return new URL(path, assetBaseUrl).toString();
@@ -102,7 +107,9 @@ export const DocumentInviteEmailTemplate = ({
                   {customBody ? (
                     <pre className="font-sans text-base text-slate-400">{customBody}</pre>
                   ) : (
-                    `${inviterName} has invited you to ${action} the document "${documentName}".`
+                    _(
+                      msg`${inviterName} has invited you to ${action} the document "${documentName}".`,
+                    )
                   )}
                 </Text>
               </Section>

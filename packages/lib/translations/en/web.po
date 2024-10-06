@@ -667,8 +667,9 @@ msgstr "By proceeding with your electronic signature, you acknowledge and consen
 #: apps/web/src/app/(dashboard)/templates/template-direct-link-dialog.tsx:470
 #: apps/web/src/app/(signing)/sign/[token]/document-action-auth-2fa.tsx:178
 #: apps/web/src/app/(signing)/sign/[token]/document-action-auth-account.tsx:71
-#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-passkey.tsx:164
-#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-passkey.tsx:189
+#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-passkey.tsx:165
+#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-passkey.tsx:191
+#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-passkey.tsx:258
 #: apps/web/src/app/(signing)/sign/[token]/form.tsx:153
 #: apps/web/src/app/(signing)/sign/[token]/form.tsx:221
 #: apps/web/src/app/(signing)/sign/[token]/name-field.tsx:215
@@ -766,7 +767,7 @@ msgstr "Click to insert field"
 #: apps/web/src/app/(dashboard)/templates/new-template-dialog.tsx:126
 #: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:304
 #: apps/web/src/app/(signing)/sign/[token]/document-action-auth-2fa.tsx:125
-#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-passkey.tsx:138
+#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-passkey.tsx:139
 #: apps/web/src/app/(teams)/t/[teamUrl]/settings/team-transfer-status.tsx:121
 #: apps/web/src/components/forms/2fa/enable-authenticator-app-dialog.tsx:180
 #: apps/web/src/components/forms/2fa/view-recovery-codes-dialog.tsx:102
@@ -2586,7 +2587,7 @@ msgstr "Resolve"
 msgid "Resolve payment"
 msgstr "Resolve payment"
 
-#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-passkey.tsx:168
+#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-passkey.tsx:169
 msgid "Retry"
 msgstr "Retry"
 
@@ -2693,7 +2694,7 @@ msgstr "Select a template you'd like to display on your public profile"
 msgid "Select a template you'd like to display on your team's public profile"
 msgstr "Select a template you'd like to display on your team's public profile"
 
-#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-passkey.tsx:222
+#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-passkey.tsx:224
 msgid "Select passkey"
 msgstr "Select passkey"
 
@@ -2736,7 +2737,7 @@ msgstr "Set a password"
 msgid "Settings"
 msgstr "Settings"
 
-#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-passkey.tsx:196
+#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-passkey.tsx:198
 msgid "Setup"
 msgstr "Setup"
 
@@ -2771,6 +2772,7 @@ msgstr "Show templates in your team public profile for your audience to sign and
 #: apps/web/src/app/(dashboard)/documents/data-table-action-dropdown.tsx:137
 #: apps/web/src/app/(profile)/p/[url]/page.tsx:192
 #: apps/web/src/app/(signing)/sign/[token]/document-action-auth-2fa.tsx:182
+#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-passkey.tsx:262
 #: apps/web/src/app/(signing)/sign/[token]/name-field.tsx:224
 #: apps/web/src/app/(signing)/sign/[token]/sign-dialog.tsx:124
 #: apps/web/src/app/(signing)/sign/[token]/signature-field.tsx:259
@@ -2947,7 +2949,7 @@ msgstr "Something went wrong while attempting to transfer the ownership of team 
 msgid "Something went wrong while attempting to verify your email address for <0>{0}</0>. Please try again later."
 msgstr "Something went wrong while attempting to verify your email address for <0>{0}</0>. Please try again later."
 
-#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-passkey.tsx:158
+#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-passkey.tsx:159
 msgid "Something went wrong while loading your passkeys."
 msgstr "Something went wrong while loading your passkeys."
 
@@ -3685,6 +3687,7 @@ msgid "Unable to sign in"
 msgstr "Unable to sign in"
 
 #: apps/web/src/app/(signing)/sign/[token]/document-action-auth-2fa.tsx:166
+#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-passkey.tsx:246
 #: apps/web/src/app/(teams)/t/[teamUrl]/error.tsx:27
 msgid "Unauthorized"
 msgstr "Unauthorized"
@@ -4114,6 +4117,7 @@ msgid "We were unable to submit this document at this time. Please try again lat
 msgstr "We were unable to submit this document at this time. Please try again later."
 
 #: apps/web/src/app/(signing)/sign/[token]/document-action-auth-2fa.tsx:169
+#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-passkey.tsx:249
 msgid "We were unable to verify your details. Please try again or contact support"
 msgstr "We were unable to verify your details. Please try again or contact support"
 
@@ -4399,6 +4403,14 @@ msgstr "You need to be logged in to view this page."
 msgid "You need to setup 2FA to mark this document as viewed."
 msgstr "You need to setup 2FA to mark this document as viewed."
 
+#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-passkey.tsx:184
+msgid "You need to setup a passkey to {0} this {1}."
+msgstr "You need to setup a passkey to {0} this {1}."
+
+#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-passkey.tsx:182
+msgid "You need to setup a passkey to mark this document as viewed."
+msgstr "You need to setup a passkey to mark this document as viewed."
+
 #: apps/web/src/components/forms/v2/signup.tsx:283
 msgid "You will get notified & be able to set up your documenso public profile when we launch the feature."
 msgstr "You will get notified & be able to set up your documenso public profile when we launch the feature."
@@ -4422,6 +4434,10 @@ msgstr "Your avatar has been updated successfully."
 #: apps/web/src/app/(dashboard)/admin/site-settings/banner-form.tsx:75
 msgid "Your banner has been updated successfully."
 msgstr "Your banner has been updated successfully."
+
+#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-passkey.tsx:130
+msgid "Your browser does not support passkeys, which is required to {0} this {1}."
+msgstr "Your browser does not support passkeys, which is required to {0} this {1}."
 
 #: apps/web/src/app/(dashboard)/settings/billing/page.tsx:119
 msgid "Your current plan is past due. Please update your payment information."

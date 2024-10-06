@@ -1,3 +1,6 @@
+import { Trans, msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
+
 import { RECIPIENT_ROLES_DESCRIPTION_ENG } from '@documenso/lib/constants/recipient-roles';
 import config from '@documenso/tailwind-config';
 
@@ -32,9 +35,11 @@ export const DocumentCreatedFromDirectTemplateEmailTemplate = ({
   documentName = 'Open Source Pledge.pdf',
   assetBaseUrl = 'http://localhost:3002',
 }: DocumentCompletedEmailTemplateProps) => {
+  const { _ } = useLingui();
+
   const action = RECIPIENT_ROLES_DESCRIPTION_ENG[recipientRole].actioned.toLowerCase();
 
-  const previewText = `Document created from direct template`;
+  const previewText = _(msg`Document created from direct template`);
 
   const getAssetUrl = (path: string) => {
     return new URL(path, assetBaseUrl).toString();
@@ -67,7 +72,9 @@ export const DocumentCreatedFromDirectTemplateEmailTemplate = ({
 
                 <Section>
                   <Text className="text-primary mb-0 text-center text-lg font-semibold">
-                    {recipientName} {action} a document by using one of your direct links
+                    <Trans>
+                      {recipientName} {action} a document by using one of your direct links
+                    </Trans>
                   </Text>
 
                   <div className="mx-auto my-2 w-fit rounded-lg bg-gray-50 px-4 py-2 text-sm text-slate-600">
@@ -79,7 +86,7 @@ export const DocumentCreatedFromDirectTemplateEmailTemplate = ({
                       className="bg-documenso-500 inline-flex items-center justify-center rounded-lg px-6 py-3 text-center text-sm font-medium text-black no-underline"
                       href={documentLink}
                     >
-                      View document
+                      <Trans>View document</Trans>
                     </Button>
                   </Section>
                 </Section>

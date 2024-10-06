@@ -1,3 +1,6 @@
+import { Trans, msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
+
 import { formatTeamUrl } from '@documenso/lib/utils/teams';
 import config from '@documenso/tailwind-config';
 
@@ -33,7 +36,9 @@ export const TeamInviteEmailTemplate = ({
   teamUrl = 'demo',
   token = '',
 }: TeamInviteEmailProps) => {
-  const previewText = `Accept invitation to join a team on Documenso`;
+  const { _ } = useLingui();
+
+  const previewText = _(msg`Accept invitation to join a team on Documenso`);
 
   return (
     <Html>
@@ -67,11 +72,11 @@ export const TeamInviteEmailTemplate = ({
 
               <Section className="p-2 text-slate-500">
                 <Text className="text-center text-lg font-medium text-black">
-                  Join {teamName} on Documenso
+                  <Trans>Join {teamName} on Documenso</Trans>
                 </Text>
 
                 <Text className="my-1 text-center text-base">
-                  You have been invited to join the following team
+                  <Trans>You have been invited to join the following team</Trans>
                 </Text>
 
                 <div className="mx-auto my-2 w-fit rounded-lg bg-gray-50 px-4 py-2 text-base font-medium text-slate-600">
@@ -79,7 +84,9 @@ export const TeamInviteEmailTemplate = ({
                 </div>
 
                 <Text className="my-1 text-center text-base">
-                  by <span className="text-slate-900">{senderName}</span>
+                  <Trans>
+                    by <span className="text-slate-900">{senderName}</span>
+                  </Trans>
                 </Text>
 
                 <Section className="mb-6 mt-6 text-center">
@@ -87,13 +94,13 @@ export const TeamInviteEmailTemplate = ({
                     className="bg-documenso-500 inline-flex items-center justify-center rounded-lg px-6 py-3 text-center text-sm font-medium text-black no-underline"
                     href={`${baseUrl}/team/invite/${token}`}
                   >
-                    Accept
+                    <Trans>Accept</Trans>
                   </Button>
                   <Button
                     className="ml-4 inline-flex items-center justify-center rounded-lg bg-gray-50 px-6 py-3 text-center text-sm font-medium text-slate-600 no-underline"
                     href={`${baseUrl}/team/decline/${token}`}
                   >
-                    Decline
+                    <Trans>Decline</Trans>
                   </Button>
                 </Section>
               </Section>

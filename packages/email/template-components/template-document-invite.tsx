@@ -1,3 +1,6 @@
+import { Trans, msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
+
 import { RECIPIENT_ROLES_DESCRIPTION_ENG } from '@documenso/lib/constants/recipient-roles';
 import type { RecipientRole } from '@documenso/prisma/client';
 
@@ -26,6 +29,8 @@ export const TemplateDocumentInvite = ({
   isTeamInvite,
   teamName,
 }: TemplateDocumentInviteProps) => {
+  const { _ } = useLingui();
+
   const { actionVerb, progressiveVerb } = RECIPIENT_ROLES_DESCRIPTION_ENG[role];
 
   return (
@@ -36,19 +41,21 @@ export const TemplateDocumentInvite = ({
         <Text className="text-primary mx-auto mb-0 max-w-[80%] text-center text-lg font-semibold">
           {selfSigner ? (
             <>
-              {`Please ${actionVerb.toLowerCase()} your document`}
+              {_(msg`Please ${actionVerb.toLowerCase()} your document`)}
               <br />
               {`"${documentName}"`}
             </>
           ) : isTeamInvite ? (
             <>
-              {`${inviterName} on behalf of ${teamName} has invited you to ${actionVerb.toLowerCase()}`}
+              {_(
+                msg`${inviterName} on behalf of ${teamName} has invited you to ${actionVerb.toLowerCase()}`,
+              )}
               <br />
               {`"${documentName}"`}
             </>
           ) : (
             <>
-              {`${inviterName} has invited you to ${actionVerb.toLowerCase()}`}
+              {_(msg`${inviterName} has invited you to ${actionVerb.toLowerCase()}`)}
               <br />
               {`"${documentName}"`}
             </>
@@ -56,7 +63,7 @@ export const TemplateDocumentInvite = ({
         </Text>
 
         <Text className="my-1 text-center text-base text-slate-400">
-          Continue by {progressiveVerb.toLowerCase()} the document.
+          <Trans>Continue by {progressiveVerb.toLowerCase()} the document.</Trans>
         </Text>
 
         <Section className="mb-6 mt-8 text-center">
@@ -64,7 +71,7 @@ export const TemplateDocumentInvite = ({
             className="bg-documenso-500 inline-flex items-center justify-center rounded-lg px-6 py-3 text-center text-sm font-medium text-black no-underline"
             href={signDocumentLink}
           >
-            {actionVerb} Document
+            <Trans>{actionVerb} Document</Trans>
           </Button>
         </Section>
       </Section>

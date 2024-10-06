@@ -1,3 +1,6 @@
+import { Trans, msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
+
 import { formatTeamUrl } from '@documenso/lib/utils/teams';
 import config from '@documenso/tailwind-config';
 
@@ -22,7 +25,9 @@ export const TeamLeaveEmailTemplate = ({
   teamName = 'Team Name',
   teamUrl = 'demo',
 }: TeamLeaveEmailProps) => {
-  const previewText = 'A team member has left a team on Documenso';
+  const { _ } = useLingui();
+
+  const previewText = _(msg`A team member has left a team on Documenso`);
 
   return (
     <Html>
@@ -56,11 +61,13 @@ export const TeamLeaveEmailTemplate = ({
 
               <Section className="p-2 text-slate-500">
                 <Text className="text-center text-lg font-medium text-black">
-                  {memberName || memberEmail} left the team {teamName} on Documenso
+                  <Trans>
+                    {memberName || memberEmail} left the team {teamName} on Documenso
+                  </Trans>
                 </Text>
 
                 <Text className="my-1 text-center text-base">
-                  {memberEmail} left the following team
+                  <Trans>{memberEmail} left the following team</Trans>
                 </Text>
 
                 <div className="mx-auto my-2 w-fit rounded-lg bg-gray-50 px-4 py-2 text-base font-medium text-slate-600">

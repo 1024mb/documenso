@@ -1,3 +1,6 @@
+import { Trans, msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
+
 import { formatTeamUrl } from '@documenso/lib/utils/teams';
 import config from '@documenso/tailwind-config';
 
@@ -33,7 +36,9 @@ export const TeamTransferRequestTemplate = ({
   teamUrl = 'demo',
   token = '',
 }: TeamTransferRequestTemplateProps) => {
-  const previewText = 'Accept team transfer request on Documenso';
+  const { _ } = useLingui();
+
+  const previewText = _(msg`Accept team transfer request on Documenso`);
 
   return (
     <Html>
@@ -67,12 +72,14 @@ export const TeamTransferRequestTemplate = ({
 
               <Section className="p-2 text-slate-500">
                 <Text className="text-center text-lg font-medium text-black">
-                  {teamName} ownership transfer request
+                  <Trans>{teamName} ownership transfer request</Trans>
                 </Text>
 
                 <Text className="my-1 text-center text-base">
-                  <span className="font-bold">{senderName}</span> has requested that you take
-                  ownership of the following team
+                  <Trans>
+                    <span className="font-bold">{senderName}</span> has requested that you take
+                    ownership of the following team
+                  </Trans>
                 </Text>
 
                 <div className="mx-auto my-2 w-fit rounded-lg bg-gray-50 px-4 py-2 text-base font-medium text-slate-600">
@@ -80,8 +87,10 @@ export const TeamTransferRequestTemplate = ({
                 </div>
 
                 <Text className="text-center text-sm">
-                  By accepting this request, you will take responsibility for any billing items
-                  associated with this team.
+                  <Trans>
+                    By accepting this request, you will take responsibility for any billing items
+                    associated with this team.
+                  </Trans>
                 </Text>
 
                 <Section className="mb-6 mt-6 text-center">
@@ -89,12 +98,14 @@ export const TeamTransferRequestTemplate = ({
                     className="bg-documenso-500 ml-2 inline-flex items-center justify-center rounded-lg px-6 py-3 text-center text-sm font-medium text-black no-underline"
                     href={`${baseUrl}/team/verify/transfer/${token}`}
                   >
-                    Accept
+                    <Trans>Accept</Trans>
                   </Button>
                 </Section>
               </Section>
 
-              <Text className="text-center text-xs">Link expires in 1 hour.</Text>
+              <Text className="text-center text-xs">
+                <Trans>Link expires in 1 hour.</Trans>
+              </Text>
             </Container>
 
             <Hr className="mx-auto mt-12 max-w-xl" />
