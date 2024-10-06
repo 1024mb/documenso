@@ -4,7 +4,7 @@ import { useTransition } from 'react';
 
 import { useRouter } from 'next/navigation';
 
-import { msg } from '@lingui/macro';
+import { Trans, msg } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 import { Loader } from 'lucide-react';
 
@@ -112,8 +112,8 @@ export const InitialsField = ({
       console.error(err);
 
       toast({
-        title: 'Error',
-        description: 'An error occurred while removing the signature.',
+        title: _(msg`Error`),
+        description: _(msg`An error occurred while removing the signature.`),
         variant: 'destructive',
       });
     }
@@ -129,7 +129,7 @@ export const InitialsField = ({
 
       {!field.inserted && (
         <p className="group-hover:text-primary text-muted-foreground duration-200 group-hover:text-yellow-300">
-          {_(msg`Initials`)}
+          <Trans>Initials</Trans>
         </p>
       )}
 
