@@ -1,3 +1,6 @@
+import { msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
+
 import config from '@documenso/tailwind-config';
 
 import { Body, Container, Head, Hr, Html, Img, Preview, Section, Tailwind } from '../components';
@@ -13,7 +16,11 @@ export const DocumentCancelTemplate = ({
   documentName = 'Open Source Pledge.pdf',
   assetBaseUrl = 'http://localhost:3002',
 }: DocumentCancelEmailTemplateProps) => {
-  const previewText = `${inviterName} has cancelled the document ${documentName}, you don't need to sign it anymore.`;
+  const { _ } = useLingui();
+
+  const previewText = _(
+    msg`${inviterName} has cancelled the document ${documentName}, you don't need to sign it anymore.`,
+  );
 
   const getAssetUrl = (path: string) => {
     return new URL(path, assetBaseUrl).toString();

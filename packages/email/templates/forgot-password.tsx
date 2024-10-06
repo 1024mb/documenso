@@ -1,3 +1,6 @@
+import { msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
+
 import config from '@documenso/tailwind-config';
 
 import { Body, Container, Head, Html, Img, Preview, Section, Tailwind } from '../components';
@@ -11,7 +14,9 @@ export const ForgotPasswordTemplate = ({
   resetPasswordLink = 'https://documenso.com',
   assetBaseUrl = 'http://localhost:3002',
 }: ForgotPasswordTemplateProps) => {
-  const previewText = `Password Reset Requested`;
+  const { _ } = useLingui();
+
+  const previewText = _(msg`Password Reset Requested`);
 
   const getAssetUrl = (path: string) => {
     return new URL(path, assetBaseUrl).toString();

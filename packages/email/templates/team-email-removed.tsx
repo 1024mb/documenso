@@ -1,3 +1,6 @@
+import { Trans, msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
+
 import { formatTeamUrl } from '@documenso/lib/utils/teams';
 import config from '@documenso/tailwind-config';
 
@@ -20,7 +23,9 @@ export const TeamEmailRemovedTemplate = ({
   teamName = 'Team Name',
   teamUrl = 'demo',
 }: TeamEmailRemovedTemplateProps) => {
-  const previewText = `Team email removed for ${teamName} on Documenso`;
+  const { _ } = useLingui();
+
+  const previewText = _(msg`Team email removed for ${teamName} on Documenso`);
 
   return (
     <Html>
@@ -54,12 +59,14 @@ export const TeamEmailRemovedTemplate = ({
 
               <Section className="p-2 text-slate-500">
                 <Text className="text-center text-lg font-medium text-black">
-                  Team email removed
+                  <Trans>Team email removed</Trans>
                 </Text>
 
                 <Text className="my-1 text-center text-base">
-                  The team email <span className="font-bold">{teamEmail}</span> has been removed
-                  from the following team
+                  <Trans>
+                    The team email <span className="font-bold">{teamEmail}</span> has been removed
+                    from the following team
+                  </Trans>
                 </Text>
 
                 <div className="mx-auto mb-6 mt-2 w-fit rounded-lg bg-gray-50 px-4 py-2 text-base font-medium text-slate-600">

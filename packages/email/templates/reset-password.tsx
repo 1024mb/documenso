@@ -1,3 +1,6 @@
+import { Trans, msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
+
 import config from '@documenso/tailwind-config';
 
 import {
@@ -24,7 +27,9 @@ export const ResetPasswordTemplate = ({
   userEmail = 'lucas@documenso.com',
   assetBaseUrl = 'http://localhost:3002',
 }: ResetPasswordTemplateProps) => {
-  const previewText = `Password Reset Successful`;
+  const { _ } = useLingui();
+
+  const previewText = _(msg`Password Reset Successful`);
 
   const getAssetUrl = (path: string) => {
     return new URL(path, assetBaseUrl).toString();
@@ -64,22 +69,28 @@ export const ResetPasswordTemplate = ({
             <Container className="mx-auto mt-12 max-w-xl">
               <Section>
                 <Text className="my-4 text-base font-semibold">
-                  Hi, {userName}{' '}
-                  <Link className="font-normal text-slate-400" href={`mailto:${userEmail}`}>
-                    ({userEmail})
-                  </Link>
+                  <Trans>
+                    Hi, {userName}{' '}
+                    <Link className="font-normal text-slate-400" href={`mailto:${userEmail}`}>
+                      ({userEmail})
+                    </Link>
+                  </Trans>
                 </Text>
 
                 <Text className="mt-2 text-base text-slate-400">
-                  We've changed your password as you asked. You can now sign in with your new
-                  password.
+                  <Trans>
+                    We've changed your password as you asked. You can now sign in with your new
+                    password.
+                  </Trans>
                 </Text>
                 <Text className="mt-2 text-base text-slate-400">
-                  Didn't request a password change? We are here to help you secure your account,
-                  just{' '}
-                  <Link className="text-documenso-700 font-normal" href="mailto:hi@documenso.com">
-                    contact us.
-                  </Link>
+                  <Trans>
+                    Didn't request a password change? We are here to help you secure your account,
+                    just{' '}
+                    <Link className="text-documenso-700 font-normal" href="mailto:hi@documenso.com">
+                      contact us.
+                    </Link>
+                  </Trans>
                 </Text>
               </Section>
             </Container>

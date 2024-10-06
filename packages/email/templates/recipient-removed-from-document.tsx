@@ -1,3 +1,6 @@
+import { Trans, msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
+
 import config from '@documenso/tailwind-config';
 
 import {
@@ -23,7 +26,9 @@ export const RecipientRemovedFromDocumentTemplate = ({
   documentName = 'Open Source Pledge.pdf',
   assetBaseUrl = 'http://localhost:3002',
 }: DocumentCancelEmailTemplateProps) => {
-  const previewText = `${inviterName} has removed you from the document ${documentName}.`;
+  const { _ } = useLingui();
+
+  const previewText = _(msg`${inviterName} has removed you from the document ${documentName}.`);
 
   const getAssetUrl = (path: string) => {
     return new URL(path, assetBaseUrl).toString();
@@ -56,8 +61,10 @@ export const RecipientRemovedFromDocumentTemplate = ({
 
                 <Section>
                   <Text className="text-primary mx-auto mb-0 max-w-[80%] text-center text-lg font-semibold">
-                    {inviterName} has removed you from the document
-                    <br />"{documentName}"
+                    <Trans>
+                      {inviterName} has removed you from the document
+                      <br />"{documentName}"
+                    </Trans>
                   </Text>
                 </Section>
               </Section>
