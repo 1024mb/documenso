@@ -38,7 +38,7 @@ export const DesktopNav = ({ className, setIsCommandMenuOpen, ...props }: Deskto
   const rootHref = getRootHref(params, { returnEmptyRootString: true });
 
   useEffect(() => {
-    const userAgent = typeof navigator !== 'undefined' ? navigator.userAgent : 'unknown';
+    const userAgent = typeof navigator !== 'undefined' ? navigator.userAgent : _(msg`unknown`);
     const isMacOS = /Macintosh|Mac\s+OS\s+X/i.test(userAgent);
 
     setModifierKey(isMacOS ? '⌘' : 'Ctrl');

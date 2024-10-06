@@ -73,11 +73,11 @@ export const TransferTeamDialog = ({
     teamId,
   });
 
-  const confirmTransferMessage = `transfer ${teamName}`;
+  const confirmTransferMessage = _(msg`transfer ${teamName}`);
 
   const ZTransferTeamFormSchema = z.object({
     teamName: z.literal(confirmTransferMessage, {
-      errorMap: () => ({ message: `You must enter '${confirmTransferMessage}' to proceed` }),
+      errorMap: () => ({ message: _(msg`You must enter '${confirmTransferMessage}' to proceed`) }),
     }),
     newOwnerUserId: z.string(),
     clearPaymentMethods: z.boolean(),

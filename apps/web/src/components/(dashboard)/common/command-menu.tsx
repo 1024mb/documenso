@@ -213,10 +213,10 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
             </CommandGroup>
             <CommandGroup className="mx-2 p-0 pb-2" heading={_(msg`Preferences`)}>
               <CommandItem className="-mx-2 -my-1 rounded-lg" onSelect={() => addPage('language')}>
-                Change language
+                <Trans>Change language</Trans>
               </CommandItem>
               <CommandItem className="-mx-2 -my-1 rounded-lg" onSelect={() => addPage('theme')}>
-                Change theme
+                <Trans>Change theme</Trans>
               </CommandItem>
             </CommandGroup>
             {searchResults.length > 0 && (

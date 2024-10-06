@@ -90,7 +90,9 @@ export default async function WaitingForTurnToSignPage({
             </Button>
           ) : (
             <Button variant="link" asChild>
-              <Link href="/documents">Return Home</Link>
+              <Link href="/documents">
+                <Trans>Return Home</Trans>
+              </Link>
             </Button>
           )}
         </div>

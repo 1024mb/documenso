@@ -75,7 +75,7 @@ export const UserSecurityActivityDataTable = () => {
         header: _(msg`Device`),
         cell: ({ row }) => {
           if (!row.original.userAgent) {
-            return 'N/A';
+            return _(msg`N/A`);
           }
 
           parser.setUA(row.original.userAgent);
@@ -85,7 +85,7 @@ export const UserSecurityActivityDataTable = () => {
           let output = result.os.name;
 
           if (!output) {
-            return 'N/A';
+            return _(msg`N/A`);
           }
 
           if (result.os.version) {
@@ -99,20 +99,20 @@ export const UserSecurityActivityDataTable = () => {
         header: _(msg`Browser`),
         cell: ({ row }) => {
           if (!row.original.userAgent) {
-            return 'N/A';
+            return _(msg`N/A`);
           }
 
           parser.setUA(row.original.userAgent);
 
           const result = parser.getResult();
 
-          return result.browser.name ?? 'N/A';
+          return result.browser.name ?? _(msg`N/A`);
         },
       },
       {
-        header: 'IP Address',
+        header: _(msg`IP Address`),
         accessorKey: 'ipAddress',
-        cell: ({ row }) => row.original.ipAddress ?? 'N/A',
+        cell: ({ row }) => row.original.ipAddress ?? _(msg`N/A`),
       },
       {
         header: _(msg`Action`),

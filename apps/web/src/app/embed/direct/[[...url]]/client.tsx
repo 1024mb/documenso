@@ -448,7 +448,9 @@ export const EmbedDirectTemplateClientPage = ({
       </div>
 
       <div className="bg-primary text-primary-foreground fixed bottom-0 left-0 z-40 rounded-tr px-2 py-1 text-xs font-medium opacity-60 hover:opacity-100">
-        <span>Powered by</span>
+        <span>
+          <Trans>Powered by</Trans>
+        </span>
         <Logo className="ml-2 inline-block h-[14px]" />
       </div>
     </div>

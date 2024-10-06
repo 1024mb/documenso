@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 
-import { Trans } from '@lingui/macro';
+import { Trans, msg } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 import { ArrowRightIcon, Loader } from 'lucide-react';
 import { DateTime } from 'luxon';
@@ -63,7 +63,7 @@ export const DocumentHistorySheet = ({
 
   const extractBrowser = (userAgent?: string | null) => {
     if (!userAgent) {
-      return 'Unknown';
+      return _(msg`Unknown`);
     }
 
     const parser = new UAParser(userAgent);
@@ -179,11 +179,11 @@ export const DocumentHistorySheet = ({
                     ({ data }) => {
                       const values = [
                         {
-                          key: 'Email',
+                          key: _(msg`Email`),
                           value: data.recipientEmail,
                         },
                         {
-                          key: 'Role',
+                          key: _(msg`Role`),
                           value: formatGenericText(data.recipientRole),
                         },
                       ];
@@ -191,7 +191,7 @@ export const DocumentHistorySheet = ({
                       // Insert the name to the start of the array if available.
                       if (data.recipientName) {
                         values.unshift({
-                          key: 'Name',
+                          key: _(msg`Name`),
                           value: data.recipientName,
                         });
                       }
@@ -227,11 +227,11 @@ export const DocumentHistorySheet = ({
                       <DocumentHistorySheetChanges
                         values={[
                           {
-                            key: 'Field',
+                            key: _(msg`Field`),
                             value: formatGenericText(data.fieldType),
                           },
                           {
-                            key: 'Recipient',
+                            key: _(msg`Recipient`),
                             value: formatGenericText(data.fieldRecipientEmail),
                           },
                         ]}
@@ -245,12 +245,12 @@ export const DocumentHistorySheet = ({
                       <DocumentHistorySheetChanges
                         values={[
                           {
-                            key: 'Old',
-                            value: _(DOCUMENT_AUTH_TYPES[data.from || '']?.value || 'None'),
+                            key: _(msg`Old`),
+                            value: _(DOCUMENT_AUTH_TYPES[data.from || '']?.value || _(msg`None`)),
                           },
                           {
-                            key: 'New',
-                            value: _(DOCUMENT_AUTH_TYPES[data.to || '']?.value || 'None'),
+                            key: _(msg`New`),
+                            value: _(DOCUMENT_AUTH_TYPES[data.to || '']?.value || _(msg`None`)),
                           },
                         ]}
                       />
@@ -274,11 +274,11 @@ export const DocumentHistorySheet = ({
                     <DocumentHistorySheetChanges
                       values={[
                         {
-                          key: 'Old',
+                          key: _(msg`Old`),
                           value: data.from,
                         },
                         {
-                          key: 'New',
+                          key: _(msg`New`),
                           value: data.to,
                         },
                       ]}
@@ -290,11 +290,11 @@ export const DocumentHistorySheet = ({
                       <DocumentHistorySheetChanges
                         values={[
                           {
-                            key: 'Old',
+                            key: _(msg`Old`),
                             value: data.from,
                           },
                           {
-                            key: 'New',
+                            key: _(msg`New`),
                             value: data.to,
                           },
                         ]}
@@ -305,7 +305,7 @@ export const DocumentHistorySheet = ({
                     <DocumentHistorySheetChanges
                       values={[
                         {
-                          key: 'Field inserted',
+                          key: _(msg`Field inserted`),
                           value: formatGenericText(data.field.type),
                         },
                       ]}
@@ -315,7 +315,7 @@ export const DocumentHistorySheet = ({
                     <DocumentHistorySheetChanges
                       values={[
                         {
-                          key: 'Field uninserted',
+                          key: _(msg`Field uninserted`),
                           value: formatGenericText(data.field),
                         },
                       ]}
@@ -325,11 +325,11 @@ export const DocumentHistorySheet = ({
                     <DocumentHistorySheetChanges
                       values={[
                         {
-                          key: 'Type',
+                          key: _(msg`Type`),
                           value: _(DOCUMENT_AUDIT_LOG_EMAIL_FORMAT[data.emailType].description),
                         },
                         {
-                          key: 'Sent to',
+                          key: _(msg`Sent to`),
                           value: data.recipientEmail,
                         },
                       ]}
@@ -341,11 +341,11 @@ export const DocumentHistorySheet = ({
                       <DocumentHistorySheetChanges
                         values={[
                           {
-                            key: 'Old',
+                            key: _(msg`Old`),
                             value: data.from,
                           },
                           {
-                            key: 'New',
+                            key: _(msg`New`),
                             value: data.to,
                           },
                         ]}
@@ -358,11 +358,11 @@ export const DocumentHistorySheet = ({
                   <>
                     <div className="mb-1 mt-2 flex flex-row space-x-2">
                       <Badge variant="neutral" className="text-muted-foreground">
-                        IP: {auditLog.ipAddress ?? 'Unknown'}
+                        <Trans>IP:</Trans> {auditLog.ipAddress ?? <Trans>Unknown</Trans>}
                       </Badge>
 
                       <Badge variant="neutral" className="text-muted-foreground">
-                        Browser: {extractBrowser(auditLog.userAgent)}
+                        <Trans>Browser:</Trans> {extractBrowser(auditLog.userAgent)}
                       </Badge>
                     </div>
                   </>
@@ -377,7 +377,7 @@ export const DocumentHistorySheet = ({
                   loading={isFetchingNextPage}
                   onClick={async () => fetchNextPage()}
                 >
-                  Show more
+                  <Trans>Show more</Trans>
                 </Button>
               </div>
             )}

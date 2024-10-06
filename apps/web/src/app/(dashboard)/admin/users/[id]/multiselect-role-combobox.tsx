@@ -53,7 +53,7 @@ const MultiSelectRoleCombobox = ({ listValues, onChange }: ComboboxProps) => {
           aria-expanded={open}
           className="w-[200px] justify-between"
         >
-          {selectedValues.length > 0 ? selectedValues.join(', ') : 'Select values...'}
+          {selectedValues.length > 0 ? selectedValues.join(', ') : <Trans>Select values...</Trans>}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>

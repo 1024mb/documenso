@@ -153,7 +153,7 @@ export const AddTeamEmailDialog = ({ teamId, trigger, ...props }: AddTeamEmailDi
                       <Trans>Name</Trans>
                     </FormLabel>
                     <FormControl>
-                      <Input className="bg-background" placeholder="eg. Legal" {...field} />
+                      <Input className="bg-background" placeholder={_(msg`eg. Legal`)} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -171,7 +171,7 @@ export const AddTeamEmailDialog = ({ teamId, trigger, ...props }: AddTeamEmailDi
                     <FormControl>
                       <Input
                         className="bg-background"
-                        placeholder="example@example.com"
+                        placeholder={_(msg`example@example.com`)}
                         {...field}
                       />
                     </FormControl>

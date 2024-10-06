@@ -119,7 +119,9 @@ export default function WebhookPage({ params }: WebhookPageOptions) {
                 name="webhookUrl"
                 render={({ field }) => (
                   <FormItem className="flex-1">
-                    <FormLabel required>Webhook URL</FormLabel>
+                    <FormLabel required>
+                      <Trans>Webhook URL</Trans>
+                    </FormLabel>
                     <FormControl>
                       <Input className="bg-background" {...field} />
                     </FormControl>
@@ -189,7 +191,9 @@ export default function WebhookPage({ params }: WebhookPageOptions) {
               name="secret"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Secret</FormLabel>
+                  <FormLabel>
+                    <Trans>Secret</Trans>
+                  </FormLabel>
                   <FormControl>
                     <PasswordInput className="bg-background" {...field} value={field.value ?? ''} />
                   </FormControl>

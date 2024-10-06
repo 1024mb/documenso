@@ -2,6 +2,7 @@ import React from 'react';
 
 import { redirect } from 'next/navigation';
 
+import { Trans } from '@lingui/macro';
 import { DateTime } from 'luxon';
 
 import { APP_I18N_OPTIONS } from '@documenso/lib/constants/i18n';
@@ -53,31 +54,43 @@ export default async function AuditLog({ searchParams }: AuditLogProps) {
   return (
     <div className="print-provider pointer-events-none mx-auto max-w-screen-md">
       <div className="flex items-center">
-        <h1 className="my-8 text-2xl font-bold">Version History</h1>
+        <h1 className="my-8 text-2xl font-bold">
+          <Trans>Version History</Trans>
+        </h1>
       </div>
 
       <Card>
         <CardContent className="grid grid-cols-2 gap-4 p-6 text-sm print:text-xs">
           <p>
-            <span className="font-medium">Document ID</span>
+            <span className="font-medium">
+              <Trans>Document ID</Trans>
+            </span>
 
             <span className="mt-1 block break-words">{document.id}</span>
           </p>
 
           <p>
-            <span className="font-medium">Enclosed Document</span>
+            <span className="font-medium">
+              <Trans>Enclosed Document</Trans>
+            </span>
 
             <span className="mt-1 block break-words">{document.title}</span>
           </p>
 
           <p>
-            <span className="font-medium">Status</span>
+            <span className="font-medium">
+              <Trans>Status</Trans>
+            </span>
 
-            <span className="mt-1 block">{document.deletedAt ? 'DELETED' : document.status}</span>
+            <span className="mt-1 block">
+              {document.deletedAt ? <Trans>DELETED</Trans> : document.status}
+            </span>
           </p>
 
           <p>
-            <span className="font-medium">Owner</span>
+            <span className="font-medium">
+              <Trans>Owner</Trans>
+            </span>
 
             <span className="mt-1 block break-words">
               {document.User.name} ({document.User.email})
@@ -85,7 +98,9 @@ export default async function AuditLog({ searchParams }: AuditLogProps) {
           </p>
 
           <p>
-            <span className="font-medium">Created At</span>
+            <span className="font-medium">
+              <Trans>Created At</Trans>
+            </span>
 
             <span className="mt-1 block">
               {DateTime.fromJSDate(document.createdAt)
@@ -95,7 +110,9 @@ export default async function AuditLog({ searchParams }: AuditLogProps) {
           </p>
 
           <p>
-            <span className="font-medium">Last Updated</span>
+            <span className="font-medium">
+              <Trans>Last Updated</Trans>
+            </span>
 
             <span className="mt-1 block">
               {DateTime.fromJSDate(document.updatedAt)
@@ -105,7 +122,9 @@ export default async function AuditLog({ searchParams }: AuditLogProps) {
           </p>
 
           <p>
-            <span className="font-medium">Time Zone</span>
+            <span className="font-medium">
+              <Trans>Time Zone</Trans>
+            </span>
 
             <span className="mt-1 block break-words">
               {document.documentMeta?.timezone ?? 'N/A'}
@@ -113,7 +132,9 @@ export default async function AuditLog({ searchParams }: AuditLogProps) {
           </p>
 
           <div>
-            <p className="font-medium">Recipients</p>
+            <p className="font-medium">
+              <Trans>Recipients</Trans>
+            </p>
 
             <ul className="mt-1 list-inside list-disc">
               {document.Recipient.map((recipient) => (

@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 
 import { useSearchParams } from 'next/navigation';
 
-import { msg } from '@lingui/macro';
+import { Trans, msg } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 import { DateTime } from 'luxon';
 import type { DateTimeFormatOptions } from 'luxon';
@@ -97,7 +97,9 @@ export const DocumentLogsDataTable = ({ documentId }: DocumentLogsDataTableProps
               )}
             </div>
           ) : (
-            <p>N/A</p>
+            <p>
+              <Trans>N/A</Trans>
+            </p>
           ),
       },
       {
@@ -108,21 +110,21 @@ export const DocumentLogsDataTable = ({ documentId }: DocumentLogsDataTableProps
         ),
       },
       {
-        header: 'IP Address',
+        header: _(msg`IP Address`),
         accessorKey: 'ipAddress',
       },
       {
-        header: 'Browser',
+        header: _(msg`Browser`),
         cell: ({ row }) => {
           if (!row.original.userAgent) {
-            return 'N/A';
+            return _(msg`N/A`);
           }
 
           parser.setUA(row.original.userAgent);
 
           const result = parser.getResult();
 
-          return result.browser.name ?? 'N/A';
+          return result.browser.name ?? _(msg`N/A`);
         },
       },
     ] satisfies DataTableColumnDef<(typeof results)['data'][number]>[];

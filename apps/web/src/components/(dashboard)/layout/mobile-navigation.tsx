@@ -91,7 +91,9 @@ export const MobileNavigation = ({ isMenuOpen, onMenuOpenChange }: MobileNavigat
           </div>
 
           <p className="text-muted-foreground text-sm">
-            © {new Date().getFullYear()} Documenso, Inc. <br /> All rights reserved.
+            <Trans>
+              © {new Date().getFullYear()} Documenso, Inc. <br /> All rights reserved.
+            </Trans>
           </p>
         </div>
       </SheetContent>

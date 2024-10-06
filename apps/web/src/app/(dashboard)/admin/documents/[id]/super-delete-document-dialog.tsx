@@ -49,7 +49,7 @@ export const SuperDeleteDocumentDialog = ({ document }: SuperDeleteDocumentDialo
 
       toast({
         title: _(msg`Document deleted`),
-        description: 'The Document has been deleted successfully.',
+        description: _(msg`The Document has been deleted successfully.`),
         duration: 5000,
       });
 
@@ -67,7 +67,9 @@ export const SuperDeleteDocumentDialog = ({ document }: SuperDeleteDocumentDialo
           variant: 'destructive',
           description:
             err.message ??
-            'We encountered an unknown error while attempting to delete your document. Please try again later.',
+            _(
+              msg`We encountered an unknown error while attempting to delete your document. Please try again later.`,
+            ),
         });
       }
     }
