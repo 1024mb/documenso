@@ -128,7 +128,7 @@ export const DocumentLogsDataTable = ({ documentId }: DocumentLogsDataTableProps
         },
       },
     ] satisfies DataTableColumnDef<(typeof results)['data'][number]>[];
-  }, []);
+  }, [_, i18n]);
 
   return (
     <DataTable

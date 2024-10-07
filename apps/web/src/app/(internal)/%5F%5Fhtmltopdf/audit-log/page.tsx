@@ -3,10 +3,11 @@ import React from 'react';
 import { redirect } from 'next/navigation';
 
 import { Trans } from '@lingui/macro';
+import { Trans as TransReact } from '@lingui/react';
 import { DateTime } from 'luxon';
 
 import { APP_I18N_OPTIONS } from '@documenso/lib/constants/i18n';
-import { RECIPIENT_ROLES_DESCRIPTION_ENG } from '@documenso/lib/constants/recipient-roles';
+import { RECIPIENT_ROLES_DESCRIPTION } from '@documenso/lib/constants/recipient-roles';
 import { getEntireDocument } from '@documenso/lib/server-only/admin/get-entire-document';
 import { decryptSecondaryData } from '@documenso/lib/server-only/crypto/decrypt';
 import { findDocumentAuditLogs } from '@documenso/lib/server-only/document/find-document-audit-logs';
@@ -140,7 +141,7 @@ export default async function AuditLog({ searchParams }: AuditLogProps) {
               {document.Recipient.map((recipient) => (
                 <li key={recipient.id}>
                   <span className="text-muted-foreground">
-                    [{RECIPIENT_ROLES_DESCRIPTION_ENG[recipient.role].roleName}]
+                    [<TransReact id={RECIPIENT_ROLES_DESCRIPTION[recipient.role].roleName.id} />]
                   </span>{' '}
                   {recipient.name} ({recipient.email})
                 </li>

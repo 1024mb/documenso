@@ -1,5 +1,6 @@
 'use client';
 
+import { cookies } from 'next/headers';
 import { useRouter } from 'next/navigation';
 
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -32,29 +33,31 @@ import { useToast } from '@documenso/ui/primitives/use-toast';
 
 const SIGN_UP_REDIRECT_PATH = '/documents';
 
-export const ZSignUpFormSchema = z
-  .object({
-    name: z
-      .string()
-      .trim()
-      .min(1, { message: i18n._(msg`Please enter a valid name.`) }),
-    email: z.string().email().min(1),
-    password: ZPasswordSchema,
-    signature: z
-      .string()
-      .min(1, { message: i18n._(msg`We need your signature to sign documents`) }),
-  })
-  .refine(
-    (data) => {
-      const { name, email, password } = data;
-      return !password.includes(name) && !password.includes(email.split('@')[0]);
-    },
-    {
-      message: i18n._(msg`Password should not be common or based on personal information`),
-    },
-  );
+export const ZSignUpFormSchema = (locale: string) => {
+  return z
+    .object({
+      name: z
+        .string()
+        .trim()
+        .min(1, { message: i18n._(msg`Please enter a valid name.`) }),
+      email: z.string().email().min(1),
+      password: ZPasswordSchema(locale),
+      signature: z
+        .string()
+        .min(1, { message: i18n._(msg`We need your signature to sign documents`) }),
+    })
+    .refine(
+      (data) => {
+        const { name, email, password } = data;
+        return !password.includes(name) && !password.includes(email.split('@')[0]);
+      },
+      {
+        message: i18n._(msg`Password should not be common or based on personal information`),
+      },
+    );
+};
 
-export type TSignUpFormSchema = z.infer<typeof ZSignUpFormSchema>;
+export type TSignUpFormSchema = z.infer<ReturnType<typeof ZSignUpFormSchema>>;
 
 export type SignUpFormProps = {
   className?: string;
@@ -72,6 +75,10 @@ export const SignUpForm = ({
   const { _ } = useLingui();
   const { toast } = useToast();
 
+  const cookieStore = cookies();
+  const languageCookie = cookieStore.get('language');
+  const language = languageCookie ? languageCookie.value : 'en';
+
   const analytics = useAnalytics();
   const router = useRouter();
 
@@ -82,7 +89,7 @@ export const SignUpForm = ({
       password: '',
       signature: '',
     },
-    resolver: zodResolver(ZSignUpFormSchema),
+    resolver: zodResolver(ZSignUpFormSchema(language)),
   });
 
   const isSubmitting = form.formState.isSubmitting;

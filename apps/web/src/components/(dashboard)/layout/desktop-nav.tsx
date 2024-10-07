@@ -42,7 +42,7 @@ export const DesktopNav = ({ className, setIsCommandMenuOpen, ...props }: Deskto
     const isMacOS = /Macintosh|Mac\s+OS\s+X/i.test(userAgent);
 
     setModifierKey(isMacOS ? '⌘' : 'Ctrl');
-  }, []);
+  }, [_]);
 
   return (
     <div

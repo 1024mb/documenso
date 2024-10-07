@@ -1,5 +1,6 @@
 'use client';
 
+import { cookies } from 'next/headers';
 import { useRouter } from 'next/navigation';
 
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -25,17 +26,19 @@ import {
 import { PasswordInput } from '@documenso/ui/primitives/password-input';
 import { useToast } from '@documenso/ui/primitives/use-toast';
 
-export const ZResetPasswordFormSchema = z
-  .object({
-    password: ZPasswordSchema,
-    repeatedPassword: ZPasswordSchema,
-  })
-  .refine((data) => data.password === data.repeatedPassword, {
-    path: ['repeatedPassword'],
-    message: i18n._(msg`Passwords don't match`),
-  });
+export const ZResetPasswordFormSchema = (locale: string) => {
+  return z
+    .object({
+      password: ZPasswordSchema(locale),
+      repeatedPassword: ZPasswordSchema(locale),
+    })
+    .refine((data) => data.password === data.repeatedPassword, {
+      path: ['repeatedPassword'],
+      message: i18n._(msg`Passwords don't match`),
+    });
+};
 
-export type TResetPasswordFormSchema = z.infer<typeof ZResetPasswordFormSchema>;
+export type TResetPasswordFormSchema = z.infer<ReturnType<typeof ZResetPasswordFormSchema>>;
 
 export type ResetPasswordFormProps = {
   className?: string;
@@ -48,12 +51,16 @@ export const ResetPasswordForm = ({ className, token }: ResetPasswordFormProps) 
   const { _ } = useLingui();
   const { toast } = useToast();
 
+  const cookieStore = cookies();
+  const languageCookie = cookieStore.get('language');
+  const language = languageCookie ? languageCookie.value : 'en';
+
   const form = useForm<TResetPasswordFormSchema>({
     values: {
       password: '',
       repeatedPassword: '',
     },
-    resolver: zodResolver(ZResetPasswordFormSchema),
+    resolver: zodResolver(ZResetPasswordFormSchema(language)),
   });
 
   const isSubmitting = form.formState.isSubmitting;

@@ -90,7 +90,7 @@ export const PendingUserTeamsDataTable = () => {
         ),
       },
     ] satisfies DataTableColumnDef<(typeof results)['data'][number]>[];
-  }, []);
+  }, [_, i18n]);
 
   useEffect(() => {
     const searchParamCheckout = searchParams?.get('checkout');

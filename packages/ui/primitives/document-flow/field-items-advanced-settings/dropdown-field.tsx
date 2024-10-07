@@ -92,11 +92,11 @@ export const DropdownFieldAdvancedSettings = ({
 
   useEffect(() => {
     setValues(fieldState.values ?? [{ value: _(msg`Option 1`) }]);
-  }, [fieldState.values]);
+  }, [_, fieldState.values]);
 
   useEffect(() => {
     setDefaultValue(fieldState.defaultValue ?? _(msg`Option 1`));
-  }, [fieldState.defaultValue]);
+  }, [_, fieldState.defaultValue]);
 
   return (
     <div className="text-dark flex flex-col gap-4">

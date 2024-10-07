@@ -86,7 +86,7 @@ export const UserPasskeysDataTable = () => {
         ),
       },
     ] satisfies DataTableColumnDef<(typeof results)['data'][number]>[];
-  }, []);
+  }, [_]);
 
   return (
     <DataTable

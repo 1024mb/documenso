@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
+import { cookies } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -46,37 +47,39 @@ const SIGN_UP_REDIRECT_PATH = '/documents';
 
 type SignUpStep = 'BASIC_DETAILS' | 'CLAIM_USERNAME';
 
-export const ZSignUpFormV2Schema = z
-  .object({
-    name: z
-      .string()
-      .trim()
-      .min(1, { message: i18n._(msg`Please enter a valid name.`) }),
-    email: z.string().email().min(1),
-    password: ZPasswordSchema,
-    signature: z
-      .string()
-      .min(1, { message: i18n._(msg`We need your signature to sign documents`) }),
-    url: z
-      .string()
-      .trim()
-      .toLowerCase()
-      .min(1, { message: i18n._(msg`We need a username to create your profile`) })
-      .regex(/^[a-z0-9-]+$/, {
-        message: i18n._(msg`Username can only container alphanumeric characters and dashes.`),
-      }),
-  })
-  .refine(
-    (data) => {
-      const { name, email, password } = data;
-      return !password.includes(name) && !password.includes(email.split('@')[0]);
-    },
-    {
-      message: i18n._(msg`Password should not be common or based on personal information`),
-    },
-  );
+export const ZSignUpFormV2Schema = (locale: string) => {
+  return z
+    .object({
+      name: z
+        .string()
+        .trim()
+        .min(1, { message: i18n._(msg`Please enter a valid name.`) }),
+      email: z.string().email().min(1),
+      password: ZPasswordSchema(locale),
+      signature: z
+        .string()
+        .min(1, { message: i18n._(msg`We need your signature to sign documents`) }),
+      url: z
+        .string()
+        .trim()
+        .toLowerCase()
+        .min(1, { message: i18n._(msg`We need a username to create your profile`) })
+        .regex(/^[a-z0-9-]+$/, {
+          message: i18n._(msg`Username can only container alphanumeric characters and dashes.`),
+        }),
+    })
+    .refine(
+      (data) => {
+        const { name, email, password } = data;
+        return !password.includes(name) && !password.includes(email.split('@')[0]);
+      },
+      {
+        message: i18n._(msg`Password should not be common or based on personal information`),
+      },
+    );
+};
 
-export type TSignUpFormV2Schema = z.infer<typeof ZSignUpFormV2Schema>;
+export type TSignUpFormV2Schema = z.infer<ReturnType<typeof ZSignUpFormV2Schema>>;
 
 export type SignUpFormV2Props = {
   className?: string;
@@ -93,6 +96,10 @@ export const SignUpFormV2 = ({
 }: SignUpFormV2Props) => {
   const { _ } = useLingui();
   const { toast } = useToast();
+
+  const cookieStore = cookies();
+  const languageCookie = cookieStore.get('language');
+  const language = languageCookie ? languageCookie.value : 'en';
 
   const analytics = useAnalytics();
   const router = useRouter();
@@ -113,7 +120,7 @@ export const SignUpFormV2 = ({
       url: '',
     },
     mode: 'onBlur',
-    resolver: zodResolver(ZSignUpFormV2Schema),
+    resolver: zodResolver(ZSignUpFormV2Schema(language)),
   });
 
   const isSubmitting = form.formState.isSubmitting;

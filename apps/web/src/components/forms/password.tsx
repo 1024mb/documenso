@@ -24,27 +24,36 @@ import {
 import { PasswordInput } from '@documenso/ui/primitives/password-input';
 import { useToast } from '@documenso/ui/primitives/use-toast';
 
-export const ZPasswordFormSchema = z
-  .object({
-    currentPassword: ZCurrentPasswordSchema,
-    password: ZPasswordSchema,
-    repeatedPassword: ZPasswordSchema,
-  })
-  .refine((data) => data.password === data.repeatedPassword, {
-    message: i18n._(msg`Passwords do not match`),
-    path: ['repeatedPassword'],
-  });
-
-export type TPasswordFormSchema = z.infer<typeof ZPasswordFormSchema>;
-
 export type PasswordFormProps = {
   className?: string;
   user: User;
+  locale: string;
 };
 
-export const PasswordForm = ({ className }: PasswordFormProps) => {
+export const PasswordForm = ({ className, locale }: PasswordFormProps) => {
   const { _ } = useLingui();
   const { toast } = useToast();
+
+  import(`@documenso/lib/translations/${locale}/web.js`)
+    .then(({ messages }) => {
+      i18n.loadAndActivate({ locale, messages });
+    })
+    .catch((error) => {
+      console.error(`Failed to load translations for locale ${locale}:`, error);
+    });
+
+  const ZPasswordFormSchema = z
+    .object({
+      currentPassword: ZCurrentPasswordSchema(locale),
+      password: ZPasswordSchema(locale),
+      repeatedPassword: ZPasswordSchema(locale),
+    })
+    .refine((data) => data.password === data.repeatedPassword, {
+      message: i18n._(msg`Passwords do not match`),
+      path: ['repeatedPassword'],
+    });
+
+  type TPasswordFormSchema = z.infer<typeof ZPasswordFormSchema>;
 
   const form = useForm<TPasswordFormSchema>({
     values: {

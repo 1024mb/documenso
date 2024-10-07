@@ -46,8 +46,8 @@ export const ZUpdatePublicProfileMutationSchema = z.object({
 export type TUpdatePublicProfileMutationSchema = z.infer<typeof ZUpdatePublicProfileMutationSchema>;
 
 export const ZUpdatePasswordMutationSchema = z.object({
-  currentPassword: ZCurrentPasswordSchema,
-  password: ZPasswordSchema,
+  currentPassword: ZCurrentPasswordSchema(),
+  password: ZPasswordSchema(),
 });
 
 export type TUpdatePasswordMutationSchema = z.infer<typeof ZUpdatePasswordMutationSchema>;
@@ -59,7 +59,7 @@ export const ZForgotPasswordFormSchema = z.object({
 export type TForgotPasswordFormSchema = z.infer<typeof ZForgotPasswordFormSchema>;
 
 export const ZResetPasswordFormSchema = z.object({
-  password: ZPasswordSchema,
+  password: ZPasswordSchema(),
   token: z.string().min(1),
 });
 
