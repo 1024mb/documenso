@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from 'react';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { i18n } from '@lingui/core';
 import { Plural, Trans, msg } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 import type * as DialogPrimitive from '@radix-ui/react-dialog';
@@ -66,15 +67,19 @@ export type ManagePublicTemplateDialogProps = {
 const ZUpdatePublicTemplateFormSchema = z.object({
   publicTitle: z
     .string()
-    .min(1, { message: 'Title is required' })
+    .min(1, { message: i18n._(msg`Title is required`) })
     .max(MAX_TEMPLATE_PUBLIC_TITLE_LENGTH, {
-      message: `Title cannot be longer than ${MAX_TEMPLATE_PUBLIC_TITLE_LENGTH} characters`,
+      message: i18n._(
+        msg`Title cannot be longer than ${MAX_TEMPLATE_PUBLIC_TITLE_LENGTH} characters`,
+      ),
     }),
   publicDescription: z
     .string()
-    .min(1, { message: 'Description is required' })
+    .min(1, { message: i18n._(msg`Description is required`) })
     .max(MAX_TEMPLATE_PUBLIC_DESCRIPTION_LENGTH, {
-      message: `Description cannot be longer than ${MAX_TEMPLATE_PUBLIC_DESCRIPTION_LENGTH} characters`,
+      message: i18n._(
+        msg`Description cannot be longer than ${MAX_TEMPLATE_PUBLIC_DESCRIPTION_LENGTH} characters`,
+      ),
     }),
 });
 
@@ -352,7 +357,9 @@ export const ManagePublicTemplateDialog = ({
                       name="publicTitle"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel required>Title</FormLabel>
+                          <FormLabel required>
+                            <Trans>Title</Trans>
+                          </FormLabel>
                           <FormControl>
                             <Input
                               placeholder={_(msg`The public name for your template`)}
@@ -373,7 +380,9 @@ export const ManagePublicTemplateDialog = ({
 
                         return (
                           <FormItem>
-                            <FormLabel required>Description</FormLabel>
+                            <FormLabel required>
+                              <Trans>Description</Trans>
+                            </FormLabel>
                             <FormControl>
                               <Textarea
                                 placeholder={_(

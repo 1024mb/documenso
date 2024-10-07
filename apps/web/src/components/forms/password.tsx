@@ -1,6 +1,7 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { i18n } from '@lingui/core';
 import { Trans, msg } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 import { useForm } from 'react-hook-form';
@@ -30,7 +31,7 @@ export const ZPasswordFormSchema = z
     repeatedPassword: ZPasswordSchema,
   })
   .refine((data) => data.password === data.repeatedPassword, {
-    message: 'Passwords do not match',
+    message: i18n._(msg`Passwords do not match`),
     path: ['repeatedPassword'],
   });
 

@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { i18n } from '@lingui/core';
 import { Trans, msg } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 import { signIn } from 'next-auth/react';
@@ -33,10 +34,15 @@ const SIGN_UP_REDIRECT_PATH = '/documents';
 
 export const ZSignUpFormSchema = z
   .object({
-    name: z.string().trim().min(1, { message: 'Please enter a valid name.' }),
+    name: z
+      .string()
+      .trim()
+      .min(1, { message: i18n._(msg`Please enter a valid name.`) }),
     email: z.string().email().min(1),
     password: ZPasswordSchema,
-    signature: z.string().min(1, { message: 'We need your signature to sign documents' }),
+    signature: z
+      .string()
+      .min(1, { message: i18n._(msg`We need your signature to sign documents`) }),
   })
   .refine(
     (data) => {
@@ -44,7 +50,7 @@ export const ZSignUpFormSchema = z
       return !password.includes(name) && !password.includes(email.split('@')[0]);
     },
     {
-      message: 'Password should not be common or based on personal information',
+      message: i18n._(msg`Password should not be common or based on personal information`),
     },
   );
 

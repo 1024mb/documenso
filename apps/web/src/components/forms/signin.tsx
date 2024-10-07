@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import type { MessageDescriptor } from '@lingui/core';
 import { Trans, msg } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 import { browserSupportsWebAuthn, startAuthentication } from '@simplewebauthn/browser';
@@ -44,15 +45,13 @@ import { PasswordInput } from '@documenso/ui/primitives/password-input';
 import { PinInput, PinInputGroup, PinInputSlot } from '@documenso/ui/primitives/pin-input';
 import { useToast } from '@documenso/ui/primitives/use-toast';
 
-const ERROR_MESSAGES: Partial<Record<keyof typeof ErrorCode, string>> = {
-  [ErrorCode.CREDENTIALS_NOT_FOUND]: 'The email or password provided is incorrect',
-  [ErrorCode.INCORRECT_EMAIL_PASSWORD]: 'The email or password provided is incorrect',
-  [ErrorCode.USER_MISSING_PASSWORD]:
-    'This account appears to be using a social login method, please sign in using that method',
-  [ErrorCode.INCORRECT_TWO_FACTOR_CODE]: 'The two-factor authentication code provided is incorrect',
-  [ErrorCode.INCORRECT_TWO_FACTOR_BACKUP_CODE]: 'The backup code provided is incorrect',
-  [ErrorCode.UNVERIFIED_EMAIL]:
-    'This account has not been verified. Please verify your account before signing in.',
+const ERROR_MESSAGES: Partial<Record<keyof typeof ErrorCode, MessageDescriptor>> = {
+  [ErrorCode.CREDENTIALS_NOT_FOUND]: msg`The email or password provided is incorrect`,
+  [ErrorCode.INCORRECT_EMAIL_PASSWORD]: msg`The email or password provided is incorrect`,
+  [ErrorCode.USER_MISSING_PASSWORD]: msg`This account appears to be using a social login method, please sign in using that method`,
+  [ErrorCode.INCORRECT_TWO_FACTOR_CODE]: msg`The two-factor authentication code provided is incorrect`,
+  [ErrorCode.INCORRECT_TWO_FACTOR_BACKUP_CODE]: msg`The backup code provided is incorrect`,
+  [ErrorCode.UNVERIFIED_EMAIL]: msg`This account has not been verified. Please verify your account before signing in.`,
 };
 
 const TwoFactorEnabledErrorCode = ErrorCode.TWO_FACTOR_MISSING_CREDENTIALS;
@@ -203,7 +202,7 @@ export const SignInForm = ({
         .otherwise(() => msg`Please try again later or login using your normal details`);
 
       toast({
-        title: 'Something went wrong',
+        title: _(msg`Something went wrong`),
         description: _(errorMessage),
         duration: 10000,
         variant: 'destructive',
@@ -245,7 +244,7 @@ export const SignInForm = ({
 
           toast({
             title: _(msg`Unable to sign in`),
-            description: errorMessage ?? _(msg`An unknown error occurred`),
+            description: _(errorMessage ?? msg`An unknown error occurred`),
           });
 
           return;
@@ -253,7 +252,7 @@ export const SignInForm = ({
 
         toast({
           title: _(msg`Unable to sign in`),
-          description: errorMessage ?? _(msg`An unknown error occurred`),
+          description: _(errorMessage ?? msg`An unknown error occurred`),
           variant: 'destructive',
         });
 
@@ -403,7 +402,7 @@ export const SignInForm = ({
               onClick={onSignInWithGoogleClick}
             >
               <FcGoogle className="mr-2 h-5 w-5" />
-              Google
+              <Trans>Google</Trans>
             </Button>
           )}
 
@@ -417,7 +416,7 @@ export const SignInForm = ({
               onClick={onSignInWithOIDCClick}
             >
               <FaIdCardClip className="mr-2 h-5 w-5" />
-              {oidcProviderLabel || 'OIDC'}
+              {oidcProviderLabel || <Trans>OIDC</Trans>}
             </Button>
           )}
 
@@ -457,7 +456,9 @@ export const SignInForm = ({
                   name="totpCode"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Token</FormLabel>
+                      <FormLabel>
+                        <Trans>Token</Trans>
+                      </FormLabel>
                       <FormControl>
                         <PinInput {...field} value={field.value ?? ''} maxLength={6}>
                           {Array(6)

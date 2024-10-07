@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { i18n } from '@lingui/core';
 import { Trans, msg } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 import { useForm } from 'react-hook-form';
@@ -31,7 +32,7 @@ export const ZResetPasswordFormSchema = z
   })
   .refine((data) => data.password === data.repeatedPassword, {
     path: ['repeatedPassword'],
-    message: "Passwords don't match",
+    message: i18n._(msg`Passwords don't match`),
   });
 
 export type TResetPasswordFormSchema = z.infer<typeof ZResetPasswordFormSchema>;

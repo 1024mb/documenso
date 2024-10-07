@@ -215,7 +215,9 @@ export const PublicProfileForm = ({
 
               return (
                 <FormItem>
-                  <FormLabel>Bio</FormLabel>
+                  <FormLabel>
+                    <Trans>Bio</Trans>
+                  </FormLabel>
                   <FormControl>
                     <Textarea
                       {...field}
