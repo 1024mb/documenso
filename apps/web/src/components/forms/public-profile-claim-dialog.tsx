@@ -5,7 +5,8 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { msg } from '@lingui/macro';
+import { i18n } from '@lingui/core';
+import { Trans, msg } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -42,9 +43,9 @@ export const ZClaimPublicProfileFormSchema = z.object({
     .string()
     .trim()
     .toLowerCase()
-    .min(1, { message: 'Please enter a valid username.' })
+    .min(1, { message: i18n._(msg`Please enter a valid username.`) })
     .regex(/^[a-z0-9-]+$/, {
-      message: 'Username can only container alphanumeric characters and dashes.',
+      message: i18n._(msg`Username can only container alphanumeric characters and dashes.`),
     }),
 });
 
@@ -104,7 +105,7 @@ export const ClaimPublicProfileDialogForm = ({
         });
       } else if (error.code !== AppErrorCode.UNKNOWN_ERROR) {
         toast({
-          title: 'An error occurred',
+          title: _(msg`An error occurred`),
           description: error.userMessage ?? error.message,
           variant: 'destructive',
         });
@@ -127,11 +128,11 @@ export const ClaimPublicProfileDialogForm = ({
           <>
             <DialogHeader>
               <DialogTitle className="font-semi-bold text-center text-xl">
-                Introducing public profiles!
+                <Trans>Introducing public profiles!</Trans>
               </DialogTitle>
 
               <DialogDescription className="text-center">
-                Reserve your Documenso public profile username
+                <Trans>Reserve your Documenso public profile username</Trans>
               </DialogDescription>
             </DialogHeader>
 
@@ -150,7 +151,9 @@ export const ClaimPublicProfileDialogForm = ({
                     name="url"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Public profile username</FormLabel>
+                        <FormLabel>
+                          <Trans>Public profile username</Trans>
+                        </FormLabel>
 
                         <FormControl>
                           <Input type="text" className="mb-2 mt-2" {...field} />
@@ -168,7 +171,7 @@ export const ClaimPublicProfileDialogForm = ({
 
                 <div className="mt-4 text-center">
                   <Button type="submit" loading={isSubmitting}>
-                    Claim your username
+                    <Trans>Claim your username</Trans>
                   </Button>
                 </div>
               </form>
@@ -179,10 +182,12 @@ export const ClaimPublicProfileDialogForm = ({
         {claimed && (
           <>
             <DialogHeader>
-              <DialogTitle className="font-semi-bold text-center text-xl">All set!</DialogTitle>
+              <DialogTitle className="font-semi-bold text-center text-xl">
+                <Trans>All set!</Trans>
+              </DialogTitle>
 
               <DialogDescription className="text-center">
-                We will let you know as soon as this features is launched
+                <Trans>We will let you know as soon as this features is launched</Trans>
               </DialogDescription>
             </DialogHeader>
 
@@ -190,7 +195,7 @@ export const ClaimPublicProfileDialogForm = ({
 
             <div className="to-background -mt-12 flex w-full flex-col items-center bg-gradient-to-b from-transparent to-15% px-4 pt-8 md:-mt-12">
               <Button className="w-full" onClick={() => onOpenChange?.(false)}>
-                Can't wait!
+                <Trans>Can't wait!</Trans>
               </Button>
             </div>
           </>

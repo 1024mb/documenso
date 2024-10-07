@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { i18n } from '@lingui/core';
 import { Trans, msg } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -47,17 +48,22 @@ type SignUpStep = 'BASIC_DETAILS' | 'CLAIM_USERNAME';
 
 export const ZSignUpFormV2Schema = z
   .object({
-    name: z.string().trim().min(1, { message: 'Please enter a valid name.' }),
+    name: z
+      .string()
+      .trim()
+      .min(1, { message: i18n._(msg`Please enter a valid name.`) }),
     email: z.string().email().min(1),
     password: ZPasswordSchema,
-    signature: z.string().min(1, { message: 'We need your signature to sign documents' }),
+    signature: z
+      .string()
+      .min(1, { message: i18n._(msg`We need your signature to sign documents`) }),
     url: z
       .string()
       .trim()
       .toLowerCase()
-      .min(1, { message: 'We need a username to create your profile' })
+      .min(1, { message: i18n._(msg`We need a username to create your profile`) })
       .regex(/^[a-z0-9-]+$/, {
-        message: 'Username can only container alphanumeric characters and dashes.',
+        message: i18n._(msg`Username can only container alphanumeric characters and dashes.`),
       }),
   })
   .refine(
@@ -66,7 +72,7 @@ export const ZSignUpFormV2Schema = z
       return !password.includes(name) && !password.includes(email.split('@')[0]);
     },
     {
-      message: 'Password should not be common or based on personal information',
+      message: i18n._(msg`Password should not be common or based on personal information`),
     },
   );
 
