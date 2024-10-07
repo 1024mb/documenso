@@ -243,7 +243,7 @@ msgstr "Empieza hoy."
 
 #: apps/marketing/src/app/(marketing)/blog/page.tsx:30
 msgid "Get the latest news from Documenso, including product updates, team announcements and more!"
-msgstr "¡Recibe las últiams noticias de Documenso, incluyendo actualizaciones de productos, anuncios de equipos y más!"
+msgstr "¡Recibe las últimas noticias de Documenso, incluyendo actualizaciones de productos, anuncios de equipos y más!"
 
 #: apps/marketing/src/app/(marketing)/open/page.tsx:233
 msgid "GitHub: Total Merged PRs"
