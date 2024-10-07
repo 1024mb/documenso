@@ -408,7 +408,7 @@ export const AddFieldsFormPartial = ({
         append(newField);
       }
     },
-    [append, lastActiveField, selectedSigner?.email, toast],
+    [_, append, lastActiveField, selectedSigner?.email, toast],
   );
 
   const onFieldPaste = useCallback(

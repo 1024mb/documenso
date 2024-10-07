@@ -92,7 +92,7 @@ export const DocumentsDataTable = ({
           ),
       },
     ] satisfies DataTableColumnDef<(typeof results)['data'][number]>[];
-  }, [team]);
+  }, [_, i18n, team]);
 
   const onPaginationChange = (page: number, perPage: number) => {
     startTransition(() => {

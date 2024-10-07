@@ -122,7 +122,7 @@ export const CurrentUserTeamsDataTable = () => {
         ),
       },
     ] satisfies DataTableColumnDef<(typeof results)['data'][number]>[];
-  }, []);
+  }, [_, i18n]);
 
   return (
     <DataTable

@@ -106,7 +106,7 @@ export const RecipientItem = ({ recipient }: RecipientItemProps) => {
         ),
       },
     ] satisfies DataTableColumnDef<(typeof recipient)['Field'][number]>[];
-  }, []);
+  }, [_]);
 
   const onUpdateRecipientFormSubmit = async ({ name, email }: TAdminUpdateRecipientFormSchema) => {
     try {

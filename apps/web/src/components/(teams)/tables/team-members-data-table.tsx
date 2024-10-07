@@ -173,7 +173,7 @@ export const TeamMembersDataTable = ({
         ),
       },
     ] satisfies DataTableColumnDef<(typeof results)['data'][number]>[];
-  }, []);
+  }, [_, i18n]);
 
   return (
     <DataTable

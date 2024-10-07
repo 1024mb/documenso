@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react';
 
+import { cookies } from 'next/headers';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
@@ -58,14 +59,16 @@ const TwoFactorEnabledErrorCode = ErrorCode.TWO_FACTOR_MISSING_CREDENTIALS;
 
 const LOGIN_REDIRECT_PATH = '/documents';
 
-export const ZSignInFormSchema = z.object({
-  email: z.string().email().min(1),
-  password: ZCurrentPasswordSchema,
-  totpCode: z.string().trim().optional(),
-  backupCode: z.string().trim().optional(),
-});
+export const ZSignInFormSchema = (locale: string) => {
+  return z.object({
+    email: z.string().email().min(1),
+    password: ZCurrentPasswordSchema(locale),
+    totpCode: z.string().trim().optional(),
+    backupCode: z.string().trim().optional(),
+  });
+};
 
-export type TSignInFormSchema = z.infer<typeof ZSignInFormSchema>;
+export type TSignInFormSchema = z.infer<ReturnType<typeof ZSignInFormSchema>>;
 
 export type SignInFormProps = {
   className?: string;
@@ -87,6 +90,10 @@ export const SignInForm = ({
   const { _ } = useLingui();
   const { toast } = useToast();
   const { getFlag } = useFeatureFlags();
+
+  const cookieStore = cookies();
+  const languageCookie = cookieStore.get('language');
+  const language = languageCookie ? languageCookie.value : 'en';
 
   const router = useRouter();
 
@@ -127,7 +134,7 @@ export const SignInForm = ({
       totpCode: '',
       backupCode: '',
     },
-    resolver: zodResolver(ZSignInFormSchema),
+    resolver: zodResolver(ZSignInFormSchema(language)),
   });
 
   const isSubmitting = form.formState.isSubmitting;

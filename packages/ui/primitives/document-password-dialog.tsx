@@ -52,7 +52,7 @@ export const PasswordDialog = ({
         message: _(msg`The password you have entered is incorrect. Please try again.`),
       });
     }
-  }, [form, isError]);
+  }, [_, form, isError]);
 
   return (
     <Dialog open={open}>

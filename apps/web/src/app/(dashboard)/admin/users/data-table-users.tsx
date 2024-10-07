@@ -110,7 +110,7 @@ export const UsersDataTable = ({
         },
       },
     ] satisfies DataTableColumnDef<(typeof users)[number]>[];
-  }, [individualPriceIds]);
+  }, [_, individualPriceIds]);
 
   useEffect(() => {
     startTransition(() => {

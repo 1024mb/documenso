@@ -158,7 +158,7 @@ export const TemplatesDataTable = ({
         },
       },
     ] satisfies DataTableColumnDef<(typeof templates)[number]>[];
-  }, [documentRootPath, teamId, templateRootPath]);
+  }, [_, documentRootPath, i18n, teamId, templateRootPath]);
 
   const onPaginationChange = (page: number, perPage: number) => {
     startTransition(() => {

@@ -120,7 +120,7 @@ export const UserSecurityActivityDataTable = () => {
         cell: ({ row }) => _(USER_SECURITY_AUDIT_LOG_MAP[row.original.type]),
       },
     ] satisfies DataTableColumnDef<(typeof results)['data'][number]>[];
-  }, []);
+  }, [_, i18n]);
 
   return (
     <DataTable

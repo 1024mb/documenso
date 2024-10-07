@@ -2,8 +2,8 @@ import React from 'react';
 
 import { redirect } from 'next/navigation';
 
-import { i18n } from '@lingui/core';
 import { Trans, msg } from '@lingui/macro';
+import { Trans as TransReact } from '@lingui/react';
 import { DateTime } from 'luxon';
 import { match } from 'ts-pattern';
 import { UAParser } from 'ua-parser-js';
@@ -75,7 +75,7 @@ export default async function SigningCertificate({ searchParams }: SigningCertif
 
   const getDevice = (userAgent?: string | null) => {
     if (!userAgent) {
-      return i18n._(msg`Unknown`);
+      return msg`Unknown`;
     }
 
     const parser = new UAParser(userAgent);
@@ -91,7 +91,7 @@ export default async function SigningCertificate({ searchParams }: SigningCertif
     const recipient = document.Recipient.find((recipient) => recipient.id === recipientId);
 
     if (!recipient) {
-      return i18n._(msg`Unknown`);
+      return msg`Unknown`;
     }
 
     const extractedAuthMethods = extractDocumentAuthMethods({
@@ -100,17 +100,17 @@ export default async function SigningCertificate({ searchParams }: SigningCertif
     });
 
     let authLevel = match(extractedAuthMethods.derivedRecipientActionAuth)
-      .with('ACCOUNT', () => i18n._(msg`Account Re-Authentication`))
-      .with('TWO_FACTOR_AUTH', () => i18n._(msg`Two-Factor Re-Authentication`))
-      .with('PASSKEY', () => i18n._(msg`Passkey Re-Authentication`))
-      .with('EXPLICIT_NONE', () => i18n._(msg`Email`))
+      .with('ACCOUNT', () => msg`Account Re-Authentication`)
+      .with('TWO_FACTOR_AUTH', () => msg`Two-Factor Re-Authentication`)
+      .with('PASSKEY', () => msg`Passkey Re-Authentication`)
+      .with('EXPLICIT_NONE', () => msg`Email`)
       .with(null, () => null)
       .exhaustive();
 
     if (!authLevel) {
       authLevel = match(extractedAuthMethods.derivedRecipientAccessAuth)
-        .with('ACCOUNT', () => i18n._(msg`Account Authentication`))
-        .with(null, () => i18n._(msg`Email`))
+        .with('ACCOUNT', () => msg`Account Authentication`)
+        .with(null, () => msg`Email`)
         .exhaustive();
     }
 
@@ -174,6 +174,7 @@ export default async function SigningCertificate({ searchParams }: SigningCertif
               {document.Recipient.map((recipient, i) => {
                 const logs = getRecipientAuditLogs(recipient.id);
                 const signature = getRecipientSignatureField(recipient.id);
+                const userAgent = getDevice(logs.DOCUMENT_RECIPIENT_COMPLETED[0]?.userAgent);
 
                 return (
                   <TableRow key={i} className="print:break-inside-avoid">
@@ -181,12 +182,16 @@ export default async function SigningCertificate({ searchParams }: SigningCertif
                       <div className="hyphens-auto break-words font-medium">{recipient.name}</div>
                       <div className="break-all">{recipient.email}</div>
                       <p className="text-muted-foreground mt-2 text-sm print:text-xs">
-                        {i18n._(RECIPIENT_ROLES_DESCRIPTION[recipient.role].roleName)}
+                        <TransReact id={RECIPIENT_ROLES_DESCRIPTION[recipient.role].roleName.id} />
                       </p>
 
                       <p className="text-muted-foreground mt-2 text-sm print:text-xs">
-                        <span className="font-medium">Authentication Level:</span>{' '}
-                        <span className="block">{getAuthenticationLevel(recipient.id)}</span>
+                        <span className="font-medium">
+                          <Trans>Authentication Level:</Trans>
+                        </span>{' '}
+                        <span className="block">
+                          <TransReact id={getAuthenticationLevel(recipient.id).id} />{' '}
+                        </span>
                       </p>
                     </TableCell>
 
@@ -220,8 +225,9 @@ export default async function SigningCertificate({ searchParams }: SigningCertif
                               <Trans>IP Address:</Trans>
                             </span>{' '}
                             <span className="inline-block">
-                              {logs.DOCUMENT_RECIPIENT_COMPLETED[0]?.ipAddress ??
-                                i18n._(msg`Unknown`)}
+                              {logs.DOCUMENT_RECIPIENT_COMPLETED[0]?.ipAddress ?? (
+                                <TransReact id={msg`Unknown`.id} />
+                              )}
                             </span>
                           </p>
 
@@ -230,7 +236,11 @@ export default async function SigningCertificate({ searchParams }: SigningCertif
                               <Trans>Device:</Trans>
                             </span>{' '}
                             <span className="inline-block">
-                              {getDevice(logs.DOCUMENT_RECIPIENT_COMPLETED[0]?.userAgent)}
+                              {typeof userAgent === 'string' ? (
+                                userAgent
+                              ) : (
+                                <TransReact id={userAgent.id} />
+                              )}
                             </span>
                           </p>
                         </>
@@ -248,11 +258,13 @@ export default async function SigningCertificate({ searchParams }: SigningCertif
                             <Trans>Sent:</Trans>
                           </span>{' '}
                           <span className="inline-block">
-                            {logs.EMAIL_SENT[0]
-                              ? DateTime.fromJSDate(logs.EMAIL_SENT[0].createdAt)
-                                  .setLocale(APP_I18N_OPTIONS.defaultLocale)
-                                  .toFormat('yyyy-MM-dd hh:mm:ss a (ZZZZ)')
-                              : i18n._(msg`Unknown`)}
+                            {logs.EMAIL_SENT[0] ? (
+                              DateTime.fromJSDate(logs.EMAIL_SENT[0].createdAt)
+                                .setLocale(APP_I18N_OPTIONS.defaultLocale)
+                                .toFormat('yyyy-MM-dd hh:mm:ss a (ZZZZ)')
+                            ) : (
+                              <TransReact id={msg`Unknown`.id} />
+                            )}
                           </span>
                         </p>
 
@@ -261,11 +273,13 @@ export default async function SigningCertificate({ searchParams }: SigningCertif
                             <Trans>Viewed:</Trans>
                           </span>{' '}
                           <span className="inline-block">
-                            {logs.DOCUMENT_OPENED[0]
-                              ? DateTime.fromJSDate(logs.DOCUMENT_OPENED[0].createdAt)
-                                  .setLocale(APP_I18N_OPTIONS.defaultLocale)
-                                  .toFormat('yyyy-MM-dd hh:mm:ss a (ZZZZ)')
-                              : i18n._(msg`Unknown`)}
+                            {logs.DOCUMENT_OPENED[0] ? (
+                              DateTime.fromJSDate(logs.DOCUMENT_OPENED[0].createdAt)
+                                .setLocale(APP_I18N_OPTIONS.defaultLocale)
+                                .toFormat('yyyy-MM-dd hh:mm:ss a (ZZZZ)')
+                            ) : (
+                              <TransReact id={msg`Unknown`.id} />
+                            )}
                           </span>
                         </p>
 
@@ -274,11 +288,13 @@ export default async function SigningCertificate({ searchParams }: SigningCertif
                             <Trans>Signed:</Trans>
                           </span>{' '}
                           <span className="inline-block">
-                            {logs.DOCUMENT_RECIPIENT_COMPLETED[0]
-                              ? DateTime.fromJSDate(logs.DOCUMENT_RECIPIENT_COMPLETED[0].createdAt)
-                                  .setLocale(APP_I18N_OPTIONS.defaultLocale)
-                                  .toFormat('yyyy-MM-dd hh:mm:ss a (ZZZZ)')
-                              : i18n._(msg`Unknown`)}
+                            {logs.DOCUMENT_RECIPIENT_COMPLETED[0] ? (
+                              DateTime.fromJSDate(logs.DOCUMENT_RECIPIENT_COMPLETED[0].createdAt)
+                                .setLocale(APP_I18N_OPTIONS.defaultLocale)
+                                .toFormat('yyyy-MM-dd hh:mm:ss a (ZZZZ)')
+                            ) : (
+                              <TransReact id={msg`Unknown`.id} />
+                            )}
                           </span>
                         </p>
 
@@ -287,9 +303,11 @@ export default async function SigningCertificate({ searchParams }: SigningCertif
                             <Trans>Reason:</Trans>
                           </span>{' '}
                           <span className="inline-block">
-                            {isOwner(recipient.email)
-                              ? i18n._(FRIENDLY_SIGNING_REASONS['__OWNER__'])
-                              : i18n._(FRIENDLY_SIGNING_REASONS[recipient.role])}
+                            {isOwner(recipient.email) ? (
+                              <TransReact id={FRIENDLY_SIGNING_REASONS['__OWNER__'].id} />
+                            ) : (
+                              <TransReact id={FRIENDLY_SIGNING_REASONS[recipient.role].id} />
+                            )}
                           </span>
                         </p>
                       </div>

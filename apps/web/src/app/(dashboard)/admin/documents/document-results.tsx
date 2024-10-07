@@ -124,7 +124,7 @@ export const AdminDocumentResults = () => {
         cell: ({ row }) => i18n.date(row.original.updatedAt),
       },
     ] satisfies DataTableColumnDef<(typeof results)['data'][number]>[];
-  }, []);
+  }, [_, i18n]);
 
   const onPaginationChange = (newPage: number, newPerPage: number) => {
     updateSearchParams({

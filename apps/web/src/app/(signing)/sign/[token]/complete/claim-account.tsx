@@ -1,5 +1,6 @@
 'use client';
 
+import { cookies } from 'next/headers';
 import { useRouter } from 'next/navigation';
 
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -31,28 +32,34 @@ export type ClaimAccountProps = {
   trigger?: React.ReactNode;
 };
 
-export const ZClaimAccountFormSchema = z
-  .object({
-    name: z.string().trim().min(1, { message: 'Please enter a valid name.' }),
-    email: z.string().email().min(1),
-    password: ZPasswordSchema,
-  })
-  .refine(
-    (data) => {
-      const { name, email, password } = data;
-      return !password.includes(name) && !password.includes(email.split('@')[0]);
-    },
-    {
-      message: 'Password should not be common or based on personal information',
-      path: ['password'],
-    },
-  );
+export const ZClaimAccountFormSchema = (locale: string) => {
+  return z
+    .object({
+      name: z.string().trim().min(1, { message: 'Please enter a valid name.' }),
+      email: z.string().email().min(1),
+      password: ZPasswordSchema(locale),
+    })
+    .refine(
+      (data) => {
+        const { name, email, password } = data;
+        return !password.includes(name) && !password.includes(email.split('@')[0]);
+      },
+      {
+        message: 'Password should not be common or based on personal information',
+        path: ['password'],
+      },
+    );
+};
 
-export type TClaimAccountFormSchema = z.infer<typeof ZClaimAccountFormSchema>;
+export type TClaimAccountFormSchema = z.infer<ReturnType<typeof ZClaimAccountFormSchema>>;
 
 export const ClaimAccount = ({ defaultName, defaultEmail }: ClaimAccountProps) => {
   const { _ } = useLingui();
   const { toast } = useToast();
+
+  const cookieStore = cookies();
+  const languageCookie = cookieStore.get('language');
+  const language = languageCookie ? languageCookie.value : 'en';
 
   const analytics = useAnalytics();
   const router = useRouter();
@@ -65,7 +72,7 @@ export const ClaimAccount = ({ defaultName, defaultEmail }: ClaimAccountProps) =
       email: defaultEmail,
       password: '',
     },
-    resolver: zodResolver(ZClaimAccountFormSchema),
+    resolver: zodResolver(ZClaimAccountFormSchema(language)),
   });
 
   const onFormSubmit = async ({ name, email, password }: TClaimAccountFormSchema) => {
