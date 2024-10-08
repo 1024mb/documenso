@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { cookies } from 'next/headers';
 import Link from 'next/link';
 
 import { Trans, msg } from '@lingui/macro';
@@ -27,10 +26,6 @@ export default async function SecuritySettingsPage() {
   const { _ } = useLingui();
   const { user } = await getRequiredServerComponentSession();
 
-  const cookieStore = cookies();
-  const languageCookie = cookieStore.get('language');
-  const language = languageCookie ? languageCookie.value : 'en';
-
   const isPasskeyEnabled = await getServerComponentFlag('app_passkey');
 
   return (
@@ -42,7 +37,7 @@ export default async function SecuritySettingsPage() {
 
       {user.identityProvider === 'DOCUMENSO' && (
         <>
-          <PasswordForm user={user} locale={language} />
+          <PasswordForm user={user} />
 
           <hr className="border-border/50 mt-6" />
         </>

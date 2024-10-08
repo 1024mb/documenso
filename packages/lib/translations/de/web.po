@@ -430,7 +430,7 @@ msgstr "Eine E-Mail, in der die Übertragung dieses Teams angefordert wird, wurd
 #: apps/web/src/app/(dashboard)/settings/profile/delete-account-dialog.tsx:57
 #: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:96
 #: apps/web/src/components/forms/avatar-image.tsx:116
-#: apps/web/src/components/forms/password.tsx:115
+#: apps/web/src/components/forms/password.tsx:117
 #: apps/web/src/components/forms/profile.tsx:81
 #: apps/web/src/components/forms/public-profile-claim-dialog.tsx:108
 #: apps/web/src/components/forms/reset-password.tsx:86
@@ -568,7 +568,7 @@ msgstr "Ein Fehler ist aufgetreten, während dein Dokument hochgeladen wurde."
 #: apps/web/src/components/(teams)/forms/update-team-form.tsx:94
 #: apps/web/src/components/forms/avatar-image.tsx:94
 #: apps/web/src/components/forms/avatar-image.tsx:122
-#: apps/web/src/components/forms/password.tsx:121
+#: apps/web/src/components/forms/password.tsx:123
 #: apps/web/src/components/forms/profile.tsx:87
 #: apps/web/src/components/forms/public-profile-claim-dialog.tsx:114
 #: apps/web/src/components/forms/public-profile-form.tsx:104
@@ -1130,7 +1130,7 @@ msgstr "Erstellt am {0}"
 msgid "Created on{0}"
 msgstr ">>>>>>> 4ca18b99 (fix: refactor dates)"
 
-#: apps/web/src/components/forms/password.tsx:144
+#: apps/web/src/components/forms/password.tsx:146
 msgid "Current Password"
 msgstr "Aktuelles Passwort"
 
@@ -2539,7 +2539,7 @@ msgid "Passkeys are not supported on this browser"
 msgstr "Passkeys werden von diesem Browser nicht unterstützt"
 
 #: apps/web/src/components/(dashboard)/common/command-menu.tsx:70
-#: apps/web/src/components/forms/password.tsx:160
+#: apps/web/src/components/forms/password.tsx:162
 #: apps/web/src/components/forms/reset-password.tsx:115
 #: apps/web/src/components/forms/signin.tsx:359
 #: apps/web/src/components/forms/signup.tsx:206
@@ -2552,12 +2552,12 @@ msgstr "Passwort"
 msgid "Password should not be common or based on personal information"
 msgstr ""
 
-#: apps/web/src/components/forms/password.tsx:108
+#: apps/web/src/components/forms/password.tsx:110
 #: apps/web/src/components/forms/reset-password.tsx:77
 msgid "Password updated"
 msgstr "Passwort aktualisiert"
 
-#: apps/web/src/components/forms/password.tsx:51
+#: apps/web/src/components/forms/password.tsx:53
 msgid "Passwords do not match"
 msgstr ""
 
@@ -2868,7 +2868,7 @@ msgstr "Team-E-Mail entfernen"
 msgid "Remove team member"
 msgstr "Teammitglied entfernen"
 
-#: apps/web/src/components/forms/password.tsx:176
+#: apps/web/src/components/forms/password.tsx:178
 #: apps/web/src/components/forms/reset-password.tsx:131
 msgid "Repeat Password"
 msgstr "Passwort wiederholen"
@@ -4186,7 +4186,7 @@ msgstr "Update Banner"
 msgid "Update passkey"
 msgstr "Update passkey"
 
-#: apps/web/src/components/forms/password.tsx:189
+#: apps/web/src/components/forms/password.tsx:191
 msgid "Update password"
 msgstr "Update password"
 
@@ -4229,7 +4229,7 @@ msgstr "Benutzer aktualisieren"
 msgid "Update webhook"
 msgstr "Webhook aktualisieren"
 
-#: apps/web/src/components/forms/password.tsx:189
+#: apps/web/src/components/forms/password.tsx:191
 msgid "Updating password..."
 msgstr "Passwort wird aktualisiert..."
 
@@ -4547,7 +4547,7 @@ msgstr "Wir sind auf einen unbekannten Fehler gestoßen, während wir versucht h
 msgid "We encountered an unknown error while attempting to update this team member. Please try again later."
 msgstr "Wir sind auf einen unbekannten Fehler gestoßen, während wir versucht haben, dieses Teammitglied zu aktualisieren. Bitte versuchen Sie es später erneut."
 
-#: apps/web/src/components/forms/password.tsx:123
+#: apps/web/src/components/forms/password.tsx:125
 msgid "We encountered an unknown error while attempting to update your password. Please try again later."
 msgstr "Wir sind auf einen unbekannten Fehler gestoßen, während wir versucht haben, Ihr Passwort zu aktualisieren. Bitte versuchen Sie es später erneut."
 
@@ -5009,7 +5009,7 @@ msgstr "Ihre E-Mail wird derzeit von Team <0>{0}</0> ({1}) verwendet."
 msgid "Your existing tokens"
 msgstr "Ihre vorhandenen Tokens"
 
-#: apps/web/src/components/forms/password.tsx:109
+#: apps/web/src/components/forms/password.tsx:111
 #: apps/web/src/components/forms/reset-password.tsx:78
 msgid "Your password has been updated successfully."
 msgstr "Ihr Passwort wurde erfolgreich aktualisiert."

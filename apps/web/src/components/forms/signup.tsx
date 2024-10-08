@@ -1,6 +1,5 @@
 'use client';
 
-import { cookies } from 'next/headers';
 import { useRouter } from 'next/navigation';
 
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -75,9 +74,7 @@ export const SignUpForm = ({
   const { _ } = useLingui();
   const { toast } = useToast();
 
-  const cookieStore = cookies();
-  const languageCookie = cookieStore.get('language');
-  const language = languageCookie ? languageCookie.value : 'en';
+  const language = useLingui().i18n.locale;
 
   const analytics = useAnalytics();
   const router = useRouter();

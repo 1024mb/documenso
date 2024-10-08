@@ -6,12 +6,25 @@ import { ZBaseTableSearchParamsSchema } from '@documenso/lib/types/search-params
 import { ZRegistrationResponseJSONSchema } from '@documenso/lib/types/webauthn';
 
 export const ZCurrentPasswordSchema = (locale: string = 'en') => {
-  import(`@documenso/lib/translations/${locale}/web.js`)
+  import(`../../../lib/translations/${locale}/web.js`)
     .then(({ messages }) => {
       i18n.loadAndActivate({ locale, messages });
     })
     .catch((error) => {
-      console.error(`Failed to load translations for locale ${locale}:`, error);
+      if (error instanceof Error && error.message.includes('404') && locale !== 'en') {
+        console.error(`Failed to load translations for locale ${locale}:`, error);
+        locale = 'en';
+
+        import(`../../../lib/translations/${locale}/web.js`)
+          .then(({ messages }) => {
+            i18n.loadAndActivate({ locale, messages });
+          })
+          .catch((fallbackError) => {
+            console.error(`Failed to load English translations:`, fallbackError);
+          });
+      } else {
+        console.error(error);
+      }
     });
 
   return z
@@ -21,12 +34,25 @@ export const ZCurrentPasswordSchema = (locale: string = 'en') => {
 };
 
 export const ZPasswordSchema = (locale: string = 'en') => {
-  import(`@documenso/lib/translations/${locale}/web.js`)
+  import(`../../../lib/translations/${locale}/web.js`)
     .then(({ messages }) => {
       i18n.loadAndActivate({ locale, messages });
     })
     .catch((error) => {
-      console.error(`Failed to load translations for locale ${locale}:`, error);
+      if (error instanceof Error && error.message.includes('404') && locale !== 'en') {
+        console.error(`Failed to load translations for locale ${locale}:`, error);
+        locale = 'en';
+
+        import(`../../../lib/translations/${locale}/web.js`)
+          .then(({ messages }) => {
+            i18n.loadAndActivate({ locale, messages });
+          })
+          .catch((fallbackError) => {
+            console.error(`Failed to load English translations:`, fallbackError);
+          });
+      } else {
+        console.error(error);
+      }
     });
 
   return z
