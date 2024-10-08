@@ -278,11 +278,11 @@ msgstr "Fügen Sie alle relevanten Felder für jeden Empfänger hinzu."
 msgid "Add all relevant placeholders for each recipient."
 msgstr "Fügen Sie alle relevanten Platzhalter für jeden Empfänger hinzu."
 
-#: apps/web/src/app/(dashboard)/settings/security/page.tsx:67
+#: apps/web/src/app/(dashboard)/settings/security/page.tsx:62
 msgid "Add an authenticator to serve as a secondary authentication method for signing documents."
 msgstr "Fügen Sie einen Authenticator hinzu, um als sekundäre Authentifizierungsmethode für die Unterzeichnung von Dokumenten zu dienen."
 
-#: apps/web/src/app/(dashboard)/settings/security/page.tsx:62
+#: apps/web/src/app/(dashboard)/settings/security/page.tsx:57
 msgid "Add an authenticator to serve as a secondary authentication method when signing in, or when signing documents."
 msgstr "Fügen Sie einen Authenticator hinzu, um als sekundäre Authentifizierungsmethode beim Einloggen oder bei der Unterzeichnung von Dokumenten zu dienen."
 
@@ -396,11 +396,11 @@ msgstr "Alle Vorlagen"
 msgid "All Time"
 msgstr "Alle Zeiten"
 
-#: apps/web/src/app/(dashboard)/settings/security/page.tsx:115
+#: apps/web/src/app/(dashboard)/settings/security/page.tsx:110
 msgid "Allows authenticating using biometrics, password managers, hardware keys, etc."
 msgstr "Erlaubt die Authentifizierung mit biometrischen Daten, Passwort-Managern, Hardware-Schlüsseln usw."
 
-#: apps/web/src/components/forms/v2/signup.tsx:436
+#: apps/web/src/components/forms/v2/signup.tsx:433
 msgid "Already have an account? <0>Sign in instead</0>"
 msgstr "Hast du bereits ein Konto? <0>Stattdessen anmelden</0>"
 
@@ -428,15 +428,15 @@ msgstr "Eine E-Mail, in der die Übertragung dieses Teams angefordert wird, wurd
 #: apps/web/src/app/(dashboard)/admin/site-settings/banner-form.tsx:83
 #: apps/web/src/app/(dashboard)/admin/users/[id]/delete-user-dialog.tsx:60
 #: apps/web/src/app/(dashboard)/settings/profile/delete-account-dialog.tsx:57
-#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:99
+#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:96
 #: apps/web/src/components/forms/avatar-image.tsx:116
-#: apps/web/src/components/forms/password.tsx:88
+#: apps/web/src/components/forms/password.tsx:115
 #: apps/web/src/components/forms/profile.tsx:81
 #: apps/web/src/components/forms/public-profile-claim-dialog.tsx:108
-#: apps/web/src/components/forms/reset-password.tsx:89
-#: apps/web/src/components/forms/signup.tsx:120
+#: apps/web/src/components/forms/reset-password.tsx:86
+#: apps/web/src/components/forms/signup.tsx:117
 #: apps/web/src/components/forms/token.tsx:137
-#: apps/web/src/components/forms/v2/signup.tsx:167
+#: apps/web/src/components/forms/v2/signup.tsx:164
 msgid "An error occurred"
 msgstr "Ein Fehler ist aufgetreten"
 
@@ -551,7 +551,7 @@ msgstr "Ein Fehler ist aufgetreten, während dein Dokument hochgeladen wurde."
 #: apps/web/src/app/(dashboard)/admin/site-settings/banner-form.tsx:89
 #: apps/web/src/app/(dashboard)/admin/users/[id]/delete-user-dialog.tsx:66
 #: apps/web/src/app/(dashboard)/settings/profile/delete-account-dialog.tsx:63
-#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:105
+#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:102
 #: apps/web/src/app/(teams)/t/[teamUrl]/settings/team-transfer-status.tsx:54
 #: apps/web/src/components/(dashboard)/common/command-menu.tsx:301
 #: apps/web/src/components/(dashboard)/settings/token/delete-token-dialog.tsx:97
@@ -568,23 +568,23 @@ msgstr "Ein Fehler ist aufgetreten, während dein Dokument hochgeladen wurde."
 #: apps/web/src/components/(teams)/forms/update-team-form.tsx:94
 #: apps/web/src/components/forms/avatar-image.tsx:94
 #: apps/web/src/components/forms/avatar-image.tsx:122
-#: apps/web/src/components/forms/password.tsx:94
+#: apps/web/src/components/forms/password.tsx:121
 #: apps/web/src/components/forms/profile.tsx:87
 #: apps/web/src/components/forms/public-profile-claim-dialog.tsx:114
 #: apps/web/src/components/forms/public-profile-form.tsx:104
-#: apps/web/src/components/forms/reset-password.tsx:95
-#: apps/web/src/components/forms/signin.tsx:254
-#: apps/web/src/components/forms/signin.tsx:262
-#: apps/web/src/components/forms/signin.tsx:276
-#: apps/web/src/components/forms/signin.tsx:291
-#: apps/web/src/components/forms/signin.tsx:307
-#: apps/web/src/components/forms/signup.tsx:126
-#: apps/web/src/components/forms/signup.tsx:141
-#: apps/web/src/components/forms/signup.tsx:155
+#: apps/web/src/components/forms/reset-password.tsx:92
+#: apps/web/src/components/forms/signin.tsx:251
+#: apps/web/src/components/forms/signin.tsx:259
+#: apps/web/src/components/forms/signin.tsx:273
+#: apps/web/src/components/forms/signin.tsx:288
+#: apps/web/src/components/forms/signin.tsx:304
+#: apps/web/src/components/forms/signup.tsx:123
+#: apps/web/src/components/forms/signup.tsx:138
+#: apps/web/src/components/forms/signup.tsx:152
 #: apps/web/src/components/forms/token.tsx:143
-#: apps/web/src/components/forms/v2/signup.tsx:173
-#: apps/web/src/components/forms/v2/signup.tsx:196
-#: apps/web/src/components/forms/v2/signup.tsx:210
+#: apps/web/src/components/forms/v2/signup.tsx:170
+#: apps/web/src/components/forms/v2/signup.tsx:193
+#: apps/web/src/components/forms/v2/signup.tsx:207
 #: apps/web/src/components/templates/manage-public-template-dialog.tsx:146
 #: apps/web/src/components/templates/manage-public-template-dialog.tsx:183
 msgid "An unknown error occurred"
@@ -676,7 +676,7 @@ msgstr "Warte auf E-Mail-Bestätigung"
 
 #: apps/web/src/app/(recipient)/d/[token]/sign-direct-template.tsx:369
 #: apps/web/src/components/(dashboard)/settings/layout/activity-back.tsx:20
-#: apps/web/src/components/forms/v2/signup.tsx:522
+#: apps/web/src/components/forms/v2/signup.tsx:519
 msgid "Back"
 msgstr "Zurück"
 
@@ -689,7 +689,7 @@ msgid "Background Color"
 msgstr "Hintergrundfarbe"
 
 #: apps/web/src/components/forms/2fa/disable-authenticator-app-dialog.tsx:167
-#: apps/web/src/components/forms/signin.tsx:493
+#: apps/web/src/components/forms/signin.tsx:490
 msgid "Backup Code"
 msgstr "Backup-Code"
 
@@ -701,7 +701,7 @@ msgstr "Backup-Codes"
 msgid "Banner Updated"
 msgstr "Banner aktualisiert"
 
-#: apps/web/src/components/forms/v2/signup.tsx:485
+#: apps/web/src/components/forms/v2/signup.tsx:482
 msgid "Basic details"
 msgstr "Basisdetails"
 
@@ -833,11 +833,11 @@ msgstr "Wählen Sie den direkten Link Empfänger"
 msgid "Choose..."
 msgstr "Wählen..."
 
-#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:167
+#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:164
 msgid "Claim account"
 msgstr "Konto beanspruchen"
 
-#: apps/web/src/components/forms/v2/signup.tsx:494
+#: apps/web/src/components/forms/v2/signup.tsx:491
 msgid "Claim username"
 msgstr "Benutzername beanspruchen"
 
@@ -849,7 +849,7 @@ msgstr "Profile später beanspruchen"
 msgid "Claim your username"
 msgstr ""
 
-#: apps/web/src/components/forms/v2/signup.tsx:292
+#: apps/web/src/components/forms/v2/signup.tsx:289
 msgid "Claim your username now"
 msgstr "Benutzername jetzt beanspruchen"
 
@@ -894,7 +894,7 @@ msgstr "Schließen"
 #: apps/web/src/app/(signing)/sign/[token]/sign-dialog.tsx:61
 #: apps/web/src/app/embed/direct/[[...url]]/client.tsx:425
 #: apps/web/src/app/embed/sign/[[...url]]/client.tsx:304
-#: apps/web/src/components/forms/v2/signup.tsx:547
+#: apps/web/src/components/forms/v2/signup.tsx:544
 msgid "Complete"
 msgstr "Vollständig"
 
@@ -1020,7 +1020,7 @@ msgstr "Token kopieren"
 msgid "Create"
 msgstr "Erstellen"
 
-#: apps/web/src/components/forms/v2/signup.tsx:277
+#: apps/web/src/components/forms/v2/signup.tsx:274
 msgid "Create a new account"
 msgstr "Ein neues Konto erstellen"
 
@@ -1089,7 +1089,7 @@ msgstr "Webhook erstellen"
 msgid "Create your account and start using state-of-the-art document signing."
 msgstr "Erstellen Sie Ihr Konto und beginnen Sie mit dem modernen Dokumentensignieren."
 
-#: apps/web/src/components/forms/v2/signup.tsx:281
+#: apps/web/src/components/forms/v2/signup.tsx:278
 msgid "Create your account and start using state-of-the-art document signing. Open and beautiful signing is within your grasp."
 msgstr "Erstellen Sie Ihr Konto und beginnen Sie mit dem modernen Dokumentensignieren. Offenes und schönes Signieren liegt in Ihrer Reichweite."
 
@@ -1130,7 +1130,7 @@ msgstr "Erstellt am {0}"
 msgid "Created on{0}"
 msgstr ">>>>>>> 4ca18b99 (fix: refactor dates)"
 
-#: apps/web/src/components/forms/password.tsx:117
+#: apps/web/src/components/forms/password.tsx:144
 msgid "Current Password"
 msgstr "Aktuelles Passwort"
 
@@ -1595,18 +1595,18 @@ msgstr ""
 #: apps/web/src/components/document/document-history-sheet.tsx:182
 #: apps/web/src/components/forms/forgot-password.tsx:81
 #: apps/web/src/components/forms/profile.tsx:122
-#: apps/web/src/components/forms/signin.tsx:344
-#: apps/web/src/components/forms/signup.tsx:193
+#: apps/web/src/components/forms/signin.tsx:341
+#: apps/web/src/components/forms/signup.tsx:190
 msgid "Email"
 msgstr "E-Mail"
 
-#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:141
+#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:138
 #: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:300
 #: apps/web/src/components/forms/send-confirmation-email.tsx:82
 msgid "Email address"
 msgstr "E-Mail-Adresse"
 
-#: apps/web/src/components/forms/v2/signup.tsx:341
+#: apps/web/src/components/forms/v2/signup.tsx:338
 msgid "Email Address"
 msgstr "E-Mail-Adresse"
 
@@ -1660,7 +1660,7 @@ msgstr "Aktiviert"
 msgid "Ends On"
 msgstr "Endet am"
 
-#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:144
+#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:141
 msgid "Enter your email"
 msgstr "Geben Sie Ihre E-Mail-Adresse ein"
 
@@ -1668,7 +1668,7 @@ msgstr "Geben Sie Ihre E-Mail-Adresse ein"
 msgid "Enter your email address to receive the completed document."
 msgstr "Geben Sie Ihre E-Mail-Adresse ein, um das abgeschlossene Dokument zu erhalten."
 
-#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:129
+#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:126
 msgid "Enter your name"
 msgstr "Geben Sie Ihren Namen ein"
 
@@ -1801,7 +1801,7 @@ msgid "For any questions regarding this disclosure, electronic signatures, or an
 msgstr ""
 
 #: apps/web/src/app/(unauthenticated)/forgot-password/page.tsx:21
-#: apps/web/src/components/forms/signin.tsx:376
+#: apps/web/src/components/forms/signin.tsx:373
 msgid "Forgot your password?"
 msgstr "Haben Sie Ihr Passwort vergessen?"
 
@@ -1811,7 +1811,7 @@ msgstr "Haben Sie Ihr Passwort vergessen?"
 #: apps/web/src/app/embed/direct/[[...url]]/client.tsx:361
 #: apps/web/src/app/embed/sign/[[...url]]/client.tsx:241
 #: apps/web/src/components/forms/profile.tsx:110
-#: apps/web/src/components/forms/v2/signup.tsx:325
+#: apps/web/src/components/forms/v2/signup.tsx:322
 msgid "Full Name"
 msgstr "Vollständiger Name"
 
@@ -1855,7 +1855,7 @@ msgstr "Zum Eigentümer gehen"
 msgid "Go to your <0>public profile settings</0> to add documents."
 msgstr "Gehen Sie zu Ihren <0>öffentlichen Profileinstellungen</0>, um Dokumente hinzuzufügen."
 
-#: apps/web/src/components/forms/signin.tsx:412
+#: apps/web/src/components/forms/signin.tsx:409
 msgid "Google"
 msgstr ""
 
@@ -1867,7 +1867,7 @@ msgstr "Hier können Sie Ihre persönlichen Daten bearbeiten."
 msgid "Here you can edit your team's details."
 msgstr ""
 
-#: apps/web/src/app/(dashboard)/settings/security/page.tsx:40
+#: apps/web/src/app/(dashboard)/settings/security/page.tsx:35
 msgid "Here you can manage your password and security settings."
 msgstr "Hier können Sie Ihre Passwort- und Sicherheitseinstellungen verwalten."
 
@@ -2168,7 +2168,7 @@ msgstr "Direktlink verwalten"
 msgid "Manage documents"
 msgstr "Dokumente verwalten"
 
-#: apps/web/src/app/(dashboard)/settings/security/page.tsx:123
+#: apps/web/src/app/(dashboard)/settings/security/page.tsx:118
 msgid "Manage passkeys"
 msgstr "Passkeys verwalten"
 
@@ -2298,12 +2298,12 @@ msgstr ""
 #: apps/web/src/app/(dashboard)/settings/security/passkeys/user-passkeys-data-table.tsx:61
 #: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:235
 #: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:242
-#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:126
+#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:123
 #: apps/web/src/app/(signing)/sign/[token]/name-field.tsx:170
 #: apps/web/src/components/(teams)/dialogs/add-team-email-dialog.tsx:153
 #: apps/web/src/components/(teams)/dialogs/update-team-email-dialog.tsx:141
 #: apps/web/src/components/document/document-history-sheet.tsx:194
-#: apps/web/src/components/forms/signup.tsx:177
+#: apps/web/src/components/forms/signup.tsx:174
 msgid "Name"
 msgstr "Name"
 
@@ -2337,7 +2337,7 @@ msgstr "Neue Vorlage"
 
 #: apps/web/src/app/embed/direct/[[...url]]/client.tsx:416
 #: apps/web/src/app/embed/sign/[[...url]]/client.tsx:295
-#: apps/web/src/components/forms/v2/signup.tsx:534
+#: apps/web/src/components/forms/v2/signup.tsx:531
 msgid "Next"
 msgstr "Nächster"
 
@@ -2404,7 +2404,7 @@ msgstr ""
 msgid "Not Found"
 msgstr ""
 
-#: apps/web/src/components/forms/signin.tsx:166
+#: apps/web/src/components/forms/signin.tsx:163
 msgid "Not supported"
 msgstr "Nicht unterstützt"
 
@@ -2417,7 +2417,7 @@ msgstr "Nichts zu tun"
 msgid "Number"
 msgstr "Nummer"
 
-#: apps/web/src/components/forms/signin.tsx:426
+#: apps/web/src/components/forms/signin.tsx:423
 msgid "OIDC"
 msgstr ""
 
@@ -2471,13 +2471,13 @@ msgid "Opened"
 msgstr "Geöffnet"
 
 #: apps/web/src/app/(dashboard)/templates/template-direct-link-dialog.tsx:337
-#: apps/web/src/components/forms/signup.tsx:256
-#: apps/web/src/components/forms/signup.tsx:280
-#: apps/web/src/components/forms/v2/signup.tsx:396
+#: apps/web/src/components/forms/signup.tsx:253
+#: apps/web/src/components/forms/signup.tsx:277
+#: apps/web/src/components/forms/v2/signup.tsx:393
 msgid "Or"
 msgstr "Oder"
 
-#: apps/web/src/components/forms/signin.tsx:396
+#: apps/web/src/components/forms/signin.tsx:393
 msgid "Or continue with"
 msgstr "Oder fahren Sie fort mit"
 
@@ -2497,7 +2497,7 @@ msgid "Paid"
 msgstr "Bezahlt"
 
 #: apps/web/src/app/(signing)/sign/[token]/document-action-auth-passkey.tsx:218
-#: apps/web/src/components/forms/signin.tsx:441
+#: apps/web/src/components/forms/signin.tsx:438
 msgid "Passkey"
 msgstr "Passkey"
 
@@ -2525,7 +2525,7 @@ msgstr "Passkey-Name"
 msgid "Passkey Re-Authentication"
 msgstr ""
 
-#: apps/web/src/app/(dashboard)/settings/security/page.tsx:111
+#: apps/web/src/app/(dashboard)/settings/security/page.tsx:106
 #: apps/web/src/app/(dashboard)/settings/security/passkeys/page.tsx:32
 msgid "Passkeys"
 msgstr "Passkeys"
@@ -2534,34 +2534,34 @@ msgstr "Passkeys"
 msgid "Passkeys allow you to sign in and authenticate using biometrics, password managers, etc."
 msgstr "Passkeys ermöglichen das Anmelden und die Authentifizierung mit biometrischen Daten, Passwortmanagern usw."
 
-#: apps/web/src/components/forms/signin.tsx:167
+#: apps/web/src/components/forms/signin.tsx:164
 msgid "Passkeys are not supported on this browser"
 msgstr "Passkeys werden von diesem Browser nicht unterstützt"
 
 #: apps/web/src/components/(dashboard)/common/command-menu.tsx:70
-#: apps/web/src/components/forms/password.tsx:133
-#: apps/web/src/components/forms/reset-password.tsx:118
-#: apps/web/src/components/forms/signin.tsx:362
-#: apps/web/src/components/forms/signup.tsx:209
-#: apps/web/src/components/forms/v2/signup.tsx:357
+#: apps/web/src/components/forms/password.tsx:160
+#: apps/web/src/components/forms/reset-password.tsx:115
+#: apps/web/src/components/forms/signin.tsx:359
+#: apps/web/src/components/forms/signup.tsx:206
+#: apps/web/src/components/forms/v2/signup.tsx:354
 msgid "Password"
 msgstr "Passwort"
 
-#: apps/web/src/components/forms/signup.tsx:55
-#: apps/web/src/components/forms/v2/signup.tsx:77
+#: apps/web/src/components/forms/signup.tsx:54
+#: apps/web/src/components/forms/v2/signup.tsx:76
 msgid "Password should not be common or based on personal information"
 msgstr ""
 
-#: apps/web/src/components/forms/password.tsx:81
-#: apps/web/src/components/forms/reset-password.tsx:80
+#: apps/web/src/components/forms/password.tsx:108
+#: apps/web/src/components/forms/reset-password.tsx:77
 msgid "Password updated"
 msgstr "Passwort aktualisiert"
 
-#: apps/web/src/components/forms/password.tsx:52
+#: apps/web/src/components/forms/password.tsx:51
 msgid "Passwords do not match"
 msgstr ""
 
-#: apps/web/src/components/forms/reset-password.tsx:37
+#: apps/web/src/components/forms/reset-password.tsx:36
 msgid "Passwords don't match"
 msgstr ""
 
@@ -2614,7 +2614,7 @@ msgstr "Persönlich"
 msgid "Personal Account"
 msgstr "Persönliches Konto"
 
-#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:159
+#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:156
 msgid "Pick a password"
 msgstr "Wählen Sie ein Passwort"
 
@@ -2642,8 +2642,8 @@ msgstr "Bitte kontaktieren Sie den Support, wenn Sie diese Aktion rückgängig m
 msgid "Please enter a meaningful name for your token. This will help you identify it later."
 msgstr "Bitte geben Sie einen aussagekräftigen Namen für Ihr Token ein. Dies wird Ihnen helfen, es später zu identifizieren."
 
-#: apps/web/src/components/forms/signup.tsx:42
-#: apps/web/src/components/forms/v2/signup.tsx:56
+#: apps/web/src/components/forms/signup.tsx:41
+#: apps/web/src/components/forms/v2/signup.tsx:55
 msgid "Please enter a valid name."
 msgstr ""
 
@@ -2699,7 +2699,7 @@ msgstr ""
 msgid "Please try again and make sure you enter the correct email address."
 msgstr "Bitte versuchen Sie es erneut und stellen Sie sicher, dass Sie die korrekte E-Mail-Adresse eingeben."
 
-#: apps/web/src/components/forms/signin.tsx:209
+#: apps/web/src/components/forms/signin.tsx:206
 msgid "Please try again later or login using your normal details"
 msgstr "Bitte versuchen Sie es später erneut oder melden Sie sich mit Ihren normalen Daten an"
 
@@ -2771,7 +2771,7 @@ msgid "Public profile URL"
 msgstr "Öffentlicher Profil-URL"
 
 #: apps/web/src/components/forms/public-profile-claim-dialog.tsx:155
-#: apps/web/src/components/forms/v2/signup.tsx:463
+#: apps/web/src/components/forms/v2/signup.tsx:460
 msgid "Public profile username"
 msgstr "Öffentlicher Profil-Benutzername"
 
@@ -2800,7 +2800,7 @@ msgid "Reauthentication is required to sign this field"
 msgstr "Eine erneute Authentifizierung ist erforderlich, um dieses Feld zu unterschreiben"
 
 #: apps/web/src/app/(dashboard)/documents/[id]/document-page-view-recent-activity.tsx:57
-#: apps/web/src/app/(dashboard)/settings/security/page.tsx:135
+#: apps/web/src/app/(dashboard)/settings/security/page.tsx:130
 msgid "Recent activity"
 msgstr "Aktuelle Aktivitäten"
 
@@ -2833,13 +2833,13 @@ msgstr "Empfänger behalten weiterhin ihre Kopie des Dokuments"
 msgid "Recovery code copied"
 msgstr "Wiederherstellungscode kopiert"
 
-#: apps/web/src/app/(dashboard)/settings/security/page.tsx:89
+#: apps/web/src/app/(dashboard)/settings/security/page.tsx:84
 msgid "Recovery codes"
 msgstr "Wiederherstellungscodes"
 
-#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:85
-#: apps/web/src/components/forms/signup.tsx:106
-#: apps/web/src/components/forms/v2/signup.tsx:140
+#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:82
+#: apps/web/src/components/forms/signup.tsx:103
+#: apps/web/src/components/forms/v2/signup.tsx:137
 msgid "Registration Successful"
 msgstr "Registrierung erfolgreich"
 
@@ -2868,8 +2868,8 @@ msgstr "Team-E-Mail entfernen"
 msgid "Remove team member"
 msgstr "Teammitglied entfernen"
 
-#: apps/web/src/components/forms/password.tsx:149
-#: apps/web/src/components/forms/reset-password.tsx:134
+#: apps/web/src/components/forms/password.tsx:176
+#: apps/web/src/components/forms/reset-password.tsx:131
 msgid "Repeat Password"
 msgstr "Passwort wiederholen"
 
@@ -2909,11 +2909,11 @@ msgstr "Zurücksetzungs-E-Mail gesendet"
 
 #: apps/web/src/app/(unauthenticated)/reset-password/[token]/page.tsx:30
 #: apps/web/src/components/forms/forgot-password.tsx:93
-#: apps/web/src/components/forms/reset-password.tsx:146
+#: apps/web/src/components/forms/reset-password.tsx:143
 msgid "Reset Password"
 msgstr "Passwort zurücksetzen"
 
-#: apps/web/src/components/forms/reset-password.tsx:146
+#: apps/web/src/components/forms/reset-password.tsx:143
 msgid "Resetting Password..."
 msgstr "Passwort wird zurückgesetzt..."
 
@@ -3007,7 +3007,7 @@ msgstr "Nach Name oder E-Mail suchen"
 msgid "Secret"
 msgstr "Geheim"
 
-#: apps/web/src/app/(dashboard)/settings/security/page.tsx:39
+#: apps/web/src/app/(dashboard)/settings/security/page.tsx:34
 #: apps/web/src/components/(dashboard)/settings/layout/desktop-nav.tsx:77
 #: apps/web/src/components/(dashboard)/settings/layout/mobile-nav.tsx:80
 msgid "Security"
@@ -3086,7 +3086,7 @@ msgstr ""
 #~ msgid "Sent:"
 #~ msgstr ""
 
-#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:156
+#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:153
 msgid "Set a password"
 msgstr "Ein Passwort festlegen"
 
@@ -3170,14 +3170,14 @@ msgstr ""
 msgid "Sign field"
 msgstr "Unterzeichnen-Feld"
 
-#: apps/web/src/components/forms/signup.tsx:225
-#: apps/web/src/components/forms/v2/signup.tsx:375
+#: apps/web/src/components/forms/signup.tsx:222
+#: apps/web/src/components/forms/v2/signup.tsx:372
 msgid "Sign Here"
 msgstr "Hier unterzeichnen"
 
 #: apps/web/src/app/not-found.tsx:29
-#: apps/web/src/components/forms/signin.tsx:389
-#: apps/web/src/components/forms/signin.tsx:518
+#: apps/web/src/components/forms/signin.tsx:386
+#: apps/web/src/components/forms/signin.tsx:515
 msgid "Sign In"
 msgstr "Einloggen"
 
@@ -3199,17 +3199,17 @@ msgstr "Unterschreiben Sie das Dokument, um den Vorgang abzuschließen."
 msgid "Sign up"
 msgstr "Registrieren"
 
-#: apps/web/src/components/forms/signup.tsx:248
+#: apps/web/src/components/forms/signup.tsx:245
 msgid "Sign Up"
 msgstr "Registrieren"
 
-#: apps/web/src/components/forms/signup.tsx:270
-#: apps/web/src/components/forms/v2/signup.tsx:414
+#: apps/web/src/components/forms/signup.tsx:267
+#: apps/web/src/components/forms/v2/signup.tsx:411
 msgid "Sign Up with Google"
 msgstr "Registrieren mit Google"
 
-#: apps/web/src/components/forms/signup.tsx:294
-#: apps/web/src/components/forms/v2/signup.tsx:430
+#: apps/web/src/components/forms/signup.tsx:291
+#: apps/web/src/components/forms/v2/signup.tsx:427
 msgid "Sign Up with OIDC"
 msgstr "Registrieren mit OIDC"
 
@@ -3257,12 +3257,12 @@ msgstr ""
 #~ msgid "Signing certificate provided by:"
 #~ msgstr ""
 
-#: apps/web/src/components/forms/signin.tsx:389
-#: apps/web/src/components/forms/signin.tsx:518
+#: apps/web/src/components/forms/signin.tsx:386
+#: apps/web/src/components/forms/signin.tsx:515
 msgid "Signing in..."
 msgstr "Anmeldung..."
 
-#: apps/web/src/components/forms/signup.tsx:248
+#: apps/web/src/components/forms/signup.tsx:245
 msgid "Signing up..."
 msgstr "Registrierung..."
 
@@ -3318,7 +3318,7 @@ msgstr "Website Einstellungen"
 #: apps/web/src/components/(teams)/tables/team-member-invites-data-table.tsx:68
 #: apps/web/src/components/(teams)/tables/team-member-invites-data-table.tsx:85
 #: apps/web/src/components/(teams)/team-billing-portal-button.tsx:29
-#: apps/web/src/components/forms/signin.tsx:212
+#: apps/web/src/components/forms/signin.tsx:209
 msgid "Something went wrong"
 msgstr "Etwas ist schiefgelaufen"
 
@@ -3606,7 +3606,7 @@ msgstr ""
 msgid "The account has been deleted successfully."
 msgstr "The account has been deleted successfully."
 
-#: apps/web/src/components/forms/signin.tsx:54
+#: apps/web/src/components/forms/signin.tsx:53
 msgid "The backup code provided is incorrect"
 msgstr ""
 
@@ -3644,8 +3644,8 @@ msgstr "The document will be hidden from your account"
 msgid "The document will be immediately sent to recipients if this is checked."
 msgstr "The document will be immediately sent to recipients if this is checked."
 
+#: apps/web/src/components/forms/signin.tsx:49
 #: apps/web/src/components/forms/signin.tsx:50
-#: apps/web/src/components/forms/signin.tsx:51
 msgid "The email or password provided is incorrect"
 msgstr ""
 
@@ -3731,7 +3731,7 @@ msgstr "The token was deleted successfully."
 msgid "The token you have used to reset your password is either expired or it never existed. If you have still forgotten your password, please request a new reset link."
 msgstr "The token you have used to reset your password is either expired or it never existed. If you have still forgotten your password, please request a new reset link."
 
-#: apps/web/src/components/forms/signin.tsx:53
+#: apps/web/src/components/forms/signin.tsx:52
 msgid "The two-factor authentication code provided is incorrect"
 msgstr ""
 
@@ -3766,11 +3766,11 @@ msgstr "There are no completed documents yet. Documents that you have created or
 msgid "They have permission on your behalf to:"
 msgstr "They have permission on your behalf to:"
 
-#: apps/web/src/components/forms/signin.tsx:52
+#: apps/web/src/components/forms/signin.tsx:51
 msgid "This account appears to be using a social login method, please sign in using that method"
 msgstr ""
 
-#: apps/web/src/components/forms/signin.tsx:55
+#: apps/web/src/components/forms/signin.tsx:54
 msgid "This account has not been verified. Please verify your account before signing in."
 msgstr ""
 
@@ -3824,7 +3824,7 @@ msgstr "This link is invalid or has expired. Please contact your team to resend 
 msgid "This passkey has already been registered."
 msgstr "This passkey has already been registered."
 
-#: apps/web/src/components/forms/signin.tsx:206
+#: apps/web/src/components/forms/signin.tsx:203
 msgid "This passkey is not configured for this application. Please login and add one in the user settings."
 msgstr "This passkey is not configured for this application. Please login and add one in the user settings."
 
@@ -3832,7 +3832,7 @@ msgstr "This passkey is not configured for this application. Please login and ad
 msgid "This price includes minimum 5 seats."
 msgstr "This price includes minimum 5 seats."
 
-#: apps/web/src/components/forms/signin.tsx:208
+#: apps/web/src/components/forms/signin.tsx:205
 msgid "This session has expired. Please try again."
 msgstr "This session has expired. Please try again."
 
@@ -3857,7 +3857,7 @@ msgstr "This token is invalid or has expired. Please contact your team for a new
 msgid "This URL is already in use."
 msgstr "This URL is already in use."
 
-#: apps/web/src/components/forms/v2/signup.tsx:158
+#: apps/web/src/components/forms/v2/signup.tsx:155
 msgid "This username has already been taken"
 msgstr "This username has already been taken"
 
@@ -3942,7 +3942,7 @@ msgid "Toggle the switch to show your profile to the public."
 msgstr "Toggle the switch to show your profile to the public."
 
 #: apps/web/src/components/forms/2fa/enable-authenticator-app-dialog.tsx:236
-#: apps/web/src/components/forms/signin.tsx:467
+#: apps/web/src/components/forms/signin.tsx:464
 msgid "Token"
 msgstr "Token"
 
@@ -4015,15 +4015,15 @@ msgstr "Triggers"
 msgid "True"
 msgstr ""
 
-#: apps/web/src/app/(dashboard)/settings/security/page.tsx:57
+#: apps/web/src/app/(dashboard)/settings/security/page.tsx:52
 msgid "Two factor authentication"
 msgstr "Two factor authentication"
 
-#: apps/web/src/app/(dashboard)/settings/security/page.tsx:93
+#: apps/web/src/app/(dashboard)/settings/security/page.tsx:88
 msgid "Two factor authentication recovery codes are used to access your account in the event that you lose access to your authenticator app."
 msgstr "Two factor authentication recovery codes are used to access your account in the event that you lose access to your authenticator app."
 
-#: apps/web/src/components/forms/signin.tsx:454
+#: apps/web/src/components/forms/signin.tsx:451
 msgid "Two-Factor Authentication"
 msgstr "Two-Factor Authentication"
 
@@ -4131,8 +4131,8 @@ msgstr "Unable to reset password"
 msgid "Unable to setup two-factor authentication"
 msgstr "Unable to setup two-factor authentication"
 
-#: apps/web/src/components/forms/signin.tsx:253
-#: apps/web/src/components/forms/signin.tsx:261
+#: apps/web/src/components/forms/signin.tsx:250
+#: apps/web/src/components/forms/signin.tsx:258
 msgid "Unable to sign in"
 msgstr "Unable to sign in"
 
@@ -4186,7 +4186,7 @@ msgstr "Update Banner"
 msgid "Update passkey"
 msgstr "Update passkey"
 
-#: apps/web/src/components/forms/password.tsx:162
+#: apps/web/src/components/forms/password.tsx:189
 msgid "Update password"
 msgstr "Update password"
 
@@ -4229,7 +4229,7 @@ msgstr "Benutzer aktualisieren"
 msgid "Update webhook"
 msgstr "Webhook aktualisieren"
 
-#: apps/web/src/components/forms/password.tsx:162
+#: apps/web/src/components/forms/password.tsx:189
 msgid "Updating password..."
 msgstr "Passwort wird aktualisiert..."
 
@@ -4262,12 +4262,12 @@ msgid "Uploaded file not an allowed file type"
 msgstr "Die hochgeladene Datei ist kein zulässiger Dateityp"
 
 #: apps/web/src/components/forms/2fa/disable-authenticator-app-dialog.tsx:187
-#: apps/web/src/components/forms/signin.tsx:513
+#: apps/web/src/components/forms/signin.tsx:510
 msgid "Use Authenticator"
 msgstr "Authenticator verwenden"
 
 #: apps/web/src/components/forms/2fa/disable-authenticator-app-dialog.tsx:185
-#: apps/web/src/components/forms/signin.tsx:511
+#: apps/web/src/components/forms/signin.tsx:508
 msgid "Use Backup Code"
 msgstr "Backup-Code verwenden"
 
@@ -4284,7 +4284,7 @@ msgstr "Benutzer"
 msgid "User ID"
 msgstr "Benutzer-ID"
 
-#: apps/web/src/components/forms/v2/signup.tsx:247
+#: apps/web/src/components/forms/v2/signup.tsx:244
 msgid "User profiles are here!"
 msgstr "Benutzerprofile sind hier!"
 
@@ -4293,7 +4293,7 @@ msgid "User settings"
 msgstr "Benutzereinstellungen"
 
 #: apps/web/src/components/forms/public-profile-claim-dialog.tsx:48
-#: apps/web/src/components/forms/v2/signup.tsx:68
+#: apps/web/src/components/forms/v2/signup.tsx:67
 msgid "Username can only container alphanumeric characters and dashes."
 msgstr ""
 
@@ -4342,7 +4342,7 @@ msgstr "Überprüfen Sie Ihre E-Mail, um Dokumente hochzuladen."
 msgid "View"
 msgstr "Ansehen"
 
-#: apps/web/src/app/(dashboard)/settings/security/page.tsx:145
+#: apps/web/src/app/(dashboard)/settings/security/page.tsx:140
 msgid "View activity"
 msgstr "Aktivität ansehen"
 
@@ -4350,7 +4350,7 @@ msgstr "Aktivität ansehen"
 msgid "View all documents sent to your account"
 msgstr "Alle Dokumente anzeigen, die an Ihr Konto gesendet wurden"
 
-#: apps/web/src/app/(dashboard)/settings/security/page.tsx:139
+#: apps/web/src/app/(dashboard)/settings/security/page.tsx:134
 msgid "View all recent security activity related to your account."
 msgstr "Sehen Sie sich alle aktuellen Sicherheitsaktivitäten in Ihrem Konto an."
 
@@ -4499,7 +4499,7 @@ msgstr "Wir sind auf einen unbekannten Fehler gestoßen, während wir versucht h
 msgid "We encountered an unknown error while attempting to request a transfer of this team. Please try again later."
 msgstr "Wir sind auf einen unbekannten Fehler gestoßen, während wir versucht haben, eine Übertragung dieses Teams anzufordern. Bitte versuchen Sie es später erneut."
 
-#: apps/web/src/components/forms/reset-password.tsx:97
+#: apps/web/src/components/forms/reset-password.tsx:94
 msgid "We encountered an unknown error while attempting to reset your password. Please try again later."
 msgstr "Wir sind auf einen unbekannten Fehler gestoßen, während wir versucht haben, Ihr Passwort zurückzusetzen. Bitte versuchen Sie es später erneut."
 
@@ -4512,22 +4512,22 @@ msgid "We encountered an unknown error while attempting to save your details. Pl
 msgstr "Wir sind auf einen unbekannten Fehler gestoßen, während wir versucht haben, Ihre Daten zu speichern. Bitte versuchen Sie es später erneut."
 
 #: apps/web/src/components/forms/profile.tsx:89
-#: apps/web/src/components/forms/signin.tsx:278
-#: apps/web/src/components/forms/signin.tsx:293
-#: apps/web/src/components/forms/signin.tsx:309
+#: apps/web/src/components/forms/signin.tsx:275
+#: apps/web/src/components/forms/signin.tsx:290
+#: apps/web/src/components/forms/signin.tsx:306
 msgid "We encountered an unknown error while attempting to sign you In. Please try again later."
 msgstr "Wir sind auf einen unbekannten Fehler gestoßen, während wir versucht haben, Sie anzumelden. Bitte versuchen Sie es später erneut."
 
-#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:107
-#: apps/web/src/components/forms/signup.tsx:128
-#: apps/web/src/components/forms/v2/signup.tsx:175
+#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:104
+#: apps/web/src/components/forms/signup.tsx:125
+#: apps/web/src/components/forms/v2/signup.tsx:172
 msgid "We encountered an unknown error while attempting to sign you up. Please try again later."
 msgstr "Wir sind auf einen unbekannten Fehler gestoßen, während wir versucht haben, Sie anzumelden. Bitte versuchen Sie es später erneut."
 
-#: apps/web/src/components/forms/signup.tsx:143
-#: apps/web/src/components/forms/signup.tsx:157
-#: apps/web/src/components/forms/v2/signup.tsx:198
-#: apps/web/src/components/forms/v2/signup.tsx:212
+#: apps/web/src/components/forms/signup.tsx:140
+#: apps/web/src/components/forms/signup.tsx:154
+#: apps/web/src/components/forms/v2/signup.tsx:195
+#: apps/web/src/components/forms/v2/signup.tsx:209
 msgid "We encountered an unknown error while attempting to sign you Up. Please try again later."
 msgstr "Wir sind auf einen unbekannten Fehler gestoßen, während wir versucht haben, Sie anzumelden. Bitte versuchen Sie es später erneut."
 
@@ -4547,7 +4547,7 @@ msgstr "Wir sind auf einen unbekannten Fehler gestoßen, während wir versucht h
 msgid "We encountered an unknown error while attempting to update this team member. Please try again later."
 msgstr "Wir sind auf einen unbekannten Fehler gestoßen, während wir versucht haben, dieses Teammitglied zu aktualisieren. Bitte versuchen Sie es später erneut."
 
-#: apps/web/src/components/forms/password.tsx:96
+#: apps/web/src/components/forms/password.tsx:123
 msgid "We encountered an unknown error while attempting to update your password. Please try again later."
 msgstr "Wir sind auf einen unbekannten Fehler gestoßen, während wir versucht haben, Ihr Passwort zu aktualisieren. Bitte versuchen Sie es später erneut."
 
@@ -4567,12 +4567,12 @@ msgstr "Wir sind auf einen unbekannten Fehler gestoßen, während wir versucht h
 msgid "We have sent a confirmation email for verification."
 msgstr "Wir haben eine Bestätigungs-E-Mail zur Überprüfung gesendet."
 
-#: apps/web/src/components/forms/v2/signup.tsx:66
+#: apps/web/src/components/forms/v2/signup.tsx:65
 msgid "We need a username to create your profile"
 msgstr ""
 
-#: apps/web/src/components/forms/signup.tsx:47
-#: apps/web/src/components/forms/v2/signup.tsx:61
+#: apps/web/src/components/forms/signup.tsx:46
+#: apps/web/src/components/forms/v2/signup.tsx:60
 msgid "We need your signature to sign documents"
 msgstr ""
 
@@ -4860,9 +4860,9 @@ msgstr "Sie haben Ihr Dokumentenlimit erreicht. <0>Upgrade your account to conti
 msgid "You have successfully left this team."
 msgstr "Sie haben dieses Team erfolgreich verlassen."
 
-#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:87
-#: apps/web/src/components/forms/signup.tsx:108
-#: apps/web/src/components/forms/v2/signup.tsx:142
+#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:84
+#: apps/web/src/components/forms/signup.tsx:105
+#: apps/web/src/components/forms/v2/signup.tsx:139
 msgid "You have successfully registered. Please verify your account by clicking on the link you received in the email."
 msgstr "Sie haben sich erfolgreich registriert. Bitte bestätigen Sie Ihr Konto, indem Sie auf den Link klicken, den Sie per E-Mail erhalten haben."
 
@@ -4928,7 +4928,7 @@ msgstr ""
 msgid "You need to setup a passkey to mark this document as viewed."
 msgstr ""
 
-#: apps/web/src/components/forms/v2/signup.tsx:296
+#: apps/web/src/components/forms/v2/signup.tsx:293
 msgid "You will get notified & be able to set up your documenso public profile when we launch the feature."
 msgstr "Sie werden benachrichtigt und können Ihr Documenso öffentliches Profil einrichten, wenn wir die Funktion starten."
 
@@ -5009,8 +5009,8 @@ msgstr "Ihre E-Mail wird derzeit von Team <0>{0}</0> ({1}) verwendet."
 msgid "Your existing tokens"
 msgstr "Ihre vorhandenen Tokens"
 
-#: apps/web/src/components/forms/password.tsx:82
-#: apps/web/src/components/forms/reset-password.tsx:81
+#: apps/web/src/components/forms/password.tsx:109
+#: apps/web/src/components/forms/reset-password.tsx:78
 msgid "Your password has been updated successfully."
 msgstr "Ihr Passwort wurde erfolgreich aktualisiert."
 
