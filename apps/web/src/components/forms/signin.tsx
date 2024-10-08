@@ -2,7 +2,6 @@
 
 import { useEffect, useMemo, useState } from 'react';
 
-import { cookies } from 'next/headers';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
@@ -91,9 +90,7 @@ export const SignInForm = ({
   const { toast } = useToast();
   const { getFlag } = useFeatureFlags();
 
-  const cookieStore = cookies();
-  const languageCookie = cookieStore.get('language');
-  const language = languageCookie ? languageCookie.value : 'en';
+  const language = useLingui().i18n.locale;
 
   const router = useRouter();
 

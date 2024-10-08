@@ -1,7 +1,10 @@
 'use client';
 
+import { useEffect, useState } from 'react';
+
+import { wait } from 'next/dist/lib/wait';
+
 import { zodResolver } from '@hookform/resolvers/zod';
-import { i18n } from '@lingui/core';
 import { Trans, msg } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 import { useForm } from 'react-hook-form';
@@ -27,20 +30,19 @@ import { useToast } from '@documenso/ui/primitives/use-toast';
 export type PasswordFormProps = {
   className?: string;
   user: User;
-  locale: string;
 };
 
-export const PasswordForm = ({ className, locale }: PasswordFormProps) => {
-  const { _ } = useLingui();
+export const PasswordForm = ({ className }: PasswordFormProps) => {
+  const { _, i18n } = useLingui();
   const { toast } = useToast();
 
-  import(`@documenso/lib/translations/${locale}/web.js`)
-    .then(({ messages }) => {
-      i18n.loadAndActivate({ locale, messages });
-    })
-    .catch((error) => {
-      console.error(`Failed to load translations for locale ${locale}:`, error);
-    });
+  const locale = i18n.locale;
+
+  const [isTriggered, setIsTriggered] = useState(false);
+
+  const handleClickTrigger = () => {
+    setIsTriggered(true);
+  };
 
   const ZPasswordFormSchema = z
     .object({
@@ -49,7 +51,7 @@ export const PasswordForm = ({ className, locale }: PasswordFormProps) => {
       repeatedPassword: ZPasswordSchema(locale),
     })
     .refine((data) => data.password === data.repeatedPassword, {
-      message: i18n._(msg`Passwords do not match`),
+      message: _(msg`Passwords do not match`),
       path: ['repeatedPassword'],
     });
 
@@ -64,6 +66,36 @@ export const PasswordForm = ({ className, locale }: PasswordFormProps) => {
     resolver: zodResolver(ZPasswordFormSchema),
   });
 
+  const [isErrorsCleared, setIsErrorsCleared] = useState(false);
+
+  useEffect(() => {
+    if (!isTriggered) {
+      return;
+    }
+    wait(70)
+      .then(() => {
+        form.clearErrors();
+        setIsErrorsCleared(true);
+      })
+      .catch((error) => {
+        console.error('Error during wait:', error);
+      });
+  }, [i18n.locale]);
+
+  useEffect(() => {
+    if (isErrorsCleared) {
+      form
+        .trigger()
+        .then(() => {
+          setIsErrorsCleared(false);
+        })
+        .catch((error) => {
+          console.error('Error during form re-validation:', error);
+          setIsErrorsCleared(false);
+        });
+    }
+  }, [isErrorsCleared]);
+
   const isSubmitting = form.formState.isSubmitting;
 
   const { mutateAsync: updatePassword } = trpc.profile.updatePassword.useMutation();
@@ -76,6 +108,8 @@ export const PasswordForm = ({ className, locale }: PasswordFormProps) => {
       });
 
       form.reset();
+      setIsErrorsCleared(false);
+      setIsTriggered(false);
 
       toast({
         title: _(msg`Password updated`),
@@ -158,7 +192,7 @@ export const PasswordForm = ({ className, locale }: PasswordFormProps) => {
         </fieldset>
 
         <div className="ml-auto mt-4">
-          <Button type="submit" loading={isSubmitting}>
+          <Button type="submit" loading={isSubmitting} onClick={handleClickTrigger}>
             {isSubmitting ? <Trans>Updating password...</Trans> : <Trans>Update password</Trans>}
           </Button>
         </div>

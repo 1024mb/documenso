@@ -1,6 +1,5 @@
 'use client';
 
-import { cookies } from 'next/headers';
 import { useRouter } from 'next/navigation';
 
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -51,9 +50,7 @@ export const ResetPasswordForm = ({ className, token }: ResetPasswordFormProps) 
   const { _ } = useLingui();
   const { toast } = useToast();
 
-  const cookieStore = cookies();
-  const languageCookie = cookieStore.get('language');
-  const language = languageCookie ? languageCookie.value : 'en';
+  const language = useLingui().i18n.locale;
 
   const form = useForm<TResetPasswordFormSchema>({
     values: {

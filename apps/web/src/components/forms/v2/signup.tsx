@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 
-import { cookies } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -97,9 +96,7 @@ export const SignUpFormV2 = ({
   const { _ } = useLingui();
   const { toast } = useToast();
 
-  const cookieStore = cookies();
-  const languageCookie = cookieStore.get('language');
-  const language = languageCookie ? languageCookie.value : 'en';
+  const language = useLingui().i18n.locale;
 
   const analytics = useAnalytics();
   const router = useRouter();
