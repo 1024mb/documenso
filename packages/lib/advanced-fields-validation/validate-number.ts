@@ -1,8 +1,8 @@
 // import { numberFormatValues } from '@documenso/ui/primitives/document-flow/field-items-advanced-settings/constants';
-import type { TNumberFieldMeta as NumberFieldMeta } from '../types/field-meta';
-
 import type { MessageDescriptor } from '@lingui/core';
 import { msg } from '@lingui/macro';
+
+import type { TNumberFieldMeta as NumberFieldMeta } from '../types/field-meta';
 
 export const validateNumberField = (
   value: string,
@@ -60,7 +60,7 @@ export const validateNumberField = (
   }
 
   if (fontSize && (fontSize < 8 || fontSize > 96)) {
-    errors.push('Font size must be between 8 and 96.');
+    errors.push(msg`Font size must be between 8 and 96.`);
   }
 
   return errors;
