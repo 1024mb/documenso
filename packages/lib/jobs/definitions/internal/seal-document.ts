@@ -34,6 +34,8 @@ const SEAL_DOCUMENT_JOB_DEFINITION_SCHEMA = z.object({
   sendEmail: z.boolean().optional(),
   isResealing: z.boolean().optional(),
   requestMetadata: ZRequestMetadataSchema.optional(),
+  headers: z.any().optional(),
+  cookies: z.any().optional(),
 });
 
 export const SEAL_DOCUMENT_JOB_DEFINITION = {
@@ -223,7 +225,12 @@ export const SEAL_DOCUMENT_JOB_DEFINITION = {
       }
 
       if (shouldSendCompletedEmail) {
-        await sendCompletedEmail({ documentId, requestMetadata });
+        await sendCompletedEmail({
+          documentId,
+          requestMetadata,
+          headers: payload.headers,
+          cookies: payload.cookies,
+        });
       }
     });
 

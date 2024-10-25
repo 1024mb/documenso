@@ -2,9 +2,16 @@
 
 import { createElement } from 'react';
 
+import { msg } from '@lingui/macro';
+
 import { mailer } from '@documenso/email/mailer';
 import { render } from '@documenso/email/render';
-import DocumentCancelTemplate from '@documenso/email/templates/document-cancel';
+import { templateDocumentCancelData } from '@documenso/email/template-components/template-document-cancel';
+import { loadFooterTemplateData } from '@documenso/email/template-components/template-footer';
+import {
+  DocumentCancelTemplate,
+  documentCancelTemplateData,
+} from '@documenso/email/templates/document-cancel';
 import { prisma } from '@documenso/prisma';
 import type { Document, DocumentMeta, Recipient, User } from '@documenso/prisma/client';
 import { DocumentStatus, SendStatus } from '@documenso/prisma/client';
@@ -14,6 +21,8 @@ import { FROM_ADDRESS, FROM_NAME } from '../../constants/email';
 import { DOCUMENT_AUDIT_LOG_TYPE } from '../../types/document-audit-logs';
 import type { RequestMetadata } from '../../universal/extract-request-metadata';
 import { createDocumentAuditLogData } from '../../utils/document-audit-logs';
+import type { TranslationsProps } from '../../utils/i18n.import';
+import { getTranslation } from '../../utils/i18n.import';
 
 export type DeleteDocumentOptions = {
   id: number;
@@ -27,7 +36,9 @@ export const deleteDocument = async ({
   userId,
   teamId,
   requestMetadata,
-}: DeleteDocumentOptions) => {
+  headers,
+  cookies,
+}: DeleteDocumentOptions & TranslationsProps) => {
   const user = await prisma.user.findUnique({
     where: {
       id: userId,
@@ -71,6 +82,8 @@ export const deleteDocument = async ({
       document,
       user,
       requestMetadata,
+      headers,
+      cookies,
     });
   }
 
@@ -118,7 +131,9 @@ const handleDocumentOwnerDelete = async ({
   document,
   user,
   requestMetadata,
-}: HandleDocumentOwnerDeleteOptions) => {
+  headers,
+  cookies,
+}: HandleDocumentOwnerDeleteOptions & TranslationsProps) => {
   if (document.deletedAt) {
     return;
   }
@@ -188,7 +203,29 @@ const handleDocumentOwnerDelete = async ({
         documentName: document.title,
         inviterName: user.name || undefined,
         inviterEmail: user.email,
-        assetBaseUrl,
+        assetBaseUrl: assetBaseUrl,
+        documentCancelTemplateData: await documentCancelTemplateData({
+          headers: headers,
+          cookies: cookies,
+          inviterName: user.name ?? '',
+          documentName: document.title,
+        }),
+        templateDocumentCancelData: await templateDocumentCancelData({
+          headers: headers,
+          cookies: cookies,
+          inviterName: user.name ?? '',
+          documentName: document.title,
+        }),
+        footerData: await loadFooterTemplateData({
+          headers: headers,
+          cookies: cookies,
+        }),
+      });
+
+      const mailSubject = await getTranslation({
+        headers: headers,
+        cookies: cookies,
+        message: [msg`Document Cancelled`],
       });
 
       await mailer.sendMail({
@@ -200,7 +237,7 @@ const handleDocumentOwnerDelete = async ({
           name: FROM_NAME,
           address: FROM_ADDRESS,
         },
-        subject: 'Document Cancelled',
+        subject: mailSubject[0],
         html: render(template),
         text: render(template, { plainText: true }),
       });

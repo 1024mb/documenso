@@ -14,6 +14,7 @@ import { WebhookTriggerEvents } from '@documenso/prisma/client';
 
 import { jobs } from '../../jobs/client';
 import { getFile } from '../../universal/upload/get-file';
+import type { TranslationsProps } from '../../utils/i18n.import';
 import { insertFormValuesInPdf } from '../pdf/insert-form-values-in-pdf';
 import { triggerWebhook } from '../webhooks/trigger/trigger-webhook';
 
@@ -31,7 +32,9 @@ export const sendDocument = async ({
   teamId,
   sendEmail = true,
   requestMetadata,
-}: SendDocumentOptions) => {
+  headers,
+  cookies,
+}: SendDocumentOptions & TranslationsProps) => {
   const user = await prisma.user.findFirstOrThrow({
     where: {
       id: userId,
@@ -170,6 +173,8 @@ export const sendDocument = async ({
             documentId,
             recipientId: recipient.id,
             requestMetadata,
+            headers: headers,
+            cookies: cookies,
           },
         });
       }),
@@ -187,6 +192,8 @@ export const sendDocument = async ({
       payload: {
         documentId,
         requestMetadata,
+        headers: headers,
+        cookies: cookies,
       },
     });
 

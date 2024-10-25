@@ -6,6 +6,7 @@ import { redis } from '@documenso/lib/server-only/redis';
 import { stripe } from '@documenso/lib/server-only/stripe';
 import { alphaid, nanoid } from '@documenso/lib/universal/id';
 import { putPdfFile } from '@documenso/lib/universal/upload/put-file';
+import type { TranslationsProps } from '@documenso/lib/utils/i18n.import';
 import { prisma } from '@documenso/prisma';
 import {
   DocumentSource,
@@ -22,7 +23,11 @@ export type OnEarlyAdoptersCheckoutOptions = {
   session: Stripe.Checkout.Session;
 };
 
-export const onEarlyAdoptersCheckout = async ({ session }: OnEarlyAdoptersCheckoutOptions) => {
+export const onEarlyAdoptersCheckout = async ({
+  session,
+  headers,
+  cookies,
+}: OnEarlyAdoptersCheckoutOptions & TranslationsProps) => {
   try {
     const safeMetadata = ZEarlyAdopterCheckoutMetadataSchema.safeParse(session.metadata);
 
@@ -130,6 +135,8 @@ export const onEarlyAdoptersCheckout = async ({ session }: OnEarlyAdoptersChecko
     await sealDocument({
       documentId: document.id,
       sendEmail: false,
+      headers: headers,
+      cookies: cookies,
     });
   } catch (error) {
     // We don't want to break the checkout process if something goes wrong here.

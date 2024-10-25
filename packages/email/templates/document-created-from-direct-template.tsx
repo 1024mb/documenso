@@ -1,7 +1,7 @@
-import { Trans, msg } from '@lingui/macro';
-import { useLingui } from '@lingui/react';
+import { msg } from '@lingui/macro';
 
-import { RECIPIENT_ROLES_DESCRIPTION_ENG } from '@documenso/lib/constants/recipient-roles';
+import type { TranslationsProps } from '@documenso/lib/utils/i18n.import';
+import { getTranslation } from '@documenso/lib/utils/i18n.import';
 import config from '@documenso/tailwind-config';
 
 import {
@@ -18,6 +18,7 @@ import {
 } from '../components';
 import TemplateDocumentImage from '../template-components/template-document-image';
 import { TemplateFooter } from '../template-components/template-footer';
+import type { TemplateFooterData } from '../template-components/template-footer';
 import { RecipientRole } from '.prisma/client';
 
 export type DocumentCompletedEmailTemplateProps = {
@@ -26,6 +27,40 @@ export type DocumentCompletedEmailTemplateProps = {
   documentLink?: string;
   documentName?: string;
   assetBaseUrl?: string;
+  documentCreatedFromDirectTemplateData: DocumentCreatedFromDirectTemplateData;
+  footerData: TemplateFooterData;
+};
+
+export type DocumentCreatedFromDirectTemplateData = {
+  previewText: string;
+  message1: string;
+  message2: string;
+};
+
+export const documentCreatedFromDirectTemplateData = async ({
+  recipientName,
+  recipientActionActioned,
+  headers,
+  cookies,
+}: {
+  recipientName: string;
+  recipientActionActioned: string;
+} & TranslationsProps): Promise<DocumentCreatedFromDirectTemplateData> => {
+  const translations = await getTranslation({
+    headers: headers,
+    cookies: cookies,
+    message: [
+      msg`Document created from direct template`,
+      msg`${recipientName} ${recipientActionActioned} a document by using one of your direct links`,
+      msg`View document`,
+    ],
+  });
+
+  return {
+    previewText: translations[0],
+    message1: translations[1],
+    message2: translations[2],
+  };
 };
 
 export const DocumentCreatedFromDirectTemplateEmailTemplate = ({
@@ -34,13 +69,9 @@ export const DocumentCreatedFromDirectTemplateEmailTemplate = ({
   documentLink = 'http://localhost:3000',
   documentName = 'Open Source Pledge.pdf',
   assetBaseUrl = 'http://localhost:3002',
+  documentCreatedFromDirectTemplateData,
+  footerData,
 }: DocumentCompletedEmailTemplateProps) => {
-  const { _ } = useLingui();
-
-  const action = RECIPIENT_ROLES_DESCRIPTION_ENG[recipientRole].actioned.toLowerCase();
-
-  const previewText = _(msg`Document created from direct template`);
-
   const getAssetUrl = (path: string) => {
     return new URL(path, assetBaseUrl).toString();
   };
@@ -48,7 +79,7 @@ export const DocumentCreatedFromDirectTemplateEmailTemplate = ({
   return (
     <Html>
       <Head />
-      <Preview>{previewText}</Preview>
+      <Preview>{documentCreatedFromDirectTemplateData.previewText}</Preview>
       <Tailwind
         config={{
           theme: {
@@ -72,9 +103,7 @@ export const DocumentCreatedFromDirectTemplateEmailTemplate = ({
 
                 <Section>
                   <Text className="text-primary mb-0 text-center text-lg font-semibold">
-                    <Trans>
-                      {recipientName} {action} a document by using one of your direct links
-                    </Trans>
+                    {documentCreatedFromDirectTemplateData.message1}
                   </Text>
 
                   <div className="mx-auto my-2 w-fit rounded-lg bg-gray-50 px-4 py-2 text-sm text-slate-600">
@@ -86,7 +115,7 @@ export const DocumentCreatedFromDirectTemplateEmailTemplate = ({
                       className="bg-documenso-500 inline-flex items-center justify-center rounded-lg px-6 py-3 text-center text-sm font-medium text-black no-underline"
                       href={documentLink}
                     >
-                      <Trans>View document</Trans>
+                      {documentCreatedFromDirectTemplateData.message2}
                     </Button>
                   </Section>
                 </Section>
@@ -94,7 +123,12 @@ export const DocumentCreatedFromDirectTemplateEmailTemplate = ({
             </Container>
 
             <Container className="mx-auto max-w-xl">
-              <TemplateFooter />
+              <TemplateFooter
+                address={footerData.address}
+                companyName={footerData.companyName}
+                message1={footerData.message1}
+                message2={footerData.message2}
+              />
             </Container>
           </Section>
         </Body>

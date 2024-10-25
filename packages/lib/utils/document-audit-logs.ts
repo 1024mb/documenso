@@ -10,7 +10,7 @@ import type {
   RecipientRole,
 } from '@documenso/prisma/client';
 
-import { RECIPIENT_ROLES_DESCRIPTION_ENG } from '../constants/recipient-roles';
+import { RECIPIENT_ROLES_DESCRIPTION } from '../constants/recipient-roles';
 import type {
   TDocumentAuditLog,
   TDocumentAuditLogDocumentMetaDiffSchema,
@@ -270,115 +270,351 @@ export const formatDocumentAuditLogActionString = (
  *
  * Provide a userId to prefix the action with the user, example 'X did Y'.
  */
-// Todo: Translations.
 export const formatDocumentAuditLogAction = (auditLog: TDocumentAuditLog, userId?: number) => {
-  let prefix = userId === auditLog.userId ? 'You' : auditLog.name || auditLog.email || '';
+  // eslint-disable-next-line
+  const { _ } = useLingui();
+
+  const isCurrentUser = userId === auditLog.userId;
+
+  let prefix =
+    userId === auditLog.userId
+      ? _(
+          msg({
+            message: 'You',
+            context: 'Used as the subject in a sentence',
+          }),
+        )
+      : auditLog.name || auditLog.email || '';
 
   const description = match(auditLog)
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.FIELD_CREATED }, () => ({
-      anonymous: useLingui()._(msg`A field was added`),
-      identified: useLingui()._(msg`added a field`),
+      anonymous: _(msg`A field was added`),
+      identified: isCurrentUser
+        ? _(
+            msg({
+              message: 'added a field',
+              context: "Action performed by the current user, line is prefixed with 'You'",
+            }),
+          )
+        : _(
+            msg({
+              message: 'added a field',
+              context: 'Action performed by someone else',
+            }),
+          ),
     }))
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.FIELD_DELETED }, () => ({
-      anonymous: useLingui()._(msg`A field was removed`),
-      identified: useLingui()._(msg`removed a field`),
+      anonymous: _(msg`A field was removed`),
+      identified: isCurrentUser
+        ? _(
+            msg({
+              message: 'removed a field',
+              context: "Action performed by the current user, line is prefixed with 'You'",
+            }),
+          )
+        : _(
+            msg({
+              message: 'removed a field',
+              context: 'Action performed by someone else',
+            }),
+          ),
     }))
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.FIELD_UPDATED }, () => ({
-      anonymous: useLingui()._(msg`A field was updated`),
-      identified: useLingui()._(msg`updated a field`),
+      anonymous: _(msg`A field was updated`),
+      identified: isCurrentUser
+        ? _(
+            msg({
+              message: 'updated a field',
+              context: "Action performed by the current user, line is prefixed with 'You'",
+            }),
+          )
+        : _(
+            msg({
+              message: 'updated a field',
+              context: 'Action performed by someone else',
+            }),
+          ),
     }))
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.RECIPIENT_CREATED }, () => ({
-      anonymous: useLingui()._(msg`A recipient was added`),
-      identified: useLingui()._(msg`added a recipient`),
+      anonymous: _(msg`A recipient was added`),
+      identified: isCurrentUser
+        ? _(
+            msg({
+              message: 'added a recipient',
+              context: "Action performed by the current user, line is prefixed with 'You'",
+            }),
+          )
+        : _(
+            msg({
+              message: 'added a recipient',
+              context: 'Action performed by someone else',
+            }),
+          ),
     }))
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.RECIPIENT_DELETED }, () => ({
-      anonymous: useLingui()._(msg`A recipient was removed`),
-      identified: useLingui()._(msg`removed a recipient`),
+      anonymous: _(msg`A recipient was removed`),
+      identified: isCurrentUser
+        ? _(
+            msg({
+              message: 'removed a recipient',
+              context: "Action performed by the current user, line is prefixed with 'You'",
+            }),
+          )
+        : _(
+            msg({
+              message: 'removed a recipient',
+              context: 'Action performed by someone else',
+            }),
+          ),
     }))
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.RECIPIENT_UPDATED }, () => ({
-      anonymous: useLingui()._(msg`A recipient was updated`),
-      identified: useLingui()._(msg`updated a recipient`),
+      anonymous: _(msg`A recipient was updated`),
+      identified: isCurrentUser
+        ? _(
+            msg({
+              message: 'updated a recipient',
+              context: "Action performed by the current user, line is prefixed with 'You'",
+            }),
+          )
+        : _(
+            msg({
+              message: 'updated a recipient',
+              context: 'Action performed by someone else',
+            }),
+          ),
     }))
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.DOCUMENT_CREATED }, () => ({
-      anonymous: useLingui()._(msg`Document created`),
-      identified: useLingui()._(msg`created the document`),
+      anonymous: _(msg`Document created`),
+      identified: isCurrentUser
+        ? _(
+            msg({
+              message: 'created the document',
+              context: "Action performed by the current user, line is prefixed with 'You'",
+            }),
+          )
+        : _(
+            msg({
+              message: 'created the document',
+              context: 'Action performed by someone else',
+            }),
+          ),
     }))
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.DOCUMENT_DELETED }, () => ({
-      anonymous: useLingui()._(msg`Document deleted`),
-      identified: useLingui()._(msg`deleted the document`),
+      anonymous: _(msg`Document deleted`),
+      identified: isCurrentUser
+        ? _(
+            msg({
+              message: 'deleted the document',
+              context: "Action performed by the current user, line is prefixed with 'You'",
+            }),
+          )
+        : _(
+            msg({
+              message: 'deleted the document',
+              context: 'Action performed by someone else',
+            }),
+          ),
     }))
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.DOCUMENT_FIELD_INSERTED }, () => ({
-      anonymous: useLingui()._(msg`Field signed`),
-      identified: useLingui()._(msg`signed a field`),
+      anonymous: _(msg`Field signed`),
+      identified: isCurrentUser
+        ? _(
+            msg({
+              message: 'signed a field',
+              context: "Action performed by the current user, line is prefixed with 'You'",
+            }),
+          )
+        : _(
+            msg({
+              message: 'signed a field',
+              context: 'Action performed by someone else',
+            }),
+          ),
     }))
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.DOCUMENT_FIELD_UNINSERTED }, () => ({
-      anonymous: useLingui()._(msg`Field unsigned`),
-      identified: useLingui()._(msg`unsigned a field`),
+      anonymous: _(msg`Field unsigned`),
+      identified: isCurrentUser
+        ? _(
+            msg({
+              message: 'unsigned a field',
+              context: "Action performed by the current user, line is prefixed with 'You'",
+            }),
+          )
+        : _(
+            msg({
+              message: 'unsigned a field',
+              context: 'Action performed by someone else',
+            }),
+          ),
     }))
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.DOCUMENT_VISIBILITY_UPDATED }, () => ({
-      anonymous: useLingui()._(msg`Document visibility updated`),
-      identified: useLingui()._(msg`updated the document visibility`),
+      anonymous: _(msg`Document visibility updated`),
+      identified: isCurrentUser
+        ? _(
+            msg({
+              message: 'updated the document visibility',
+              context: "Action performed by the current user, line is prefixed with 'You'",
+            }),
+          )
+        : _(
+            msg({
+              message: 'updated the document visibility',
+              context: 'Action performed by someone else',
+            }),
+          ),
     }))
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.DOCUMENT_GLOBAL_AUTH_ACCESS_UPDATED }, () => ({
-      anonymous: useLingui()._(msg`Document access auth updated`),
-      identified: useLingui()._(msg`updated the document access auth requirements`),
+      anonymous: _(msg`Document access auth updated`),
+      identified: isCurrentUser
+        ? _(
+            msg({
+              message: 'updated the document access auth requirements',
+              context: "Action performed by the current user, line is prefixed with 'You'",
+            }),
+          )
+        : _(
+            msg({
+              message: 'updated the document access auth requirements',
+              context: 'Action performed by someone else',
+            }),
+          ),
     }))
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.DOCUMENT_GLOBAL_AUTH_ACTION_UPDATED }, () => ({
-      anonymous: useLingui()._(msg`Document signing auth updated`),
-      identified: useLingui()._(msg`updated the document signing auth requirements`),
+      anonymous: _(msg`Document signing auth updated`),
+      identified: isCurrentUser
+        ? _(
+            msg({
+              message: 'updated the document signing auth requirements',
+              context: "Action performed by the current user, line is prefixed with 'You'",
+            }),
+          )
+        : _(
+            msg({
+              message: 'updated the document signing auth requirements',
+              context: 'Action performed by someone else',
+            }),
+          ),
     }))
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.DOCUMENT_META_UPDATED }, () => ({
-      anonymous: useLingui()._(msg`Document updated`),
-      identified: useLingui()._(msg`updated the document`),
+      anonymous: _(msg`Document updated`),
+      identified: isCurrentUser
+        ? _(
+            msg({
+              message: 'updated the document',
+              context: "Action performed by the current user, line is prefixed with 'You'",
+            }),
+          )
+        : _(
+            msg({
+              message: 'updated the document',
+              context: 'Action performed by someone else',
+            }),
+          ),
     }))
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.DOCUMENT_OPENED }, () => ({
-      anonymous: useLingui()._(msg`Document opened`),
-      identified: useLingui()._(msg`opened the document`),
+      anonymous: _(msg`Document opened`),
+      identified: isCurrentUser
+        ? _(
+            msg({
+              message: 'opened the document',
+              context: "Action performed by the current user, line is prefixed with 'You'",
+            }),
+          )
+        : _(
+            msg({
+              message: 'opened the document',
+              context: 'Action performed by someone else',
+            }),
+          ),
     }))
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.DOCUMENT_TITLE_UPDATED }, () => ({
-      anonymous: useLingui()._(msg`Document title updated`),
-      identified: useLingui()._(msg`updated the document title`),
+      anonymous: _(msg`Document title updated`),
+      identified: isCurrentUser
+        ? _(
+            msg({
+              message: 'updated the document title',
+              context: "Action performed by the current user, line is prefixed with 'You'",
+            }),
+          )
+        : _(
+            msg({
+              message: 'updated the document title',
+              context: 'Action performed by someone else',
+            }),
+          ),
     }))
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.DOCUMENT_EXTERNAL_ID_UPDATED }, () => ({
-      anonymous: useLingui()._(msg`Document external ID updated`),
-      identified: useLingui()._(msg`updated the document external ID`),
+      anonymous: _(msg`Document external ID updated`),
+      identified: isCurrentUser
+        ? _(
+            msg({
+              message: 'updated the document external ID',
+              context: "Action performed by the current user, line is prefixed with 'You'",
+            }),
+          )
+        : _(
+            msg({
+              message: 'updated the document external ID',
+              context: 'Action performed by someone else',
+            }),
+          ),
     }))
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.DOCUMENT_SENT }, () => ({
-      anonymous: useLingui()._(msg`Document sent`),
-      identified: useLingui()._(msg`sent the document`),
+      anonymous: _(msg`Document sent`),
+      identified: isCurrentUser
+        ? _(
+            msg({
+              message: 'sent the document',
+              context: "Action performed by the current user, line is prefixed with 'You'",
+            }),
+          )
+        : _(
+            msg({
+              message: 'sent the document',
+              context: 'Action performed by someone else',
+            }),
+          ),
     }))
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.DOCUMENT_MOVED_TO_TEAM }, () => ({
-      anonymous: useLingui()._(msg`Document moved to team`),
-      identified: useLingui()._(msg`moved the document to team`),
+      anonymous: _(msg`Document moved to team`),
+      identified: isCurrentUser
+        ? _(
+            msg({
+              message: 'moved the document to team',
+              context: "Action performed by the current user, line is prefixed with 'You'",
+            }),
+          )
+        : _(
+            msg({
+              message: 'moved the document to team',
+              context: 'Action performed by someone else',
+            }),
+          ),
     }))
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.DOCUMENT_RECIPIENT_COMPLETED }, ({ data }) => {
       // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-      const action = RECIPIENT_ROLES_DESCRIPTION_ENG[data.recipientRole as RecipientRole]?.actioned;
+      const action = RECIPIENT_ROLES_DESCRIPTION[data.recipientRole as RecipientRole]?.actioned;
 
       const value = action
-        ? useLingui()._(msg`${action.toLowerCase()} the document`)
-        : useLingui()._(msg`completed their task`);
+        ? _(msg`${_(action).toLowerCase()} the document`)
+        : _(msg`completed their task`);
 
       return {
-        anonymous: useLingui()._(msg`Recipient ${value}`),
+        anonymous: _(msg`Recipient ${value}`),
         identified: value,
       };
     })
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.EMAIL_SENT }, ({ data }) => ({
-      anonymous: useLingui()._(
-        msg`Email ${data.isResending ? useLingui()._(msg`resent`) : useLingui()._(msg`sent`)}`,
-      ),
-      identified: useLingui()._(
-        msg`${data.isResending ? useLingui()._(msg`resent`) : useLingui()._(msg`sent`)} an email to ${data.recipientEmail}`,
-      ),
+      anonymous: _(msg`Email ${data.isResending ? _(msg`resent`) : _(msg`sent`)}`),
+      identified: _(msg`${data.isResending ? _(msg`resent`) : _(msg`sent`)} an email to ${data.recipientEmail}`),
     }))
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.DOCUMENT_COMPLETED }, () => {
       // Clear the prefix since this should be considered an 'anonymous' event.
       prefix = '';
 
       return {
-        anonymous: useLingui()._(msg`Document completed`),
-        identified: useLingui()._(msg`Document completed`),
+        anonymous: _(msg`Document completed`),
+        identified: _(msg`Document completed`),
       };
     })
     .exhaustive();

@@ -4,17 +4,24 @@ import { DateTime } from 'luxon';
 import { prisma } from '@documenso/prisma';
 
 import { ONE_HOUR } from '../../constants/time';
+import type { TranslationsProps } from '../../utils/i18n.import';
 import { sendConfirmationEmail } from '../auth/send-confirmation-email';
 import { getMostRecentVerificationTokenByUserId } from './get-most-recent-verification-token-by-user-id';
 
 const IDENTIFIER = 'confirmation-email';
 
-type SendConfirmationTokenOptions = { email: string; force?: boolean };
+type SendConfirmationTokenOptions = {
+  email: string;
+  force?: boolean;
+};
 
 export const sendConfirmationToken = async ({
   email,
   force = false,
-}: SendConfirmationTokenOptions) => {
+  headers,
+  cookies,
+  locale,
+}: SendConfirmationTokenOptions & TranslationsProps) => {
   const token = crypto.randomBytes(20).toString('hex');
 
   const user = await prisma.user.findFirst({
@@ -60,10 +67,18 @@ export const sendConfirmationToken = async ({
   }
 
   try {
-    await sendConfirmationEmail({ userId: user.id });
+    await sendConfirmationEmail({
+      userId: user.id,
+      headers: headers,
+      cookies: cookies,
+      // This one uses locale too because sometimes that's the only parameters it receives
+      locale: locale,
+    });
 
     return { success: true };
   } catch (err) {
+    console.error(err);
+
     throw new Error(`Failed to send the confirmation email`);
   }
 };

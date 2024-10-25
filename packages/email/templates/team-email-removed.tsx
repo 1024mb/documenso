@@ -1,11 +1,13 @@
-import { Trans, msg } from '@lingui/macro';
-import { useLingui } from '@lingui/react';
+import { msg } from '@lingui/macro';
 
+import type { TranslationsProps } from '@documenso/lib/utils/i18n.import';
+import { getTranslation } from '@documenso/lib/utils/i18n.import';
 import { formatTeamUrl } from '@documenso/lib/utils/teams';
 import config from '@documenso/tailwind-config';
 
 import { Body, Container, Head, Hr, Html, Preview, Section, Tailwind, Text } from '../components';
 import { TemplateFooter } from '../template-components/template-footer';
+import type { TemplateFooterData } from '../template-components/template-footer';
 import TemplateImage from '../template-components/template-image';
 
 export type TeamEmailRemovedTemplateProps = {
@@ -14,6 +16,39 @@ export type TeamEmailRemovedTemplateProps = {
   teamEmail: string;
   teamName: string;
   teamUrl: string;
+  teamEmailRemovedTemplateData: TeamEmailRemovedTemplateData;
+  footerData: TemplateFooterData;
+};
+
+export type TeamEmailRemovedTemplateData = {
+  previewText: string;
+  message1: string;
+  message2: string;
+  message3: string;
+};
+
+export const teamEmailRemovedTemplateData = async ({
+  teamName,
+  headers,
+  cookies,
+}: { teamName: string } & TranslationsProps): Promise<TeamEmailRemovedTemplateData> => {
+  const translations = await getTranslation({
+    headers: headers,
+    cookies: cookies,
+    message: [
+      msg`Team email removed for ${teamName} on Documenso`,
+      msg`Team email removed`,
+      msg`The team email`,
+      msg`has been removed from the following team`,
+    ],
+  });
+
+  return {
+    previewText: translations[0],
+    message1: translations[1],
+    message2: translations[2],
+    message3: translations[3],
+  };
 };
 
 export const TeamEmailRemovedTemplate = ({
@@ -22,15 +57,13 @@ export const TeamEmailRemovedTemplate = ({
   teamEmail = 'example@documenso.com',
   teamName = 'Team Name',
   teamUrl = 'demo',
+  teamEmailRemovedTemplateData,
+  footerData,
 }: TeamEmailRemovedTemplateProps) => {
-  const { _ } = useLingui();
-
-  const previewText = _(msg`Team email removed for ${teamName} on Documenso`);
-
   return (
     <Html>
       <Head />
-      <Preview>{previewText}</Preview>
+      <Preview>{teamEmailRemovedTemplateData.previewText}</Preview>
       <Tailwind
         config={{
           theme: {
@@ -59,14 +92,13 @@ export const TeamEmailRemovedTemplate = ({
 
               <Section className="p-2 text-slate-500">
                 <Text className="text-center text-lg font-medium text-black">
-                  <Trans>Team email removed</Trans>
+                  {teamEmailRemovedTemplateData.message1}
                 </Text>
 
                 <Text className="my-1 text-center text-base">
-                  <Trans>
-                    The team email <span className="font-bold">{teamEmail}</span> has been removed
-                    from the following team
-                  </Trans>
+                  {teamEmailRemovedTemplateData.message2}{' '}
+                  <span className="font-bold">{teamEmail}</span>{' '}
+                  {teamEmailRemovedTemplateData.message3}
                 </Text>
 
                 <div className="mx-auto mb-6 mt-2 w-fit rounded-lg bg-gray-50 px-4 py-2 text-base font-medium text-slate-600">
@@ -78,7 +110,13 @@ export const TeamEmailRemovedTemplate = ({
             <Hr className="mx-auto mt-12 max-w-xl" />
 
             <Container className="mx-auto max-w-xl">
-              <TemplateFooter isDocument={false} />
+              <TemplateFooter
+                isDocument={false}
+                address={footerData.address}
+                companyName={footerData.companyName}
+                message1={footerData.message1}
+                message2={footerData.message2}
+              />
             </Container>
           </Section>
         </Body>

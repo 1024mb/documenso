@@ -1,6 +1,7 @@
-import { Trans, msg } from '@lingui/macro';
-import { useLingui } from '@lingui/react';
+import { msg } from '@lingui/macro';
 
+import type { TranslationsProps } from '@documenso/lib/utils/i18n.import';
+import { getTranslation } from '@documenso/lib/utils/i18n.import';
 import { formatTeamUrl } from '@documenso/lib/utils/teams';
 import config from '@documenso/tailwind-config';
 
@@ -17,6 +18,7 @@ import {
   Text,
 } from '../components';
 import { TemplateFooter } from '../template-components/template-footer';
+import type { TemplateFooterData } from '../template-components/template-footer';
 import TemplateImage from '../template-components/template-image';
 
 export type TeamTransferRequestTemplateProps = {
@@ -26,6 +28,45 @@ export type TeamTransferRequestTemplateProps = {
   teamName: string;
   teamUrl: string;
   token: string;
+  teamTransferRequestTemplateData: TeamTransferRequestTemplateData;
+  footerData: TemplateFooterData;
+};
+
+export type TeamTransferRequestTemplateData = {
+  previewText: string;
+  message1: string;
+  message2: string;
+  message3: string;
+  message4: string;
+  message5: string;
+};
+
+export const teamTransferRequestTemplateData = async ({
+  teamName,
+  headers,
+  cookies,
+}: { teamName: string } & TranslationsProps): Promise<TeamTransferRequestTemplateData> => {
+  const translations = await getTranslation({
+    headers: headers,
+    cookies: cookies,
+    message: [
+      msg`Accept team transfer request on Documenso`,
+      msg`${teamName} ownership transfer request`,
+      msg`has requested that you take ownership of the following team`,
+      msg`By accepting this request, you will take responsibility for any billing items associated with this team.`,
+      msg`Accept`,
+      msg`Link expires in 1 hour.`,
+    ],
+  });
+
+  return {
+    previewText: translations[0],
+    message1: translations[1],
+    message2: translations[2],
+    message3: translations[3],
+    message4: translations[4],
+    message5: translations[5],
+  };
 };
 
 export const TeamTransferRequestTemplate = ({
@@ -35,15 +76,13 @@ export const TeamTransferRequestTemplate = ({
   teamName = 'Team Name',
   teamUrl = 'demo',
   token = '',
+  teamTransferRequestTemplateData,
+  footerData,
 }: TeamTransferRequestTemplateProps) => {
-  const { _ } = useLingui();
-
-  const previewText = _(msg`Accept team transfer request on Documenso`);
-
   return (
     <Html>
       <Head />
-      <Preview>{previewText}</Preview>
+      <Preview>{teamTransferRequestTemplateData.previewText}</Preview>
       <Tailwind
         config={{
           theme: {
@@ -72,14 +111,12 @@ export const TeamTransferRequestTemplate = ({
 
               <Section className="p-2 text-slate-500">
                 <Text className="text-center text-lg font-medium text-black">
-                  <Trans>{teamName} ownership transfer request</Trans>
+                  {teamTransferRequestTemplateData.message1}
                 </Text>
 
                 <Text className="my-1 text-center text-base">
-                  <Trans>
-                    <span className="font-bold">{senderName}</span> has requested that you take
-                    ownership of the following team
-                  </Trans>
+                  <span className="font-bold">{senderName}</span>{' '}
+                  {teamTransferRequestTemplateData.message2}
                 </Text>
 
                 <div className="mx-auto my-2 w-fit rounded-lg bg-gray-50 px-4 py-2 text-base font-medium text-slate-600">
@@ -87,10 +124,7 @@ export const TeamTransferRequestTemplate = ({
                 </div>
 
                 <Text className="text-center text-sm">
-                  <Trans>
-                    By accepting this request, you will take responsibility for any billing items
-                    associated with this team.
-                  </Trans>
+                  {teamTransferRequestTemplateData.message3}
                 </Text>
 
                 <Section className="mb-6 mt-6 text-center">
@@ -98,20 +132,26 @@ export const TeamTransferRequestTemplate = ({
                     className="bg-documenso-500 ml-2 inline-flex items-center justify-center rounded-lg px-6 py-3 text-center text-sm font-medium text-black no-underline"
                     href={`${baseUrl}/team/verify/transfer/${token}`}
                   >
-                    <Trans>Accept</Trans>
+                    {teamTransferRequestTemplateData.message4}
                   </Button>
                 </Section>
               </Section>
 
               <Text className="text-center text-xs">
-                <Trans>Link expires in 1 hour.</Trans>
+                {teamTransferRequestTemplateData.message5}
               </Text>
             </Container>
 
             <Hr className="mx-auto mt-12 max-w-xl" />
 
             <Container className="mx-auto max-w-xl">
-              <TemplateFooter isDocument={false} />
+              <TemplateFooter
+                isDocument={false}
+                address={footerData.address}
+                companyName={footerData.companyName}
+                message1={footerData.message1}
+                message2={footerData.message2}
+              />
             </Container>
           </Section>
         </Body>

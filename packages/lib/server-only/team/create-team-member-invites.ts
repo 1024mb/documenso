@@ -1,11 +1,16 @@
 import { createElement } from 'react';
 
+import { msg } from '@lingui/macro';
 import { nanoid } from 'nanoid';
 
 import { mailer } from '@documenso/email/mailer';
 import { render } from '@documenso/email/render';
+import { loadFooterTemplateData } from '@documenso/email/template-components/template-footer';
 import type { TeamInviteEmailProps } from '@documenso/email/templates/team-invite';
-import { TeamInviteEmailTemplate } from '@documenso/email/templates/team-invite';
+import {
+  TeamInviteEmailTemplate,
+  teamInviteEmailTemplateData,
+} from '@documenso/email/templates/team-invite';
 import { WEBAPP_BASE_URL } from '@documenso/lib/constants/app';
 import { FROM_ADDRESS, FROM_NAME } from '@documenso/lib/constants/email';
 import { TEAM_MEMBER_ROLE_PERMISSIONS_MAP } from '@documenso/lib/constants/teams';
@@ -14,6 +19,9 @@ import { isTeamRoleWithinUserHierarchy } from '@documenso/lib/utils/teams';
 import { prisma } from '@documenso/prisma';
 import { TeamMemberInviteStatus } from '@documenso/prisma/client';
 import type { TCreateTeamMemberInvitesMutationSchema } from '@documenso/trpc/server/team-router/schema';
+
+import type { TranslationsProps } from '../../utils/i18n.import';
+import { getTranslation } from '../../utils/i18n.import';
 
 export type CreateTeamMemberInvitesOptions = {
   userId: number;
@@ -30,7 +38,9 @@ export const createTeamMemberInvites = async ({
   userName,
   teamId,
   invitations,
-}: CreateTeamMemberInvitesOptions) => {
+  headers,
+  cookies,
+}: CreateTeamMemberInvitesOptions & TranslationsProps) => {
   const team = await prisma.team.findFirstOrThrow({
     where: {
       id: teamId,
@@ -107,11 +117,13 @@ export const createTeamMemberInvites = async ({
   const sendEmailResult = await Promise.allSettled(
     teamMemberInvites.map(async ({ email, token }) =>
       sendTeamMemberInviteEmail({
-        email,
-        token,
+        email: email,
+        token: token,
         teamName: team.name,
         teamUrl: team.url,
         senderName: userName,
+        headers: headers,
+        cookies: cookies,
       }),
     ),
   );
@@ -131,7 +143,10 @@ export const createTeamMemberInvites = async ({
   }
 };
 
-type SendTeamMemberInviteEmailOptions = Omit<TeamInviteEmailProps, 'baseUrl' | 'assetBaseUrl'> & {
+type SendTeamMemberInviteEmailOptions = Omit<
+  TeamInviteEmailProps,
+  'baseUrl' | 'assetBaseUrl' | 'teamInviteEmailTemplateData' | 'footerData'
+> & {
   email: string;
 };
 
@@ -140,12 +155,29 @@ type SendTeamMemberInviteEmailOptions = Omit<TeamInviteEmailProps, 'baseUrl' | '
  */
 export const sendTeamMemberInviteEmail = async ({
   email,
+  headers,
+  cookies,
   ...emailTemplateOptions
-}: SendTeamMemberInviteEmailOptions) => {
+}: SendTeamMemberInviteEmailOptions & TranslationsProps) => {
   const template = createElement(TeamInviteEmailTemplate, {
     assetBaseUrl: WEBAPP_BASE_URL,
     baseUrl: WEBAPP_BASE_URL,
     ...emailTemplateOptions,
+    teamInviteEmailTemplateData: await teamInviteEmailTemplateData({
+      headers: headers,
+      cookies: cookies,
+      teamName: emailTemplateOptions.teamName,
+    }),
+    footerData: await loadFooterTemplateData({
+      headers: headers,
+      cookies: cookies,
+    }),
+  });
+
+  const mailSubject = await getTranslation({
+    headers: headers,
+    cookies: cookies,
+    message: [msg`You have been invited to join ${emailTemplateOptions.teamName} on Documenso`],
   });
 
   await mailer.sendMail({
@@ -154,7 +186,7 @@ export const sendTeamMemberInviteEmail = async ({
       name: FROM_NAME,
       address: FROM_ADDRESS,
     },
-    subject: `You have been invited to join ${emailTemplateOptions.teamName} on Documenso`,
+    subject: mailSubject[0],
     html: render(template),
     text: render(template, { plainText: true }),
   });

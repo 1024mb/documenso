@@ -1,5 +1,6 @@
 import Link from 'next/link';
 
+import { i18n } from '@lingui/core';
 import { Trans } from '@lingui/macro';
 import { AlertTriangle, XCircle, XOctagon } from 'lucide-react';
 import { DateTime } from 'luxon';
@@ -25,6 +26,8 @@ export type PageProps = {
 export default async function VerifyEmailPage({ params: { token } }: PageProps) {
   setupI18nSSR();
 
+  const locale = i18n.locale;
+
   if (!token) {
     return (
       <div className="w-screen max-w-lg px-4">
@@ -46,7 +49,7 @@ export default async function VerifyEmailPage({ params: { token } }: PageProps) 
     );
   }
 
-  const verified = await verifyEmail({ token });
+  const verified = await verifyEmail({ token, locale });
 
   return await match(verified)
     .with(EMAIL_VERIFICATION_STATE.NOT_FOUND, () => (

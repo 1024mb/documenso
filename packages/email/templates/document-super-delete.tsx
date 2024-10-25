@@ -1,26 +1,52 @@
 import { msg } from '@lingui/macro';
-import { useLingui } from '@lingui/react';
 
+import type { TranslationsProps } from '@documenso/lib/utils/i18n.import';
+import { getTranslation } from '@documenso/lib/utils/i18n.import';
 import config from '@documenso/tailwind-config';
 
 import { Body, Container, Head, Hr, Html, Img, Preview, Section, Tailwind } from '../components';
 import {
   TemplateDocumentDelete,
+  type TemplateDocumentDeleteData,
   type TemplateDocumentDeleteProps,
 } from '../template-components/template-document-super-delete';
 import { TemplateFooter } from '../template-components/template-footer';
+import type { TemplateFooterData } from '../template-components/template-footer';
 
-export type DocumentDeleteEmailTemplateProps = Partial<TemplateDocumentDeleteProps>;
+export type DocumentDeleteEmailTemplateProps = Partial<TemplateDocumentDeleteProps> & {
+  documentSuperDeleteEmailTemplateData: DocumentSuperDeleteEmailTemplateData;
+  templateDocumentDeleteData: TemplateDocumentDeleteData;
+  footerData: TemplateFooterData;
+};
+
+export type DocumentSuperDeleteEmailTemplateData = {
+  previewText: string;
+};
+
+export const documentSuperDeleteEmailTemplateData = async ({
+  documentName,
+  headers,
+  cookies,
+}: { documentName: string } & TranslationsProps): Promise<DocumentSuperDeleteEmailTemplateData> => {
+  const translation = await getTranslation({
+    headers: headers,
+    cookies: cookies,
+    message: [msg`An admin has deleted your document "${documentName}".`],
+  });
+
+  return {
+    previewText: translation[0],
+  };
+};
 
 export const DocumentSuperDeleteEmailTemplate = ({
   documentName = 'Open Source Pledge.pdf',
   assetBaseUrl = 'http://localhost:3002',
   reason = 'Unknown',
+  documentSuperDeleteEmailTemplateData,
+  templateDocumentDeleteData,
+  footerData,
 }: DocumentDeleteEmailTemplateProps) => {
-  const { _ } = useLingui();
-
-  const previewText = _(msg`An admin has deleted your document "${documentName}".`);
-
   const getAssetUrl = (path: string) => {
     return new URL(path, assetBaseUrl).toString();
   };
@@ -28,7 +54,7 @@ export const DocumentSuperDeleteEmailTemplate = ({
   return (
     <Html>
       <Head />
-      <Preview>{previewText}</Preview>
+      <Preview>{documentSuperDeleteEmailTemplateData.previewText}</Preview>
       <Tailwind
         config={{
           theme: {
@@ -52,6 +78,7 @@ export const DocumentSuperDeleteEmailTemplate = ({
                   reason={reason}
                   documentName={documentName}
                   assetBaseUrl={assetBaseUrl}
+                  templateDocumentDeleteData={templateDocumentDeleteData}
                 />
               </Section>
             </Container>
@@ -59,7 +86,12 @@ export const DocumentSuperDeleteEmailTemplate = ({
             <Hr className="mx-auto mt-12 max-w-xl" />
 
             <Container className="mx-auto max-w-xl">
-              <TemplateFooter />
+              <TemplateFooter
+                address={footerData.address}
+                companyName={footerData.companyName}
+                message1={footerData.message1}
+                message2={footerData.message2}
+              />
             </Container>
           </Section>
         </Body>

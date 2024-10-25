@@ -1,6 +1,7 @@
-import { Trans, msg } from '@lingui/macro';
-import { useLingui } from '@lingui/react';
+import { msg } from '@lingui/macro';
 
+import type { TranslationsProps } from '@documenso/lib/utils/i18n.import';
+import { getTranslation } from '@documenso/lib/utils/i18n.import';
 import { formatTeamUrl } from '@documenso/lib/utils/teams';
 import config from '@documenso/tailwind-config';
 
@@ -17,6 +18,7 @@ import {
   Text,
 } from '../components';
 import { TemplateFooter } from '../template-components/template-footer';
+import type { TemplateFooterData } from '../template-components/template-footer';
 import TemplateImage from '../template-components/template-image';
 
 export type TeamInviteEmailProps = {
@@ -26,6 +28,45 @@ export type TeamInviteEmailProps = {
   teamName: string;
   teamUrl: string;
   token: string;
+  teamInviteEmailTemplateData: TeamInviteEmailTemplateData;
+  footerData: TemplateFooterData;
+};
+
+export type TeamInviteEmailTemplateData = {
+  previewText: string;
+  message1: string;
+  message2: string;
+  message3: string;
+  message4: string;
+  message5: string;
+};
+
+export const teamInviteEmailTemplateData = async ({
+  teamName,
+  headers,
+  cookies,
+}: { teamName: string } & TranslationsProps): Promise<TeamInviteEmailTemplateData> => {
+  const translations = await getTranslation({
+    headers: headers,
+    cookies: cookies,
+    message: [
+      msg`Accept invitation to join a team on Documenso`,
+      msg`Join ${teamName} on Documenso`,
+      msg`You have been invited to join the following team`,
+      msg`by`,
+      msg`Accept`,
+      msg`Decline`,
+    ],
+  });
+
+  return {
+    previewText: translations[0],
+    message1: translations[1],
+    message2: translations[2],
+    message3: translations[3],
+    message4: translations[4],
+    message5: translations[5],
+  };
 };
 
 export const TeamInviteEmailTemplate = ({
@@ -35,15 +76,13 @@ export const TeamInviteEmailTemplate = ({
   teamName = 'Team Name',
   teamUrl = 'demo',
   token = '',
+  teamInviteEmailTemplateData,
+  footerData,
 }: TeamInviteEmailProps) => {
-  const { _ } = useLingui();
-
-  const previewText = _(msg`Accept invitation to join a team on Documenso`);
-
   return (
     <Html>
       <Head />
-      <Preview>{previewText}</Preview>
+      <Preview>{teamInviteEmailTemplateData.previewText}</Preview>
       <Tailwind
         config={{
           theme: {
@@ -72,11 +111,11 @@ export const TeamInviteEmailTemplate = ({
 
               <Section className="p-2 text-slate-500">
                 <Text className="text-center text-lg font-medium text-black">
-                  <Trans>Join {teamName} on Documenso</Trans>
+                  {teamInviteEmailTemplateData.message1}
                 </Text>
 
                 <Text className="my-1 text-center text-base">
-                  <Trans>You have been invited to join the following team</Trans>
+                  {teamInviteEmailTemplateData.message2}
                 </Text>
 
                 <div className="mx-auto my-2 w-fit rounded-lg bg-gray-50 px-4 py-2 text-base font-medium text-slate-600">
@@ -84,9 +123,8 @@ export const TeamInviteEmailTemplate = ({
                 </div>
 
                 <Text className="my-1 text-center text-base">
-                  <Trans>
-                    by <span className="text-slate-900">{senderName}</span>
-                  </Trans>
+                  {teamInviteEmailTemplateData.message3}{' '}
+                  <span className="text-slate-900">{senderName}</span>
                 </Text>
 
                 <Section className="mb-6 mt-6 text-center">
@@ -94,13 +132,13 @@ export const TeamInviteEmailTemplate = ({
                     className="bg-documenso-500 inline-flex items-center justify-center rounded-lg px-6 py-3 text-center text-sm font-medium text-black no-underline"
                     href={`${baseUrl}/team/invite/${token}`}
                   >
-                    <Trans>Accept</Trans>
+                    {teamInviteEmailTemplateData.message4}
                   </Button>
                   <Button
                     className="ml-4 inline-flex items-center justify-center rounded-lg bg-gray-50 px-6 py-3 text-center text-sm font-medium text-slate-600 no-underline"
                     href={`${baseUrl}/team/decline/${token}`}
                   >
-                    <Trans>Decline</Trans>
+                    {teamInviteEmailTemplateData.message5}
                   </Button>
                 </Section>
               </Section>
@@ -109,7 +147,13 @@ export const TeamInviteEmailTemplate = ({
             <Hr className="mx-auto mt-12 max-w-xl" />
 
             <Container className="mx-auto max-w-xl">
-              <TemplateFooter isDocument={false} />
+              <TemplateFooter
+                isDocument={false}
+                address={footerData.address}
+                companyName={footerData.companyName}
+                message1={footerData.message1}
+                message2={footerData.message2}
+              />
             </Container>
           </Section>
         </Body>

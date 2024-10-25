@@ -1,11 +1,17 @@
 import { createElement } from 'react';
 
+import { i18n } from '@lingui/core';
+import { msg } from '@lingui/macro';
 import { DateTime } from 'luxon';
 import { match } from 'ts-pattern';
 
 import { mailer } from '@documenso/email/mailer';
 import { render } from '@documenso/email/render';
-import { DocumentCreatedFromDirectTemplateEmailTemplate } from '@documenso/email/templates/document-created-from-direct-template';
+import { loadFooterTemplateData } from '@documenso/email/template-components/template-footer';
+import {
+  DocumentCreatedFromDirectTemplateEmailTemplate,
+  documentCreatedFromDirectTemplateData,
+} from '@documenso/email/templates/document-created-from-direct-template';
 import { nanoid } from '@documenso/lib/universal/id';
 import { prisma } from '@documenso/prisma';
 import type { Field, Signature } from '@documenso/prisma/client';
@@ -23,6 +29,7 @@ import type { TSignFieldWithTokenMutationSchema } from '@documenso/trpc/server/f
 
 import { NEXT_PUBLIC_WEBAPP_URL } from '../../constants/app';
 import { DEFAULT_DOCUMENT_DATE_FORMAT } from '../../constants/date-formats';
+import { RECIPIENT_ROLES_DESCRIPTION } from '../../constants/recipient-roles';
 import { DEFAULT_DOCUMENT_TIME_ZONE } from '../../constants/time-zones';
 import { AppError, AppErrorCode } from '../../errors/app-error';
 import { DOCUMENT_AUDIT_LOG_TYPE } from '../../types/document-audit-logs';
@@ -37,6 +44,9 @@ import {
   createRecipientAuthOptions,
   extractDocumentAuthMethods,
 } from '../../utils/document-auth';
+import { getLocale } from '../../utils/i18n';
+import type { TranslationsProps } from '../../utils/i18n.import';
+import { getTranslation, loadAndActivateLocale } from '../../utils/i18n.import';
 import { formatDocumentsPath } from '../../utils/teams';
 import { sendDocument } from '../document/send-document';
 import { validateFieldAuth } from '../document/validate-field-auth';
@@ -71,7 +81,9 @@ export const createDocumentFromDirectTemplate = async ({
   templateUpdatedAt,
   requestMetadata,
   user,
-}: CreateDocumentFromDirectTemplateOptions) => {
+  headers,
+  cookies,
+}: CreateDocumentFromDirectTemplateOptions & TranslationsProps) => {
   const template = await prisma.template.findFirst({
     where: {
       directLink: {
@@ -513,6 +525,13 @@ export const createDocumentFromDirectTemplate = async ({
       data: auditLogsToCreate,
     });
 
+    const locale = getLocale({ headers: headers, cookies: cookies });
+    await loadAndActivateLocale(locale);
+
+    const recipientActionActioned = i18n
+      ._(RECIPIENT_ROLES_DESCRIPTION[directTemplateRecipient.role].actioned)
+      .toLowerCase();
+
     // Send email to template owner.
     const emailTemplate = createElement(DocumentCreatedFromDirectTemplateEmailTemplate, {
       recipientName: directRecipientEmail,
@@ -522,6 +541,22 @@ export const createDocumentFromDirectTemplate = async ({
       }`,
       documentName: document.title,
       assetBaseUrl: NEXT_PUBLIC_WEBAPP_URL() || 'http://localhost:3000',
+      documentCreatedFromDirectTemplateData: await documentCreatedFromDirectTemplateData({
+        headers: headers,
+        cookies: cookies,
+        recipientName: directRecipientEmail,
+        recipientActionActioned: recipientActionActioned,
+      }),
+      footerData: await loadFooterTemplateData({
+        headers: headers,
+        cookies: cookies,
+      }),
+    });
+
+    const mailSubject = await getTranslation({
+      headers: headers,
+      cookies: cookies,
+      message: [msg`Document created from direct template`],
     });
 
     await mailer.sendMail({
@@ -535,7 +570,7 @@ export const createDocumentFromDirectTemplate = async ({
         name: process.env.NEXT_PRIVATE_SMTP_FROM_NAME || 'Documenso',
         address: process.env.NEXT_PRIVATE_SMTP_FROM_ADDRESS || 'noreply@documenso.com',
       },
-      subject: 'Document created from direct template',
+      subject: mailSubject[0],
       html: render(emailTemplate),
       text: render(emailTemplate, { plainText: true }),
     });
@@ -554,6 +589,8 @@ export const createDocumentFromDirectTemplate = async ({
       userId: template.userId,
       teamId: template.teamId || undefined,
       requestMetadata,
+      headers: headers,
+      cookies: cookies,
     });
 
     const updatedDocument = await prisma.document.findFirstOrThrow({

@@ -2,6 +2,7 @@ import { TEAM_MEMBER_ROLE_PERMISSIONS_MAP } from '@documenso/lib/constants/teams
 import { AppError } from '@documenso/lib/errors/app-error';
 import { prisma } from '@documenso/prisma';
 
+import type { TranslationsProps } from '../../utils/i18n.import';
 import { sendTeamMemberInviteEmail } from './create-team-member-invites';
 
 export type ResendTeamMemberInvitationOptions = {
@@ -34,7 +35,9 @@ export const resendTeamMemberInvitation = async ({
   userName,
   teamId,
   invitationId,
-}: ResendTeamMemberInvitationOptions) => {
+  headers,
+  cookies,
+}: ResendTeamMemberInvitationOptions & TranslationsProps) => {
   await prisma.$transaction(
     async (tx) => {
       const team = await tx.team.findUniqueOrThrow({
@@ -72,6 +75,8 @@ export const resendTeamMemberInvitation = async ({
         teamName: team.name,
         teamUrl: team.url,
         senderName: userName,
+        headers: headers,
+        cookies: cookies,
       });
     },
     { timeout: 30_000 },

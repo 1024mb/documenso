@@ -89,6 +89,8 @@ export const templateRouter = router({
               }
             : undefined,
           requestMetadata,
+          headers: ctx.req.headers,
+          cookies: ctx.req.cookies,
         });
       } catch (err) {
         console.error(err);
@@ -125,6 +127,8 @@ export const templateRouter = router({
             userId: ctx.user.id,
             teamId,
             requestMetadata,
+            headers: ctx.req.headers,
+            cookies: ctx.req.cookies,
           }).catch((err) => {
             console.error(err);
 

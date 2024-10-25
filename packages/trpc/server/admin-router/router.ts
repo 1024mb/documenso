@@ -98,7 +98,7 @@ export const adminRouter = router({
 
   resealDocument: adminProcedure
     .input(ZAdminResealDocumentMutationSchema)
-    .mutation(async ({ input }) => {
+    .mutation(async ({ input, ctx }) => {
       const { id } = input;
 
       try {
@@ -106,7 +106,12 @@ export const adminRouter = router({
 
         const isResealing = document.status === DocumentStatus.COMPLETED;
 
-        return await sealDocument({ documentId: id, isResealing });
+        return await sealDocument({
+          documentId: id,
+          isResealing,
+          headers: ctx.req.headers,
+          cookies: ctx.req.cookies,
+        });
       } catch (err) {
         console.error('resealDocument error', err);
 
@@ -143,11 +148,18 @@ export const adminRouter = router({
     .mutation(async ({ ctx, input }) => {
       const { id, reason } = input;
       try {
-        await sendDeleteEmail({ documentId: id, reason });
+        await sendDeleteEmail({
+          documentId: id,
+          reason: reason,
+          headers: ctx.req.headers,
+          cookies: ctx.req.cookies,
+        });
 
         return await superDeleteDocument({
           id,
           requestMetadata: extractNextApiRequestMetadata(ctx.req),
+          headers: ctx.req.headers,
+          cookies: ctx.req.cookies,
         });
       } catch (err) {
         console.error(err);

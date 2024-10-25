@@ -1,6 +1,7 @@
-import { Trans, msg } from '@lingui/macro';
-import { useLingui } from '@lingui/react';
+import { msg } from '@lingui/macro';
 
+import type { TranslationsProps } from '@documenso/lib/utils/i18n.import';
+import { getTranslation } from '@documenso/lib/utils/i18n.import';
 import config from '@documenso/tailwind-config';
 
 import {
@@ -17,20 +18,61 @@ import {
   Text,
 } from '../components';
 import { TemplateFooter } from '../template-components/template-footer';
-import type { TemplateResetPasswordProps } from '../template-components/template-reset-password';
+import type { TemplateFooterData } from '../template-components/template-footer';
+import type {
+  TemplateResetPasswordData,
+  TemplateResetPasswordProps,
+} from '../template-components/template-reset-password';
 import { TemplateResetPassword } from '../template-components/template-reset-password';
 
-export type ResetPasswordTemplateProps = Partial<TemplateResetPasswordProps>;
+export type ResetPasswordTemplateProps = Partial<TemplateResetPasswordProps> & {
+  resetPasswordTemplateData: ResetPasswordTemplateData;
+  footerData: TemplateFooterData;
+  templateResetPasswordData: TemplateResetPasswordData;
+};
+
+export type ResetPasswordTemplateData = {
+  previewText: string;
+  message1: string;
+  message2: string;
+  message3: string;
+  message4: string;
+};
+
+export const resetPasswordTemplateData = async ({
+  userName,
+  headers,
+  cookies,
+}: { userName: string } & TranslationsProps): Promise<ResetPasswordTemplateData> => {
+  const translation = await getTranslation({
+    headers: headers,
+    cookies: cookies,
+    message: [
+      msg`Password Reset Successful`,
+      msg`Hi, ${userName}`,
+      msg`We've changed your password as you asked. You can now sign in with your new password.`,
+      msg`Didn't request a password change? We are here to help you secure your account, just`,
+      msg`contact us.`,
+    ],
+  });
+
+  return {
+    previewText: translation[0],
+    message1: translation[1],
+    message2: translation[2],
+    message3: translation[3],
+    message4: translation[4],
+  };
+};
 
 export const ResetPasswordTemplate = ({
   userName = 'Lucas Smith',
   userEmail = 'lucas@documenso.com',
   assetBaseUrl = 'http://localhost:3002',
+  resetPasswordTemplateData,
+  templateResetPasswordData,
+  footerData,
 }: ResetPasswordTemplateProps) => {
-  const { _ } = useLingui();
-
-  const previewText = _(msg`Password Reset Successful`);
-
   const getAssetUrl = (path: string) => {
     return new URL(path, assetBaseUrl).toString();
   };
@@ -38,7 +80,7 @@ export const ResetPasswordTemplate = ({
   return (
     <Html>
       <Head />
-      <Preview>{previewText}</Preview>
+      <Preview>{resetPasswordTemplateData.previewText}</Preview>
       <Tailwind
         config={{
           theme: {
@@ -62,6 +104,7 @@ export const ResetPasswordTemplate = ({
                   userName={userName}
                   userEmail={userEmail}
                   assetBaseUrl={assetBaseUrl}
+                  templateResetPasswordData={templateResetPasswordData}
                 />
               </Section>
             </Container>
@@ -69,28 +112,20 @@ export const ResetPasswordTemplate = ({
             <Container className="mx-auto mt-12 max-w-xl">
               <Section>
                 <Text className="my-4 text-base font-semibold">
-                  <Trans>
-                    Hi, {userName}{' '}
-                    <Link className="font-normal text-slate-400" href={`mailto:${userEmail}`}>
-                      ({userEmail})
-                    </Link>
-                  </Trans>
+                  {resetPasswordTemplateData.message1}{' '}
+                  <Link className="font-normal text-slate-400" href={`mailto:${userEmail}`}>
+                    ({userEmail})
+                  </Link>
                 </Text>
 
                 <Text className="mt-2 text-base text-slate-400">
-                  <Trans>
-                    We've changed your password as you asked. You can now sign in with your new
-                    password.
-                  </Trans>
+                  {resetPasswordTemplateData.message2}
                 </Text>
                 <Text className="mt-2 text-base text-slate-400">
-                  <Trans>
-                    Didn't request a password change? We are here to help you secure your account,
-                    just{' '}
-                    <Link className="text-documenso-700 font-normal" href="mailto:hi@documenso.com">
-                      contact us.
-                    </Link>
-                  </Trans>
+                  {resetPasswordTemplateData.message3}{' '}
+                  <Link className="text-documenso-700 font-normal" href="mailto:hi@documenso.com">
+                    {resetPasswordTemplateData.message4}
+                  </Link>
                 </Text>
               </Section>
             </Container>
@@ -98,7 +133,13 @@ export const ResetPasswordTemplate = ({
             <Hr className="mx-auto mt-12 max-w-xl" />
 
             <Container className="mx-auto max-w-xl">
-              <TemplateFooter isDocument={false} />
+              <TemplateFooter
+                isDocument={false}
+                address={footerData.address}
+                companyName={footerData.companyName}
+                message1={footerData.message1}
+                message2={footerData.message2}
+              />
             </Container>
           </Section>
         </Body>

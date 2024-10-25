@@ -1,10 +1,17 @@
 import { createElement } from 'react';
 
+import { i18n } from '@lingui/core';
+import { msg } from '@lingui/macro';
 import { z } from 'zod';
 
 import { mailer } from '@documenso/email/mailer';
 import { render } from '@documenso/email/render';
-import DocumentInviteEmailTemplate from '@documenso/email/templates/document-invite';
+import { templateDocumentInviteData } from '@documenso/email/template-components/template-document-invite';
+import { loadFooterTemplateData } from '@documenso/email/template-components/template-footer';
+import {
+  DocumentInviteEmailTemplate,
+  documentInviteEmailTemplateData,
+} from '@documenso/email/templates/document-invite';
 import { prisma } from '@documenso/prisma';
 import {
   DocumentSource,
@@ -16,12 +23,14 @@ import {
 import { NEXT_PUBLIC_WEBAPP_URL } from '../../../constants/app';
 import { FROM_ADDRESS, FROM_NAME } from '../../../constants/email';
 import {
-  RECIPIENT_ROLES_DESCRIPTION_ENG,
+  RECIPIENT_ROLES_DESCRIPTION,
   RECIPIENT_ROLE_TO_EMAIL_TYPE,
 } from '../../../constants/recipient-roles';
 import { DOCUMENT_AUDIT_LOG_TYPE } from '../../../types/document-audit-logs';
 import { ZRequestMetadataSchema } from '../../../universal/extract-request-metadata';
 import { createDocumentAuditLogData } from '../../../utils/document-audit-logs';
+import { getLocale } from '../../../utils/i18n';
+import { loadAndActivateLocale } from '../../../utils/i18n.import';
 import { renderCustomEmailTemplate } from '../../../utils/render-custom-email-template';
 import { type JobDefinition } from '../../client/_internal/job';
 
@@ -32,6 +41,9 @@ const SEND_SIGNING_EMAIL_JOB_DEFINITION_SCHEMA = z.object({
   documentId: z.number(),
   recipientId: z.number(),
   requestMetadata: ZRequestMetadataSchema.optional(),
+  headers: z.any().optional(),
+  cookies: z.any().optional(),
+  locale: z.string().optional(),
 });
 
 export const SEND_SIGNING_EMAIL_JOB_DEFINITION = {
@@ -43,7 +55,10 @@ export const SEND_SIGNING_EMAIL_JOB_DEFINITION = {
     schema: SEND_SIGNING_EMAIL_JOB_DEFINITION_SCHEMA,
   },
   handler: async ({ payload, io }) => {
-    const { userId, documentId, recipientId, requestMetadata } = payload;
+    const { userId, documentId, recipientId, requestMetadata, headers, cookies } = payload;
+
+    const locale = getLocale({ headers: headers, cookies: cookies });
+    await loadAndActivateLocale(locale);
 
     const [user, document, recipient] = await Promise.all([
       prisma.user.findFirstOrThrow({
@@ -87,25 +102,37 @@ export const SEND_SIGNING_EMAIL_JOB_DEFINITION = {
 
     const { email, name } = recipient;
     const selfSigner = email === user.email;
-    const recipientActionVerb =
-      RECIPIENT_ROLES_DESCRIPTION_ENG[recipient.role].actionVerb.toLowerCase();
+    const recipientActionVerb = i18n
+      ._(RECIPIENT_ROLES_DESCRIPTION[recipient.role].actionVerb)
+      .toLowerCase();
+    const recipientProgressiveVerb = i18n
+      ._(RECIPIENT_ROLES_DESCRIPTION[recipient.role].progressiveVerb)
+      .toLowerCase();
 
     let emailMessage = customEmail?.message || '';
-    let emailSubject = `Please ${recipientActionVerb} this document`;
+    let emailSubject = i18n._(msg`Please ${recipientActionVerb} this document`);
 
     if (selfSigner) {
-      emailMessage = `You have initiated the document ${`"${document.title}"`} that requires you to ${recipientActionVerb} it.`;
-      emailSubject = `Please ${recipientActionVerb} your document`;
+      emailMessage = i18n._(
+        msg`You have initiated the document "${document.title}" that requires you to ${recipientActionVerb} it.`,
+      );
+      emailSubject = i18n._(msg`Please ${recipientActionVerb} your document`);
     }
 
     if (isDirectTemplate) {
-      emailMessage = `A document was created by your direct template that requires you to ${recipientActionVerb} it.`;
-      emailSubject = `Please ${recipientActionVerb} this document created by your direct template`;
+      emailMessage = i18n._(
+        msg`A document was created by your direct template that requires you to ${recipientActionVerb} it.`,
+      );
+      emailSubject = i18n._(
+        msg`Please ${recipientActionVerb} this document created by your direct template`,
+      );
     }
 
     if (isTeamDocument && team) {
-      emailSubject = `${team.name} invited you to ${recipientActionVerb} a document`;
-      emailMessage = `${user.name} on behalf of ${team.name} has invited you to ${recipientActionVerb} the document "${document.title}".`;
+      emailSubject = i18n._(msg`${team.name} invited you to ${recipientActionVerb} a document`);
+      emailMessage = i18n._(
+        msg`${user.name} on behalf of ${team.name} has invited you to ${recipientActionVerb} the document "${document.title}".`,
+      );
     }
 
     const customEmailTemplate = {
@@ -129,6 +156,27 @@ export const SEND_SIGNING_EMAIL_JOB_DEFINITION = {
       isTeamInvite: isTeamDocument,
       teamName: team?.name,
       teamEmail: team?.teamEmail?.email,
+      documentInviteEmailTemplateData: await documentInviteEmailTemplateData({
+        headers: headers,
+        cookies: cookies,
+        recipientActionVerb: recipientActionVerb,
+        documentName: document.title,
+        inviterName: user.name || undefined,
+        teamName: team?.name,
+      }),
+      templateDocumentInviteData: await templateDocumentInviteData({
+        headers: headers,
+        cookies: cookies,
+        recipientActionVerb: recipientActionVerb,
+        progressiveVerb: recipientProgressiveVerb,
+        documentName: document.title,
+        inviterName: user.name || undefined,
+        teamName: team?.name,
+      }),
+      footerData: await loadFooterTemplateData({
+        headers: payload.headers,
+        cookies: payload.cookies,
+      }),
     });
 
     await io.runTask('send-signing-email', async () => {

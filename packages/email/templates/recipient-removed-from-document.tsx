@@ -1,6 +1,7 @@
-import { Trans, msg } from '@lingui/macro';
-import { useLingui } from '@lingui/react';
+import { msg } from '@lingui/macro';
 
+import type { TranslationsProps } from '@documenso/lib/utils/i18n.import';
+import { getTranslation } from '@documenso/lib/utils/i18n.import';
 import config from '@documenso/tailwind-config';
 
 import {
@@ -18,18 +19,54 @@ import {
 import type { TemplateDocumentCancelProps } from '../template-components/template-document-cancel';
 import TemplateDocumentImage from '../template-components/template-document-image';
 import { TemplateFooter } from '../template-components/template-footer';
+import type { TemplateFooterData } from '../template-components/template-footer';
 
-export type DocumentCancelEmailTemplateProps = Partial<TemplateDocumentCancelProps>;
+export type DocumentCancelEmailTemplateProps = Partial<
+  Omit<TemplateDocumentCancelProps, 'templateDocumentCancelData'>
+> & {
+  recipientRemovedFromDocumentTemplateData: RecipientRemovedFromDocumentTemplateData;
+  footerData: TemplateFooterData;
+};
+
+export type RecipientRemovedFromDocumentTemplateData = {
+  previewText: string;
+  message1: string;
+  message2: string;
+};
+
+export const recipientRemovedFromDocumentTemplateData = async ({
+  inviterName,
+  documentName,
+  headers,
+  cookies,
+}: {
+  inviterName: string | undefined;
+  documentName: string;
+} & TranslationsProps): Promise<RecipientRemovedFromDocumentTemplateData> => {
+  const translations = await getTranslation({
+    headers: headers,
+    cookies: cookies,
+    message: [
+      msg`${inviterName} has removed you from the document ${documentName}.`,
+      msg`${inviterName} has removed you from the document`,
+      msg`"${documentName}"`,
+    ],
+  });
+
+  return {
+    previewText: translations[0],
+    message1: translations[1],
+    message2: translations[2],
+  };
+};
 
 export const RecipientRemovedFromDocumentTemplate = ({
   inviterName = 'Lucas Smith',
   documentName = 'Open Source Pledge.pdf',
   assetBaseUrl = 'http://localhost:3002',
+  recipientRemovedFromDocumentTemplateData,
+  footerData,
 }: DocumentCancelEmailTemplateProps) => {
-  const { _ } = useLingui();
-
-  const previewText = _(msg`${inviterName} has removed you from the document ${documentName}.`);
-
   const getAssetUrl = (path: string) => {
     return new URL(path, assetBaseUrl).toString();
   };
@@ -37,7 +74,7 @@ export const RecipientRemovedFromDocumentTemplate = ({
   return (
     <Html>
       <Head />
-      <Preview>{previewText}</Preview>
+      <Preview>{recipientRemovedFromDocumentTemplateData.previewText}</Preview>
       <Tailwind
         config={{
           theme: {
@@ -61,10 +98,9 @@ export const RecipientRemovedFromDocumentTemplate = ({
 
                 <Section>
                   <Text className="text-primary mx-auto mb-0 max-w-[80%] text-center text-lg font-semibold">
-                    <Trans>
-                      {inviterName} has removed you from the document
-                      <br />"{documentName}"
-                    </Trans>
+                    {recipientRemovedFromDocumentTemplateData.message1}
+                    <br />
+                    {recipientRemovedFromDocumentTemplateData.message2}
                   </Text>
                 </Section>
               </Section>
@@ -73,7 +109,12 @@ export const RecipientRemovedFromDocumentTemplate = ({
             <Hr className="mx-auto mt-12 max-w-xl" />
 
             <Container className="mx-auto max-w-xl">
-              <TemplateFooter />
+              <TemplateFooter
+                address={footerData.address}
+                companyName={footerData.companyName}
+                message1={footerData.message1}
+                message2={footerData.message2}
+              />
             </Container>
           </Section>
         </Body>

@@ -1,11 +1,13 @@
-import { Trans, msg } from '@lingui/macro';
-import { useLingui } from '@lingui/react';
+import { msg } from '@lingui/macro';
 
+import type { TranslationsProps } from '@documenso/lib/utils/i18n.import';
+import { getTranslation } from '@documenso/lib/utils/i18n.import';
 import { formatTeamUrl } from '@documenso/lib/utils/teams';
 import config from '@documenso/tailwind-config';
 
 import { Body, Container, Head, Hr, Html, Preview, Section, Tailwind, Text } from '../components';
 import { TemplateFooter } from '../template-components/template-footer';
+import type { TemplateFooterData } from '../template-components/template-footer';
 import TemplateImage from '../template-components/template-image';
 
 export type TeamLeaveEmailProps = {
@@ -15,6 +17,42 @@ export type TeamLeaveEmailProps = {
   memberEmail: string;
   teamName: string;
   teamUrl: string;
+  teamLeaveEmailTemplateData: TeamLeaveEmailTemplateData;
+  footerData: TemplateFooterData;
+};
+
+export type TeamLeaveEmailTemplateData = {
+  previewText: string;
+  message1: string;
+  message2: string;
+};
+
+export const teamLeaveEmailTemplateData = async ({
+  memberName,
+  memberEmail,
+  teamName,
+  headers,
+  cookies,
+}: {
+  memberName: string;
+  memberEmail: string;
+  teamName: string;
+} & TranslationsProps): Promise<TeamLeaveEmailTemplateData> => {
+  const translations = await getTranslation({
+    headers: headers,
+    cookies: cookies,
+    message: [
+      msg`A team member has left a team on Documenso`,
+      msg`${memberName || memberEmail} left the team ${teamName} on Documenso`,
+      msg`${memberEmail} left the following team`,
+    ],
+  });
+
+  return {
+    previewText: translations[0],
+    message1: translations[1],
+    message2: translations[2],
+  };
 };
 
 export const TeamLeaveEmailTemplate = ({
@@ -24,15 +62,13 @@ export const TeamLeaveEmailTemplate = ({
   memberEmail = 'johndoe@documenso.com',
   teamName = 'Team Name',
   teamUrl = 'demo',
+  teamLeaveEmailTemplateData,
+  footerData,
 }: TeamLeaveEmailProps) => {
-  const { _ } = useLingui();
-
-  const previewText = _(msg`A team member has left a team on Documenso`);
-
   return (
     <Html>
       <Head />
-      <Preview>{previewText}</Preview>
+      <Preview>{teamLeaveEmailTemplateData.previewText}</Preview>
       <Tailwind
         config={{
           theme: {
@@ -61,13 +97,11 @@ export const TeamLeaveEmailTemplate = ({
 
               <Section className="p-2 text-slate-500">
                 <Text className="text-center text-lg font-medium text-black">
-                  <Trans>
-                    {memberName || memberEmail} left the team {teamName} on Documenso
-                  </Trans>
+                  {teamLeaveEmailTemplateData.message1}
                 </Text>
 
                 <Text className="my-1 text-center text-base">
-                  <Trans>{memberEmail} left the following team</Trans>
+                  {teamLeaveEmailTemplateData.message2}
                 </Text>
 
                 <div className="mx-auto my-2 w-fit rounded-lg bg-gray-50 px-4 py-2 text-base font-medium text-slate-600">
@@ -79,7 +113,13 @@ export const TeamLeaveEmailTemplate = ({
             <Hr className="mx-auto mt-12 max-w-xl" />
 
             <Container className="mx-auto max-w-xl">
-              <TemplateFooter isDocument={false} />
+              <TemplateFooter
+                isDocument={false}
+                address={footerData.address}
+                companyName={footerData.companyName}
+                message1={footerData.message1}
+                message2={footerData.message2}
+              />
             </Container>
           </Section>
         </Body>

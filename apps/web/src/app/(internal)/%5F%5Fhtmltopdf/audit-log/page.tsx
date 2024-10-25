@@ -2,8 +2,8 @@ import React from 'react';
 
 import { redirect } from 'next/navigation';
 
-import { Trans } from '@lingui/macro';
-import { Trans as TransReact } from '@lingui/react';
+import { msg } from '@lingui/macro';
+import { Trans } from '@lingui/react';
 import { DateTime } from 'luxon';
 
 import { APP_I18N_OPTIONS } from '@documenso/lib/constants/i18n';
@@ -56,7 +56,7 @@ export default async function AuditLog({ searchParams }: AuditLogProps) {
     <div className="print-provider pointer-events-none mx-auto max-w-screen-md">
       <div className="flex items-center">
         <h1 className="my-8 text-2xl font-bold">
-          <Trans>Version History</Trans>
+          <Trans id={msg`Version History`.id} />
         </h1>
       </div>
 
@@ -64,7 +64,7 @@ export default async function AuditLog({ searchParams }: AuditLogProps) {
         <CardContent className="grid grid-cols-2 gap-4 p-6 text-sm print:text-xs">
           <p>
             <span className="font-medium">
-              <Trans>Document ID</Trans>
+              <Trans id={msg`Document ID`.id} />
             </span>
 
             <span className="mt-1 block break-words">{document.id}</span>
@@ -72,7 +72,7 @@ export default async function AuditLog({ searchParams }: AuditLogProps) {
 
           <p>
             <span className="font-medium">
-              <Trans>Enclosed Document</Trans>
+              <Trans id={msg`Enclosed Document`.id} />
             </span>
 
             <span className="mt-1 block break-words">{document.title}</span>
@@ -80,17 +80,17 @@ export default async function AuditLog({ searchParams }: AuditLogProps) {
 
           <p>
             <span className="font-medium">
-              <Trans>Status</Trans>
+              <Trans id={msg`Status`.id} />
             </span>
 
             <span className="mt-1 block">
-              {document.deletedAt ? <Trans>DELETED</Trans> : document.status}
+              {document.deletedAt ? <Trans id={msg`DELETED`.id} /> : document.status}
             </span>
           </p>
 
           <p>
             <span className="font-medium">
-              <Trans>Owner</Trans>
+              <Trans id={msg`Owner`.id} />
             </span>
 
             <span className="mt-1 block break-words">
@@ -100,7 +100,7 @@ export default async function AuditLog({ searchParams }: AuditLogProps) {
 
           <p>
             <span className="font-medium">
-              <Trans>Created At</Trans>
+              <Trans id={msg`Created At`.id} />
             </span>
 
             <span className="mt-1 block">
@@ -112,7 +112,7 @@ export default async function AuditLog({ searchParams }: AuditLogProps) {
 
           <p>
             <span className="font-medium">
-              <Trans>Last Updated</Trans>
+              <Trans id={msg`Last Updated`.id} />
             </span>
 
             <span className="mt-1 block">
@@ -124,7 +124,7 @@ export default async function AuditLog({ searchParams }: AuditLogProps) {
 
           <p>
             <span className="font-medium">
-              <Trans>Time Zone</Trans>
+              <Trans id={msg`Time Zone`.id} />
             </span>
 
             <span className="mt-1 block break-words">
@@ -134,14 +134,14 @@ export default async function AuditLog({ searchParams }: AuditLogProps) {
 
           <div>
             <p className="font-medium">
-              <Trans>Recipients</Trans>
+              <Trans id={msg`Recipients`.id} />
             </p>
 
             <ul className="mt-1 list-inside list-disc">
               {document.Recipient.map((recipient) => (
                 <li key={recipient.id}>
                   <span className="text-muted-foreground">
-                    [<TransReact id={RECIPIENT_ROLES_DESCRIPTION[recipient.role].roleName.id} />]
+                    [<Trans id={RECIPIENT_ROLES_DESCRIPTION[recipient.role].roleName.id} />]
                   </span>{' '}
                   {recipient.name} ({recipient.email})
                 </li>

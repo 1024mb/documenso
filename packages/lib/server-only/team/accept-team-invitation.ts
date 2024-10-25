@@ -4,13 +4,19 @@ import { prisma } from '@documenso/prisma';
 import { TeamMemberInviteStatus } from '@documenso/prisma/client';
 
 import { jobs } from '../../jobs/client';
+import type { TranslationsProps } from '../../utils/i18n.import';
 
 export type AcceptTeamInvitationOptions = {
   userId: number;
   teamId: number;
 };
 
-export const acceptTeamInvitation = async ({ userId, teamId }: AcceptTeamInvitationOptions) => {
+export const acceptTeamInvitation = async ({
+  userId,
+  teamId,
+  headers,
+  cookies,
+}: AcceptTeamInvitationOptions & TranslationsProps) => {
   await prisma.$transaction(
     async (tx) => {
       const user = await tx.user.findFirstOrThrow({
@@ -83,6 +89,8 @@ export const acceptTeamInvitation = async ({ userId, teamId }: AcceptTeamInvitat
         payload: {
           teamId: team.id,
           memberId: teamMember.id,
+          headers: headers,
+          cookies: cookies,
         },
       });
     },

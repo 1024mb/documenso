@@ -1,11 +1,13 @@
 import { msg } from '@lingui/macro';
-import { useLingui } from '@lingui/react';
 
+import type { TranslationsProps } from '@documenso/lib/utils/i18n.import';
+import { getTranslation } from '@documenso/lib/utils/i18n.import';
 import { formatTeamUrl } from '@documenso/lib/utils/teams';
 import config from '@documenso/tailwind-config';
 
 import { Body, Container, Head, Hr, Html, Preview, Section, Tailwind, Text } from '../components';
 import { TemplateFooter } from '../template-components/template-footer';
+import type { TemplateFooterData } from '../template-components/template-footer';
 import TemplateImage from '../template-components/template-image';
 
 export type TeamDeleteEmailProps = {
@@ -13,6 +15,44 @@ export type TeamDeleteEmailProps = {
   baseUrl: string;
   teamUrl: string;
   isOwner: boolean;
+  teamDeleteEmailTemplateData: TeamDeleteEmailTemplateData;
+  footerData: TemplateFooterData;
+};
+
+export type TeamDeleteEmailTemplateData = {
+  previewText1: string;
+  previewText2: string;
+  title1: string;
+  title2: string;
+  description1: string;
+  description2: string;
+};
+
+export const teamDeleteEmailTemplateData = async ({
+  headers,
+  cookies,
+}: TranslationsProps): Promise<TeamDeleteEmailTemplateData> => {
+  const translations = await getTranslation({
+    headers: headers,
+    cookies: cookies,
+    message: [
+      msg`Your team has been deleted`,
+      msg`A team you were a part of has been deleted`,
+      msg`Your team has been deleted`,
+      msg`A team you were a part of has been deleted`,
+      msg`The following team has been deleted by you`,
+      msg`The following team has been deleted by its owner. You will no longer be able to access this team and its documents`,
+    ],
+  });
+
+  return {
+    previewText1: translations[0],
+    previewText2: translations[1],
+    title1: translations[2],
+    title2: translations[3],
+    description1: translations[4],
+    description2: translations[5],
+  };
 };
 
 export const TeamDeleteEmailTemplate = ({
@@ -20,22 +60,18 @@ export const TeamDeleteEmailTemplate = ({
   baseUrl = 'https://documenso.com',
   teamUrl = 'demo',
   isOwner = false,
+  teamDeleteEmailTemplateData,
+  footerData,
 }: TeamDeleteEmailProps) => {
-  const { _ } = useLingui();
-
   const previewText = isOwner
-    ? _(msg`Your team has been deleted`)
-    : _(msg`A team you were a part of has been deleted`);
+    ? teamDeleteEmailTemplateData.previewText1
+    : teamDeleteEmailTemplateData.previewText2;
 
-  const title = isOwner
-    ? _(msg`Your team has been deleted`)
-    : _(msg`A team you were a part of has been deleted`);
+  const title = isOwner ? teamDeleteEmailTemplateData.title1 : teamDeleteEmailTemplateData.title2;
 
   const description = isOwner
-    ? _(msg`The following team has been deleted by you`)
-    : _(
-        msg`The following team has been deleted by its owner. You will no longer be able to access this team and its documents`,
-      );
+    ? teamDeleteEmailTemplateData.description1
+    : teamDeleteEmailTemplateData.description2;
 
   return (
     <Html>
@@ -81,7 +117,13 @@ export const TeamDeleteEmailTemplate = ({
             <Hr className="mx-auto mt-12 max-w-xl" />
 
             <Container className="mx-auto max-w-xl">
-              <TemplateFooter isDocument={false} />
+              <TemplateFooter
+                isDocument={false}
+                address={footerData.address}
+                companyName={footerData.companyName}
+                message1={footerData.message1}
+                message2={footerData.message2}
+              />
             </Container>
           </Section>
         </Body>

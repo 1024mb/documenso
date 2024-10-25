@@ -2,7 +2,13 @@ import { createElement } from 'react';
 
 import { mailer } from '@documenso/email/mailer';
 import { render } from '@documenso/email/render';
-import { DocumentCompletedEmailTemplate } from '@documenso/email/templates/document-completed';
+import { templateDocumentCompletedData } from '@documenso/email/template-components/template-document-completed';
+import { loadFooterTemplateData } from '@documenso/email/template-components/template-footer';
+import {
+  DocumentCompletedEmailTemplate,
+  documentCompletedEmailTemplateData,
+  documentCompletedEmailTemplateSubject,
+} from '@documenso/email/templates/document-completed';
 import { prisma } from '@documenso/prisma';
 import { DocumentSource } from '@documenso/prisma/client';
 
@@ -11,6 +17,7 @@ import { DOCUMENT_AUDIT_LOG_TYPE } from '../../types/document-audit-logs';
 import type { RequestMetadata } from '../../universal/extract-request-metadata';
 import { getFile } from '../../universal/upload/get-file';
 import { createDocumentAuditLogData } from '../../utils/document-audit-logs';
+import type { TranslationsProps } from '../../utils/i18n.import';
 import { renderCustomEmailTemplate } from '../../utils/render-custom-email-template';
 
 export interface SendDocumentOptions {
@@ -18,7 +25,12 @@ export interface SendDocumentOptions {
   requestMetadata?: RequestMetadata;
 }
 
-export const sendCompletedEmail = async ({ documentId, requestMetadata }: SendDocumentOptions) => {
+export const sendCompletedEmail = async ({
+  documentId,
+  requestMetadata,
+  headers,
+  cookies,
+}: SendDocumentOptions & TranslationsProps) => {
   const document = await prisma.document.findUnique({
     where: {
       id: documentId,
@@ -67,6 +79,19 @@ export const sendCompletedEmail = async ({ documentId, requestMetadata }: SendDo
       documentName: document.title,
       assetBaseUrl,
       downloadLink: documentOwnerDownloadLink,
+      documentCompletedEmailTemplateData: await documentCompletedEmailTemplateData({
+        headers: headers,
+        cookies: cookies,
+      }),
+      templateDocumentCompletedData: await templateDocumentCompletedData({
+        documentName: document.title,
+        headers: headers,
+        cookies: cookies,
+      }),
+      footerData: await loadFooterTemplateData({
+        headers: headers,
+        cookies: cookies,
+      }),
     });
 
     await mailer.sendMail({
@@ -80,7 +105,7 @@ export const sendCompletedEmail = async ({ documentId, requestMetadata }: SendDo
         name: process.env.NEXT_PRIVATE_SMTP_FROM_NAME || 'Documenso',
         address: process.env.NEXT_PRIVATE_SMTP_FROM_ADDRESS || 'noreply@documenso.com',
       },
-      subject: 'Signing Complete!',
+      subject: await documentCompletedEmailTemplateSubject({ headers: headers, cookies: cookies }),
       html: render(template),
       text: render(template, { plainText: true }),
       attachments: [
@@ -127,6 +152,19 @@ export const sendCompletedEmail = async ({ documentId, requestMetadata }: SendDo
           isDirectTemplate && document.documentMeta?.message
             ? renderCustomEmailTemplate(document.documentMeta.message, customEmailTemplate)
             : undefined,
+        documentCompletedEmailTemplateData: await documentCompletedEmailTemplateData({
+          headers: headers,
+          cookies: cookies,
+        }),
+        templateDocumentCompletedData: await templateDocumentCompletedData({
+          documentName: document.title,
+          headers: headers,
+          cookies: cookies,
+        }),
+        footerData: await loadFooterTemplateData({
+          headers: headers,
+          cookies: cookies,
+        }),
       });
 
       await mailer.sendMail({
@@ -143,7 +181,7 @@ export const sendCompletedEmail = async ({ documentId, requestMetadata }: SendDo
         subject:
           isDirectTemplate && document.documentMeta?.subject
             ? renderCustomEmailTemplate(document.documentMeta.subject, customEmailTemplate)
-            : 'Signing Complete!',
+            : await documentCompletedEmailTemplateSubject({ headers: headers, cookies: cookies }),
         html: render(template),
         text: render(template, { plainText: true }),
         attachments: [

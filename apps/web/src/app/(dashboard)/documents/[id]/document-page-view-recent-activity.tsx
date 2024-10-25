@@ -143,7 +143,6 @@ export const DocumentPageViewRecentActivity = ({
                     ))}
                 </div>
 
-                {/* Todo: Translations. */}
                 <p
                   className="text-muted-foreground dark:text-muted-foreground/70 flex-auto truncate py-0.5 text-xs leading-5"
                   title={`${formatDocumentAuditLogAction(auditLog, userId).prefix} ${

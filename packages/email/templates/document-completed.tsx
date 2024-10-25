@@ -1,15 +1,55 @@
 import { msg } from '@lingui/macro';
-import { useLingui } from '@lingui/react';
 
+import type { TranslationsProps } from '@documenso/lib/utils/i18n.import';
+import { getTranslation } from '@documenso/lib/utils/i18n.import';
 import config from '@documenso/tailwind-config';
 
 import { Body, Container, Head, Html, Img, Preview, Section, Tailwind } from '../components';
-import type { TemplateDocumentCompletedProps } from '../template-components/template-document-completed';
+import type {
+  TemplateDocumentCompletedData,
+  TemplateDocumentCompletedProps,
+} from '../template-components/template-document-completed';
 import { TemplateDocumentCompleted } from '../template-components/template-document-completed';
 import { TemplateFooter } from '../template-components/template-footer';
+import type { TemplateFooterData } from '../template-components/template-footer';
 
 export type DocumentCompletedEmailTemplateProps = Partial<TemplateDocumentCompletedProps> & {
   customBody?: string;
+  documentCompletedEmailTemplateData: DocumentCompletedEmailTemplateData;
+  templateDocumentCompletedData: TemplateDocumentCompletedData;
+  footerData: TemplateFooterData;
+};
+
+export type DocumentCompletedEmailTemplateData = {
+  previewText: string;
+};
+
+export const documentCompletedEmailTemplateData = async ({
+  headers,
+  cookies,
+}: TranslationsProps): Promise<DocumentCompletedEmailTemplateData> => {
+  const translations = await getTranslation({
+    headers: headers,
+    cookies: cookies,
+    message: [msg`Completed Document`],
+  });
+
+  return {
+    previewText: translations[0],
+  };
+};
+
+export const documentCompletedEmailTemplateSubject = async ({
+  headers,
+  cookies,
+}: TranslationsProps): Promise<string> => {
+  const subject = await getTranslation({
+    headers: headers,
+    cookies: cookies,
+    message: [msg`Signing Complete!`],
+  });
+
+  return subject[0];
 };
 
 export const DocumentCompletedEmailTemplate = ({
@@ -17,11 +57,10 @@ export const DocumentCompletedEmailTemplate = ({
   documentName = 'Open Source Pledge.pdf',
   assetBaseUrl = 'http://localhost:3002',
   customBody,
+  documentCompletedEmailTemplateData,
+  templateDocumentCompletedData,
+  footerData,
 }: DocumentCompletedEmailTemplateProps) => {
-  const { _ } = useLingui();
-
-  const previewText = _(msg`Completed Document`);
-
   const getAssetUrl = (path: string) => {
     return new URL(path, assetBaseUrl).toString();
   };
@@ -29,7 +68,7 @@ export const DocumentCompletedEmailTemplate = ({
   return (
     <Html>
       <Head />
-      <Preview>{previewText}</Preview>
+      <Preview>{documentCompletedEmailTemplateData.previewText}</Preview>
       <Tailwind
         config={{
           theme: {
@@ -54,12 +93,18 @@ export const DocumentCompletedEmailTemplate = ({
                   documentName={documentName}
                   assetBaseUrl={assetBaseUrl}
                   customBody={customBody}
+                  templateDocumentCompletedData={templateDocumentCompletedData}
                 />
               </Section>
             </Container>
 
             <Container className="mx-auto max-w-xl">
-              <TemplateFooter />
+              <TemplateFooter
+                address={footerData.address}
+                companyName={footerData.companyName}
+                message1={footerData.message1}
+                message2={footerData.message2}
+              />
             </Container>
           </Section>
         </Body>

@@ -13,9 +13,10 @@ export const EMAIL_VERIFICATION_STATE = {
 
 export type VerifyEmailProps = {
   token: string;
+  locale: string;
 };
 
-export const verifyEmail = async ({ token }: VerifyEmailProps) => {
+export const verifyEmail = async ({ token, locale }: VerifyEmailProps) => {
   const verificationToken = await prisma.verificationToken.findFirst({
     include: {
       user: true,
@@ -51,6 +52,7 @@ export const verifyEmail = async ({ token }: VerifyEmailProps) => {
         name: 'send.signup.confirmation.email',
         payload: {
           email: verificationToken.user.email,
+          locale: locale,
         },
       });
     }

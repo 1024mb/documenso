@@ -8,6 +8,9 @@ const SEND_CONFIRMATION_EMAIL_JOB_DEFINITION_ID = 'send.signup.confirmation.emai
 const SEND_CONFIRMATION_EMAIL_JOB_DEFINITION_SCHEMA = z.object({
   email: z.string().email(),
   force: z.boolean().optional(),
+  headers: z.any().optional(),
+  cookies: z.any().optional(),
+  locale: z.string().optional(),
 });
 
 export const SEND_CONFIRMATION_EMAIL_JOB_DEFINITION = {
@@ -22,6 +25,9 @@ export const SEND_CONFIRMATION_EMAIL_JOB_DEFINITION = {
     await sendConfirmationToken({
       email: payload.email,
       force: payload.force,
+      headers: payload.headers,
+      cookies: payload.cookies,
+      locale: payload.locale,
     });
   },
 } as const satisfies JobDefinition<

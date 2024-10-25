@@ -95,7 +95,7 @@ export const DocumentLogsPageView = async ({ params, team }: DocumentLogsPageVie
     },
     {
       description: msg`Time zone`,
-      value: document.documentMeta?.timezone ?? 'N/A',
+      value: document.documentMeta?.timezone ?? _(msg`N/A`),
     },
   ];
 

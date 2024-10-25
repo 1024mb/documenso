@@ -76,6 +76,8 @@ export const teamRouter = router({
         return await acceptTeamInvitation({
           teamId: input.teamId,
           userId: ctx.user.id,
+          headers: ctx.req.headers,
+          cookies: ctx.req.cookies,
         });
       } catch (err) {
         console.error(err);
@@ -140,6 +142,8 @@ export const teamRouter = router({
             email: input.email,
             name: input.name,
           },
+          headers: ctx.req.headers,
+          cookies: ctx.req.cookies,
         });
       } catch (err) {
         console.error(err);
@@ -156,6 +160,8 @@ export const teamRouter = router({
           userId: ctx.user.id,
           userName: ctx.user.name ?? '',
           ...input,
+          headers: ctx.req.headers,
+          cookies: ctx.req.cookies,
         });
       } catch (err) {
         console.error(err);
@@ -186,6 +192,8 @@ export const teamRouter = router({
         return await deleteTeam({
           userId: ctx.user.id,
           ...input,
+          headers: ctx.req.headers,
+          cookies: ctx.req.cookies,
         });
       } catch (err) {
         console.error(err);
@@ -202,6 +210,8 @@ export const teamRouter = router({
           userId: ctx.user.id,
           userEmail: ctx.user.email,
           ...input,
+          headers: ctx.req.headers,
+          cookies: ctx.req.cookies,
         });
       } catch (err) {
         console.error(err);
@@ -427,6 +437,8 @@ export const teamRouter = router({
         return await leaveTeam({
           userId: ctx.user.id,
           ...input,
+          headers: ctx.req.headers,
+          cookies: ctx.req.cookies,
         });
       } catch (err) {
         console.error(err);
@@ -521,6 +533,8 @@ export const teamRouter = router({
           userId: ctx.user.id,
           userName: ctx.user.name ?? '',
           ...input,
+          headers: ctx.req.headers,
+          cookies: ctx.req.cookies,
         });
       } catch (err) {
         console.error(err);
@@ -536,6 +550,8 @@ export const teamRouter = router({
         await resendTeamEmailVerification({
           userId: ctx.user.id,
           ...input,
+          headers: ctx.req.headers,
+          cookies: ctx.req.cookies,
         });
       } catch (err) {
         console.error(err);
@@ -552,6 +568,8 @@ export const teamRouter = router({
           userId: ctx.user.id,
           userName: ctx.user.name ?? '',
           ...input,
+          headers: ctx.req.headers,
+          cookies: ctx.req.cookies,
         });
       } catch (err) {
         console.error(err);

@@ -1,11 +1,19 @@
 import { createElement } from 'react';
 
+import { i18n } from '@lingui/core';
+import { msg } from '@lingui/macro';
+
 import { mailer } from '@documenso/email/mailer';
 import { render } from '@documenso/email/render';
-import { DocumentInviteEmailTemplate } from '@documenso/email/templates/document-invite';
+import { templateDocumentInviteData } from '@documenso/email/template-components/template-document-invite';
+import { loadFooterTemplateData } from '@documenso/email/template-components/template-footer';
+import {
+  DocumentInviteEmailTemplate,
+  documentInviteEmailTemplateData,
+} from '@documenso/email/templates/document-invite';
 import { FROM_ADDRESS, FROM_NAME } from '@documenso/lib/constants/email';
 import {
-  RECIPIENT_ROLES_DESCRIPTION_ENG,
+  RECIPIENT_ROLES_DESCRIPTION,
   RECIPIENT_ROLE_TO_EMAIL_TYPE,
 } from '@documenso/lib/constants/recipient-roles';
 import { DOCUMENT_AUDIT_LOG_TYPE } from '@documenso/lib/types/document-audit-logs';
@@ -17,6 +25,9 @@ import { DocumentStatus, RecipientRole, SigningStatus } from '@documenso/prisma/
 import type { Prisma } from '@documenso/prisma/client';
 
 import { NEXT_PUBLIC_WEBAPP_URL } from '../../constants/app';
+import { getLocale } from '../../utils/i18n';
+import type { TranslationsProps } from '../../utils/i18n.import';
+import { loadAndActivateLocale } from '../../utils/i18n.import';
 import { getDocumentWhereInput } from './get-document-by-id';
 
 export type ResendDocumentOptions = {
@@ -33,7 +44,9 @@ export const resendDocument = async ({
   recipients,
   teamId,
   requestMetadata,
-}: ResendDocumentOptions) => {
+  headers,
+  cookies,
+}: ResendDocumentOptions & TranslationsProps) => {
   const user = await prisma.user.findFirstOrThrow({
     where: {
       id: userId,
@@ -97,20 +110,33 @@ export const resendDocument = async ({
       const { email, name } = recipient;
       const selfSigner = email === user.email;
 
-      const recipientActionVerb =
-        RECIPIENT_ROLES_DESCRIPTION_ENG[recipient.role].actionVerb.toLowerCase();
+      const locale = getLocale({ headers: headers, cookies: cookies });
+      await loadAndActivateLocale(locale);
+
+      const recipientActionVerb = i18n
+        ._(RECIPIENT_ROLES_DESCRIPTION[recipient.role].actionVerb)
+        .toLowerCase();
+      const recipientProgressiveVerb = i18n
+        ._(RECIPIENT_ROLES_DESCRIPTION[recipient.role].progressiveVerb)
+        .toLowerCase();
 
       let emailMessage = customEmail?.message || '';
-      let emailSubject = `Reminder: Please ${recipientActionVerb} this document`;
+      let emailSubject = i18n._(msg`Reminder: Please ${recipientActionVerb} this document`);
 
       if (selfSigner) {
-        emailMessage = `You have initiated the document ${`"${document.title}"`} that requires you to ${recipientActionVerb} it.`;
-        emailSubject = `Reminder: Please ${recipientActionVerb} your document`;
+        emailMessage = i18n._(
+          msg`You have initiated the document "${document.title}" that requires you to ${recipientActionVerb} it.`,
+        );
+        emailSubject = i18n._(msg`Reminder: Please ${recipientActionVerb} your document`);
       }
 
       if (isTeamDocument && document.team) {
-        emailSubject = `Reminder: ${document.team.name} invited you to ${recipientActionVerb} a document`;
-        emailMessage = `${user.name} on behalf of ${document.team.name} has invited you to ${recipientActionVerb} the document "${document.title}".`;
+        emailSubject = i18n._(
+          msg`Reminder: ${document.team.name} invited you to ${recipientActionVerb} a document`,
+        );
+        emailMessage = i18n._(
+          msg`${user.name} on behalf of ${document.team.name} has invited you to ${recipientActionVerb} the document "${document.title}".`,
+        );
       }
 
       const customEmailTemplate = {
@@ -133,6 +159,24 @@ export const resendDocument = async ({
         selfSigner,
         isTeamInvite: isTeamDocument,
         teamName: document.team?.name,
+        documentInviteEmailTemplateData: await documentInviteEmailTemplateData({
+          headers: headers,
+          cookies: cookies,
+          recipientActionVerb: recipientActionVerb,
+          documentName: document.title,
+          inviterName: user.name || undefined,
+          teamName: document.team?.name,
+        }),
+        templateDocumentInviteData: await templateDocumentInviteData({
+          headers: headers,
+          cookies: cookies,
+          recipientActionVerb: recipientActionVerb,
+          progressiveVerb: recipientProgressiveVerb,
+          documentName: document.title,
+          inviterName: user.name || undefined,
+          teamName: document.team?.name,
+        }),
+        footerData: await loadFooterTemplateData({ headers: headers, cookies: cookies }),
       });
 
       await prisma.$transaction(

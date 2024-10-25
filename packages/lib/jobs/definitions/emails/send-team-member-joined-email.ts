@@ -1,13 +1,19 @@
+import { msg } from '@lingui/macro';
 import { z } from 'zod';
 
 import { mailer } from '@documenso/email/mailer';
 import { render } from '@documenso/email/render';
-import TeamJoinEmailTemplate from '@documenso/email/templates/team-join';
+import { loadFooterTemplateData } from '@documenso/email/template-components/template-footer';
+import {
+  TeamJoinEmailTemplate,
+  teamJoinEmailTemplateData,
+} from '@documenso/email/templates/team-join';
 import { prisma } from '@documenso/prisma';
 import { TeamMemberRole } from '@documenso/prisma/client';
 
 import { WEBAPP_BASE_URL } from '../../../constants/app';
 import { FROM_ADDRESS, FROM_NAME } from '../../../constants/email';
+import { getTranslation } from '../../../utils/i18n.import';
 import type { JobDefinition } from '../../client/_internal/job';
 
 const SEND_TEAM_MEMBER_JOINED_EMAIL_JOB_DEFINITION_ID = 'send.team-member-joined.email';
@@ -15,6 +21,8 @@ const SEND_TEAM_MEMBER_JOINED_EMAIL_JOB_DEFINITION_ID = 'send.team-member-joined
 const SEND_TEAM_MEMBER_JOINED_EMAIL_JOB_DEFINITION_SCHEMA = z.object({
   teamId: z.number(),
   memberId: z.number(),
+  headers: z.any().optional(),
+  cookies: z.any().optional(),
 });
 
 export const SEND_TEAM_MEMBER_JOINED_EMAIL_JOB_DEFINITION = {
@@ -69,6 +77,23 @@ export const SEND_TEAM_MEMBER_JOINED_EMAIL_JOB_DEFINITION = {
             memberEmail: invitedMember.user.email,
             teamName: team.name,
             teamUrl: team.url,
+            teamJoinEmailTemplateData: await teamJoinEmailTemplateData({
+              headers: payload.headers,
+              cookies: payload.cookies,
+              memberName: invitedMember.user.name || '',
+              memberEmail: invitedMember.user.email,
+              teamName: team.name,
+            }),
+            footerData: await loadFooterTemplateData({
+              headers: payload.headers,
+              cookies: payload.cookies,
+            }),
+          });
+
+          const mailSubject = await getTranslation({
+            headers: payload.headers,
+            cookies: payload.cookies,
+            message: [msg`A new member has joined your team`],
           });
 
           await mailer.sendMail({
@@ -77,7 +102,7 @@ export const SEND_TEAM_MEMBER_JOINED_EMAIL_JOB_DEFINITION = {
               name: FROM_NAME,
               address: FROM_ADDRESS,
             },
-            subject: 'A new member has joined your team',
+            subject: mailSubject[0],
             html: render(emailContent),
             text: render(emailContent, { plainText: true }),
           });

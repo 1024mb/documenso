@@ -3,6 +3,7 @@ import { IS_BILLING_ENABLED } from '@documenso/lib/constants/app';
 import { prisma } from '@documenso/prisma';
 
 import { jobs } from '../../jobs/client';
+import type { TranslationsProps } from '../../utils/i18n.import';
 
 export type LeaveTeamOptions = {
   /**
@@ -16,7 +17,12 @@ export type LeaveTeamOptions = {
   teamId: number;
 };
 
-export const leaveTeam = async ({ userId, teamId }: LeaveTeamOptions) => {
+export const leaveTeam = async ({
+  userId,
+  teamId,
+  headers,
+  cookies,
+}: LeaveTeamOptions & TranslationsProps) => {
   await prisma.$transaction(
     async (tx) => {
       const team = await tx.team.findFirstOrThrow({
@@ -73,6 +79,8 @@ export const leaveTeam = async ({ userId, teamId }: LeaveTeamOptions) => {
         payload: {
           teamId,
           memberUserId: leavingUser.id,
+          headers: headers,
+          cookies: cookies,
         },
       });
     },
