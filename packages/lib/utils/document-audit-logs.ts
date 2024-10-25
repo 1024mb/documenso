@@ -595,19 +595,83 @@ export const formatDocumentAuditLogAction = (auditLog: TDocumentAuditLog, userId
       // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
       const action = RECIPIENT_ROLES_DESCRIPTION[data.recipientRole as RecipientRole]?.actioned;
 
-      const value = action
+      const performedAction = action
         ? _(msg`${_(action).toLowerCase()} the document`)
         : _(msg`completed their task`);
 
       return {
-        anonymous: _(msg`Recipient ${value}`),
-        identified: value,
+        anonymous: _(msg`Recipient ${performedAction}`),
+        identified: performedAction,
       };
     })
-    .with({ type: DOCUMENT_AUDIT_LOG_TYPE.EMAIL_SENT }, ({ data }) => ({
-      anonymous: _(msg`Email ${data.isResending ? _(msg`resent`) : _(msg`sent`)}`),
-      identified: _(msg`${data.isResending ? _(msg`resent`) : _(msg`sent`)} an email to ${data.recipientEmail}`),
-    }))
+    .with({ type: DOCUMENT_AUDIT_LOG_TYPE.EMAIL_SENT }, ({ data }) => {
+      const actionPerformedByAnonymous = data.isResending
+        ? _(
+            msg({
+              message: 'resent',
+              context: 'Action in past participle',
+            }),
+          )
+        : _(
+            msg({
+              message: 'sent',
+              context: 'Action in past participle',
+            }),
+          );
+
+      const actionPerformedByIdentified = (isCurrentUser: boolean): string => {
+        if (isCurrentUser) {
+          return data.isResending
+            ? _(
+                msg({
+                  message: 'resent',
+                  context:
+                    'Action in simple past tense, indicating that the current user performed the action of resending',
+                }),
+              )
+            : _(
+                msg({
+                  message: 'sent',
+                  context:
+                    'Action in simple past tense, indicating that the current user performed the action of sending',
+                }),
+              );
+        } else {
+          return data.isResending
+            ? _(
+                msg({
+                  message: 'resent',
+                  context:
+                    'Action in simple past tense, indicating that another user performed the action of resending',
+                }),
+              )
+            : _(
+                msg({
+                  message: 'sent',
+                  context:
+                    'Action in simple past tense, indicating that another user performed the action of sending',
+                }),
+              );
+        }
+      };
+
+      return {
+        anonymous: _(
+          msg({
+            message: `Email ${actionPerformedByAnonymous}`,
+            context: 'The performed action is in past participle',
+          }),
+        ),
+        identified: _(
+          msg({
+            message: `${actionPerformedByIdentified(isCurrentUser)} an email to ${
+              data.recipientEmail
+            }`,
+            context: 'The performed action is in simple past tense',
+          }),
+        ),
+      };
+    })
     .with({ type: DOCUMENT_AUDIT_LOG_TYPE.DOCUMENT_COMPLETED }, () => {
       // Clear the prefix since this should be considered an 'anonymous' event.
       prefix = '';
