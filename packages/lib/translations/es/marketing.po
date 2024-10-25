@@ -213,6 +213,11 @@ msgstr "Para empresas que buscan escalar en múltiples equipos."
 msgid "For small teams and individuals with basic needs."
 msgstr "Para pequeños equipos e individuos con necesidades básicas."
 
+#: apps/marketing/src/app/(marketing)/open/page.tsx:189
+#: apps/marketing/src/app/(marketing)/open/page.tsx:243
+msgid "Forks"
+msgstr ""
+
 #: apps/marketing/src/components/(marketing)/pricing-table.tsx:80
 msgid "Free"
 msgstr "Gratis"
@@ -249,6 +254,10 @@ msgstr "Comienza hoy."
 #: apps/marketing/src/app/(marketing)/blog/page.tsx:30
 msgid "Get the latest news from Documenso, including product updates, team announcements and more!"
 msgstr "¡Obtén las últimas noticias de Documenso, incluidas actualizaciones de productos, anuncios del equipo y más!"
+
+#: apps/marketing/src/app/(marketing)/open/page.tsx:242
+msgid "GitHub: Total Forks"
+msgstr ""
 
 #: apps/marketing/src/app/(marketing)/open/page.tsx:233
 msgid "GitHub: Total Merged PRs"
@@ -482,6 +491,10 @@ msgstr "Inteligente."
 msgid "Star on GitHub"
 msgstr "Estrella en GitHub"
 
+#: apps/marketing/src/app/(marketing)/open/page.tsx:184
+msgid "Stargazers"
+msgstr ""
+
 #: apps/marketing/src/app/(marketing)/open/page.tsx:226
 msgid "Stars"
 msgstr "Estrellas"
@@ -618,4 +631,3 @@ msgstr "Puedes autoalojar Documenso de forma gratuita o usar nuestra versión al
 #: apps/marketing/src/components/(marketing)/carousel.tsx:272
 msgid "Your browser does not support the video tag."
 msgstr "Tu navegador no soporta la etiqueta de video."
-
