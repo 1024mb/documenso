@@ -92,7 +92,8 @@ export const setFieldsForTemplate = async ({
         const textFieldParsedMeta = ZTextFieldMeta.parse(field.fieldMeta);
         const errors = validateTextField(textFieldParsedMeta.text || '', textFieldParsedMeta);
         if (errors.length > 0) {
-          throw new Error(errors.join(', '));
+          const errorMessages = errors.map((error) => error.message).join(', ');
+          throw new Error(errorMessages);
         }
       }
 
@@ -118,7 +119,8 @@ export const setFieldsForTemplate = async ({
           checkboxFieldParsedMeta,
         );
         if (errors.length > 0) {
-          throw new Error(errors.join(', '));
+          const errorMessages = errors.map((error) => error.message).join(', ');
+          throw new Error(errorMessages);
         }
       }
 
@@ -132,7 +134,8 @@ export const setFieldsForTemplate = async ({
         )?.value;
         const errors = validateRadioField(checkedRadioFieldValue, radioFieldParsedMeta);
         if (errors.length > 0) {
-          throw new Error(errors.join('. '));
+          const errorMessages = errors.map((error) => error.message).join(', ');
+          throw new Error(errorMessages);
         }
       }
 
@@ -143,7 +146,8 @@ export const setFieldsForTemplate = async ({
         const dropdownFieldParsedMeta = ZDropdownFieldMeta.parse(field.fieldMeta);
         const errors = validateDropdownField(undefined, dropdownFieldParsedMeta);
         if (errors.length > 0) {
-          throw new Error(errors.join('. '));
+          const errorMessages = errors.map((error) => error.message).join(', ');
+          throw new Error(errorMessages);
         }
       }
 

@@ -27,7 +27,7 @@ export const EmailFieldAdvancedSettings = ({
       type: 'email',
     });
 
-    handleErrors(errors);
+    handleErrors(errors.map((error) => _(error) || ''));
     handleFieldChange(field, value);
   };
 

@@ -114,7 +114,8 @@ export const signFieldWithToken = async ({
     const errors = validateTextField(value, textFieldParsedMeta, true);
 
     if (errors.length > 0) {
-      throw new Error(errors.join(', '));
+      const errorMessages = errors.map((error) => error.message).join(', ');
+      throw new Error(errorMessages);
     }
   }
 
@@ -124,7 +125,8 @@ export const signFieldWithToken = async ({
     const errors = validateCheckboxField(checkboxFieldValues, checkboxFieldParsedMeta, true);
 
     if (errors.length > 0) {
-      throw new Error(errors.join(', '));
+      const errorMessages = errors.map((error) => error.message).join(', ');
+      throw new Error(errorMessages);
     }
   }
 
@@ -133,7 +135,8 @@ export const signFieldWithToken = async ({
     const errors = validateRadioField(value, radioFieldParsedMeta, true);
 
     if (errors.length > 0) {
-      throw new Error(errors.join(', '));
+      const errorMessages = errors.map((error) => error.message).join(', ');
+      throw new Error(errorMessages);
     }
   }
 
@@ -142,7 +145,8 @@ export const signFieldWithToken = async ({
     const errors = validateDropdownField(value, dropdownFieldParsedMeta, true);
 
     if (errors.length > 0) {
-      throw new Error(errors.join(', '));
+      const errorMessages = errors.map((error) => error.message).join(', ');
+      throw new Error(errorMessages);
     }
   }
 

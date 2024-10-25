@@ -27,7 +27,7 @@ export const InitialsFieldAdvancedSettings = ({
       type: 'initials',
     });
 
-    handleErrors(errors);
+    handleErrors(errors.map((error) => _(error) || ''));
     handleFieldChange(field, value);
   };
 

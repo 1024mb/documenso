@@ -69,7 +69,7 @@ export const CheckboxFieldAdvancedSettings = ({
         type: 'checkbox',
       },
     );
-    handleErrors(errors);
+    handleErrors(errors.map((error) => _(error) || ''));
 
     handleFieldChange(field, value);
   };
@@ -90,9 +90,9 @@ export const CheckboxFieldAdvancedSettings = ({
         type: 'checkbox',
       },
     );
-    handleErrors(errors);
+    handleErrors(errors.map((error) => _(error) || ''));
     handleFieldChange('values', values);
-  }, [values]);
+  }, [_, values]);
 
   const removeValue = (index: number) => {
     if (values.length === 1) return;

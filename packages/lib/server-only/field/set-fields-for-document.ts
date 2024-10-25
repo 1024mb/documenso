@@ -140,7 +140,8 @@ export const setFieldsForDocument = async ({
           const errors = validateTextField(textFieldParsedMeta.text || '', textFieldParsedMeta);
 
           if (errors.length > 0) {
-            throw new Error(errors.join(', '));
+            const errorMessages = errors.map((error) => error.message).join(', ');
+            throw new Error(errorMessages);
           }
         }
 
@@ -166,7 +167,8 @@ export const setFieldsForDocument = async ({
             );
 
             if (errors.length > 0) {
-              throw new Error(errors.join(', '));
+              const errorMessages = errors.map((error) => error.message).join(', ');
+              throw new Error(errorMessages);
             }
           } else {
             throw new Error(
@@ -185,7 +187,8 @@ export const setFieldsForDocument = async ({
             const errors = validateRadioField(checkedRadioFieldValue, radioFieldParsedMeta);
 
             if (errors.length > 0) {
-              throw new Error(errors.join('. '));
+              const errorMessages = errors.map((error) => error.message).join(', ');
+              throw new Error(errorMessages);
             }
           } else {
             throw new Error(
@@ -200,7 +203,8 @@ export const setFieldsForDocument = async ({
             const errors = validateDropdownField(undefined, dropdownFieldParsedMeta);
 
             if (errors.length > 0) {
-              throw new Error(errors.join('. '));
+              const errorMessages = errors.map((error) => error.message).join(', ');
+              throw new Error(errorMessages);
             }
           } else {
             throw new Error(

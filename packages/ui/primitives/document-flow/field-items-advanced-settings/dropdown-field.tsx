@@ -68,7 +68,7 @@ export const DropdownFieldAdvancedSettings = ({
       values,
       type: 'dropdown',
     });
-    handleErrors(errors);
+    handleErrors(errors.map((error) => _(error) || ''));
 
     handleFieldChange(field, value);
   };
@@ -87,8 +87,8 @@ export const DropdownFieldAdvancedSettings = ({
       values,
       type: 'dropdown',
     });
-    handleErrors(errors);
-  }, [values]);
+    handleErrors(errors.map((error) => _(error) || ''));
+  }, [_, values]);
 
   useEffect(() => {
     setValues(fieldState.values ?? [{ value: _(msg`Option 1`) }]);

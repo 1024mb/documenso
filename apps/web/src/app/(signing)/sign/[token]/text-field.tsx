@@ -86,8 +86,12 @@ export const TextField = ({ field, recipient, onSignField, onUnsignField }: Text
     if (parsedFieldMeta) {
       const validationErrors = validateTextField(text, parsedFieldMeta, true);
       setErrors({
-        required: validationErrors.filter((error) => error.includes('required')),
-        characterLimit: validationErrors.filter((error) => error.includes('character limit')),
+        required: validationErrors
+          .filter((error) => (error.message || '').includes('required'))
+          .map((error) => _(error)),
+        characterLimit: validationErrors
+          .filter((error) => (error.message || '').includes('character limit'))
+          .map((error) => _(error)),
       });
     }
   };
@@ -101,8 +105,12 @@ export const TextField = ({ field, recipient, onSignField, onUnsignField }: Text
 
       if (validationErrors.length > 0) {
         setErrors({
-          required: validationErrors.filter((error) => error.includes('required')),
-          characterLimit: validationErrors.filter((error) => error.includes('character limit')),
+          required: validationErrors
+            .filter((error) => (error.message || '').includes('required'))
+            .map((error) => _(error)),
+          characterLimit: validationErrors
+            .filter((error) => (error.message || '').includes('character limit'))
+            .map((error) => _(error)),
         });
         return;
       }
@@ -122,8 +130,12 @@ export const TextField = ({ field, recipient, onSignField, onUnsignField }: Text
     if (localText && parsedFieldMeta) {
       const validationErrors = validateTextField(localText, parsedFieldMeta, true);
       setErrors({
-        required: validationErrors.filter((error) => error.includes('required')),
-        characterLimit: validationErrors.filter((error) => error.includes('character limit')),
+        required: validationErrors
+          .filter((error) => (error.message || '').includes('required'))
+          .map((error) => _(error)),
+        characterLimit: validationErrors
+          .filter((error) => (error.message || '').includes('character limit'))
+          .map((error) => _(error)),
       });
     }
 

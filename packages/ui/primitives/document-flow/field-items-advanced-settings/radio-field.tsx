@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 
 import { Trans } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
 import { ChevronDown, ChevronUp, Trash } from 'lucide-react';
 
 import { validateRadioField } from '@documenso/lib/advanced-fields-validation/validate-radio';
@@ -27,6 +28,8 @@ export const RadioFieldAdvancedSettings = ({
   handleFieldChange,
   handleErrors,
 }: RadioFieldAdvancedSettingsProps) => {
+  const { _ } = useLingui();
+
   const [showValidation, setShowValidation] = useState(false);
   const [values, setValues] = useState(
     fieldState.values ?? [{ id: 1, checked: false, value: 'Default value' }],
@@ -71,7 +74,7 @@ export const RadioFieldAdvancedSettings = ({
     setRequired(required);
 
     const errors = validateRadioField(String(value), { readOnly, required, values, type: 'radio' });
-    handleErrors(errors);
+    handleErrors(errors.map((error) => _(error) || ''));
 
     handleFieldChange(field, value);
   };
@@ -96,8 +99,8 @@ export const RadioFieldAdvancedSettings = ({
 
   useEffect(() => {
     const errors = validateRadioField(undefined, { readOnly, required, values, type: 'radio' });
-    handleErrors(errors);
-  }, [values]);
+    handleErrors(errors.map((error) => _(error) || ''));
+  }, [_, values]);
 
   return (
     <div className="flex flex-col gap-4">

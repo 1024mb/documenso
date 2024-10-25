@@ -27,7 +27,7 @@ export const NameFieldAdvancedSettings = ({
       type: 'name',
     });
 
-    handleErrors(errors);
+    handleErrors(errors.map((error) => _(error) || ''));
     handleFieldChange(field, value);
   };
 

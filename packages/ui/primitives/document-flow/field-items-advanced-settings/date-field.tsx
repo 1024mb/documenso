@@ -45,7 +45,7 @@ export const DateFieldAdvancedSettings = ({
       type: 'date',
     });
 
-    handleErrors(errors);
+    handleErrors(errors.map((error) => _(error) || ''));
     handleFieldChange(field, value);
   };
 

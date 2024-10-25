@@ -37,7 +37,7 @@ export const TextFieldAdvancedSettings = ({
       type: 'text',
     });
 
-    handleErrors(textErrors);
+    handleErrors(textErrors.map((error) => _(error) || ''));
     handleFieldChange(field, value);
   };
 
