@@ -14,7 +14,7 @@ const config: LinguiConfig = {
     },
     {
       path: '<rootDir>/packages/lib/translations/{locale}/web',
-      include: ['apps/web/src', 'apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx'],
+      include: ['apps/web/src'],
       exclude: ['**/node_modules/**'],
     },
     {
