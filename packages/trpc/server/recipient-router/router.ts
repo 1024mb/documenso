@@ -32,6 +32,8 @@ export const recipientRouter = router({
             actionAuth: signer.actionAuth,
           })),
           requestMetadata: extractNextApiRequestMetadata(ctx.req),
+          headers: ctx.req.headers,
+          cookies: ctx.req.cookies,
         });
       } catch (err) {
         console.error(err);
@@ -84,6 +86,8 @@ export const recipientRouter = router({
           authOptions,
           userId: ctx.user?.id,
           requestMetadata: extractNextApiRequestMetadata(ctx.req),
+          headers: ctx.req.headers,
+          cookies: ctx.req.cookies,
         });
       } catch (err) {
         console.error(err);

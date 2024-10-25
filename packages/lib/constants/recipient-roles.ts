@@ -5,28 +5,32 @@ import { RecipientRole } from '@documenso/prisma/client';
 
 export const RECIPIENT_ROLES_DESCRIPTION = {
   [RecipientRole.APPROVER]: {
-    actionVerb: msg`Approve`,
-    actioned: msg`Approved`,
-    progressiveVerb: msg`Approving`,
-    roleName: msg`Approver`,
+    actionVerb: msg({ message: 'Approve', context: 'Action verb' }),
+    actioned: msg({ message: 'Approved', context: 'Past tense' }),
+    progressiveVerb: msg({ message: 'Approving', context: 'Progressive verb' }),
+    roleName: msg({ message: 'Approver', context: 'Role name' }),
+    roleNamePlural: msg({ message: 'Approvers', context: 'Role name' }),
   },
   [RecipientRole.CC]: {
-    actionVerb: msg`CC`,
-    actioned: msg`CC'd`,
-    progressiveVerb: msg`CC`,
-    roleName: msg`Cc`,
+    actionVerb: msg({ message: 'CC', context: 'Action verb' }),
+    actioned: msg({ message: "CC'd", context: 'Past tense' }),
+    progressiveVerb: msg({ message: 'CC', context: 'Progressive verb' }),
+    roleName: msg({ message: 'Cc', context: 'Role name' }),
+    roleNamePlural: msg({ message: "Cc'ers", context: 'Role name' }),
   },
   [RecipientRole.SIGNER]: {
-    actionVerb: msg`Sign`,
-    actioned: msg`Signed`,
-    progressiveVerb: msg`Signing`,
-    roleName: msg`Signer`,
+    actionVerb: msg({ message: 'Sign', context: 'Action verb' }),
+    actioned: msg({ message: 'Signed', context: 'Past tense' }),
+    progressiveVerb: msg({ message: 'Signing', context: 'Progressive verb' }),
+    roleName: msg({ message: 'Signer', context: 'Role name' }),
+    roleNamePlural: msg({ message: 'Signers', context: 'Role name' }),
   },
   [RecipientRole.VIEWER]: {
-    actionVerb: msg`View`,
-    actioned: msg`Viewed`,
-    progressiveVerb: msg`Viewing`,
-    roleName: msg`Viewer`,
+    actionVerb: msg({ message: 'View', context: 'Action verb' }),
+    actioned: msg({ message: 'Viewed', context: 'Past tense' }),
+    progressiveVerb: msg({ message: 'Viewing', context: 'Progressive verb' }),
+    roleName: msg({ message: 'Viewer', context: 'Role name' }),
+    roleNamePlural: msg({ message: 'Viewers', context: 'Role name' }),
   },
 } satisfies Record<keyof typeof RecipientRole, unknown>;
 

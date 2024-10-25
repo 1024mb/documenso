@@ -2,9 +2,16 @@
 
 import { createElement } from 'react';
 
+import { msg } from '@lingui/macro';
+
 import { mailer } from '@documenso/email/mailer';
 import { render } from '@documenso/email/render';
-import DocumentCancelTemplate from '@documenso/email/templates/document-cancel';
+import { templateDocumentCancelData } from '@documenso/email/template-components/template-document-cancel';
+import { loadFooterTemplateData } from '@documenso/email/template-components/template-footer';
+import {
+  DocumentCancelTemplate,
+  documentCancelTemplateData,
+} from '@documenso/email/templates/document-cancel';
 import { prisma } from '@documenso/prisma';
 import { DocumentStatus, SendStatus } from '@documenso/prisma/client';
 
@@ -13,13 +20,20 @@ import { FROM_ADDRESS, FROM_NAME } from '../../constants/email';
 import { DOCUMENT_AUDIT_LOG_TYPE } from '../../types/document-audit-logs';
 import type { RequestMetadata } from '../../universal/extract-request-metadata';
 import { createDocumentAuditLogData } from '../../utils/document-audit-logs';
+import type { TranslationsProps } from '../../utils/i18n.import';
+import { getTranslation } from '../../utils/i18n.import';
 
 export type SuperDeleteDocumentOptions = {
   id: number;
   requestMetadata?: RequestMetadata;
 };
 
-export const superDeleteDocument = async ({ id, requestMetadata }: SuperDeleteDocumentOptions) => {
+export const superDeleteDocument = async ({
+  id,
+  requestMetadata,
+  headers,
+  cookies,
+}: SuperDeleteDocumentOptions & TranslationsProps) => {
   const document = await prisma.document.findUnique({
     where: {
       id,
@@ -46,11 +60,34 @@ export const superDeleteDocument = async ({ id, requestMetadata }: SuperDeleteDo
         }
 
         const assetBaseUrl = NEXT_PUBLIC_WEBAPP_URL() || 'http://localhost:3000';
+
         const template = createElement(DocumentCancelTemplate, {
           documentName: document.title,
           inviterName: user.name || undefined,
           inviterEmail: user.email,
-          assetBaseUrl,
+          assetBaseUrl: assetBaseUrl,
+          documentCancelTemplateData: await documentCancelTemplateData({
+            headers: headers,
+            cookies: cookies,
+            inviterName: user.name ?? '',
+            documentName: document.title,
+          }),
+          templateDocumentCancelData: await templateDocumentCancelData({
+            headers: headers,
+            cookies: cookies,
+            inviterName: user.name ?? '',
+            documentName: document.title,
+          }),
+          footerData: await loadFooterTemplateData({
+            headers: headers,
+            cookies: cookies,
+          }),
+        });
+
+        const mailSubject = await getTranslation({
+          headers: headers,
+          cookies: cookies,
+          message: [msg`Document Cancelled`],
         });
 
         await mailer.sendMail({
@@ -62,7 +99,7 @@ export const superDeleteDocument = async ({ id, requestMetadata }: SuperDeleteDo
             name: FROM_NAME,
             address: FROM_ADDRESS,
           },
-          subject: 'Document Cancelled',
+          subject: mailSubject[0],
           html: render(template),
           text: render(template, { plainText: true }),
         });

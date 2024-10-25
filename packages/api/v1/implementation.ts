@@ -196,6 +196,8 @@ export const ApiContractV1Implementation = createNextRoute(ApiContractV1, {
         id: document.id,
         userId: user.id,
         teamId: team?.id,
+        headers: args.req.headers,
+        cookies: args.req.cookies,
       });
 
       return {
@@ -315,6 +317,8 @@ export const ApiContractV1Implementation = createNextRoute(ApiContractV1, {
         documentId: document.id,
         recipients: body.recipients,
         requestMetadata: extractNextApiRequestMetadata(args.req),
+        headers: args.req.headers,
+        cookies: args.req.cookies,
       });
 
       return {
@@ -665,6 +669,8 @@ export const ApiContractV1Implementation = createNextRoute(ApiContractV1, {
         teamId: team?.id,
         sendEmail,
         requestMetadata: extractNextApiRequestMetadata(args.req),
+        headers: args.req.headers,
+        cookies: args.req.cookies,
       });
 
       return {
@@ -699,6 +705,8 @@ export const ApiContractV1Implementation = createNextRoute(ApiContractV1, {
         recipients,
         teamId: team?.id,
         requestMetadata: extractNextApiRequestMetadata(args.req),
+        headers: args.req.headers,
+        cookies: args.req.cookies,
       });
 
       return {
@@ -782,6 +790,8 @@ export const ApiContractV1Implementation = createNextRoute(ApiContractV1, {
           },
         ],
         requestMetadata: extractNextApiRequestMetadata(args.req),
+        headers: args.req.headers,
+        cookies: args.req.cookies,
       });
 
       const newRecipient = newRecipients.find((recipient) => recipient.email === email);

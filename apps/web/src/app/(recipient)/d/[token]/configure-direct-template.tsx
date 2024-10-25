@@ -1,12 +1,14 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Trans } from '@lingui/macro';
+import { i18n } from '@lingui/core';
+import { Trans, msg } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 import { useSession } from 'next-auth/react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
+import { loadAndActivateLocale } from '@documenso/lib/utils/i18n.import';
 import type { Field, Recipient } from '@documenso/prisma/client';
 import type { TemplateWithDetails } from '@documenso/prisma/types/template';
 import {
@@ -31,11 +33,29 @@ import { useStep } from '@documenso/ui/primitives/stepper';
 
 import { useRequiredDocumentAuthContext } from '~/app/(signing)/sign/[token]/document-auth-provider';
 
-const ZConfigureDirectTemplateFormSchema = z.object({
-  email: z.string().email('Email is invalid'),
-});
+const ZConfigureDirectTemplateFormSchema = (locale: string) => {
+  loadAndActivateLocale(locale)
+    .then(() => {})
+    .catch((err) => {
+      console.error(err);
+    });
 
-export type TConfigureDirectTemplateFormSchema = z.infer<typeof ZConfigureDirectTemplateFormSchema>;
+  return z.object({
+    email: z
+      .string()
+      .min(1, { message: i18n._(msg`Email is required`) })
+      .min(7, { message: i18n._(msg`Please enter a valid email address.`) }) // validation doesn't allow for one
+      // character on local part of email.
+      .regex(/^(?![-_.])[a-zA-Z0-9._%+-]{2,}(?<![-_.])@[a-zA-Z0-9-]{2,}\.[a-zA-Z]{2,63}$/, {
+        message: i18n._(msg`Please enter a valid email address.`),
+      })
+      .email({ message: i18n._(msg`Invalid email address`) }),
+  });
+};
+
+export type TConfigureDirectTemplateFormSchema = z.infer<
+  ReturnType<typeof ZConfigureDirectTemplateFormSchema>
+>;
 
 export type ConfigureDirectTemplateFormProps = {
   flowStep: DocumentFlowStep;
@@ -57,6 +77,8 @@ export const ConfigureDirectTemplateFormPartial = ({
   const { _ } = useLingui();
   const { data: session } = useSession();
 
+  const locale = useLingui().i18n.locale;
+
   const { Recipient } = template;
   const { derivedRecipientAccessAuth } = useRequiredDocumentAuthContext();
 
@@ -73,11 +95,11 @@ export const ConfigureDirectTemplateFormPartial = ({
 
   const form = useForm<TConfigureDirectTemplateFormSchema>({
     resolver: zodResolver(
-      ZConfigureDirectTemplateFormSchema.superRefine((items, ctx) => {
+      ZConfigureDirectTemplateFormSchema(locale).superRefine((items, ctx) => {
         if (template.Recipient.map((recipient) => recipient.email).includes(items.email)) {
           ctx.addIssue({
             code: z.ZodIssueCode.custom,
-            message: 'Email cannot already exist in the template',
+            message: _(msg`Email cannot already exist in the template`),
             path: ['email'],
           });
         }

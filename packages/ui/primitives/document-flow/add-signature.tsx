@@ -3,7 +3,8 @@
 import { useMemo, useState } from 'react';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Trans } from '@lingui/macro';
+import { Trans, msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
 import { DateTime } from 'luxon';
 import { useForm } from 'react-hook-form';
 import { match } from 'ts-pattern';
@@ -59,6 +60,8 @@ export const AddSignatureFormPartial = ({
   requireCustomText = false,
   requireSignature = true,
 }: AddSignatureFormProps) => {
+  const { _ } = useLingui();
+
   const { currentStep, totalSteps } = useStep();
   const [validateUninsertedFields, setValidateUninsertedFields] = useState(false);
 
@@ -68,7 +71,7 @@ export const AddSignatureFormPartial = ({
       ctx.addIssue({
         path: ['name'],
         code: 'custom',
-        message: 'Name is required',
+        message: _(msg`Name is required`),
       });
     }
 
@@ -76,7 +79,7 @@ export const AddSignatureFormPartial = ({
       ctx.addIssue({
         path: ['customText'],
         code: 'custom',
-        message: 'Text is required',
+        message: _(msg`Text is required`),
       });
     }
 
@@ -84,7 +87,7 @@ export const AddSignatureFormPartial = ({
       ctx.addIssue({
         path: ['signature'],
         code: 'custom',
-        message: 'Signature is required',
+        message: _(msg`Signature is required`),
       });
     }
   });

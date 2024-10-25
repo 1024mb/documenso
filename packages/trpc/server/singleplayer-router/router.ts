@@ -1,16 +1,23 @@
 import { createElement } from 'react';
 
+import { msg } from '@lingui/macro';
 import { PDFDocument } from 'pdf-lib';
 
 import { mailer } from '@documenso/email/mailer';
 import { renderAsync } from '@documenso/email/render';
-import { DocumentSelfSignedEmailTemplate } from '@documenso/email/templates/document-self-signed';
+import { templateDocumentSelfSignedData } from '@documenso/email/template-components/template-document-self-signed';
+import { loadFooterTemplateData } from '@documenso/email/template-components/template-footer';
+import {
+  DocumentSelfSignedEmailTemplate,
+  documentSelfSignedEmailTemplateData,
+} from '@documenso/email/templates/document-self-signed';
 import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
 import { FROM_ADDRESS, FROM_NAME, SERVICE_USER_EMAIL } from '@documenso/lib/constants/email';
 import { insertFieldInPDF } from '@documenso/lib/server-only/pdf/insert-field-in-pdf';
 import { alphaid } from '@documenso/lib/universal/id';
 import { getFile } from '@documenso/lib/universal/upload/get-file';
 import { putPdfFile } from '@documenso/lib/universal/upload/put-file';
+import { getTranslation } from '@documenso/lib/utils/i18n.import';
 import { prisma } from '@documenso/prisma';
 import {
   DocumentSource,
@@ -29,7 +36,7 @@ import { ZCreateSinglePlayerDocumentMutationSchema } from './schema';
 export const singleplayerRouter = router({
   createSinglePlayerDocument: procedure
     .input(ZCreateSinglePlayerDocumentMutationSchema)
-    .mutation(async ({ input }) => {
+    .mutation(async ({ input, ctx }) => {
       try {
         const { signer, fields, documentData, documentName, fieldMeta } = input;
 
@@ -155,12 +162,31 @@ export const singleplayerRouter = router({
         const template = createElement(DocumentSelfSignedEmailTemplate, {
           documentName: documentName,
           assetBaseUrl: NEXT_PUBLIC_WEBAPP_URL() || 'http://localhost:3000',
+          documentSelfSignedEmailTemplateData: await documentSelfSignedEmailTemplateData({
+            headers: ctx.req.headers,
+            cookies: ctx.req.cookies,
+          }),
+          templateDocumentSelfSignedData: await templateDocumentSelfSignedData({
+            documentName: documentName,
+            headers: ctx.req.headers,
+            cookies: ctx.req.cookies,
+          }),
+          footerData: await loadFooterTemplateData({
+            headers: ctx.req.headers,
+            cookies: ctx.req.cookies,
+          }),
         });
 
         const [html, text] = await Promise.all([
           renderAsync(template),
           renderAsync(template, { plainText: true }),
         ]);
+
+        const mailSubject = await getTranslation({
+          headers: ctx.req.headers,
+          cookies: ctx.req.cookies,
+          message: [msg`Document signed`],
+        });
 
         // Send email to signer.
         await mailer.sendMail({
@@ -172,7 +198,7 @@ export const singleplayerRouter = router({
             name: FROM_NAME,
             address: FROM_ADDRESS,
           },
-          subject: 'Document signed',
+          subject: mailSubject[0],
           html,
           text,
           attachments: [{ content: signedPdfBuffer, filename: documentName }],

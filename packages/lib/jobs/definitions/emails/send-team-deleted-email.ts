@@ -18,6 +18,8 @@ const SEND_TEAM_DELETED_EMAIL_JOB_DEFINITION_SCHEMA = z.object({
       email: z.string(),
     }),
   ),
+  headers: z.any().optional(),
+  cookies: z.any().optional(),
 });
 
 export const SEND_TEAM_DELETED_EMAIL_JOB_DEFINITION = {
@@ -38,6 +40,8 @@ export const SEND_TEAM_DELETED_EMAIL_JOB_DEFINITION = {
           teamName: team.name,
           teamUrl: team.url,
           isOwner: member.id === team.ownerUserId,
+          headers: payload.headers,
+          cookies: payload.cookies,
         });
       });
     }

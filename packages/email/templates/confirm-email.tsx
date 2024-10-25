@@ -1,21 +1,51 @@
 import { msg } from '@lingui/macro';
-import { useLingui } from '@lingui/react';
 
+import type { TranslationsProps } from '@documenso/lib/utils/i18n.import';
+import { getTranslation } from '@documenso/lib/utils/i18n.import';
 import config from '@documenso/tailwind-config';
 
 import { Body, Container, Head, Html, Img, Preview, Section, Tailwind } from '../components';
-import type { TemplateConfirmationEmailProps } from '../template-components/template-confirmation-email';
+import type { TemplateConfirmationEmailData } from '../template-components/template-confirmation-email';
 import { TemplateConfirmationEmail } from '../template-components/template-confirmation-email';
+import type { TemplateFooterData } from '../template-components/template-footer';
 import { TemplateFooter } from '../template-components/template-footer';
+
+export type ConfirmEmailTemplateProps = {
+  confirmationLink: string;
+  assetBaseUrl: string;
+  footerData: TemplateFooterData;
+  confirmEmailTemplateData: ConfirmEmailTemplateData;
+  templateConfirmationEmailData: TemplateConfirmationEmailData;
+};
+
+export type ConfirmEmailTemplateData = {
+  previewText: string;
+};
+
+export const confirmEmailTemplateData = async ({
+  headers,
+  cookies,
+  locale,
+}: TranslationsProps): Promise<ConfirmEmailTemplateData> => {
+  const translations = await getTranslation({
+    headers: headers,
+    cookies: cookies,
+    locale: locale,
+    message: [msg`Please confirm your email address`],
+  });
+
+  return {
+    previewText: translations[0],
+  };
+};
 
 export const ConfirmEmailTemplate = ({
   confirmationLink,
   assetBaseUrl = 'http://localhost:3002',
-}: TemplateConfirmationEmailProps) => {
-  const { _ } = useLingui();
-
-  const previewText = _(msg`Please confirm your email address`);
-
+  confirmEmailTemplateData,
+  templateConfirmationEmailData,
+  footerData,
+}: ConfirmEmailTemplateProps) => {
   const getAssetUrl = (path: string) => {
     return new URL(path, assetBaseUrl).toString();
   };
@@ -23,7 +53,7 @@ export const ConfirmEmailTemplate = ({
   return (
     <Html>
       <Head />
-      <Preview>{previewText}</Preview>
+      <Preview>{confirmEmailTemplateData.previewText}</Preview>
       <Tailwind
         config={{
           theme: {
@@ -46,13 +76,20 @@ export const ConfirmEmailTemplate = ({
                 <TemplateConfirmationEmail
                   confirmationLink={confirmationLink}
                   assetBaseUrl={assetBaseUrl}
+                  templateConfirmationEmailData={templateConfirmationEmailData}
                 />
               </Section>
             </Container>
             <div className="mx-auto mt-12 max-w-xl" />
 
             <Container className="mx-auto max-w-xl">
-              <TemplateFooter isDocument={false} />
+              <TemplateFooter
+                isDocument={false}
+                address={footerData.address}
+                companyName={footerData.companyName}
+                message1={footerData.message1}
+                message2={footerData.message2}
+              />
             </Container>
           </Section>
         </Body>

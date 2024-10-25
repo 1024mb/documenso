@@ -163,12 +163,14 @@ export const profileRouter = router({
       }
     }),
 
-  forgotPassword: procedure.input(ZForgotPasswordFormSchema).mutation(async ({ input }) => {
+  forgotPassword: procedure.input(ZForgotPasswordFormSchema).mutation(async ({ input, ctx }) => {
     try {
       const { email } = input;
 
       return await forgotPassword({
-        email,
+        email: email,
+        headers: ctx.req.headers,
+        cookies: ctx.req.cookies,
       });
     } catch (err) {
       console.error(err);
@@ -183,6 +185,8 @@ export const profileRouter = router({
         token,
         password,
         requestMetadata: extractNextApiRequestMetadata(ctx.req),
+        headers: ctx.req.headers,
+        cookies: ctx.req.cookies,
       });
     } catch (err) {
       console.error(err);
@@ -202,14 +206,16 @@ export const profileRouter = router({
 
   sendConfirmationEmail: procedure
     .input(ZConfirmEmailMutationSchema)
-    .mutation(async ({ input }) => {
+    .mutation(async ({ input, ctx }) => {
       try {
         const { email } = input;
 
         await jobsClient.triggerJob({
           name: 'send.signup.confirmation.email',
           payload: {
-            email,
+            email: email,
+            headers: ctx.req.headers,
+            cookies: ctx.req.cookies,
           },
         });
       } catch (err) {

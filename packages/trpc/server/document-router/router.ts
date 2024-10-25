@@ -151,6 +151,8 @@ export const documentRouter = router({
           userId,
           teamId,
           requestMetadata: extractNextApiRequestMetadata(ctx.req),
+          headers: ctx.req.headers,
+          cookies: ctx.req.cookies,
         });
       } catch (err) {
         console.error(err);
@@ -356,6 +358,8 @@ export const documentRouter = router({
           documentId,
           teamId,
           requestMetadata: extractNextApiRequestMetadata(ctx.req),
+          headers: ctx.req.headers,
+          cookies: ctx.req.cookies,
         });
       } catch (err) {
         console.error(err);
@@ -375,6 +379,8 @@ export const documentRouter = router({
           userId: ctx.user.id,
           ...input,
           requestMetadata: extractNextApiRequestMetadata(ctx.req),
+          headers: ctx.req.headers,
+          cookies: ctx.req.cookies,
         });
       } catch (err) {
         console.error(err);

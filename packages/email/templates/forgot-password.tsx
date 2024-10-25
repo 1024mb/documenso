@@ -1,23 +1,50 @@
 import { msg } from '@lingui/macro';
-import { useLingui } from '@lingui/react';
 
+import type { TranslationsProps } from '@documenso/lib/utils/i18n.import';
+import { getTranslation } from '@documenso/lib/utils/i18n.import';
 import config from '@documenso/tailwind-config';
 
 import { Body, Container, Head, Html, Img, Preview, Section, Tailwind } from '../components';
 import { TemplateFooter } from '../template-components/template-footer';
-import type { TemplateForgotPasswordProps } from '../template-components/template-forgot-password';
+import type { TemplateFooterData } from '../template-components/template-footer';
+import type {
+  TemplateForgotPasswordData,
+  TemplateForgotPasswordProps,
+} from '../template-components/template-forgot-password';
 import { TemplateForgotPassword } from '../template-components/template-forgot-password';
 
-export type ForgotPasswordTemplateProps = Partial<TemplateForgotPasswordProps>;
+export type ForgotPasswordTemplateProps = Partial<TemplateForgotPasswordProps> & {
+  forgotPasswordTemplateData: ForgotPasswordTemplateData;
+  templateForgotPasswordData: TemplateForgotPasswordData;
+  footerData: TemplateFooterData;
+};
+
+export type ForgotPasswordTemplateData = {
+  previewText: string;
+};
+
+export const forgotPasswordTemplateData = async ({
+  headers,
+  cookies,
+}: TranslationsProps): Promise<ForgotPasswordTemplateData> => {
+  const translation = await getTranslation({
+    headers: headers,
+    cookies: cookies,
+    message: [msg`Password Reset Requested`],
+  });
+
+  return {
+    previewText: translation[0],
+  };
+};
 
 export const ForgotPasswordTemplate = ({
   resetPasswordLink = 'https://documenso.com',
   assetBaseUrl = 'http://localhost:3002',
+  forgotPasswordTemplateData,
+  templateForgotPasswordData,
+  footerData,
 }: ForgotPasswordTemplateProps) => {
-  const { _ } = useLingui();
-
-  const previewText = _(msg`Password Reset Requested`);
-
   const getAssetUrl = (path: string) => {
     return new URL(path, assetBaseUrl).toString();
   };
@@ -25,7 +52,7 @@ export const ForgotPasswordTemplate = ({
   return (
     <Html>
       <Head />
-      <Preview>{previewText}</Preview>
+      <Preview>{forgotPasswordTemplateData.previewText}</Preview>
       <Tailwind
         config={{
           theme: {
@@ -48,6 +75,7 @@ export const ForgotPasswordTemplate = ({
                 <TemplateForgotPassword
                   resetPasswordLink={resetPasswordLink}
                   assetBaseUrl={assetBaseUrl}
+                  templateForgotPasswordData={templateForgotPasswordData}
                 />
               </Section>
             </Container>
@@ -55,7 +83,13 @@ export const ForgotPasswordTemplate = ({
             <div className="mx-auto mt-12 max-w-xl" />
 
             <Container className="mx-auto max-w-xl">
-              <TemplateFooter isDocument={false} />
+              <TemplateFooter
+                isDocument={false}
+                address={footerData.address}
+                companyName={footerData.companyName}
+                message1={footerData.message1}
+                message2={footerData.message2}
+              />
             </Container>
           </Section>
         </Body>

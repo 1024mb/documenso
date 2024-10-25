@@ -1,12 +1,21 @@
 import { createElement } from 'react';
 
+import { msg } from '@lingui/macro';
+
 import { mailer } from '@documenso/email/mailer';
 import { render } from '@documenso/email/render';
-import { TeamEmailRemovedTemplate } from '@documenso/email/templates/team-email-removed';
+import { loadFooterTemplateData } from '@documenso/email/template-components/template-footer';
+import {
+  TeamEmailRemovedTemplate,
+  teamEmailRemovedTemplateData,
+} from '@documenso/email/templates/team-email-removed';
 import { WEBAPP_BASE_URL } from '@documenso/lib/constants/app';
 import { FROM_ADDRESS, FROM_NAME } from '@documenso/lib/constants/email';
 import { TEAM_MEMBER_ROLE_PERMISSIONS_MAP } from '@documenso/lib/constants/teams';
 import { prisma } from '@documenso/prisma';
+
+import type { TranslationsProps } from '../../utils/i18n.import';
+import { getTranslation } from '../../utils/i18n.import';
 
 export type DeleteTeamEmailOptions = {
   userId: number;
@@ -19,7 +28,13 @@ export type DeleteTeamEmailOptions = {
  *
  * The user must either be part of the team with the required permissions, or the owner of the email.
  */
-export const deleteTeamEmail = async ({ userId, userEmail, teamId }: DeleteTeamEmailOptions) => {
+export const deleteTeamEmail = async ({
+  userId,
+  userEmail,
+  teamId,
+  headers,
+  cookies,
+}: DeleteTeamEmailOptions & TranslationsProps) => {
   const team = await prisma.$transaction(async (tx) => {
     const foundTeam = await tx.team.findFirstOrThrow({
       where: {
@@ -71,6 +86,18 @@ export const deleteTeamEmail = async ({ userId, userEmail, teamId }: DeleteTeamE
       teamEmail: team.teamEmail?.email ?? '',
       teamName: team.name,
       teamUrl: team.url,
+      teamEmailRemovedTemplateData: await teamEmailRemovedTemplateData({
+        headers: headers,
+        cookies: cookies,
+        teamName: team.name,
+      }),
+      footerData: await loadFooterTemplateData({ headers, cookies }),
+    });
+
+    const mailSubject = await getTranslation({
+      headers: headers,
+      cookies: cookies,
+      message: [msg`Team email has been revoked for ${team.name}`],
     });
 
     await mailer.sendMail({
@@ -82,7 +109,7 @@ export const deleteTeamEmail = async ({ userId, userEmail, teamId }: DeleteTeamE
         name: FROM_NAME,
         address: FROM_ADDRESS,
       },
-      subject: `Team email has been revoked for ${team.name}`,
+      subject: mailSubject[0],
       html: render(template),
       text: render(template, { plainText: true }),
     });

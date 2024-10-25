@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { i18n } from '@lingui/core';
 import { Trans, msg } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 import { InfoIcon, Plus } from 'lucide-react';
@@ -14,6 +15,7 @@ import {
   TEMPLATE_RECIPIENT_NAME_PLACEHOLDER_REGEX,
 } from '@documenso/lib/constants/template';
 import { AppError } from '@documenso/lib/errors/app-error';
+import { loadAndActivateLocale } from '@documenso/lib/utils/i18n.import';
 import type { Recipient } from '@documenso/prisma/client';
 import { trpc } from '@documenso/trpc/react';
 import { Button } from '@documenso/ui/primitives/button';
@@ -43,46 +45,65 @@ import { useToast } from '@documenso/ui/primitives/use-toast';
 
 import { useOptionalCurrentTeam } from '~/providers/team';
 
-const ZAddRecipientsForNewDocumentSchema = z
-  .object({
-    sendDocument: z.boolean(),
-    recipients: z.array(
-      z.object({
-        id: z.number(),
-        email: z.string().email(),
-        name: z.string(),
-      }),
-    ),
-  })
-  // Display exactly which rows are duplicates.
-  .superRefine((items, ctx) => {
-    const uniqueEmails = new Map<string, number>();
+const ZAddRecipientsForNewDocumentSchema = (locale: string) => {
+  loadAndActivateLocale(locale)
+    .then(() => {})
+    .catch((err) => {
+      console.error(err);
+    });
 
-    for (const [index, recipients] of items.recipients.entries()) {
-      const email = recipients.email.toLowerCase();
+  return (
+    z
+      .object({
+        sendDocument: z.boolean(),
+        recipients: z.array(
+          z.object({
+            id: z.number(),
+            email: z
+              .string()
+              .min(1, { message: i18n._(msg`Email is required`) })
+              .min(7, { message: i18n._(msg`Please enter a valid email address.`) }) // validation doesn't allow for one
+              // character on local part of email.
+              .regex(/^(?![-_.])[a-zA-Z0-9._%+-]{2,}(?<![-_.])@[a-zA-Z0-9-]{2,}\.[a-zA-Z]{2,63}$/, {
+                message: i18n._(msg`Please enter a valid email address.`),
+              })
+              .email({ message: i18n._(msg`Invalid email address`) }),
+            name: z.string(),
+          }),
+        ),
+      })
+      // Display exactly which rows are duplicates.
+      .superRefine((items, ctx) => {
+        const uniqueEmails = new Map<string, number>();
+        for (const [index, recipients] of items.recipients.entries()) {
+          const email = recipients.email.toLowerCase();
 
-      const firstFoundIndex = uniqueEmails.get(email);
+          const firstFoundIndex = uniqueEmails.get(email);
 
-      if (firstFoundIndex === undefined) {
-        uniqueEmails.set(email, index);
-        continue;
-      }
+          if (firstFoundIndex === undefined) {
+            uniqueEmails.set(email, index);
+            continue;
+          }
 
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: 'Emails must be unique',
-        path: ['recipients', index, 'email'],
-      });
+          ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: i18n._(msg`Emails must be unique`),
+            path: ['recipients', index, 'email'],
+          });
 
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: 'Emails must be unique',
-        path: ['recipients', firstFoundIndex, 'email'],
-      });
-    }
-  });
+          ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: i18n._(msg`Emails must be unique`),
+            path: ['recipients', firstFoundIndex, 'email'],
+          });
+        }
+      })
+  );
+};
 
-type TAddRecipientsForNewDocumentSchema = z.infer<typeof ZAddRecipientsForNewDocumentSchema>;
+type TAddRecipientsForNewDocumentSchema = z.infer<
+  ReturnType<typeof ZAddRecipientsForNewDocumentSchema>
+>;
 
 export type UseTemplateDialogProps = {
   templateId: number;
@@ -98,14 +119,15 @@ export function UseTemplateDialog({
   const router = useRouter();
 
   const { toast } = useToast();
-  const { _ } = useLingui();
+  const { _, i18n } = useLingui();
+  const locale = i18n.locale;
 
   const [open, setOpen] = useState(false);
 
   const team = useOptionalCurrentTeam();
 
   const form = useForm<TAddRecipientsForNewDocumentSchema>({
-    resolver: zodResolver(ZAddRecipientsForNewDocumentSchema),
+    resolver: zodResolver(ZAddRecipientsForNewDocumentSchema(locale)),
     defaultValues: {
       sendDocument: false,
       recipients: recipients.map((recipient) => {

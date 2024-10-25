@@ -7,7 +7,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { msg } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 
-import { RECIPIENT_ROLES_DESCRIPTION_ENG } from '@documenso/lib/constants/recipient-roles';
+import { RECIPIENT_ROLES_DESCRIPTION } from '@documenso/lib/constants/recipient-roles';
 import type { Field } from '@documenso/prisma/client';
 import { type Recipient } from '@documenso/prisma/client';
 import type { TemplateWithDetails } from '@documenso/prisma/types/template';
@@ -53,7 +53,7 @@ export const DirectTemplatePageView = ({
   const [step, setStep] = useState<DirectTemplateStep>('configure');
   const [isDocumentPdfLoaded, setIsDocumentPdfLoaded] = useState(false);
 
-  const recipientRoleDescription = RECIPIENT_ROLES_DESCRIPTION_ENG[directTemplateRecipient.role];
+  const recipientRoleDescription = RECIPIENT_ROLES_DESCRIPTION[directTemplateRecipient.role];
 
   const directTemplateFlow: Record<DirectTemplateStep, DocumentFlowStep> = {
     configure: {
@@ -62,9 +62,10 @@ export const DirectTemplatePageView = ({
       stepIndex: 1,
     },
     sign: {
-      // Todo: Translations
-      title: msg`${recipientRoleDescription.actionVerb} document`,
-      description: msg`${recipientRoleDescription.actionVerb} the document to complete the process.`,
+      title: msg`${_(recipientRoleDescription.actionVerb)} document`,
+      description: msg`${_(
+        recipientRoleDescription.actionVerb,
+      )} the document to complete the process.`,
       stepIndex: 2,
     },
   };

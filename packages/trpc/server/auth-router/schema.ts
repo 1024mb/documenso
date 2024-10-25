@@ -4,27 +4,13 @@ import { z } from 'zod';
 
 import { ZBaseTableSearchParamsSchema } from '@documenso/lib/types/search-params';
 import { ZRegistrationResponseJSONSchema } from '@documenso/lib/types/webauthn';
+import { loadAndActivateLocale } from '@documenso/lib/utils/i18n.import';
 
 export const ZCurrentPasswordSchema = (locale: string = 'en') => {
-  import(`../../../lib/translations/${locale}/web.js`)
-    .then(({ messages }) => {
-      i18n.loadAndActivate({ locale, messages });
-    })
-    .catch((error) => {
-      if (error instanceof Error && error.message.includes('404') && locale !== 'en') {
-        console.error(`Failed to load translations for locale ${locale}:`, error);
-        locale = 'en';
-
-        import(`../../../lib/translations/${locale}/web.js`)
-          .then(({ messages }) => {
-            i18n.loadAndActivate({ locale, messages });
-          })
-          .catch((fallbackError) => {
-            console.error(`Failed to load English translations:`, fallbackError);
-          });
-      } else {
-        console.error(error);
-      }
+  loadAndActivateLocale(locale)
+    .then(() => {})
+    .catch((err) => {
+      console.error(err);
     });
 
   return z
@@ -68,9 +54,23 @@ export const ZPasswordSchema = (locale: string = 'en') => {
 };
 
 export const ZSignUpMutationSchema = (locale: string = 'en') => {
+  loadAndActivateLocale(locale)
+    .then(() => {})
+    .catch((err) => {
+      console.error(err);
+    });
+
   return z.object({
     name: z.string().min(1),
-    email: z.string().email(),
+    email: z
+      .string()
+      .min(1, { message: i18n._(msg`Email is required`) })
+      .min(7, { message: i18n._(msg`Please enter a valid email address.`) }) // validation doesn't allow for one
+      // character on local part of email.
+      .regex(/^(?![-_.])[a-zA-Z0-9._%+-]{2,}(?<![-_.])@[a-zA-Z0-9-]{2,}\.[a-zA-Z]{2,63}$/, {
+        message: i18n._(msg`Please enter a valid email address.`),
+      })
+      .email({ message: i18n._(msg`Invalid email address`) }),
     password: ZPasswordSchema(locale),
     signature: z.string().nullish(),
     url: z

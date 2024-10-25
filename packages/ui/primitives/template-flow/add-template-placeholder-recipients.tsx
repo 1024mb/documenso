@@ -70,7 +70,8 @@ export const AddTemplatePlaceholderRecipientsFormPartial = ({
   const initialId = useId();
   const $sensorApi = useRef<SensorAPI | null>(null);
 
-  const { _ } = useLingui();
+  const { _, i18n } = useLingui();
+  const locale = i18n.locale;
   const { data: session } = useSession();
 
   const user = session?.user;
@@ -106,7 +107,7 @@ export const AddTemplatePlaceholderRecipientsFormPartial = ({
   };
 
   const form = useForm<TAddTemplatePlacholderRecipientsFormSchema>({
-    resolver: zodResolver(ZAddTemplatePlacholderRecipientsFormSchema),
+    resolver: zodResolver(ZAddTemplatePlacholderRecipientsFormSchema(locale)),
     defaultValues: {
       signers: generateDefaultFormSigners(),
       signingOrder: signingOrder || DocumentSigningOrder.PARALLEL,

@@ -5,6 +5,7 @@ import { UserSecurityAuditLogType } from '@documenso/prisma/client';
 
 import { SALT_ROUNDS } from '../../constants/auth';
 import type { RequestMetadata } from '../../universal/extract-request-metadata';
+import type { TranslationsProps } from '../../utils/i18n.import';
 import { sendResetPassword } from '../auth/send-reset-password';
 
 export type ResetPasswordOptions = {
@@ -13,7 +14,13 @@ export type ResetPasswordOptions = {
   requestMetadata?: RequestMetadata;
 };
 
-export const resetPassword = async ({ token, password, requestMetadata }: ResetPasswordOptions) => {
+export const resetPassword = async ({
+  token,
+  password,
+  requestMetadata,
+  headers,
+  cookies,
+}: ResetPasswordOptions & TranslationsProps) => {
   if (!token) {
     throw new Error('Invalid token provided. Please try again.');
   }
@@ -69,5 +76,5 @@ export const resetPassword = async ({ token, password, requestMetadata }: ResetP
     }),
   ]);
 
-  await sendResetPassword({ userId: foundToken.userId });
+  await sendResetPassword({ userId: foundToken.userId, headers: headers, cookies: cookies });
 };

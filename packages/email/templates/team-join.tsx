@@ -1,11 +1,13 @@
-import { Trans, msg } from '@lingui/macro';
-import { useLingui } from '@lingui/react';
+import { msg } from '@lingui/macro';
 
+import type { TranslationsProps } from '@documenso/lib/utils/i18n.import';
+import { getTranslation } from '@documenso/lib/utils/i18n.import';
 import { formatTeamUrl } from '@documenso/lib/utils/teams';
 import config from '@documenso/tailwind-config';
 
 import { Body, Container, Head, Hr, Html, Preview, Section, Tailwind, Text } from '../components';
 import { TemplateFooter } from '../template-components/template-footer';
+import type { TemplateFooterData } from '../template-components/template-footer';
 import TemplateImage from '../template-components/template-image';
 
 export type TeamJoinEmailProps = {
@@ -15,6 +17,42 @@ export type TeamJoinEmailProps = {
   memberEmail: string;
   teamName: string;
   teamUrl: string;
+  teamJoinEmailTemplateData: TeamJoinEmailTemplateData;
+  footerData: TemplateFooterData;
+};
+
+export type TeamJoinEmailTemplateData = {
+  previewText: string;
+  message1: string;
+  message2: string;
+};
+
+export const teamJoinEmailTemplateData = async ({
+  memberName,
+  memberEmail,
+  teamName,
+  headers,
+  cookies,
+}: {
+  memberName: string;
+  memberEmail: string;
+  teamName: string;
+} & TranslationsProps): Promise<TeamJoinEmailTemplateData> => {
+  const translation = await getTranslation({
+    headers: headers,
+    cookies: cookies,
+    message: [
+      msg`A team member has joined a team on Documenso`,
+      msg`${memberName || memberEmail} joined the team ${teamName} on Documenso`,
+      msg`${memberEmail} joined the following team`,
+    ],
+  });
+
+  return {
+    previewText: translation[0],
+    message1: translation[1],
+    message2: translation[2],
+  };
 };
 
 export const TeamJoinEmailTemplate = ({
@@ -24,15 +62,13 @@ export const TeamJoinEmailTemplate = ({
   memberEmail = 'johndoe@documenso.com',
   teamName = 'Team Name',
   teamUrl = 'demo',
+  teamJoinEmailTemplateData,
+  footerData,
 }: TeamJoinEmailProps) => {
-  const { _ } = useLingui();
-
-  const previewText = _(msg`A team member has joined a team on Documenso`);
-
   return (
     <Html>
       <Head />
-      <Preview>{previewText}</Preview>
+      <Preview>{teamJoinEmailTemplateData.previewText}</Preview>
       <Tailwind
         config={{
           theme: {
@@ -61,13 +97,11 @@ export const TeamJoinEmailTemplate = ({
 
               <Section className="p-2 text-slate-500">
                 <Text className="text-center text-lg font-medium text-black">
-                  <Trans>
-                    {memberName || memberEmail} joined the team {teamName} on Documenso
-                  </Trans>
+                  {teamJoinEmailTemplateData.message1}
                 </Text>
 
                 <Text className="my-1 text-center text-base">
-                  <Trans>{memberEmail} joined the following team</Trans>
+                  {teamJoinEmailTemplateData.message2}
                 </Text>
 
                 <div className="mx-auto my-2 w-fit rounded-lg bg-gray-50 px-4 py-2 text-base font-medium text-slate-600">
@@ -79,7 +113,13 @@ export const TeamJoinEmailTemplate = ({
             <Hr className="mx-auto mt-12 max-w-xl" />
 
             <Container className="mx-auto max-w-xl">
-              <TemplateFooter isDocument={false} />
+              <TemplateFooter
+                isDocument={false}
+                address={footerData.address}
+                companyName={footerData.companyName}
+                message1={footerData.message1}
+                message2={footerData.message2}
+              />
             </Container>
           </Section>
         </Body>

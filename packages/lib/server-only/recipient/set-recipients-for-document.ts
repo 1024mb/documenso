@@ -1,9 +1,14 @@
 import { createElement } from 'react';
 
+import { msg } from '@lingui/macro';
+
 import { isUserEnterprise } from '@documenso/ee/server-only/util/is-document-enterprise';
 import { mailer } from '@documenso/email/mailer';
 import { render } from '@documenso/email/render';
-import RecipientRemovedFromDocumentTemplate from '@documenso/email/templates/recipient-removed-from-document';
+import { loadFooterTemplateData } from '@documenso/email/template-components/template-footer';
+import RecipientRemovedFromDocumentTemplate, {
+  recipientRemovedFromDocumentTemplateData,
+} from '@documenso/email/templates/recipient-removed-from-document';
 import { DOCUMENT_AUDIT_LOG_TYPE } from '@documenso/lib/types/document-audit-logs';
 import {
   type TRecipientActionAuthTypes,
@@ -24,6 +29,8 @@ import { SendStatus, SigningStatus } from '@documenso/prisma/client';
 import { NEXT_PUBLIC_WEBAPP_URL } from '../../constants/app';
 import { FROM_ADDRESS, FROM_NAME } from '../../constants/email';
 import { AppError, AppErrorCode } from '../../errors/app-error';
+import type { TranslationsProps } from '../../utils/i18n.import';
+import { getTranslation } from '../../utils/i18n.import';
 import { canRecipientBeModified } from '../../utils/recipients';
 
 export interface SetRecipientsForDocumentOptions {
@@ -40,7 +47,9 @@ export const setRecipientsForDocument = async ({
   documentId,
   recipients,
   requestMetadata,
-}: SetRecipientsForDocumentOptions): Promise<Recipient[]> => {
+  headers,
+  cookies,
+}: SetRecipientsForDocumentOptions & TranslationsProps): Promise<Recipient[]> => {
   const document = await prisma.document.findFirst({
     where: {
       id: documentId,
@@ -289,6 +298,19 @@ export const setRecipientsForDocument = async ({
           documentName: document.title,
           inviterName: user.name || undefined,
           assetBaseUrl,
+          recipientRemovedFromDocumentTemplateData: await recipientRemovedFromDocumentTemplateData({
+            inviterName: user.name || undefined,
+            documentName: document.title,
+            headers: headers,
+            cookies: cookies,
+          }),
+          footerData: await loadFooterTemplateData({ headers, cookies }),
+        });
+
+        const mailSubject = await getTranslation({
+          headers: headers,
+          cookies: cookies,
+          message: [msg`You have been removed from a document`],
         });
 
         await mailer.sendMail({
@@ -300,7 +322,7 @@ export const setRecipientsForDocument = async ({
             name: FROM_NAME,
             address: FROM_ADDRESS,
           },
-          subject: 'You have been removed from a document',
+          subject: mailSubject[0],
           html: render(template),
           text: render(template, { plainText: true }),
         });

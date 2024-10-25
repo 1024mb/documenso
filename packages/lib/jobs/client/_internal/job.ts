@@ -7,6 +7,9 @@ export type SimpleTriggerJobOptions = {
   name: string;
   payload: unknown;
   timestamp?: number;
+  headers: unknown;
+  cookies: unknown;
+  locale: string;
 };
 
 export const ZSimpleTriggerJobOptionsSchema = z.object({

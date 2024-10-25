@@ -13,6 +13,7 @@ import { signPdf } from '@documenso/signing';
 import type { RequestMetadata } from '../../universal/extract-request-metadata';
 import { getFile } from '../../universal/upload/get-file';
 import { putPdfFile } from '../../universal/upload/put-file';
+import type { TranslationsProps } from '../../utils/i18n.import';
 import { getCertificatePdf } from '../htmltopdf/get-certificate-pdf';
 import { flattenAnnotations } from '../pdf/flatten-annotations';
 import { flattenForm } from '../pdf/flatten-form';
@@ -33,7 +34,9 @@ export const sealDocument = async ({
   sendEmail = true,
   isResealing = false,
   requestMetadata,
-}: SealDocumentOptions) => {
+  headers,
+  cookies,
+}: SealDocumentOptions & TranslationsProps) => {
   const document = await prisma.document.findFirstOrThrow({
     where: {
       id: documentId,
@@ -174,7 +177,7 @@ export const sealDocument = async ({
   });
 
   if (sendEmail && !isResealing) {
-    await sendCompletedEmail({ documentId, requestMetadata });
+    await sendCompletedEmail({ documentId, requestMetadata, headers: headers, cookies: cookies });
   }
 
   const updatedDocument = await prisma.document.findFirstOrThrow({

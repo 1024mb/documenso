@@ -1,27 +1,59 @@
 import { msg } from '@lingui/macro';
-import { useLingui } from '@lingui/react';
 
+import type { TranslationsProps } from '@documenso/lib/utils/i18n.import';
+import { getTranslation } from '@documenso/lib/utils/i18n.import';
 import config from '@documenso/tailwind-config';
 
 import { Body, Container, Head, Hr, Html, Img, Preview, Section, Tailwind } from '../components';
-import type { TemplateDocumentCancelProps } from '../template-components/template-document-cancel';
+import type {
+  TemplateDocumentCancelData,
+  TemplateDocumentCancelProps,
+} from '../template-components/template-document-cancel';
 import { TemplateDocumentCancel } from '../template-components/template-document-cancel';
 import { TemplateFooter } from '../template-components/template-footer';
+import type { TemplateFooterData } from '../template-components/template-footer';
 
-export type DocumentCancelEmailTemplateProps = Partial<TemplateDocumentCancelProps>;
+export type DocumentCancelEmailTemplateProps = Partial<TemplateDocumentCancelProps> & {
+  documentCancelTemplateData: DocumentCancelTemplateData;
+  footerData: TemplateFooterData;
+  templateDocumentCancelData: TemplateDocumentCancelData;
+};
+
+export type DocumentCancelTemplateData = {
+  previewText: string;
+};
+
+export const documentCancelTemplateData = async ({
+  inviterName,
+  documentName,
+  headers,
+  cookies,
+}: {
+  inviterName: string;
+  documentName: string;
+} & TranslationsProps): Promise<DocumentCancelTemplateData> => {
+  const translations = await getTranslation({
+    headers: headers,
+    cookies: cookies,
+    message: [
+      msg`${inviterName} has cancelled the document ${documentName}, you don't need to sign it anymore.`,
+    ],
+  });
+
+  return {
+    previewText: translations[0],
+  };
+};
 
 export const DocumentCancelTemplate = ({
   inviterName = 'Lucas Smith',
   inviterEmail = 'lucas@documenso.com',
   documentName = 'Open Source Pledge.pdf',
   assetBaseUrl = 'http://localhost:3002',
+  documentCancelTemplateData,
+  templateDocumentCancelData,
+  footerData,
 }: DocumentCancelEmailTemplateProps) => {
-  const { _ } = useLingui();
-
-  const previewText = _(
-    msg`${inviterName} has cancelled the document ${documentName}, you don't need to sign it anymore.`,
-  );
-
   const getAssetUrl = (path: string) => {
     return new URL(path, assetBaseUrl).toString();
   };
@@ -29,7 +61,7 @@ export const DocumentCancelTemplate = ({
   return (
     <Html>
       <Head />
-      <Preview>{previewText}</Preview>
+      <Preview>{documentCancelTemplateData.previewText}</Preview>
       <Tailwind
         config={{
           theme: {
@@ -54,6 +86,7 @@ export const DocumentCancelTemplate = ({
                   inviterEmail={inviterEmail}
                   documentName={documentName}
                   assetBaseUrl={assetBaseUrl}
+                  templateDocumentCancelData={templateDocumentCancelData}
                 />
               </Section>
             </Container>
@@ -61,7 +94,12 @@ export const DocumentCancelTemplate = ({
             <Hr className="mx-auto mt-12 max-w-xl" />
 
             <Container className="mx-auto max-w-xl">
-              <TemplateFooter />
+              <TemplateFooter
+                address={footerData.address}
+                companyName={footerData.companyName}
+                message1={footerData.message1}
+                message2={footerData.message2}
+              />
             </Container>
           </Section>
         </Body>

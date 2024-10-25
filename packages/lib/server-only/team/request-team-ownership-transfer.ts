@@ -1,12 +1,21 @@
 import { createElement } from 'react';
 
+import { msg } from '@lingui/macro';
+
 import { mailer } from '@documenso/email/mailer';
 import { render } from '@documenso/email/render';
-import { TeamTransferRequestTemplate } from '@documenso/email/templates/team-transfer-request';
+import { loadFooterTemplateData } from '@documenso/email/template-components/template-footer';
+import {
+  TeamTransferRequestTemplate,
+  teamTransferRequestTemplateData,
+} from '@documenso/email/templates/team-transfer-request';
 import { WEBAPP_BASE_URL } from '@documenso/lib/constants/app';
 import { FROM_ADDRESS, FROM_NAME } from '@documenso/lib/constants/email';
 import { createTokenVerification } from '@documenso/lib/utils/token-verification';
 import { prisma } from '@documenso/prisma';
+
+import type { TranslationsProps } from '../../utils/i18n.import';
+import { getTranslation } from '../../utils/i18n.import';
 
 export type RequestTeamOwnershipTransferOptions = {
   /**
@@ -40,7 +49,9 @@ export const requestTeamOwnershipTransfer = async ({
   userName,
   teamId,
   newOwnerUserId,
-}: RequestTeamOwnershipTransferOptions) => {
+  headers,
+  cookies,
+}: RequestTeamOwnershipTransferOptions & TranslationsProps) => {
   // Todo: Clear payment methods disabled for now.
   const clearPaymentMethods = false;
 
@@ -90,7 +101,22 @@ export const requestTeamOwnershipTransfer = async ({
         senderName: userName,
         teamName: team.name,
         teamUrl: team.url,
-        token,
+        token: token,
+        teamTransferRequestTemplateData: await teamTransferRequestTemplateData({
+          headers: headers,
+          cookies: cookies,
+          teamName: team.name,
+        }),
+        footerData: await loadFooterTemplateData({
+          headers: headers,
+          cookies: cookies,
+        }),
+      });
+
+      const mailSubject = await getTranslation({
+        headers: headers,
+        cookies: cookies,
+        message: [msg`You have been requested to take ownership of team ${team.name} on Documenso`],
       });
 
       await mailer.sendMail({
@@ -99,7 +125,7 @@ export const requestTeamOwnershipTransfer = async ({
           name: FROM_NAME,
           address: FROM_ADDRESS,
         },
-        subject: `You have been requested to take ownership of team ${team.name} on Documenso`,
+        subject: mailSubject[0],
         html: render(template),
         text: render(template, { plainText: true }),
       });

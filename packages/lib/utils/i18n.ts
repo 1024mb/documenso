@@ -5,6 +5,7 @@ import type { I18n } from '@lingui/core';
 import { IS_APP_WEB, IS_APP_WEB_I18N_ENABLED } from '../constants/app';
 import type { I18nLocaleData, SupportedLanguageCodes } from '../constants/i18n';
 import { APP_I18N_OPTIONS } from '../constants/i18n';
+import type { TranslationsProps } from './i18n.import';
 
 export async function dynamicActivate(i18nInstance: I18n, locale: string) {
   const { messages } = await import(
@@ -47,9 +48,6 @@ export const extractLocaleDataFromCookies = (
   return language;
 };
 
-/**
- * Extracts the language from the `accept-language` header.
- */
 export const extractLocaleDataFromHeaders = (
   headers: Headers,
 ): { lang: SupportedLanguageCodes | null; locales: string[] } => {
@@ -104,4 +102,73 @@ export const extractLocaleData = ({
     lang: lang || APP_I18N_OPTIONS.sourceLang,
     locales,
   };
+};
+
+export const getLocale = ({ headers, cookies }: Omit<TranslationsProps, 'locale'>): string => {
+  return extractLocaleDataLegacy({
+    headers: headers,
+    cookies: cookies,
+  });
+};
+
+export const extractLocaleDataLegacy = ({
+  headers,
+  cookies,
+}: Omit<TranslationsProps, 'locale'>): string => {
+  let cookieLanguage: SupportedLanguageCodes | null = extractLocaleDataFromCookiesLegacy({
+    cookies: cookies,
+  });
+  const headerLanguage = extractLocaleDataFromHeadersLegacy({ headers: headers });
+
+  if (!cookieLanguage && headerLanguage) {
+    cookieLanguage = headerLanguage;
+  }
+
+  // Override web app to be English.
+  if (!IS_APP_WEB_I18N_ENABLED && IS_APP_WEB) {
+    cookieLanguage = 'en';
+  }
+
+  return cookieLanguage ?? APP_I18N_OPTIONS.sourceLang;
+};
+
+export const extractLocaleDataFromCookiesLegacy = ({
+  cookies,
+}: Omit<TranslationsProps, 'locale' | 'headers'>): SupportedLanguageCodes | null => {
+  let preferredLocale: string;
+
+  if (!cookies) {
+    preferredLocale = '';
+  } else if ('language' in cookies) {
+    preferredLocale = cookies.language ?? '';
+  } else {
+    preferredLocale = '';
+  }
+
+  const language = parseLanguageFromLocale(preferredLocale);
+
+  if (!language) {
+    return null;
+  }
+
+  return language;
+};
+
+export const extractLocaleDataFromHeadersLegacy = ({
+  headers,
+}: Omit<TranslationsProps, 'locale' | 'cookies'>): SupportedLanguageCodes | null => {
+  let headerLocales: string[];
+
+  if (!headers) {
+    headerLocales = [''];
+  } else if ('accept-language' in headers) {
+    const acceptLanguage = headers['accept-language'];
+    headerLocales = (acceptLanguage ?? '').split(',');
+  } else {
+    headerLocales = [''];
+  }
+
+  const language = parseLanguageFromLocale(headerLocales[0]);
+
+  return language;
 };

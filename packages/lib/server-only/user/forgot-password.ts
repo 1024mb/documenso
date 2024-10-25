@@ -1,12 +1,17 @@
 import crypto from 'crypto';
 
 import { prisma } from '@documenso/prisma';
-import { TForgotPasswordFormSchema } from '@documenso/trpc/server/profile-router/schema';
+import type { TForgotPasswordFormSchema } from '@documenso/trpc/server/profile-router/schema';
 
 import { ONE_DAY, ONE_HOUR } from '../../constants/time';
+import type { TranslationsProps } from '../../utils/i18n.import';
 import { sendForgotPassword } from '../auth/send-forgot-password';
 
-export const forgotPassword = async ({ email }: TForgotPasswordFormSchema) => {
+export const forgotPassword = async ({
+  email,
+  headers,
+  cookies,
+}: TForgotPasswordFormSchema & TranslationsProps) => {
   const user = await prisma.user.findFirst({
     where: {
       email: {
@@ -49,5 +54,7 @@ export const forgotPassword = async ({ email }: TForgotPasswordFormSchema) => {
 
   await sendForgotPassword({
     userId: user.id,
+    headers: headers,
+    cookies: cookies,
   }).catch((err) => console.error(err));
 };

@@ -57,7 +57,7 @@ export const stripeWebhookHandler = async (
         const session = event.data.object as Stripe.Checkout.Session;
 
         if (session.metadata?.source === 'marketing') {
-          await onEarlyAdoptersCheckout({ session });
+          await onEarlyAdoptersCheckout({ session, headers: req.headers, cookies: req.cookies });
         }
 
         const customerId =

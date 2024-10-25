@@ -1,18 +1,32 @@
 import { createElement } from 'react';
 
+import { msg } from '@lingui/macro';
+
 import { mailer } from '@documenso/email/mailer';
 import { render } from '@documenso/email/render';
-import { DocumentPendingEmailTemplate } from '@documenso/email/templates/document-pending';
+import { templateDocumentPendingData } from '@documenso/email/template-components/template-document-pending';
+import { loadFooterTemplateData } from '@documenso/email/template-components/template-footer';
+import {
+  DocumentPendingEmailTemplate,
+  documentPendingEmailTemplateData,
+} from '@documenso/email/templates/document-pending';
 import { prisma } from '@documenso/prisma';
 
 import { NEXT_PUBLIC_WEBAPP_URL } from '../../constants/app';
+import type { TranslationsProps } from '../../utils/i18n.import';
+import { getTranslation } from '../../utils/i18n.import';
 
 export interface SendPendingEmailOptions {
   documentId: number;
   recipientId: number;
 }
 
-export const sendPendingEmail = async ({ documentId, recipientId }: SendPendingEmailOptions) => {
+export const sendPendingEmail = async ({
+  documentId,
+  recipientId,
+  headers,
+  cookies,
+}: SendPendingEmailOptions & TranslationsProps) => {
   const document = await prisma.document.findFirst({
     where: {
       id: documentId,
@@ -47,7 +61,23 @@ export const sendPendingEmail = async ({ documentId, recipientId }: SendPendingE
 
   const template = createElement(DocumentPendingEmailTemplate, {
     documentName: document.title,
-    assetBaseUrl,
+    assetBaseUrl: assetBaseUrl,
+    documentPendingEmailTemplateData: await documentPendingEmailTemplateData({
+      headers: headers,
+      cookies: cookies,
+    }),
+    templateDocumentPendingData: await templateDocumentPendingData({
+      documentName: document.title,
+      headers: headers,
+      cookies: cookies,
+    }),
+    footerData: await loadFooterTemplateData({ headers, cookies }),
+  });
+
+  const mailSubject = await getTranslation({
+    headers: headers,
+    cookies: cookies,
+    message: [msg`Waiting for others to complete signing.`],
   });
 
   await mailer.sendMail({
@@ -59,7 +89,7 @@ export const sendPendingEmail = async ({ documentId, recipientId }: SendPendingE
       name: process.env.NEXT_PRIVATE_SMTP_FROM_NAME || 'Documenso',
       address: process.env.NEXT_PRIVATE_SMTP_FROM_ADDRESS || 'noreply@documenso.com',
     },
-    subject: 'Waiting for others to complete signing.',
+    subject: mailSubject[0],
     html: render(template),
     text: render(template, { plainText: true }),
   });

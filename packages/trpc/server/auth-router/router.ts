@@ -32,7 +32,7 @@ import {
 const NEXT_PUBLIC_DISABLE_SIGNUP = () => env('NEXT_PUBLIC_DISABLE_SIGNUP');
 
 export const authRouter = router({
-  signup: procedure.input(ZSignUpMutationSchema()).mutation(async ({ input }) => {
+  signup: procedure.input(ZSignUpMutationSchema()).mutation(async ({ input, ctx }) => {
     try {
       if (NEXT_PUBLIC_DISABLE_SIGNUP() === 'true') {
         throw new TRPCError({
@@ -56,6 +56,8 @@ export const authRouter = router({
         name: 'send.signup.confirmation.email',
         payload: {
           email: user.email,
+          headers: ctx.req.headers,
+          cookies: ctx.req.cookies,
         },
       });
 

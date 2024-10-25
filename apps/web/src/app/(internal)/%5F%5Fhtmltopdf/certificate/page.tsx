@@ -2,8 +2,8 @@ import React from 'react';
 
 import { redirect } from 'next/navigation';
 
-import { Trans, msg } from '@lingui/macro';
-import { Trans as TransReact } from '@lingui/react';
+import { msg } from '@lingui/macro';
+import { Trans } from '@lingui/react';
 import { DateTime } from 'luxon';
 import { match } from 'ts-pattern';
 import { UAParser } from 'ua-parser-js';
@@ -158,15 +158,15 @@ export default async function SigningCertificate({ searchParams }: SigningCertif
             <TableHeader>
               <TableRow>
                 <TableHead>
-                  <Trans>Signer Events</Trans>
+                  <Trans id={msg`Signer Events`.id} />
                 </TableHead>
                 <TableHead>
-                  <Trans>Signature</Trans>
+                  <Trans id={msg`Signature`.id} />
                 </TableHead>
                 <TableHead>
-                  <Trans>Details</Trans>
+                  <Trans id={msg`Details`.id} />
                 </TableHead>
-                {/* <TableHead><Trans>Security</Trans></TableHead> */}
+                {/* <TableHead><Trans id={msg`Security`.id} /></TableHead> */}
               </TableRow>
             </TableHeader>
 
@@ -182,15 +182,15 @@ export default async function SigningCertificate({ searchParams }: SigningCertif
                       <div className="hyphens-auto break-words font-medium">{recipient.name}</div>
                       <div className="break-all">{recipient.email}</div>
                       <p className="text-muted-foreground mt-2 text-sm print:text-xs">
-                        <TransReact id={RECIPIENT_ROLES_DESCRIPTION[recipient.role].roleName.id} />
+                        <Trans id={RECIPIENT_ROLES_DESCRIPTION[recipient.role].roleName.id} />
                       </p>
 
                       <p className="text-muted-foreground mt-2 text-sm print:text-xs">
                         <span className="font-medium">
-                          <Trans>Authentication Level:</Trans>
+                          <Trans id={msg`Authentication Level:`.id} />
                         </span>{' '}
                         <span className="block">
-                          <TransReact id={getAuthenticationLevel(recipient.id).id} />{' '}
+                          <Trans id={getAuthenticationLevel(recipient.id).id} />{' '}
                         </span>
                       </p>
                     </TableCell>
@@ -213,7 +213,7 @@ export default async function SigningCertificate({ searchParams }: SigningCertif
 
                           <p className="text-muted-foreground mt-2 text-sm print:text-xs">
                             <span className="font-medium">
-                              <Trans>Signature ID:</Trans>
+                              <Trans id={msg`Signature ID:`.id} />
                             </span>{' '}
                             <span className="block font-mono uppercase">
                               {signature.secondaryId}
@@ -222,31 +222,31 @@ export default async function SigningCertificate({ searchParams }: SigningCertif
 
                           <p className="text-muted-foreground mt-2 text-sm print:text-xs">
                             <span className="font-medium">
-                              <Trans>IP Address:</Trans>
+                              <Trans id={msg`IP Address:`.id} />
                             </span>{' '}
                             <span className="inline-block">
                               {logs.DOCUMENT_RECIPIENT_COMPLETED[0]?.ipAddress ?? (
-                                <TransReact id={msg`Unknown`.id} />
+                                <Trans id={msg`Unknown`.id} />
                               )}
                             </span>
                           </p>
 
                           <p className="text-muted-foreground mt-1 text-sm print:text-xs">
                             <span className="font-medium">
-                              <Trans>Device:</Trans>
+                              <Trans id={msg`Device:`.id} />
                             </span>{' '}
                             <span className="inline-block">
                               {typeof userAgent === 'string' ? (
                                 userAgent
                               ) : (
-                                <TransReact id={userAgent.id} />
+                                <Trans id={userAgent.id} />
                               )}
                             </span>
                           </p>
                         </>
                       ) : (
                         <p className="text-muted-foreground">
-                          <Trans>N/A</Trans>
+                          <Trans id={msg`N/A`.id} />
                         </p>
                       )}
                     </TableCell>
@@ -255,7 +255,7 @@ export default async function SigningCertificate({ searchParams }: SigningCertif
                       <div className="space-y-1">
                         <p className="text-muted-foreground text-sm print:text-xs">
                           <span className="font-medium">
-                            <Trans>Sent:</Trans>
+                            <Trans id={msg`Sent:`.id} />
                           </span>{' '}
                           <span className="inline-block">
                             {logs.EMAIL_SENT[0] ? (
@@ -263,14 +263,14 @@ export default async function SigningCertificate({ searchParams }: SigningCertif
                                 .setLocale(APP_I18N_OPTIONS.defaultLocale)
                                 .toFormat('yyyy-MM-dd hh:mm:ss a (ZZZZ)')
                             ) : (
-                              <TransReact id={msg`Unknown`.id} />
+                              <Trans id={msg`Unknown`.id} />
                             )}
                           </span>
                         </p>
 
                         <p className="text-muted-foreground text-sm print:text-xs">
                           <span className="font-medium">
-                            <Trans>Viewed:</Trans>
+                            <Trans id={msg`Viewed:`.id} />
                           </span>{' '}
                           <span className="inline-block">
                             {logs.DOCUMENT_OPENED[0] ? (
@@ -278,14 +278,14 @@ export default async function SigningCertificate({ searchParams }: SigningCertif
                                 .setLocale(APP_I18N_OPTIONS.defaultLocale)
                                 .toFormat('yyyy-MM-dd hh:mm:ss a (ZZZZ)')
                             ) : (
-                              <TransReact id={msg`Unknown`.id} />
+                              <Trans id={msg`Unknown`.id} />
                             )}
                           </span>
                         </p>
 
                         <p className="text-muted-foreground text-sm print:text-xs">
                           <span className="font-medium">
-                            <Trans>Signed:</Trans>
+                            <Trans id={msg`Signed:`.id} />
                           </span>{' '}
                           <span className="inline-block">
                             {logs.DOCUMENT_RECIPIENT_COMPLETED[0] ? (
@@ -293,20 +293,20 @@ export default async function SigningCertificate({ searchParams }: SigningCertif
                                 .setLocale(APP_I18N_OPTIONS.defaultLocale)
                                 .toFormat('yyyy-MM-dd hh:mm:ss a (ZZZZ)')
                             ) : (
-                              <TransReact id={msg`Unknown`.id} />
+                              <Trans id={msg`Unknown`.id} />
                             )}
                           </span>
                         </p>
 
                         <p className="text-muted-foreground text-sm print:text-xs">
                           <span className="font-medium">
-                            <Trans>Reason:</Trans>
+                            <Trans id={msg`Reason:`.id} />
                           </span>{' '}
                           <span className="inline-block">
                             {isOwner(recipient.email) ? (
-                              <TransReact id={FRIENDLY_SIGNING_REASONS['__OWNER__'].id} />
+                              <Trans id={FRIENDLY_SIGNING_REASONS['__OWNER__'].id} />
                             ) : (
-                              <TransReact id={FRIENDLY_SIGNING_REASONS[recipient.role].id} />
+                              <Trans id={FRIENDLY_SIGNING_REASONS[recipient.role].id} />
                             )}
                           </span>
                         </p>
@@ -323,7 +323,7 @@ export default async function SigningCertificate({ searchParams }: SigningCertif
       <div className="my-8 flex-row-reverse">
         <div className="flex items-end justify-end gap-x-4">
           <p className="flex-shrink-0 text-sm font-medium print:text-xs">
-            <Trans>Signing certificate provided by:</Trans>
+            <Trans id={msg`Signing certificate provided by:`.id} />
           </p>
 
           <Logo className="max-h-6 print:max-h-4" />

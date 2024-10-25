@@ -1,7 +1,7 @@
 import { msg } from '@lingui/macro';
-import { useLingui } from '@lingui/react';
 
-import { RECIPIENT_ROLES_DESCRIPTION_ENG } from '@documenso/lib/constants/recipient-roles';
+import type { TranslationsProps } from '@documenso/lib/utils/i18n.import';
+import { getTranslation } from '@documenso/lib/utils/i18n.import';
 import type { RecipientRole } from '@documenso/prisma/client';
 import config from '@documenso/tailwind-config';
 
@@ -18,9 +18,13 @@ import {
   Tailwind,
   Text,
 } from '../components';
-import type { TemplateDocumentInviteProps } from '../template-components/template-document-invite';
+import type {
+  TemplateDocumentInviteData,
+  TemplateDocumentInviteProps,
+} from '../template-components/template-document-invite';
 import { TemplateDocumentInvite } from '../template-components/template-document-invite';
 import { TemplateFooter } from '../template-components/template-footer';
+import type { TemplateFooterData } from '../template-components/template-footer';
 
 export type DocumentInviteEmailTemplateProps = Partial<TemplateDocumentInviteProps> & {
   customBody?: string;
@@ -29,6 +33,53 @@ export type DocumentInviteEmailTemplateProps = Partial<TemplateDocumentInvitePro
   isTeamInvite?: boolean;
   teamName?: string;
   teamEmail?: string;
+  documentInviteEmailTemplateData: DocumentInviteEmailTemplateData;
+  templateDocumentInviteData: TemplateDocumentInviteData;
+  footerData: TemplateFooterData;
+};
+
+export type DocumentInviteEmailTemplateData = {
+  action: string;
+  previewText1: string;
+  previewText2: string;
+  previewText3: string;
+  message1: string;
+};
+
+type DocumentInviteEmailTemplateParams = {
+  recipientActionVerb: string;
+  documentName: string;
+  inviterName: string | undefined;
+  teamName: string | undefined;
+};
+
+export const documentInviteEmailTemplateData = async ({
+  recipientActionVerb,
+  documentName,
+  inviterName,
+  teamName,
+  headers,
+  cookies,
+}: DocumentInviteEmailTemplateParams &
+  TranslationsProps): Promise<DocumentInviteEmailTemplateData> => {
+  const translations = await getTranslation({
+    headers: headers,
+    cookies: cookies,
+    message: [
+      msg`Please ${recipientActionVerb} your document ${documentName}`,
+      msg`${inviterName} on behalf of ${teamName} has invited you to ${recipientActionVerb} ${documentName}`,
+      msg`${inviterName} has invited you to ${recipientActionVerb} ${documentName}`,
+      msg`${inviterName} has invited you to ${recipientActionVerb} the document "${documentName}".`,
+    ],
+  });
+
+  return {
+    action: recipientActionVerb,
+    previewText1: translations[0],
+    previewText2: translations[1],
+    previewText3: translations[2],
+    message1: translations[3],
+  };
 };
 
 export const DocumentInviteEmailTemplate = ({
@@ -42,16 +93,15 @@ export const DocumentInviteEmailTemplate = ({
   selfSigner = false,
   isTeamInvite = false,
   teamName,
+  documentInviteEmailTemplateData,
+  templateDocumentInviteData,
+  footerData,
 }: DocumentInviteEmailTemplateProps) => {
-  const { _ } = useLingui();
-
-  const action = RECIPIENT_ROLES_DESCRIPTION_ENG[role].actionVerb.toLowerCase();
-
   const previewText = selfSigner
-    ? _(msg`Please ${action} your document ${documentName}`)
+    ? documentInviteEmailTemplateData.previewText1
     : isTeamInvite
-    ? _(msg`${inviterName} on behalf of ${teamName} has invited you to ${action} ${documentName}`)
-    : _(msg`${inviterName} has invited you to ${action} ${documentName}`);
+    ? documentInviteEmailTemplateData.previewText2
+    : documentInviteEmailTemplateData.previewText3;
 
   const getAssetUrl = (path: string) => {
     return new URL(path, assetBaseUrl).toString();
@@ -90,6 +140,7 @@ export const DocumentInviteEmailTemplate = ({
                   selfSigner={selfSigner}
                   isTeamInvite={isTeamInvite}
                   teamName={teamName}
+                  templateDocumentInviteData={templateDocumentInviteData}
                 />
               </Section>
             </Container>
@@ -107,9 +158,7 @@ export const DocumentInviteEmailTemplate = ({
                   {customBody ? (
                     <pre className="font-sans text-base text-slate-400">{customBody}</pre>
                   ) : (
-                    _(
-                      msg`${inviterName} has invited you to ${action} the document "${documentName}".`,
-                    )
+                    documentInviteEmailTemplateData.message1
                   )}
                 </Text>
               </Section>
@@ -118,7 +167,12 @@ export const DocumentInviteEmailTemplate = ({
             <Hr className="mx-auto mt-12 max-w-xl" />
 
             <Container className="mx-auto max-w-xl">
-              <TemplateFooter />
+              <TemplateFooter
+                address={footerData.address}
+                companyName={footerData.companyName}
+                message1={footerData.message1}
+                message2={footerData.message2}
+              />
             </Container>
           </Section>
         </Body>

@@ -8,6 +8,7 @@ const ZIpSchema = z.string().ip();
 export const ZRequestMetadataSchema = z.object({
   ipAddress: ZIpSchema.optional(),
   userAgent: z.string().optional(),
+  locale: z.string().optional(),
 });
 
 export type RequestMetadata = z.infer<typeof ZRequestMetadataSchema>;
@@ -17,10 +18,12 @@ export const extractNextApiRequestMetadata = (req: NextApiRequest): RequestMetad
 
   const ipAddress = parsedIp.success ? parsedIp.data : undefined;
   const userAgent = req.headers['user-agent'];
+  const locale = req.headers?.['accept-language'];
 
   return {
     ipAddress,
     userAgent,
+    locale,
   };
 };
 
@@ -37,9 +40,11 @@ export const extractNextHeaderRequestMetadata = (
 
   const ipAddress = parsedIp.success ? parsedIp.data : undefined;
   const userAgent = headers?.['user-agent'];
+  const locale = headers?.['accept-language'];
 
   return {
     ipAddress,
     userAgent,
+    locale,
   };
 };

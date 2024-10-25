@@ -113,6 +113,7 @@ export const NEXT_AUTH_OPTIONS: AuthOptions = {
               name: 'send.signup.confirmation.email',
               payload: {
                 email: user.email,
+                headers: req.headers,
               },
             });
           }

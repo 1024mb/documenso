@@ -13,6 +13,7 @@ import { WebhookTriggerEvents } from '@documenso/prisma/client';
 
 import { jobs } from '../../jobs/client';
 import type { TRecipientActionAuth } from '../../types/document-auth';
+import type { TranslationsProps } from '../../utils/i18n.import';
 import { getIsRecipientsTurnToSign } from '../recipient/get-is-recipient-turn';
 import { triggerWebhook } from '../webhooks/trigger/trigger-webhook';
 import { sendPendingEmail } from './send-pending-email';
@@ -50,7 +51,9 @@ export const completeDocumentWithToken = async ({
   token,
   documentId,
   requestMetadata,
-}: CompleteDocumentWithTokenOptions) => {
+  headers,
+  cookies,
+}: CompleteDocumentWithTokenOptions & TranslationsProps) => {
   const document = await getDocument({ token, documentId });
 
   if (document.status !== DocumentStatus.PENDING) {
@@ -158,7 +161,12 @@ export const completeDocumentWithToken = async ({
   });
 
   if (pendingRecipients.length > 0) {
-    await sendPendingEmail({ documentId, recipientId: recipient.id });
+    await sendPendingEmail({
+      documentId,
+      recipientId: recipient.id,
+      headers: headers,
+      cookies: cookies,
+    });
 
     if (document.documentMeta?.signingOrder === DocumentSigningOrder.SEQUENTIAL) {
       const [nextRecipient] = pendingRecipients;
@@ -176,6 +184,8 @@ export const completeDocumentWithToken = async ({
             documentId: document.id,
             recipientId: nextRecipient.id,
             requestMetadata,
+            headers: headers,
+            cookies: cookies,
           },
         });
       });
@@ -199,6 +209,8 @@ export const completeDocumentWithToken = async ({
       payload: {
         documentId: document.id,
         requestMetadata,
+        headers: headers,
+        cookies: cookies,
       },
     });
   }

@@ -3,6 +3,7 @@ import { AppError } from '@documenso/lib/errors/app-error';
 import { createTokenVerification } from '@documenso/lib/utils/token-verification';
 import { prisma } from '@documenso/prisma';
 
+import type { TranslationsProps } from '../../utils/i18n.import';
 import { sendTeamEmailVerificationEmail } from './create-team-email-verification';
 
 export type ResendTeamMemberInvitationOptions = {
@@ -16,7 +17,9 @@ export type ResendTeamMemberInvitationOptions = {
 export const resendTeamEmailVerification = async ({
   userId,
   teamId,
-}: ResendTeamMemberInvitationOptions) => {
+  headers,
+  cookies,
+}: ResendTeamMemberInvitationOptions & TranslationsProps) => {
   await prisma.$transaction(
     async (tx) => {
       const team = await tx.team.findUniqueOrThrow({
@@ -61,7 +64,14 @@ export const resendTeamEmailVerification = async ({
         },
       });
 
-      await sendTeamEmailVerificationEmail(emailVerification.email, token, team.name, team.url);
+      await sendTeamEmailVerificationEmail({
+        email: emailVerification.email,
+        token: token,
+        teamName: team.name,
+        teamUrl: team.url,
+        headers: headers,
+        cookies: cookies,
+      });
     },
     { timeout: 30_000 },
   );

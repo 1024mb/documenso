@@ -1,23 +1,50 @@
 import { msg } from '@lingui/macro';
-import { useLingui } from '@lingui/react';
 
+import type { TranslationsProps } from '@documenso/lib/utils/i18n.import';
+import { getTranslation } from '@documenso/lib/utils/i18n.import';
 import config from '@documenso/tailwind-config';
 
 import { Body, Container, Head, Html, Img, Preview, Section, Tailwind } from '../components';
-import type { TemplateDocumentSelfSignedProps } from '../template-components/template-document-self-signed';
+import type {
+  TemplateDocumentSelfSignedData,
+  TemplateDocumentSelfSignedProps,
+} from '../template-components/template-document-self-signed';
 import { TemplateDocumentSelfSigned } from '../template-components/template-document-self-signed';
 import { TemplateFooter } from '../template-components/template-footer';
+import type { TemplateFooterData } from '../template-components/template-footer';
 
-export type DocumentSelfSignedTemplateProps = TemplateDocumentSelfSignedProps;
+export type DocumentSelfSignedTemplateProps = TemplateDocumentSelfSignedProps & {
+  documentSelfSignedEmailTemplateData: DocumentSelfSignedEmailTemplateData;
+  footerData: TemplateFooterData;
+  templateDocumentSelfSignedData: TemplateDocumentSelfSignedData;
+};
+
+export type DocumentSelfSignedEmailTemplateData = {
+  previewText: string;
+};
+
+export const documentSelfSignedEmailTemplateData = async ({
+  headers,
+  cookies,
+}: TranslationsProps): Promise<DocumentSelfSignedEmailTemplateData> => {
+  const translations = await getTranslation({
+    headers: headers,
+    cookies: cookies,
+    message: [msg`Completed Document`],
+  });
+
+  return {
+    previewText: translations[0],
+  };
+};
 
 export const DocumentSelfSignedEmailTemplate = ({
   documentName = 'Open Source Pledge.pdf',
   assetBaseUrl = 'http://localhost:3002',
+  documentSelfSignedEmailTemplateData,
+  templateDocumentSelfSignedData,
+  footerData,
 }: DocumentSelfSignedTemplateProps) => {
-  const { _ } = useLingui();
-
-  const previewText = _(msg`Completed Document`);
-
   const getAssetUrl = (path: string) => {
     return new URL(path, assetBaseUrl).toString();
   };
@@ -25,7 +52,7 @@ export const DocumentSelfSignedEmailTemplate = ({
   return (
     <Html>
       <Head />
-      <Preview>{previewText}</Preview>
+      <Preview>{documentSelfSignedEmailTemplateData.previewText}</Preview>
       <Tailwind
         config={{
           theme: {
@@ -48,12 +75,18 @@ export const DocumentSelfSignedEmailTemplate = ({
                 <TemplateDocumentSelfSigned
                   documentName={documentName}
                   assetBaseUrl={assetBaseUrl}
+                  templateDocumentSelfSignedData={templateDocumentSelfSignedData}
                 />
               </Section>
             </Container>
 
             <Container className="mx-auto max-w-xl">
-              <TemplateFooter />
+              <TemplateFooter
+                address={footerData.address}
+                companyName={footerData.companyName}
+                message1={footerData.message1}
+                message2={footerData.message2}
+              />
             </Container>
           </Section>
         </Body>
