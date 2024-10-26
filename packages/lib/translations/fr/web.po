@@ -665,7 +665,7 @@ msgstr "Essaye de sceller le document à nouveau, utile après qu'un changement 
 msgid "Audit Log"
 msgstr "Journal d'audit"
 
-#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:190
+#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:192
 msgid "Authentication Level:"
 msgstr ""
 
@@ -1249,7 +1249,7 @@ msgstr "Supprimez votre compte et tout son contenu, y compris les documents comp
 msgid "Deleted"
 msgstr "Supprimé"
 
-#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/audit-log/page.tsx:90
+#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/audit-log/page.tsx:89
 msgid "DELETED"
 msgstr ""
 
@@ -1269,7 +1269,7 @@ msgstr ""
 msgid "Description is required"
 msgstr ""
 
-#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:167
+#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:169
 msgid "Details"
 msgstr ""
 
@@ -1277,7 +1277,7 @@ msgstr ""
 msgid "Device"
 msgstr "Appareil"
 
-#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:236
+#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:238
 msgid "Device:"
 msgstr ""
 
@@ -2052,7 +2052,7 @@ msgstr "Facture"
 msgid "IP Address"
 msgstr ""
 
-#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:225
+#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:227
 msgid "IP Address:"
 msgstr ""
 
@@ -2326,7 +2326,7 @@ msgstr "Mes modèles"
 #: apps/web/src/app/(dashboard)/settings/security/activity/user-security-activity-data-table.tsx:115
 #: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/audit-log/data-table.tsx:84
 #: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/audit-log/data-table.tsx:96
-#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:249
+#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:251
 msgid "N/A"
 msgstr ""
 
@@ -2856,7 +2856,7 @@ msgstr ""
 msgid "Ready"
 msgstr "Prêt"
 
-#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:303
+#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:305
 msgid "Reason:"
 msgstr ""
 
@@ -3071,7 +3071,7 @@ msgstr "Recherche par titre de document"
 msgid "Search by name or email"
 msgstr "Recherche par nom ou e-mail"
 
-#: apps/web/src/components/(dashboard)/document-search/document-search.tsx:40
+#: apps/web/src/components/(dashboard)/document-search/document-search.tsx:41
 msgid "Search documents..."
 msgstr ""
 
@@ -3156,7 +3156,7 @@ msgstr "Envoyé"
 msgid "Sent to"
 msgstr ""
 
-#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:258
+#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:260
 msgid "Sent:"
 msgstr ""
 
@@ -3284,7 +3284,7 @@ msgid "Sign Up with OIDC"
 msgstr "S'inscrire avec OIDC"
 
 #: apps/web/src/app/(dashboard)/admin/documents/[id]/recipient-item.tsx:90
-#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:164
+#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:166
 #: apps/web/src/app/(recipient)/d/[token]/sign-direct-template.tsx:338
 #: apps/web/src/app/(signing)/sign/[token]/form.tsx:195
 #: apps/web/src/app/(signing)/sign/[token]/signature-field.tsx:195
@@ -3295,7 +3295,7 @@ msgstr "S'inscrire avec OIDC"
 msgid "Signature"
 msgstr "Signature"
 
-#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:216
+#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:218
 msgid "Signature ID:"
 msgstr ""
 
@@ -3312,11 +3312,11 @@ msgstr "Les signatures apparaîtront une fois le document complété"
 msgid "Signed"
 msgstr "Signé"
 
-#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:288
+#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:290
 msgid "Signed:"
 msgstr ""
 
-#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:161
+#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:163
 msgid "Signer Events"
 msgstr ""
 
@@ -3324,11 +3324,11 @@ msgstr ""
 msgid "Signers that Signed Up"
 msgstr ""
 
-#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:152
+#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:153
 msgid "Signing Certificate"
 msgstr ""
 
-#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:326
+#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:328
 msgid "Signing certificate provided by:"
 msgstr ""
 
@@ -4228,10 +4228,10 @@ msgstr ""
 
 #: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:78
 #: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:94
-#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:229
-#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:266
-#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:281
-#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:296
+#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:231
+#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:268
+#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:283
+#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:298
 #: apps/web/src/components/document/document-history-sheet.tsx:66
 #: apps/web/src/components/document/document-history-sheet.tsx:361
 msgid "Unknown"
@@ -4467,7 +4467,7 @@ msgstr "Voir les équipes"
 msgid "Viewed"
 msgstr "Vu"
 
-#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:273
+#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:275
 msgid "Viewed:"
 msgstr ""
 

@@ -397,7 +397,7 @@ msgctxt "Progressive verb"
 msgid "Approving"
 msgstr "Approving"
 
-#: packages/trpc/server/webhook-router/schema.ts:26
+#: packages/trpc/server/webhook-router/schema.ts:25
 msgid "At least one event trigger is required"
 msgstr "At least one event trigger is required"
 
@@ -968,7 +968,7 @@ msgstr "Initials"
 msgid "Invalid email address"
 msgstr "Invalid email address"
 
-#: packages/trpc/server/webhook-router/schema.ts:23
+#: packages/trpc/server/webhook-router/schema.ts:22
 msgid "Invalid URL"
 msgstr "Invalid URL"
 
@@ -1671,7 +1671,7 @@ msgstr "The authentication required for recipients to sign the signature field."
 msgid "The authentication required for recipients to view the document."
 msgstr "The authentication required for recipients to view the document."
 
-#: packages/trpc/server/two-factor-authentication-router/schema.ts:18
+#: packages/trpc/server/two-factor-authentication-router/schema.ts:16
 msgid "The code must be exactly 6 characters long."
 msgstr "The code must be exactly 6 characters long."
 
@@ -1792,7 +1792,7 @@ msgstr "To proceed further, please set at least one value for the {0} field."
 msgid "To proceed further, please set at least one value for the {fieldType} field."
 msgstr "To proceed further, please set at least one value for the {fieldType} field."
 
-#: packages/trpc/server/two-factor-authentication-router/schema.ts:45
+#: packages/trpc/server/two-factor-authentication-router/schema.ts:46
 msgid "Token must be at least 1 character long."
 msgstr "Token must be at least 1 character long."
 
