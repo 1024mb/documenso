@@ -141,7 +141,7 @@ export const UpdateTeamEmailDialog = ({
                       <Trans>Name</Trans>
                     </FormLabel>
                     <FormControl>
-                      <Input className="bg-background" placeholder="eg. Legal" {...field} />
+                      <Input className="bg-background" placeholder={_(msg`eg. Legal`)} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

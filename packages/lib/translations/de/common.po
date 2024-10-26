@@ -402,6 +402,10 @@ msgctxt "Progressive verb"
 msgid "Approving"
 msgstr ""
 
+#: packages/trpc/server/webhook-router/schema.ts:26
+msgid "At least one event trigger is required"
+msgstr ""
+
 #: packages/lib/advanced-fields-validation/validate-checkbox.ts:22
 msgid "At least one option must be added"
 msgstr ""
@@ -754,9 +758,18 @@ msgstr "Dropdown-Optionen"
 msgid "Duplicate values are not allowed"
 msgstr ""
 
+#: packages/ui/primitives/document-flow/field-items-advanced-settings/number-field.tsx:181
+msgid "E.g. 0"
+msgstr ""
+
+#: packages/ui/primitives/document-flow/field-items-advanced-settings/number-field.tsx:193
+msgid "E.g. 100"
+msgstr ""
+
 #: packages/ui/primitives/document-flow/add-fields.tsx:879
 #: packages/ui/primitives/document-flow/add-signature.tsx:275
 #: packages/ui/primitives/document-flow/add-signers.tsx:500
+#: packages/ui/primitives/document-flow/add-signers.tsx:507
 #: packages/ui/primitives/document-flow/field-icon.tsx:29
 #: packages/ui/primitives/document-flow/types.ts:54
 #: packages/ui/primitives/template-flow/add-template-fields.tsx:634
@@ -806,6 +819,7 @@ msgid "Error"
 msgstr "Fehler"
 
 #: packages/lib/constants/document-visibility.ts:20
+#: packages/ui/components/document/document-visibility-select.tsx:32
 msgid "Everyone"
 msgstr ""
 
@@ -957,6 +971,10 @@ msgstr ""
 #: packages/ui/primitives/document-flow/add-signature.types.ts:14
 #: packages/ui/primitives/template-flow/add-template-placeholder-recipients.types.ts:32
 msgid "Invalid email address"
+msgstr ""
+
+#: packages/trpc/server/webhook-router/schema.ts:23
+msgid "Invalid URL"
 msgstr ""
 
 #: packages/lib/constants/date-formats.ts:56
@@ -1658,6 +1676,10 @@ msgstr "Die Authentifizierung, die erforderlich ist, damit Empfänger das Signat
 msgid "The authentication required for recipients to view the document."
 msgstr "Die Authentifizierung, die erforderlich ist, damit Empfänger das Dokument anzeigen können."
 
+#: packages/trpc/server/two-factor-authentication-router/schema.ts:18
+msgid "The code must be exactly 6 characters long."
+msgstr ""
+
 #: packages/ui/components/document/document-send-email-message-helper.tsx:31
 msgid "The document's name"
 msgstr "Der Name des Dokuments"
@@ -1775,8 +1797,16 @@ msgstr "Um fortzufahren, legen Sie bitte mindestens einen Wert für das Feld {0}
 msgid "To proceed further, please set at least one value for the {fieldType} field."
 msgstr ""
 
+#: packages/trpc/server/two-factor-authentication-router/schema.ts:45
+msgid "Token must be at least 1 character long."
+msgstr ""
+
 #: packages/ui/components/document/document-share-button.tsx:190
 msgid "Tweet"
+msgstr ""
+
+#: packages/ui/primitives/signature-pad/signature-pad.tsx:361
+msgid "Type your signature"
 msgstr ""
 
 #: packages/ui/primitives/signature-pad/signature-pad.tsx:421

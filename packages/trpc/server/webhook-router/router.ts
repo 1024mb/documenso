@@ -69,7 +69,7 @@ export const webhookRouter = router({
     }),
 
   createWebhook: authenticatedProcedure
-    .input(ZCreateWebhookMutationSchema)
+    .input(ZCreateWebhookMutationSchema(''))
     .mutation(async ({ input, ctx }) => {
       const { enabled, eventTriggers, secret, webhookUrl, teamId } = input;
 
@@ -114,7 +114,7 @@ export const webhookRouter = router({
     }),
 
   editWebhook: authenticatedProcedure
-    .input(ZEditWebhookMutationSchema)
+    .input(ZEditWebhookMutationSchema(''))
     .mutation(async ({ input, ctx }) => {
       try {
         const { id, teamId, ...data } = input;

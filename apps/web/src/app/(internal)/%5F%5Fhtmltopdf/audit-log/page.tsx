@@ -14,6 +14,7 @@ import { findDocumentAuditLogs } from '@documenso/lib/server-only/document/find-
 import { Card, CardContent } from '@documenso/ui/primitives/card';
 
 import { Logo } from '~/components/branding/logo';
+import { FRIENDLY_STATUS_MAP } from '~/components/formatter/document-status';
 
 import { AuditLogDataTable } from './data-table';
 
@@ -84,7 +85,11 @@ export default async function AuditLog({ searchParams }: AuditLogProps) {
             </span>
 
             <span className="mt-1 block">
-              {document.deletedAt ? <Trans id={msg`DELETED`.id} /> : document.status}
+              {document.deletedAt ? (
+                <Trans id={msg`DELETED`.id} />
+              ) : (
+                <Trans id={FRIENDLY_STATUS_MAP[document.status].labelUpper.id} />
+              )}
             </span>
           </p>
 

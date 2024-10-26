@@ -1,11 +1,25 @@
+import { i18n } from '@lingui/core';
+import { msg } from '@lingui/macro';
 import { z } from 'zod';
 
-export const ZEnableTwoFactorAuthenticationMutationSchema = z.object({
-  code: z.string().min(6).max(6),
-});
+import { loadAndActivateLocale } from '@documenso/lib/utils/i18n.import';
+
+export const ZEnableTwoFactorAuthenticationMutationSchema = (locale: string) => {
+  loadAndActivateLocale(locale)
+    .then(() => {})
+    .catch((err) => {
+      console.error(err);
+    });
+
+  return z.object({
+    code: z.string().length(6, {
+      message: i18n._(msg`The code must be exactly 6 characters long.`),
+    }),
+  });
+};
 
 export type TEnableTwoFactorAuthenticationMutationSchema = z.infer<
-  typeof ZEnableTwoFactorAuthenticationMutationSchema
+  ReturnType<typeof ZEnableTwoFactorAuthenticationMutationSchema>
 >;
 
 export const ZDisableTwoFactorAuthenticationMutationSchema = z.object({
@@ -17,8 +31,23 @@ export type TDisableTwoFactorAuthenticationMutationSchema = z.infer<
   typeof ZDisableTwoFactorAuthenticationMutationSchema
 >;
 
-export const ZViewRecoveryCodesMutationSchema = z.object({
-  token: z.string().trim().min(1),
-});
+export const ZViewRecoveryCodesMutationSchema = (locale: string) => {
+  loadAndActivateLocale(locale)
+    .then(() => {})
+    .catch((err) => {
+      console.error(err);
+    });
 
-export type TViewRecoveryCodesMutationSchema = z.infer<typeof ZViewRecoveryCodesMutationSchema>;
+  return z.object({
+    token: z
+      .string()
+      .trim()
+      .min(1, {
+        message: i18n._(msg`Token must be at least 1 character long.`),
+      }),
+  });
+};
+
+export type TViewRecoveryCodesMutationSchema = z.infer<
+  ReturnType<typeof ZViewRecoveryCodesMutationSchema>
+>;

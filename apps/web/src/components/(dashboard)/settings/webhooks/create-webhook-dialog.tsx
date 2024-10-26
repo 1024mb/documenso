@@ -41,16 +41,18 @@ import { useOptionalCurrentTeam } from '~/providers/team';
 
 import { TriggerMultiSelectCombobox } from './trigger-multiselect-combobox';
 
-const ZCreateWebhookFormSchema = ZCreateWebhookMutationSchema.omit({ teamId: true });
+const ZCreateWebhookFormSchema = (locale: string) => {
+  return ZCreateWebhookMutationSchema(locale).omit({ teamId: true });
+};
 
-type TCreateWebhookFormSchema = z.infer<typeof ZCreateWebhookFormSchema>;
+type TCreateWebhookFormSchema = z.infer<ReturnType<typeof ZCreateWebhookFormSchema>>;
 
 export type CreateWebhookDialogProps = {
   trigger?: React.ReactNode;
 } & Omit<DialogPrimitive.DialogProps, 'children'>;
 
 export const CreateWebhookDialog = ({ trigger, ...props }: CreateWebhookDialogProps) => {
-  const { _ } = useLingui();
+  const { _, i18n } = useLingui();
   const { toast } = useToast();
 
   const router = useRouter();
@@ -60,7 +62,7 @@ export const CreateWebhookDialog = ({ trigger, ...props }: CreateWebhookDialogPr
   const [open, setOpen] = useState(false);
 
   const form = useForm<TCreateWebhookFormSchema>({
-    resolver: zodResolver(ZCreateWebhookFormSchema),
+    resolver: zodResolver(ZCreateWebhookFormSchema(i18n.locale)),
     values: {
       webhookUrl: '',
       eventTriggers: [],

@@ -31,7 +31,7 @@ export const twoFactorAuthenticationRouter = router({
   }),
 
   enable: authenticatedProcedure
-    .input(ZEnableTwoFactorAuthenticationMutationSchema)
+    .input(ZEnableTwoFactorAuthenticationMutationSchema(''))
     .mutation(async ({ ctx, input }) => {
       try {
         const user = ctx.user;
@@ -84,7 +84,7 @@ export const twoFactorAuthenticationRouter = router({
     }),
 
   viewRecoveryCodes: authenticatedProcedure
-    .input(ZViewRecoveryCodesMutationSchema)
+    .input(ZViewRecoveryCodesMutationSchema(''))
     .mutation(async ({ ctx, input }) => {
       try {
         return await viewBackupCodes({

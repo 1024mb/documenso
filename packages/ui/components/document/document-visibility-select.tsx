@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react';
 
+import { msg } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 import type { SelectProps } from '@radix-ui/react-select';
 import { InfoIcon } from 'lucide-react';
@@ -28,7 +29,7 @@ export const DocumentVisibilitySelect = forwardRef<HTMLButtonElement, DocumentVi
     return (
       <Select {...props} disabled={!canUpdateVisibility}>
         <SelectTrigger ref={ref} className="bg-background text-muted-foreground">
-          <SelectValue data-testid="documentVisibilitySelectValue" placeholder="Everyone" />
+          <SelectValue data-testid="documentVisibilitySelectValue" placeholder={_(msg`Everyone`)} />
         </SelectTrigger>
 
         <SelectContent position="popper">

@@ -30,9 +30,11 @@ import { SettingsHeader } from '~/components/(dashboard)/settings/layout/header'
 import { TriggerMultiSelectCombobox } from '~/components/(dashboard)/settings/webhooks/trigger-multiselect-combobox';
 import { useCurrentTeam } from '~/providers/team';
 
-const ZEditWebhookFormSchema = ZEditWebhookMutationSchema.omit({ id: true });
+const ZEditWebhookFormSchema = (locale: string) => {
+  return ZEditWebhookMutationSchema(locale).omit({ id: true });
+};
 
-type TEditWebhookFormSchema = z.infer<typeof ZEditWebhookFormSchema>;
+type TEditWebhookFormSchema = z.infer<ReturnType<typeof ZEditWebhookFormSchema>>;
 
 export type WebhookPageOptions = {
   params: {
@@ -41,7 +43,7 @@ export type WebhookPageOptions = {
 };
 
 export default function WebhookPage({ params }: WebhookPageOptions) {
-  const { _ } = useLingui();
+  const { _, i18n } = useLingui();
   const { toast } = useToast();
 
   const router = useRouter();
@@ -59,7 +61,7 @@ export default function WebhookPage({ params }: WebhookPageOptions) {
   const { mutateAsync: updateWebhook } = trpc.webhook.editWebhook.useMutation();
 
   const form = useForm<TEditWebhookFormSchema>({
-    resolver: zodResolver(ZEditWebhookFormSchema),
+    resolver: zodResolver(ZEditWebhookFormSchema(i18n.locale)),
     values: {
       webhookUrl: webhook?.webhookUrl ?? '',
       eventTriggers: webhook?.eventTriggers ?? [],

@@ -178,7 +178,7 @@ export const NumberFieldAdvancedSettings = ({
             <Input
               id="minValue"
               className="bg-background mt-2"
-              placeholder="E.g. 0"
+              placeholder={_(msg`E.g. 0`)}
               value={fieldState.minValue}
               onChange={(e) => handleInput('minValue', e.target.value)}
             />
@@ -190,7 +190,7 @@ export const NumberFieldAdvancedSettings = ({
             <Input
               id="maxValue"
               className="bg-background mt-2"
-              placeholder="E.g. 100"
+              placeholder={_(msg`E.g. 100`)}
               value={fieldState.maxValue}
               onChange={(e) => handleInput('maxValue', e.target.value)}
             />

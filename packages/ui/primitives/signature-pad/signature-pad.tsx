@@ -358,7 +358,7 @@ export const SignaturePad = ({
           })}
         >
           <Input
-            placeholder="Type your signature"
+            placeholder={_(msg`Type your signature`)}
             className="w-1/2 border-none p-0 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
             value={typedSignature}
             onChange={handleTypedSignatureChange}

@@ -129,12 +129,24 @@ msgstr ""
 msgid "$50 USD <0>per month</0>"
 msgstr ""
 
+#: apps/web/src/components/(dashboard)/settings/token/contants.ts:5
+msgid "1 month"
+msgstr ""
+
+#: apps/web/src/components/(dashboard)/settings/token/contants.ts:8
+msgid "12 months"
+msgstr ""
+
 #: apps/web/src/components/(teams)/dialogs/create-team-checkout-dialog.tsx:145
 msgid "20% off"
 msgstr ""
 
 #: apps/web/src/app/(signing)/sign/[token]/document-action-auth-2fa.tsx:145
 msgid "2FA token"
+msgstr ""
+
+#: apps/web/src/components/(dashboard)/settings/token/contants.ts:6
+msgid "3 months"
 msgstr ""
 
 #: apps/web/src/components/partials/not-found.tsx:45
@@ -152,6 +164,14 @@ msgstr "404 Équipe non trouvée"
 #: apps/web/src/app/(recipient)/d/[token]/not-found.tsx:15
 msgid "404 Template not found"
 msgstr "404 Modèle non trouvé"
+
+#: apps/web/src/components/(dashboard)/settings/token/contants.ts:7
+msgid "6 months"
+msgstr ""
+
+#: apps/web/src/components/(dashboard)/settings/token/contants.ts:4
+msgid "7 days"
+msgstr ""
 
 #: apps/web/src/components/forms/send-confirmation-email.tsx:55
 msgid "A confirmation email has been sent, and it should arrive in your inbox shortly."
@@ -182,12 +202,12 @@ msgstr "Un e-mail de réinitialisation de mot de passe a été envoyé, si vous 
 msgid "A request to transfer the ownership of this team has been sent to <0>{0} ({1})</0>"
 msgstr "Une demande pour transférer la propriété de cette équipe a été envoyée à <0>{0} ({1})</0>"
 
-#: apps/web/src/components/(dashboard)/settings/webhooks/create-webhook-dialog.tsx:228
+#: apps/web/src/components/(dashboard)/settings/webhooks/create-webhook-dialog.tsx:230
 msgid "A secret that will be sent to your URL so you can verify that the request has been sent by Documenso"
 msgstr "Un secret qui sera envoyé à votre URL afin que vous puissiez vérifier que la demande a été envoyée par Documenso"
 
-#: apps/web/src/app/(dashboard)/settings/webhooks/[id]/page.tsx:196
-#: apps/web/src/app/(teams)/t/[teamUrl]/settings/webhooks/[id]/page.tsx:202
+#: apps/web/src/app/(dashboard)/settings/webhooks/[id]/page.tsx:198
+#: apps/web/src/app/(teams)/t/[teamUrl]/settings/webhooks/[id]/page.tsx:204
 msgid "A secret that will be sent to your URL so you can verify that the request has been sent by Documenso."
 msgstr "Un secret qui sera envoyé à votre URL afin que vous puissiez vérifier que la demande a été envoyée par Documenso."
 
@@ -348,9 +368,13 @@ msgstr "Panneau d'administration"
 msgid "After signing a document electronically, you will be provided the opportunity to view, download, and print the document for your records. It is highly recommended that you retain a copy of all electronically signed documents for your personal records. We will also retain a copy of the signed document for our records however we may not be able to provide you with a copy of the signed document after a certain period of time."
 msgstr ""
 
-#: apps/web/src/components/formatter/document-status.tsx:46
+#: apps/web/src/components/formatter/document-status.tsx:50
 msgid "All"
 msgstr "Tout"
+
+#: apps/web/src/components/formatter/document-status.tsx:51
+msgid "ALL"
+msgstr ""
 
 #: apps/web/src/components/(dashboard)/common/command-menu.tsx:42
 msgid "All documents"
@@ -442,7 +466,7 @@ msgstr "Une erreur est survenue lors de l'ajout des champs."
 msgid "An error occurred while creating document from template."
 msgstr "Une erreur est survenue lors de la création du document à partir d'un modèle."
 
-#: apps/web/src/components/(dashboard)/settings/webhooks/create-webhook-dialog.tsx:102
+#: apps/web/src/components/(dashboard)/settings/webhooks/create-webhook-dialog.tsx:104
 msgid "An error occurred while creating the webhook. Please try again."
 msgstr "Une erreur est survenue lors de la création du webhook. Veuillez réessayer."
 
@@ -770,7 +794,7 @@ msgstr ""
 #: apps/web/src/app/(signing)/sign/[token]/text-field.tsx:345
 #: apps/web/src/app/(teams)/t/[teamUrl]/settings/team-transfer-status.tsx:121
 #: apps/web/src/components/(dashboard)/settings/token/delete-token-dialog.tsx:176
-#: apps/web/src/components/(dashboard)/settings/webhooks/create-webhook-dialog.tsx:242
+#: apps/web/src/components/(dashboard)/settings/webhooks/create-webhook-dialog.tsx:244
 #: apps/web/src/components/(dashboard)/settings/webhooks/delete-webhook-dialog.tsx:163
 #: apps/web/src/components/(teams)/dialogs/add-team-email-dialog.tsx:185
 #: apps/web/src/components/(teams)/dialogs/create-team-checkout-dialog.tsx:170
@@ -899,9 +923,13 @@ msgid "Complete Viewing"
 msgstr "Compléter la visualisation"
 
 #: apps/web/src/components/(dashboard)/avatar/stack-avatars-with-tooltip.tsx:62
-#: apps/web/src/components/formatter/document-status.tsx:28
+#: apps/web/src/components/formatter/document-status.tsx:29
 msgid "Completed"
 msgstr "Complété"
+
+#: apps/web/src/components/formatter/document-status.tsx:30
+msgid "COMPLETED"
+msgstr ""
 
 #: apps/web/src/components/(dashboard)/common/command-menu.tsx:48
 msgid "Completed documents"
@@ -1004,7 +1032,7 @@ msgid "Copy token"
 msgstr "Copier le jeton"
 
 #: apps/web/src/app/(profile)/profile-header.tsx:83
-#: apps/web/src/components/(dashboard)/settings/webhooks/create-webhook-dialog.tsx:245
+#: apps/web/src/components/(dashboard)/settings/webhooks/create-webhook-dialog.tsx:247
 msgid "Create"
 msgstr "Créer"
 
@@ -1065,11 +1093,11 @@ msgstr "Créer une équipe"
 msgid "Create token"
 msgstr "Créer un jeton"
 
-#: apps/web/src/components/(dashboard)/settings/webhooks/create-webhook-dialog.tsx:125
+#: apps/web/src/components/(dashboard)/settings/webhooks/create-webhook-dialog.tsx:127
 msgid "Create webhook"
 msgstr "Créer un webhook"
 
-#: apps/web/src/components/(dashboard)/settings/webhooks/create-webhook-dialog.tsx:117
+#: apps/web/src/components/(dashboard)/settings/webhooks/create-webhook-dialog.tsx:119
 msgid "Create Webhook"
 msgstr "Créer un Webhook"
 
@@ -1091,11 +1119,11 @@ msgid "Created"
 msgstr "Créé"
 
 #: apps/web/src/app/(dashboard)/admin/subscriptions/page.tsx:35
-#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/audit-log/page.tsx:103
+#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/audit-log/page.tsx:108
 msgid "Created At"
 msgstr "Créé le"
 
-#: apps/web/src/app/(dashboard)/documents/[id]/logs/document-logs-page-view.tsx:79
+#: apps/web/src/app/(dashboard)/documents/[id]/logs/document-logs-page-view.tsx:80
 msgid "Created by"
 msgstr "Créé par"
 
@@ -1135,7 +1163,7 @@ msgstr "Mode sombre"
 msgid "Date"
 msgstr "Date"
 
-#: apps/web/src/app/(dashboard)/documents/[id]/logs/document-logs-page-view.tsx:85
+#: apps/web/src/app/(dashboard)/documents/[id]/logs/document-logs-page-view.tsx:86
 msgid "Date created"
 msgstr "Date de création"
 
@@ -1221,7 +1249,7 @@ msgstr "Supprimez votre compte et tout son contenu, y compris les documents comp
 msgid "Deleted"
 msgstr "Supprimé"
 
-#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/audit-log/page.tsx:87
+#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/audit-log/page.tsx:90
 msgid "DELETED"
 msgstr ""
 
@@ -1329,11 +1357,11 @@ msgstr "Voulez-vous dupliquer ce modèle ?"
 msgid "Documenso will delete <0>all of your documents</0>, along with all of your completed documents, signatures, and all other resources belonging to your Account."
 msgstr "Documenso supprimera <0>tous vos documents</0>, ainsi que tous vos documents complétés, signatures, et toutes les autres ressources appartenant à votre compte."
 
-#: apps/web/src/app/(dashboard)/documents/[id]/logs/document-logs-page-view.tsx:119
+#: apps/web/src/app/(dashboard)/documents/[id]/logs/document-logs-page-view.tsx:120
 msgid "Document"
 msgstr "Document"
 
-#: apps/web/src/components/formatter/document-status.tsx:47
+#: apps/web/src/components/formatter/document-status.tsx:52
 msgid "Document All"
 msgstr "Document Tout"
 
@@ -1345,7 +1373,7 @@ msgstr "Document Approuvé"
 msgid "Document Cancelled"
 msgstr "Document Annulé"
 
-#: apps/web/src/components/formatter/document-status.tsx:29
+#: apps/web/src/components/formatter/document-status.tsx:31
 msgid "Document completed"
 msgstr "Document complété"
 
@@ -1363,7 +1391,7 @@ msgstr "Document créé"
 msgid "Document deleted"
 msgstr "Document supprimé"
 
-#: apps/web/src/components/formatter/document-status.tsx:35
+#: apps/web/src/components/formatter/document-status.tsx:38
 msgid "Document draft"
 msgstr "Brouillon de document"
 
@@ -1376,12 +1404,12 @@ msgstr "Document dupliqué"
 msgid "Document history"
 msgstr "Historique du document"
 
-#: apps/web/src/app/(dashboard)/documents/[id]/logs/document-logs-page-view.tsx:71
-#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/audit-log/page.tsx:67
+#: apps/web/src/app/(dashboard)/documents/[id]/logs/document-logs-page-view.tsx:72
+#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/audit-log/page.tsx:68
 msgid "Document ID"
 msgstr "ID du document"
 
-#: apps/web/src/components/formatter/document-status.tsx:41
+#: apps/web/src/components/formatter/document-status.tsx:45
 msgid "Document inbox"
 msgstr "Boîte de réception des documents"
 
@@ -1401,7 +1429,7 @@ msgstr "Document déplacé"
 msgid "Document no longer available to sign"
 msgstr "Document non disponible pour signature"
 
-#: apps/web/src/components/formatter/document-status.tsx:23
+#: apps/web/src/components/formatter/document-status.tsx:24
 msgid "Document pending"
 msgstr "Document en attente"
 
@@ -1433,11 +1461,11 @@ msgstr ""
 msgid "Document signing process will be cancelled"
 msgstr "Le processus de signature du document sera annulé"
 
-#: apps/web/src/app/(dashboard)/documents/[id]/logs/document-logs-page-view.tsx:75
+#: apps/web/src/app/(dashboard)/documents/[id]/logs/document-logs-page-view.tsx:76
 msgid "Document status"
 msgstr "Statut du document"
 
-#: apps/web/src/app/(dashboard)/documents/[id]/logs/document-logs-page-view.tsx:67
+#: apps/web/src/app/(dashboard)/documents/[id]/logs/document-logs-page-view.tsx:68
 msgid "Document title"
 msgstr "Titre du document"
 
@@ -1505,9 +1533,13 @@ msgstr "Télécharger les journaux d'audit"
 msgid "Download Certificate"
 msgstr "Télécharger le certificat"
 
-#: apps/web/src/components/formatter/document-status.tsx:34
+#: apps/web/src/components/formatter/document-status.tsx:36
 msgid "Draft"
 msgstr "Brouillon"
+
+#: apps/web/src/components/formatter/document-status.tsx:37
+msgid "DRAFT"
+msgstr ""
 
 #: apps/web/src/components/(dashboard)/common/command-menu.tsx:46
 msgid "Draft documents"
@@ -1543,13 +1575,18 @@ msgstr "Dupliquer"
 msgid "Edit"
 msgstr "Modifier"
 
-#: apps/web/src/app/(dashboard)/settings/webhooks/[id]/page.tsx:94
-#: apps/web/src/app/(teams)/t/[teamUrl]/settings/webhooks/[id]/page.tsx:100
+#: apps/web/src/app/(dashboard)/settings/webhooks/[id]/page.tsx:96
+#: apps/web/src/app/(teams)/t/[teamUrl]/settings/webhooks/[id]/page.tsx:102
 msgid "Edit webhook"
 msgstr "Modifier le webhook"
 
 #: apps/web/src/components/(teams)/dialogs/add-team-email-dialog.tsx:156
+#: apps/web/src/components/(teams)/dialogs/update-team-email-dialog.tsx:144
 msgid "eg. Legal"
+msgstr ""
+
+#: apps/web/src/app/(dashboard)/settings/security/passkeys/create-passkey-dialog.tsx:180
+msgid "eg. Mac"
 msgstr ""
 
 #: apps/web/src/app/(unauthenticated)/articles/signature-disclosure/page.tsx:76
@@ -1642,15 +1679,15 @@ msgid "Enable Direct Link Signing"
 msgstr "Activer la signature par lien direct"
 
 #: apps/web/src/app/(dashboard)/admin/site-settings/banner-form.tsx:123
-#: apps/web/src/app/(dashboard)/settings/webhooks/[id]/page.tsx:138
+#: apps/web/src/app/(dashboard)/settings/webhooks/[id]/page.tsx:140
 #: apps/web/src/app/(dashboard)/settings/webhooks/page.tsx:74
-#: apps/web/src/app/(teams)/t/[teamUrl]/settings/webhooks/[id]/page.tsx:144
+#: apps/web/src/app/(teams)/t/[teamUrl]/settings/webhooks/[id]/page.tsx:146
 #: apps/web/src/app/(teams)/t/[teamUrl]/settings/webhooks/page.tsx:79
-#: apps/web/src/components/(dashboard)/settings/webhooks/create-webhook-dialog.tsx:166
+#: apps/web/src/components/(dashboard)/settings/webhooks/create-webhook-dialog.tsx:168
 msgid "Enabled"
 msgstr "Activé"
 
-#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/audit-log/page.tsx:75
+#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/audit-log/page.tsx:76
 msgid "Enclosed Document"
 msgstr ""
 
@@ -1711,7 +1748,7 @@ msgstr "Entrez votre texte ici"
 #: apps/web/src/app/(signing)/sign/[token]/text-field.tsx:179
 #: apps/web/src/app/(signing)/sign/[token]/text-field.tsx:207
 #: apps/web/src/components/(dashboard)/layout/verify-email-banner.tsx:54
-#: apps/web/src/components/(dashboard)/settings/webhooks/create-webhook-dialog.tsx:101
+#: apps/web/src/components/(dashboard)/settings/webhooks/create-webhook-dialog.tsx:103
 msgid "Error"
 msgstr "Erreur"
 
@@ -1751,8 +1788,8 @@ msgstr "Échec du reseal du document"
 msgid "Failed to update recipient"
 msgstr "Échec de la mise à jour du destinataire"
 
-#: apps/web/src/app/(dashboard)/settings/webhooks/[id]/page.tsx:82
-#: apps/web/src/app/(teams)/t/[teamUrl]/settings/webhooks/[id]/page.tsx:88
+#: apps/web/src/app/(dashboard)/settings/webhooks/[id]/page.tsx:84
+#: apps/web/src/app/(teams)/t/[teamUrl]/settings/webhooks/[id]/page.tsx:90
 msgid "Failed to update webhook"
 msgstr "Échec de la mise à jour du webhook"
 
@@ -1911,9 +1948,13 @@ msgstr "Si vous ne trouvez pas le lien de confirmation dans votre boîte de réc
 msgid "If your authenticator app does not support QR codes, you can use the following code instead:"
 msgstr "Si votre application d'authentification ne prend pas en charge les codes QR, vous pouvez utiliser le code suivant à la place :"
 
-#: apps/web/src/components/formatter/document-status.tsx:40
+#: apps/web/src/components/formatter/document-status.tsx:43
 msgid "Inbox"
 msgstr "Boîte de réception"
+
+#: apps/web/src/components/formatter/document-status.tsx:44
+msgid "INBOX"
+msgstr ""
 
 #: apps/web/src/components/(dashboard)/common/command-menu.tsx:52
 msgid "Inbox documents"
@@ -2064,11 +2105,11 @@ msgid "Last modified"
 msgstr "Dernière modification"
 
 #: apps/web/src/app/(dashboard)/admin/documents/document-results.tsx:122
-#: apps/web/src/app/(dashboard)/documents/[id]/logs/document-logs-page-view.tsx:91
+#: apps/web/src/app/(dashboard)/documents/[id]/logs/document-logs-page-view.tsx:92
 msgid "Last updated"
 msgstr "Dernière mise à jour"
 
-#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/audit-log/page.tsx:115
+#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/audit-log/page.tsx:120
 msgid "Last Updated"
 msgstr ""
 
@@ -2277,7 +2318,7 @@ msgstr "Mes modèles"
 #: apps/web/src/app/(dashboard)/documents/[id]/logs/document-logs-data-table.tsx:101
 #: apps/web/src/app/(dashboard)/documents/[id]/logs/document-logs-data-table.tsx:120
 #: apps/web/src/app/(dashboard)/documents/[id]/logs/document-logs-data-table.tsx:127
-#: apps/web/src/app/(dashboard)/documents/[id]/logs/document-logs-page-view.tsx:98
+#: apps/web/src/app/(dashboard)/documents/[id]/logs/document-logs-page-view.tsx:99
 #: apps/web/src/app/(dashboard)/settings/security/activity/user-security-activity-data-table.tsx:78
 #: apps/web/src/app/(dashboard)/settings/security/activity/user-security-activity-data-table.tsx:88
 #: apps/web/src/app/(dashboard)/settings/security/activity/user-security-activity-data-table.tsx:102
@@ -2426,7 +2467,7 @@ msgstr ""
 msgid "Old"
 msgstr ""
 
-#: apps/web/src/components/(dashboard)/settings/webhooks/create-webhook-dialog.tsx:128
+#: apps/web/src/components/(dashboard)/settings/webhooks/create-webhook-dialog.tsx:130
 msgid "On this page, you can create a new webhook."
 msgstr "Sur cette page, vous pouvez créer un nouveau webhook."
 
@@ -2443,8 +2484,8 @@ msgstr "Sur cette page, vous pouvez créer de nouveaux jetons API et gérer les 
 msgid "On this page, you can create new Webhooks and manage the existing ones."
 msgstr "Sur cette page, vous pouvez créer de nouveaux webhooks et gérer ceux existants."
 
-#: apps/web/src/app/(dashboard)/settings/webhooks/[id]/page.tsx:95
-#: apps/web/src/app/(teams)/t/[teamUrl]/settings/webhooks/[id]/page.tsx:101
+#: apps/web/src/app/(dashboard)/settings/webhooks/[id]/page.tsx:97
+#: apps/web/src/app/(teams)/t/[teamUrl]/settings/webhooks/[id]/page.tsx:103
 msgid "On this page, you can edit the webhook and its settings."
 msgstr "Sur cette page, vous pouvez modifier le webhook et ses paramètres."
 
@@ -2484,7 +2525,7 @@ msgid "Otherwise, the document will be created as a draft."
 msgstr "Sinon, le document sera créé sous forme de brouillon."
 
 #: apps/web/src/app/(dashboard)/admin/documents/document-results.tsx:86
-#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/audit-log/page.tsx:93
+#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/audit-log/page.tsx:98
 #: apps/web/src/components/(dashboard)/layout/menu-switcher.tsx:81
 #: apps/web/src/components/(teams)/tables/current-user-teams-data-table.tsx:86
 #: apps/web/src/components/(teams)/tables/team-members-data-table.tsx:109
@@ -2588,6 +2629,10 @@ msgstr ""
 #: apps/web/src/components/formatter/document-status.tsx:22
 msgid "Pending"
 msgstr "En attente"
+
+#: apps/web/src/components/formatter/document-status.tsx:23
+msgid "PENDING"
+msgstr ""
 
 #: apps/web/src/components/(dashboard)/common/command-menu.tsx:51
 msgid "Pending documents"
@@ -2834,11 +2879,15 @@ msgstr "Destinataire"
 msgid "Recipient updated"
 msgstr "Destinataire mis à jour"
 
+#: apps/web/src/app/(recipient)/d/[token]/configure-direct-template.tsx:151
+msgid "recipient@documenso.com"
+msgstr ""
+
 #: apps/web/src/app/(dashboard)/admin/documents/[id]/page.tsx:66
 #: apps/web/src/app/(dashboard)/admin/stats/signer-conversion-chart.tsx:61
 #: apps/web/src/app/(dashboard)/documents/[id]/document-page-view-recipients.tsx:34
-#: apps/web/src/app/(dashboard)/documents/[id]/logs/document-logs-page-view.tsx:159
-#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/audit-log/page.tsx:137
+#: apps/web/src/app/(dashboard)/documents/[id]/logs/document-logs-page-view.tsx:160
+#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/audit-log/page.tsx:142
 msgid "Recipients"
 msgstr "Destinataires"
 
@@ -3022,9 +3071,13 @@ msgstr "Recherche par titre de document"
 msgid "Search by name or email"
 msgstr "Recherche par nom ou e-mail"
 
-#: apps/web/src/app/(dashboard)/settings/webhooks/[id]/page.tsx:189
-#: apps/web/src/app/(teams)/t/[teamUrl]/settings/webhooks/[id]/page.tsx:195
-#: apps/web/src/components/(dashboard)/settings/webhooks/create-webhook-dialog.tsx:217
+#: apps/web/src/components/(dashboard)/document-search/document-search.tsx:40
+msgid "Search documents..."
+msgstr ""
+
+#: apps/web/src/app/(dashboard)/settings/webhooks/[id]/page.tsx:191
+#: apps/web/src/app/(teams)/t/[teamUrl]/settings/webhooks/[id]/page.tsx:197
+#: apps/web/src/components/(dashboard)/settings/webhooks/create-webhook-dialog.tsx:219
 msgid "Secret"
 msgstr "Secret"
 
@@ -3271,6 +3324,10 @@ msgstr ""
 msgid "Signers that Signed Up"
 msgstr ""
 
+#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:152
+msgid "Signing Certificate"
+msgstr ""
+
 #: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:326
 msgid "Signing certificate provided by:"
 msgstr ""
@@ -3384,7 +3441,7 @@ msgstr "Statistiques"
 #: apps/web/src/app/(dashboard)/admin/documents/document-results.tsx:81
 #: apps/web/src/app/(dashboard)/admin/subscriptions/page.tsx:32
 #: apps/web/src/app/(dashboard)/documents/data-table.tsx:79
-#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/audit-log/page.tsx:83
+#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/audit-log/page.tsx:84
 #: apps/web/src/components/(teams)/tables/team-billing-invoices-data-table.tsx:73
 msgid "Status"
 msgstr "Statut"
@@ -3668,9 +3725,9 @@ msgstr "Le document sera immédiatement envoyé aux destinataires si cela est co
 msgid "The email or password provided is incorrect"
 msgstr ""
 
-#: apps/web/src/app/(dashboard)/settings/webhooks/[id]/page.tsx:175
-#: apps/web/src/app/(teams)/t/[teamUrl]/settings/webhooks/[id]/page.tsx:181
-#: apps/web/src/components/(dashboard)/settings/webhooks/create-webhook-dialog.tsx:203
+#: apps/web/src/app/(dashboard)/settings/webhooks/[id]/page.tsx:177
+#: apps/web/src/app/(teams)/t/[teamUrl]/settings/webhooks/[id]/page.tsx:183
+#: apps/web/src/components/(dashboard)/settings/webhooks/create-webhook-dialog.tsx:205
 msgid "The events that will trigger a webhook to be sent to your URL."
 msgstr "Les événements qui déclencheront un webhook à envoyer à votre URL."
 
@@ -3754,9 +3811,9 @@ msgstr "Le jeton que vous avez utilisé pour réinitialiser votre mot de passe a
 msgid "The two-factor authentication code provided is incorrect"
 msgstr ""
 
-#: apps/web/src/app/(dashboard)/settings/webhooks/[id]/page.tsx:124
-#: apps/web/src/app/(teams)/t/[teamUrl]/settings/webhooks/[id]/page.tsx:130
-#: apps/web/src/components/(dashboard)/settings/webhooks/create-webhook-dialog.tsx:152
+#: apps/web/src/app/(dashboard)/settings/webhooks/[id]/page.tsx:126
+#: apps/web/src/app/(teams)/t/[teamUrl]/settings/webhooks/[id]/page.tsx:132
+#: apps/web/src/components/(dashboard)/settings/webhooks/create-webhook-dialog.tsx:154
 msgid "The URL for Documenso to send webhook events to."
 msgstr "L'URL pour Documenso pour envoyer des événements webhook."
 
@@ -3764,12 +3821,12 @@ msgstr "L'URL pour Documenso pour envoyer des événements webhook."
 msgid "The webhook has been successfully deleted."
 msgstr "Le webhook a été supprimé avec succès."
 
-#: apps/web/src/app/(dashboard)/settings/webhooks/[id]/page.tsx:75
-#: apps/web/src/app/(teams)/t/[teamUrl]/settings/webhooks/[id]/page.tsx:81
+#: apps/web/src/app/(dashboard)/settings/webhooks/[id]/page.tsx:77
+#: apps/web/src/app/(teams)/t/[teamUrl]/settings/webhooks/[id]/page.tsx:83
 msgid "The webhook has been updated successfully."
 msgstr "Le webhook a été mis à jour avec succès."
 
-#: apps/web/src/components/(dashboard)/settings/webhooks/create-webhook-dialog.tsx:93
+#: apps/web/src/components/(dashboard)/settings/webhooks/create-webhook-dialog.tsx:95
 msgid "The webhook was successfully created."
 msgstr "Le webhook a été créé avec succès."
 
@@ -3889,11 +3946,11 @@ msgstr "Ce nom d'utilisateur est déjà pris"
 msgid "Time"
 msgstr "Temps"
 
-#: apps/web/src/app/(dashboard)/documents/[id]/logs/document-logs-page-view.tsx:97
+#: apps/web/src/app/(dashboard)/documents/[id]/logs/document-logs-page-view.tsx:98
 msgid "Time zone"
 msgstr "Fuseau horaire"
 
-#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/audit-log/page.tsx:127
+#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/audit-log/page.tsx:132
 msgid "Time Zone"
 msgstr ""
 
@@ -4024,9 +4081,9 @@ msgstr "Transférer l'équipe"
 msgid "Transfer the ownership of the team to another team member."
 msgstr "Transférer la propriété de l'équipe à un autre membre de l'équipe."
 
-#: apps/web/src/app/(dashboard)/settings/webhooks/[id]/page.tsx:163
-#: apps/web/src/app/(teams)/t/[teamUrl]/settings/webhooks/[id]/page.tsx:169
-#: apps/web/src/components/(dashboard)/settings/webhooks/create-webhook-dialog.tsx:191
+#: apps/web/src/app/(dashboard)/settings/webhooks/[id]/page.tsx:165
+#: apps/web/src/app/(teams)/t/[teamUrl]/settings/webhooks/[id]/page.tsx:171
+#: apps/web/src/components/(dashboard)/settings/webhooks/create-webhook-dialog.tsx:193
 msgid "Triggers"
 msgstr "Déclencheurs"
 
@@ -4243,8 +4300,8 @@ msgstr ""
 msgid "Update user"
 msgstr "Mettre à jour l'utilisateur"
 
-#: apps/web/src/app/(dashboard)/settings/webhooks/[id]/page.tsx:208
-#: apps/web/src/app/(teams)/t/[teamUrl]/settings/webhooks/[id]/page.tsx:214
+#: apps/web/src/app/(dashboard)/settings/webhooks/[id]/page.tsx:210
+#: apps/web/src/app/(teams)/t/[teamUrl]/settings/webhooks/[id]/page.tsx:216
 msgid "Update webhook"
 msgstr "Mettre à jour le webhook"
 
@@ -4348,7 +4405,7 @@ msgstr "Vérifiez votre adresse e-mail pour débloquer toutes les fonctionnalit�
 msgid "Verify your email to upload documents."
 msgstr "Vérifiez votre e-mail pour télécharger des documents."
 
-#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/audit-log/page.tsx:59
+#: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/audit-log/page.tsx:60
 msgid "Version History"
 msgstr ""
 
@@ -4452,8 +4509,8 @@ msgstr "Nous ne pouvons pas mettre à jour cette clé de passkey pour le moment.
 msgid "We encountered an error while removing the direct template link. Please try again later."
 msgstr "Une erreur s'est produite lors de la suppression du lien direct vers le modèle. Veuillez réessayer plus tard."
 
-#: apps/web/src/app/(dashboard)/settings/webhooks/[id]/page.tsx:84
-#: apps/web/src/app/(teams)/t/[teamUrl]/settings/webhooks/[id]/page.tsx:90
+#: apps/web/src/app/(dashboard)/settings/webhooks/[id]/page.tsx:86
+#: apps/web/src/app/(teams)/t/[teamUrl]/settings/webhooks/[id]/page.tsx:92
 msgid "We encountered an error while updating the webhook. Please try again later."
 msgstr "Une erreur s'est produite lors de la mise à jour du webhook. Veuillez réessayer plus tard."
 
@@ -4653,7 +4710,7 @@ msgstr "Nous sommes tous vides"
 msgid "We've sent a confirmation email to <0>{email}</0>. Please check your inbox and click the link in the email to verify your account."
 msgstr "Nous avons envoyé un e-mail de confirmation à <0>{email}</0>. Veuillez vérifier votre boîte de réception et cliquer sur le lien de l'e-mail pour vérifier votre compte."
 
-#: apps/web/src/components/(dashboard)/settings/webhooks/create-webhook-dialog.tsx:92
+#: apps/web/src/components/(dashboard)/settings/webhooks/create-webhook-dialog.tsx:94
 msgid "Webhook created"
 msgstr "Webhook créé"
 
@@ -4661,14 +4718,14 @@ msgstr "Webhook créé"
 msgid "Webhook deleted"
 msgstr "Webhook supprimé"
 
-#: apps/web/src/app/(dashboard)/settings/webhooks/[id]/page.tsx:74
-#: apps/web/src/app/(teams)/t/[teamUrl]/settings/webhooks/[id]/page.tsx:80
+#: apps/web/src/app/(dashboard)/settings/webhooks/[id]/page.tsx:76
+#: apps/web/src/app/(teams)/t/[teamUrl]/settings/webhooks/[id]/page.tsx:82
 msgid "Webhook updated"
 msgstr "Webhook mis à jour"
 
-#: apps/web/src/app/(dashboard)/settings/webhooks/[id]/page.tsx:117
-#: apps/web/src/app/(teams)/t/[teamUrl]/settings/webhooks/[id]/page.tsx:123
-#: apps/web/src/components/(dashboard)/settings/webhooks/create-webhook-dialog.tsx:145
+#: apps/web/src/app/(dashboard)/settings/webhooks/[id]/page.tsx:119
+#: apps/web/src/app/(teams)/t/[teamUrl]/settings/webhooks/[id]/page.tsx:125
+#: apps/web/src/components/(dashboard)/settings/webhooks/create-webhook-dialog.tsx:147
 msgid "Webhook URL"
 msgstr "URL du webhook"
 

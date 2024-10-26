@@ -7,6 +7,7 @@ import { useLingui } from '@lingui/react';
 import { ChevronLeft } from 'lucide-react';
 import { DateTime } from 'luxon';
 
+import { RECIPIENT_ROLES_DESCRIPTION } from '@documenso/lib/constants/recipient-roles';
 import { getRequiredServerComponentSession } from '@documenso/lib/next-auth/get-server-component-session';
 import { getDocumentById } from '@documenso/lib/server-only/document/get-document-by-id';
 import { getRecipientsForDocument } from '@documenso/lib/server-only/recipient/get-recipients-for-document';
@@ -106,7 +107,7 @@ export const DocumentLogsPageView = async ({ params, team }: DocumentLogsPageVie
       text = `${recipient.name} (${recipient.email})`;
     }
 
-    return `[${recipient.role}] ${text}`;
+    return `[${_(RECIPIENT_ROLES_DESCRIPTION[recipient.role].roleName).toUpperCase()}] ${text}`;
   };
 
   return (

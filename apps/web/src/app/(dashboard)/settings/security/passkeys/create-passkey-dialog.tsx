@@ -177,7 +177,7 @@ export const CreatePasskeyDialog = ({ trigger, onSuccess, ...props }: CreatePass
                       <Trans>Passkey name</Trans>
                     </FormLabel>
                     <FormControl>
-                      <Input className="bg-background" placeholder="eg. Mac" {...field} />
+                      <Input className="bg-background" placeholder={_(msg`eg. Mac`)} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
