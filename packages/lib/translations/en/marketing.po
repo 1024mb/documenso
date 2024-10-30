@@ -595,7 +595,7 @@ msgstr "Why should I prefer Documenso over DocuSign or some other signing tool?"
 msgid "Why should I use your hosting service?"
 msgstr "Why should I use your hosting service?"
 
-#: apps/marketing/src/app/(marketing)/blog/[post]/opengraph/route.tsx:58
+#: apps/marketing/src/app/(marketing)/blog/[post]/opengraph/route.tsx:60
 msgid "Written by {author}"
 msgstr "Written by {author}"
 

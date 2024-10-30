@@ -257,7 +257,7 @@ msgstr "Acknowledgment"
 #: apps/web/src/app/(dashboard)/documents/data-table-action-dropdown.tsx:121
 #: apps/web/src/app/(dashboard)/settings/public-profile/public-templates-data-table.tsx:164
 #: apps/web/src/app/(dashboard)/settings/security/activity/user-security-activity-data-table.tsx:118
-#: apps/web/src/app/(dashboard)/templates/data-table-action-dropdown.tsx:57
+#: apps/web/src/app/(dashboard)/templates/data-table-action-dropdown.tsx:58
 #: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/audit-log/data-table.tsx:47
 msgid "Action"
 msgstr "Action"
@@ -1178,7 +1178,7 @@ msgstr "Declined team invitation"
 #: apps/web/src/app/(dashboard)/settings/security/passkeys/user-passkeys-data-table-actions.tsx:211
 #: apps/web/src/app/(dashboard)/settings/tokens/page.tsx:83
 #: apps/web/src/app/(dashboard)/settings/webhooks/page.tsx:100
-#: apps/web/src/app/(dashboard)/templates/data-table-action-dropdown.tsx:91
+#: apps/web/src/app/(dashboard)/templates/data-table-action-dropdown.tsx:93
 #: apps/web/src/app/(dashboard)/templates/delete-template-dialog.tsx:90
 #: apps/web/src/app/(teams)/t/[teamUrl]/settings/tokens/page.tsx:124
 #: apps/web/src/app/(teams)/t/[teamUrl]/settings/webhooks/page.tsx:105
@@ -1282,7 +1282,7 @@ msgstr "Device:"
 msgid "direct link"
 msgstr "direct link"
 
-#: apps/web/src/app/(dashboard)/templates/data-table-action-dropdown.tsx:76
+#: apps/web/src/app/(dashboard)/templates/data-table-action-dropdown.tsx:78
 msgid "Direct link"
 msgstr "Direct link"
 
@@ -1496,7 +1496,7 @@ msgstr "Document will be permanently deleted"
 #: apps/web/src/app/(dashboard)/documents/[id]/loading.tsx:16
 #: apps/web/src/app/(dashboard)/documents/[id]/sent/page.tsx:15
 #: apps/web/src/app/(dashboard)/documents/documents-page-view.tsx:119
-#: apps/web/src/app/(dashboard)/documents/page.tsx:23
+#: apps/web/src/app/(dashboard)/documents/page.tsx:24
 #: apps/web/src/app/(profile)/p/[url]/page.tsx:166
 #: apps/web/src/app/not-found.tsx:21
 #: apps/web/src/components/(dashboard)/common/command-menu.tsx:205
@@ -1562,7 +1562,7 @@ msgstr "Due to an unpaid invoice, your team has been restricted. Please settle t
 #: apps/web/src/app/(dashboard)/documents/data-table-action-dropdown.tsx:165
 #: apps/web/src/app/(dashboard)/documents/duplicate-document-dialog.tsx:85
 #: apps/web/src/app/(dashboard)/documents/duplicate-document-dialog.tsx:118
-#: apps/web/src/app/(dashboard)/templates/data-table-action-dropdown.tsx:71
+#: apps/web/src/app/(dashboard)/templates/data-table-action-dropdown.tsx:73
 #: apps/web/src/app/(dashboard)/templates/duplicate-template-dialog.tsx:91
 msgid "Duplicate"
 msgstr "Duplicate"
@@ -1574,7 +1574,7 @@ msgstr "Duplicate"
 #: apps/web/src/app/(dashboard)/documents/data-table-action-dropdown.tsx:154
 #: apps/web/src/app/(dashboard)/settings/security/passkeys/user-passkeys-data-table-actions.tsx:111
 #: apps/web/src/app/(dashboard)/settings/webhooks/page.tsx:95
-#: apps/web/src/app/(dashboard)/templates/data-table-action-dropdown.tsx:62
+#: apps/web/src/app/(dashboard)/templates/data-table-action-dropdown.tsx:64
 #: apps/web/src/app/(teams)/t/[teamUrl]/settings/team-email-dropdown.tsx:77
 #: apps/web/src/app/(teams)/t/[teamUrl]/settings/webhooks/page.tsx:100
 msgid "Edit"
@@ -2325,7 +2325,7 @@ msgid "Move Template to Team"
 msgstr "Move Template to Team"
 
 #: apps/web/src/app/(dashboard)/documents/data-table-action-dropdown.tsx:172
-#: apps/web/src/app/(dashboard)/templates/data-table-action-dropdown.tsx:82
+#: apps/web/src/app/(dashboard)/templates/data-table-action-dropdown.tsx:84
 msgid "Move to Team"
 msgstr "Move to Team"
 
@@ -3683,7 +3683,7 @@ msgid "Template saved"
 msgstr "Template saved"
 
 #: apps/web/src/app/(dashboard)/templates/[id]/template-page-view.tsx:60
-#: apps/web/src/app/(dashboard)/templates/page.tsx:23
+#: apps/web/src/app/(dashboard)/templates/page.tsx:24
 #: apps/web/src/app/(dashboard)/templates/templates-page-view.tsx:55
 #: apps/web/src/components/(dashboard)/common/command-menu.tsx:208
 #: apps/web/src/components/(dashboard)/layout/desktop-nav.tsx:22

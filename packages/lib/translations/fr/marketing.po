@@ -600,7 +600,7 @@ msgstr "Pourquoi devrais-je préférer Documenso à DocuSign ou à un autre outi
 msgid "Why should I use your hosting service?"
 msgstr "Pourquoi devrais-je utiliser votre service d'hébergement ?"
 
-#: apps/marketing/src/app/(marketing)/blog/[post]/opengraph/route.tsx:58
+#: apps/marketing/src/app/(marketing)/blog/[post]/opengraph/route.tsx:60
 msgid "Written by {author}"
 msgstr ""
 
