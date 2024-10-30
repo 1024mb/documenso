@@ -1,6 +1,12 @@
 import { ImageResponse } from 'next/og';
 import { NextResponse } from 'next/server';
 
+import { i18n } from '@lingui/core';
+import { msg } from '@lingui/macro';
+
+import { extractLocaleDataFromHeadersAlt } from '@documenso/lib/utils/i18n';
+import { loadAndActivateLocale } from '@documenso/lib/utils/i18n.import';
+
 export const runtime = 'edge';
 
 const IMAGE_SIZE = {
@@ -9,6 +15,9 @@ const IMAGE_SIZE = {
 };
 
 export async function GET(_request: Request) {
+  const locale = extractLocaleDataFromHeadersAlt(_request.headers);
+  await loadAndActivateLocale(locale);
+
   const url = new URL(_request.url);
 
   const title = url.searchParams.get('title');
@@ -48,7 +57,7 @@ export async function GET(_request: Request) {
           {title}
         </h1>
 
-        <p tw="font-normal">Written by {author}</p>
+        <p tw="font-normal">{i18n._(msg`Written by ${author}`)}</p>
       </div>
     ),
     {

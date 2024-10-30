@@ -2,19 +2,31 @@ import type { Metadata } from 'next';
 import { headers } from 'next/headers';
 import { redirect } from 'next/navigation';
 
+import { i18n } from '@lingui/core';
+import { msg } from '@lingui/macro';
+
 import { NEXT_PUBLIC_MARKETING_URL } from '@documenso/lib/constants/app';
+import { extractLocaleDataFromHeadersAlt } from '@documenso/lib/utils/i18n';
+import { loadAndActivateLocale } from '@documenso/lib/utils/i18n.import';
 
 type SharePageProps = {
   params: { slug: string };
 };
 
 export function generateMetadata({ params: { slug } }: SharePageProps) {
+  const locale = extractLocaleDataFromHeadersAlt(headers());
+  loadAndActivateLocale(locale)
+    .then(() => {})
+    .catch((err) => {
+      console.error(err);
+    });
+
   return {
-    title: 'Documenso - Share',
-    description: 'I just signed a document in style with Documenso!',
+    title: i18n._(msg`Documenso - Share`),
+    description: i18n._(msg`I just signed a document in style with Documenso!`),
     openGraph: {
-      title: 'Documenso - Join the open source signing revolution',
-      description: 'I just signed with Documenso!',
+      title: i18n._(msg`Documenso - Join the open source signing revolution`),
+      description: i18n._(msg`I just signed with Documenso!`),
       type: 'website',
       images: [`/share/${slug}/opengraph`],
     },
@@ -22,7 +34,7 @@ export function generateMetadata({ params: { slug } }: SharePageProps) {
       site: '@documenso',
       card: 'summary_large_image',
       images: [`/share/${slug}/opengraph`],
-      description: 'I just signed with Documenso!',
+      description: i18n._(msg`I just signed with Documenso!`),
     },
   } satisfies Metadata;
 }

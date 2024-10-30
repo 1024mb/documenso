@@ -119,7 +119,7 @@ export const ResendDocumentActionItem = ({
         </DropdownMenuItem>
       </DialogTrigger>
 
-      <DialogContent className="sm:max-w-sm" hideClose>
+      <DialogContent className="sm:max-w-md" hideClose>
         <DialogHeader>
           <DialogTitle asChild>
             <h1 className="text-center text-xl">

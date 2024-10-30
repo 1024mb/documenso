@@ -1,14 +1,25 @@
 import type { Metadata } from 'next';
+import { headers } from 'next/headers';
 import Link from 'next/link';
 
-import { Trans } from '@lingui/macro';
+import { i18n } from '@lingui/core';
+import { Trans, msg } from '@lingui/macro';
 import { XCircle } from 'lucide-react';
 
 import { setupI18nSSR } from '@documenso/lib/client-only/providers/i18n.server';
+import { extractLocaleDataFromHeadersAlt } from '@documenso/lib/utils/i18n';
+import { loadAndActivateLocale } from '@documenso/lib/utils/i18n.import';
 import { Button } from '@documenso/ui/primitives/button';
 
-export const metadata: Metadata = {
-  title: 'Verify Email',
+export const generateMetadata = async (): Promise<Metadata> => {
+  const locale = extractLocaleDataFromHeadersAlt(headers());
+  await loadAndActivateLocale(locale);
+
+  const title = i18n._(msg`Verify Email`);
+
+  return {
+    title,
+  };
 };
 
 export default function EmailVerificationWithoutTokenPage() {

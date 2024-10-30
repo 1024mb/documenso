@@ -113,29 +113,35 @@ export const resendDocument = async ({
       const locale = getLocale({ headers: headers, cookies: cookies });
       await loadAndActivateLocale(locale);
 
-      const recipientActionVerb = i18n
+      const actionVerb = i18n
         ._(RECIPIENT_ROLES_DESCRIPTION[recipient.role].actionVerb)
         .toLowerCase();
-      const recipientProgressiveVerb = i18n
+      const imperativeVerb = i18n
+        ._(RECIPIENT_ROLES_DESCRIPTION[recipient.role].imperativeVerb)
+        .toLowerCase();
+      const progressiveVerb = i18n
         ._(RECIPIENT_ROLES_DESCRIPTION[recipient.role].progressiveVerb)
+        .toLowerCase();
+      const subjunctiveVerb = i18n
+        ._(RECIPIENT_ROLES_DESCRIPTION[recipient.role].subjunctiveVerb)
         .toLowerCase();
 
       let emailMessage = customEmail?.message || '';
-      let emailSubject = i18n._(msg`Reminder: Please ${recipientActionVerb} this document`);
+      let emailSubject = i18n._(msg`Reminder: Please ${imperativeVerb} this document`);
 
       if (selfSigner) {
         emailMessage = i18n._(
-          msg`You have initiated the document "${document.title}" that requires you to ${recipientActionVerb} it.`,
+          msg`You have initiated the document "${document.title}" that requires you to ${subjunctiveVerb} it.`,
         );
-        emailSubject = i18n._(msg`Reminder: Please ${recipientActionVerb} your document`);
+        emailSubject = i18n._(msg`Reminder: Please ${imperativeVerb} your document`);
       }
 
       if (isTeamDocument && document.team) {
         emailSubject = i18n._(
-          msg`Reminder: ${document.team.name} invited you to ${recipientActionVerb} a document`,
+          msg`Reminder: ${document.team.name} invited you to ${actionVerb} a document`,
         );
         emailMessage = i18n._(
-          msg`${user.name} on behalf of ${document.team.name} has invited you to ${recipientActionVerb} the document "${document.title}".`,
+          msg`${user.name} on behalf of ${document.team.name} has invited you to ${actionVerb} the document "${document.title}".`,
         );
       }
 
@@ -162,7 +168,8 @@ export const resendDocument = async ({
         documentInviteEmailTemplateData: await documentInviteEmailTemplateData({
           headers: headers,
           cookies: cookies,
-          recipientActionVerb: recipientActionVerb,
+          actionVerb: imperativeVerb,
+          imperativeVerb: imperativeVerb,
           documentName: document.title,
           inviterName: user.name || undefined,
           teamName: document.team?.name,
@@ -170,8 +177,9 @@ export const resendDocument = async ({
         templateDocumentInviteData: await templateDocumentInviteData({
           headers: headers,
           cookies: cookies,
-          recipientActionVerb: recipientActionVerb,
-          progressiveVerb: recipientProgressiveVerb,
+          actionVerb: actionVerb,
+          progressiveVerb: progressiveVerb,
+          imperativeVerb: imperativeVerb,
           documentName: document.title,
           inviterName: user.name || undefined,
           teamName: document.team?.name,

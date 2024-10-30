@@ -1,19 +1,30 @@
 import type { Metadata } from 'next';
+import { headers } from 'next/headers';
 import { redirect } from 'next/navigation';
 
+import { i18n } from '@lingui/core';
 import { msg } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 
 import { setupI18nSSR } from '@documenso/lib/client-only/providers/i18n.server';
 import { getServerComponentFlag } from '@documenso/lib/server-only/feature-flags/get-server-component-feature-flag';
+import { extractLocaleDataFromHeadersAlt } from '@documenso/lib/utils/i18n';
+import { loadAndActivateLocale } from '@documenso/lib/utils/i18n.import';
 
 import { SettingsHeader } from '~/components/(dashboard)/settings/layout/header';
 
 import { CreatePasskeyDialog } from './create-passkey-dialog';
 import { UserPasskeysDataTable } from './user-passkeys-data-table';
 
-export const metadata: Metadata = {
-  title: 'Manage passkeys',
+export const generateMetadata = async (): Promise<Metadata> => {
+  const locale = extractLocaleDataFromHeadersAlt(headers());
+  await loadAndActivateLocale(locale);
+
+  const title = i18n._(msg`Manage passkeys`);
+
+  return {
+    title,
+  };
 };
 
 export default async function SettingsManagePasskeysPage() {

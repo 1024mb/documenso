@@ -21,8 +21,6 @@ export interface TemplateDocumentInviteProps {
 }
 
 export type TemplateDocumentInviteData = {
-  actionVerb: string;
-  progressiveVerb: string;
   documentName: string;
   message1: string;
   message2: string;
@@ -32,16 +30,18 @@ export type TemplateDocumentInviteData = {
 };
 
 type TemplateDocumentInviteParams = {
-  recipientActionVerb: string;
+  actionVerb: string;
   progressiveVerb: string;
+  imperativeVerb: string;
   documentName: string;
   inviterName: string | undefined;
   teamName: string | undefined;
 };
 
 export const templateDocumentInviteData = async ({
-  recipientActionVerb,
+  actionVerb,
   progressiveVerb,
+  imperativeVerb,
   documentName,
   inviterName,
   teamName,
@@ -52,18 +52,16 @@ export const templateDocumentInviteData = async ({
     headers: headers,
     cookies: cookies,
     message: [
-      msg`Please ${recipientActionVerb} your document`,
-      msg`${inviterName} on behalf of ${teamName} has invited you to ${recipientActionVerb}`,
-      msg`${inviterName} has invited you to ${recipientActionVerb}`,
+      msg`Please ${imperativeVerb} your document`,
+      msg`${inviterName} on behalf of ${teamName} has invited you to ${actionVerb}`,
+      msg`${inviterName} has invited you to ${actionVerb}`,
       msg`"${documentName}"`,
       msg`Continue by ${progressiveVerb} the document.`,
-      msg`${recipientActionVerb} Document`,
+      msg`${actionVerb} Document`,
     ],
   });
 
   return {
-    actionVerb: recipientActionVerb,
-    progressiveVerb: progressiveVerb,
     message1: translations[0],
     message2: translations[1],
     message3: translations[2],

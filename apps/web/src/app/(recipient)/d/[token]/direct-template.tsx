@@ -64,7 +64,7 @@ export const DirectTemplatePageView = ({
     sign: {
       title: msg`${_(recipientRoleDescription.actionVerb)} document`,
       description: msg`${_(
-        recipientRoleDescription.actionVerb,
+        recipientRoleDescription.imperativeVerb,
       )} the document to complete the process.`,
       stepIndex: 2,
     },

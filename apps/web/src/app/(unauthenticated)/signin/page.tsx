@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
+import { headers } from 'next/headers';
 import Link from 'next/link';
 
-import { Trans } from '@lingui/macro';
+import { i18n } from '@lingui/core';
+import { Trans, msg } from '@lingui/macro';
 import { env } from 'next-runtime-env';
 
 import { setupI18nSSR } from '@documenso/lib/client-only/providers/i18n.server';
@@ -10,11 +12,20 @@ import {
   IS_OIDC_SSO_ENABLED,
   OIDC_PROVIDER_LABEL,
 } from '@documenso/lib/constants/auth';
+import { extractLocaleDataFromHeadersAlt } from '@documenso/lib/utils/i18n';
+import { loadAndActivateLocale } from '@documenso/lib/utils/i18n.import';
 
 import { SignInForm } from '~/components/forms/signin';
 
-export const metadata: Metadata = {
-  title: 'Sign In',
+export const generateMetadata = async (): Promise<Metadata> => {
+  const locale = extractLocaleDataFromHeadersAlt(headers());
+  await loadAndActivateLocale(locale);
+
+  const title = i18n._(msg`Sign In`);
+
+  return {
+    title,
+  };
 };
 
 export default function SignInPage() {

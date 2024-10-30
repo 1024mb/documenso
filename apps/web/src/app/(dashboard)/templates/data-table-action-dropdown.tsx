@@ -54,7 +54,9 @@ export const DataTableActionDropdown = ({
       </DropdownMenuTrigger>
 
       <DropdownMenuContent className="w-52" align="start" forceMount>
-        <DropdownMenuLabel>Action</DropdownMenuLabel>
+        <DropdownMenuLabel>
+          <Trans>Action</Trans>
+        </DropdownMenuLabel>
 
         <DropdownMenuItem disabled={!isOwner && !isTeamTemplate} asChild>
           <Link href={`${templateRootPath}/${row.id}`}>

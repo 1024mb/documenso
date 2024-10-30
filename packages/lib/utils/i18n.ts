@@ -173,3 +173,20 @@ export const extractLocaleDataFromHeadersLegacy = ({
 
   return language;
 };
+
+export const extractLocaleDataFromHeadersAlt = (headers: Headers): SupportedLanguageCodes => {
+  let headerLocales: string[];
+
+  if (!headers) {
+    headerLocales = [''];
+  } else if (headers.has('accept-language')) {
+    const acceptLanguage = headers.get('accept-language');
+    headerLocales = (acceptLanguage ?? '').split(',');
+  } else {
+    headerLocales = [''];
+  }
+
+  const language = parseLanguageFromLocale(headerLocales[0]);
+
+  return language ?? APP_I18N_OPTIONS.sourceLang;
+};

@@ -102,36 +102,40 @@ export const SEND_SIGNING_EMAIL_JOB_DEFINITION = {
 
     const { email, name } = recipient;
     const selfSigner = email === user.email;
-    const recipientActionVerb = i18n
-      ._(RECIPIENT_ROLES_DESCRIPTION[recipient.role].actionVerb)
+    const actionVerb = i18n._(RECIPIENT_ROLES_DESCRIPTION[recipient.role].actionVerb).toLowerCase();
+    const imperativeVerb = i18n
+      ._(RECIPIENT_ROLES_DESCRIPTION[recipient.role].imperativeVerb)
       .toLowerCase();
-    const recipientProgressiveVerb = i18n
+    const progressiveVerb = i18n
       ._(RECIPIENT_ROLES_DESCRIPTION[recipient.role].progressiveVerb)
+      .toLowerCase();
+    const subjunctiveVerb = i18n
+      ._(RECIPIENT_ROLES_DESCRIPTION[recipient.role].subjunctiveVerb)
       .toLowerCase();
 
     let emailMessage = customEmail?.message || '';
-    let emailSubject = i18n._(msg`Please ${recipientActionVerb} this document`);
+    let emailSubject = i18n._(msg`Please ${imperativeVerb} this document`);
 
     if (selfSigner) {
       emailMessage = i18n._(
-        msg`You have initiated the document "${document.title}" that requires you to ${recipientActionVerb} it.`,
+        msg`You have initiated the document "${document.title}" that requires you to ${actionVerb} it.`,
       );
-      emailSubject = i18n._(msg`Please ${recipientActionVerb} your document`);
+      emailSubject = i18n._(msg`Please ${imperativeVerb} your document`);
     }
 
     if (isDirectTemplate) {
       emailMessage = i18n._(
-        msg`A document was created by your direct template that requires you to ${recipientActionVerb} it.`,
+        msg`A document was created by your direct template that requires you to ${subjunctiveVerb} it.`,
       );
       emailSubject = i18n._(
-        msg`Please ${recipientActionVerb} this document created by your direct template`,
+        msg`Please ${imperativeVerb} this document created by your direct template`,
       );
     }
 
     if (isTeamDocument && team) {
-      emailSubject = i18n._(msg`${team.name} invited you to ${recipientActionVerb} a document`);
+      emailSubject = i18n._(msg`${team.name} invited you to ${actionVerb} a document`);
       emailMessage = i18n._(
-        msg`${user.name} on behalf of ${team.name} has invited you to ${recipientActionVerb} the document "${document.title}".`,
+        msg`${user.name} on behalf of ${team.name} has invited you to ${actionVerb} the document "${document.title}".`,
       );
     }
 
@@ -159,7 +163,8 @@ export const SEND_SIGNING_EMAIL_JOB_DEFINITION = {
       documentInviteEmailTemplateData: await documentInviteEmailTemplateData({
         headers: headers,
         cookies: cookies,
-        recipientActionVerb: recipientActionVerb,
+        actionVerb: actionVerb,
+        imperativeVerb: imperativeVerb,
         documentName: document.title,
         inviterName: user.name || undefined,
         teamName: team?.name,
@@ -167,8 +172,9 @@ export const SEND_SIGNING_EMAIL_JOB_DEFINITION = {
       templateDocumentInviteData: await templateDocumentInviteData({
         headers: headers,
         cookies: cookies,
-        recipientActionVerb: recipientActionVerb,
-        progressiveVerb: recipientProgressiveVerb,
+        actionVerb: actionVerb,
+        progressiveVerb: progressiveVerb,
+        imperativeVerb: imperativeVerb,
         documentName: document.title,
         inviterName: user.name || undefined,
         teamName: team?.name,

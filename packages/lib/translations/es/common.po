@@ -45,9 +45,13 @@ msgctxt "The performed action is in simple past tense"
 msgid "{0} an email to {1}"
 msgstr ""
 
-#: packages/lib/jobs/definitions/emails/send-signing-email.ts:132
-msgid "{0} invited you to {recipientActionVerb} a document"
+#: packages/lib/jobs/definitions/emails/send-signing-email.ts:138
+msgid "{0} invited you to {actionVerb} a document"
 msgstr ""
+
+#: packages/lib/jobs/definitions/emails/send-signing-email.ts:132
+#~ msgid "{0} invited you to {recipientActionVerb} a document"
+#~ msgstr ""
 
 #: packages/email/templates/team-join.tsx:46
 msgid "{0} joined the team {teamName} on Documenso"
@@ -61,13 +65,22 @@ msgstr ""
 msgid "{0} of {1} row(s) selected."
 msgstr "{0} de {1} fila(s) seleccionada."
 
+#: packages/lib/jobs/definitions/emails/send-signing-email.ts:140
+#: packages/lib/server-only/document/resend-document.tsx:144
+msgid "{0} on behalf of {1} has invited you to {actionVerb} the document \"{2}\"."
+msgstr ""
+
 #: packages/lib/jobs/definitions/emails/send-signing-email.ts:134
 #: packages/lib/server-only/document/resend-document.tsx:138
-msgid "{0} on behalf of {1} has invited you to {recipientActionVerb} the document \"{2}\"."
-msgstr ""
+#~ msgid "{0} on behalf of {1} has invited you to {recipientActionVerb} the document \"{2}\"."
+#~ msgstr ""
 
 #: packages/lib/utils/document-audit-logs.ts:599
 msgid "{0} the document"
+msgstr ""
+
+#: packages/email/template-components/template-document-invite.tsx:60
+msgid "{actionVerb} Document"
 msgstr ""
 
 #: packages/email/template-components/template-document-cancel.tsx:37
@@ -79,16 +92,28 @@ msgid "{inviterName} has cancelled the document {documentName}, you don't need t
 msgstr ""
 
 #: packages/email/template-components/template-document-invite.tsx:57
-msgid "{inviterName} has invited you to {recipientActionVerb}"
-msgstr ""
-
-#: packages/email/templates/document-invite.tsx:71
-msgid "{inviterName} has invited you to {recipientActionVerb} {documentName}"
+msgid "{inviterName} has invited you to {actionVerb}"
 msgstr ""
 
 #: packages/email/templates/document-invite.tsx:72
-msgid "{inviterName} has invited you to {recipientActionVerb} the document \"{documentName}\"."
+msgid "{inviterName} has invited you to {actionVerb} {documentName}"
 msgstr ""
+
+#: packages/email/templates/document-invite.tsx:73
+msgid "{inviterName} has invited you to {actionVerb} the document \"{documentName}\"."
+msgstr ""
+
+#: packages/email/template-components/template-document-invite.tsx:57
+#~ msgid "{inviterName} has invited you to {recipientActionVerb}"
+#~ msgstr ""
+
+#: packages/email/templates/document-invite.tsx:71
+#~ msgid "{inviterName} has invited you to {recipientActionVerb} {documentName}"
+#~ msgstr ""
+
+#: packages/email/templates/document-invite.tsx:72
+#~ msgid "{inviterName} has invited you to {recipientActionVerb} the document \"{documentName}\"."
+#~ msgstr ""
 
 #: packages/email/templates/recipient-removed-from-document.tsx:51
 msgid "{inviterName} has removed you from the document"
@@ -99,12 +124,20 @@ msgid "{inviterName} has removed you from the document {documentName}."
 msgstr ""
 
 #: packages/email/template-components/template-document-invite.tsx:56
-msgid "{inviterName} on behalf of {teamName} has invited you to {recipientActionVerb}"
+msgid "{inviterName} on behalf of {teamName} has invited you to {actionVerb}"
 msgstr ""
 
-#: packages/email/templates/document-invite.tsx:70
-msgid "{inviterName} on behalf of {teamName} has invited you to {recipientActionVerb} {documentName}"
+#: packages/email/templates/document-invite.tsx:71
+msgid "{inviterName} on behalf of {teamName} has invited you to {actionVerb} {documentName}"
 msgstr ""
+
+#: packages/email/template-components/template-document-invite.tsx:56
+#~ msgid "{inviterName} on behalf of {teamName} has invited you to {recipientActionVerb}"
+#~ msgstr ""
+
+#: packages/email/templates/document-invite.tsx:70
+#~ msgid "{inviterName} on behalf of {teamName} has invited you to {recipientActionVerb} {documentName}"
+#~ msgstr ""
 
 #: packages/email/templates/team-join.tsx:47
 msgid "{memberEmail} joined the following team"
@@ -115,8 +148,8 @@ msgid "{memberEmail} left the following team"
 msgstr ""
 
 #: packages/email/template-components/template-document-invite.tsx:60
-msgid "{recipientActionVerb} Document"
-msgstr ""
+#~ msgid "{recipientActionVerb} Document"
+#~ msgstr ""
 
 #: packages/email/templates/document-created-from-direct-template.tsx:54
 msgid "{recipientName} {recipientActionActioned} a document by using one of your direct links"
@@ -173,7 +206,11 @@ msgid "2FA Enabled"
 msgstr ""
 
 #: packages/lib/jobs/definitions/emails/send-signing-email.ts:124
-msgid "A document was created by your direct template that requires you to {recipientActionVerb} it."
+#~ msgid "A document was created by your direct template that requires you to {recipientActionVerb} it."
+#~ msgstr ""
+
+#: packages/lib/jobs/definitions/emails/send-signing-email.ts:130
+msgid "A document was created by your direct template that requires you to {subjunctiveVerb} it."
 msgstr ""
 
 #: packages/lib/advanced-fields-validation/validate-checkbox.ts:18
@@ -377,22 +414,32 @@ msgstr ""
 msgid "Approval request"
 msgstr ""
 
+#: packages/lib/constants/recipient-roles.ts:9
+msgctxt "Imperative verb"
+msgid "Approve"
+msgstr ""
+
+#: packages/lib/constants/recipient-roles.ts:11
+msgctxt "Present subjunctive verb, expressing a required action"
+msgid "Approve"
+msgstr ""
+
 #: packages/lib/constants/recipient-roles.ts:8
 msgctxt "Action verb"
 msgid "Approve"
 msgstr ""
 
-#: packages/lib/constants/recipient-roles.ts:9
+#: packages/lib/constants/recipient-roles.ts:12
 msgctxt "Past tense"
 msgid "Approved"
 msgstr ""
 
-#: packages/lib/constants/recipient-roles.ts:11
+#: packages/lib/constants/recipient-roles.ts:13
 msgctxt "Role name"
 msgid "Approver"
 msgstr ""
 
-#: packages/lib/constants/recipient-roles.ts:12
+#: packages/lib/constants/recipient-roles.ts:14
 msgctxt "Role name"
 msgid "Approvers"
 msgstr ""
@@ -447,31 +494,41 @@ msgstr ""
 msgid "Cannot remove signer"
 msgstr "No se puede eliminar el firmante"
 
-#: packages/lib/constants/recipient-roles.ts:18
+#: packages/lib/constants/recipient-roles.ts:22
 msgctxt "Role name"
 msgid "Cc"
+msgstr ""
+
+#: packages/lib/constants/recipient-roles.ts:18
+msgctxt "Imperative verb"
+msgid "CC"
+msgstr ""
+
+#: packages/lib/constants/recipient-roles.ts:20
+msgctxt "Present subjunctive verb, expressing a required action"
+msgid "CC"
 msgstr ""
 
 #: packages/lib/constants/document-audit-logs.ts:16
 msgid "CC"
 msgstr "CC"
 
-#: packages/lib/constants/recipient-roles.ts:15
+#: packages/lib/constants/recipient-roles.ts:17
 msgctxt "Action verb"
 msgid "CC"
 msgstr ""
 
-#: packages/lib/constants/recipient-roles.ts:17
+#: packages/lib/constants/recipient-roles.ts:19
 msgctxt "Progressive verb"
 msgid "CC"
 msgstr ""
 
-#: packages/lib/constants/recipient-roles.ts:16
+#: packages/lib/constants/recipient-roles.ts:21
 msgctxt "Past tense"
 msgid "CC'd"
 msgstr ""
 
-#: packages/lib/constants/recipient-roles.ts:19
+#: packages/lib/constants/recipient-roles.ts:23
 msgctxt "Role name"
 msgid "Cc'ers"
 msgstr ""
@@ -933,19 +990,19 @@ msgstr ""
 msgid "Hi, {userName}"
 msgstr ""
 
-#: packages/lib/constants/recipient-roles.ts:76
+#: packages/lib/constants/recipient-roles.ts:84
 msgid "I am a signer of this document"
 msgstr "Soy un firmante de este documento"
 
-#: packages/lib/constants/recipient-roles.ts:79
+#: packages/lib/constants/recipient-roles.ts:87
 msgid "I am a viewer of this document"
 msgstr "Soy un visualizador de este documento"
 
-#: packages/lib/constants/recipient-roles.ts:77
+#: packages/lib/constants/recipient-roles.ts:85
 msgid "I am an approver of this document"
 msgstr "Soy un aprobador de este documento"
 
-#: packages/lib/constants/recipient-roles.ts:78
+#: packages/lib/constants/recipient-roles.ts:86
 msgid "I am required to receive a copy of this document"
 msgstr "Se me requiere recibir una copia de este documento"
 
@@ -1248,22 +1305,39 @@ msgstr "Seleccione un número"
 msgid "Placeholder"
 msgstr "Marcador de posición"
 
-#: packages/lib/jobs/definitions/emails/send-signing-email.ts:113
-msgid "Please {recipientActionVerb} this document"
+#: packages/lib/jobs/definitions/emails/send-signing-email.ts:119
+msgid "Please {imperativeVerb} this document"
 msgstr ""
 
-#: packages/lib/jobs/definitions/emails/send-signing-email.ts:127
-msgid "Please {recipientActionVerb} this document created by your direct template"
+#: packages/lib/jobs/definitions/emails/send-signing-email.ts:133
+msgid "Please {imperativeVerb} this document created by your direct template"
 msgstr ""
 
 #: packages/email/template-components/template-document-invite.tsx:55
-#: packages/lib/jobs/definitions/emails/send-signing-email.ts:119
-msgid "Please {recipientActionVerb} your document"
+#: packages/lib/jobs/definitions/emails/send-signing-email.ts:125
+msgid "Please {imperativeVerb} your document"
 msgstr ""
 
-#: packages/email/templates/document-invite.tsx:69
-msgid "Please {recipientActionVerb} your document {documentName}"
+#: packages/email/templates/document-invite.tsx:70
+msgid "Please {imperativeVerb} your document {documentName}"
 msgstr ""
+
+#: packages/lib/jobs/definitions/emails/send-signing-email.ts:113
+#~ msgid "Please {recipientActionVerb} this document"
+#~ msgstr ""
+
+#: packages/lib/jobs/definitions/emails/send-signing-email.ts:127
+#~ msgid "Please {recipientActionVerb} this document created by your direct template"
+#~ msgstr ""
+
+#: packages/email/template-components/template-document-invite.tsx:55
+#: packages/lib/jobs/definitions/emails/send-signing-email.ts:119
+#~ msgid "Please {recipientActionVerb} your document"
+#~ msgstr ""
+
+#: packages/email/templates/document-invite.tsx:69
+#~ msgid "Please {recipientActionVerb} your document {documentName}"
+#~ msgstr ""
 
 #: packages/lib/server-only/auth/send-confirmation-email.ts:81
 msgid "Please confirm your email"
@@ -1334,17 +1408,29 @@ msgstr "Rojo"
 msgid "Redirect URL"
 msgstr "URL de redirección"
 
+#: packages/lib/server-only/document/resend-document.tsx:141
+msgid "Reminder: {0} invited you to {actionVerb} a document"
+msgstr ""
+
 #: packages/lib/server-only/document/resend-document.tsx:135
-msgid "Reminder: {0} invited you to {recipientActionVerb} a document"
+#~ msgid "Reminder: {0} invited you to {recipientActionVerb} a document"
+#~ msgstr ""
+
+#: packages/lib/server-only/document/resend-document.tsx:130
+msgid "Reminder: Please {imperativeVerb} this document"
+msgstr ""
+
+#: packages/lib/server-only/document/resend-document.tsx:136
+msgid "Reminder: Please {imperativeVerb} your document"
 msgstr ""
 
 #: packages/lib/server-only/document/resend-document.tsx:124
-msgid "Reminder: Please {recipientActionVerb} this document"
-msgstr ""
+#~ msgid "Reminder: Please {recipientActionVerb} this document"
+#~ msgstr ""
 
 #: packages/lib/server-only/document/resend-document.tsx:130
-msgid "Reminder: Please {recipientActionVerb} your document"
-msgstr ""
+#~ msgid "Reminder: Please {recipientActionVerb} your document"
+#~ msgstr ""
 
 #: packages/ui/primitives/document-flow/add-fields.tsx:1107
 msgid "Remove"
@@ -1521,7 +1607,17 @@ msgstr ""
 msgid "Show advanced settings"
 msgstr "Mostrar configuraciones avanzadas"
 
-#: packages/lib/constants/recipient-roles.ts:22
+#: packages/lib/constants/recipient-roles.ts:27
+msgctxt "Imperative verb"
+msgid "Sign"
+msgstr ""
+
+#: packages/lib/constants/recipient-roles.ts:29
+msgctxt "Present subjunctive verb, expressing a required action"
+msgid "Sign"
+msgstr ""
+
+#: packages/lib/constants/recipient-roles.ts:26
 msgctxt "Action verb"
 msgid "Sign"
 msgstr ""
@@ -1554,7 +1650,7 @@ msgstr ""
 msgid "signed"
 msgstr ""
 
-#: packages/lib/constants/recipient-roles.ts:23
+#: packages/lib/constants/recipient-roles.ts:30
 msgctxt "Past tense"
 msgid "Signed"
 msgstr ""
@@ -1577,12 +1673,12 @@ msgstr ""
 msgid "Signed Out"
 msgstr ""
 
-#: packages/lib/constants/recipient-roles.ts:25
+#: packages/lib/constants/recipient-roles.ts:31
 msgctxt "Role name"
 msgid "Signer"
 msgstr ""
 
-#: packages/lib/constants/recipient-roles.ts:26
+#: packages/lib/constants/recipient-roles.ts:32
 msgctxt "Role name"
 msgid "Signers"
 msgstr ""
@@ -1591,7 +1687,7 @@ msgstr ""
 msgid "Signers must have unique emails"
 msgstr ""
 
-#: packages/lib/constants/recipient-roles.ts:24
+#: packages/lib/constants/recipient-roles.ts:28
 msgctxt "Progressive verb"
 msgid "Signing"
 msgstr ""
@@ -1962,7 +2058,17 @@ msgstr ""
 msgid "Verify your team email address"
 msgstr ""
 
-#: packages/lib/constants/recipient-roles.ts:29
+#: packages/lib/constants/recipient-roles.ts:36
+msgctxt "Imperative verb"
+msgid "View"
+msgstr ""
+
+#: packages/lib/constants/recipient-roles.ts:38
+msgctxt "Present subjunctive verb, expressing a required action"
+msgid "View"
+msgstr ""
+
+#: packages/lib/constants/recipient-roles.ts:35
 msgctxt "Action verb"
 msgid "View"
 msgstr ""
@@ -1979,22 +2085,22 @@ msgstr ""
 msgid "View plans"
 msgstr ""
 
-#: packages/lib/constants/recipient-roles.ts:30
+#: packages/lib/constants/recipient-roles.ts:39
 msgctxt "Past tense"
 msgid "Viewed"
 msgstr ""
 
-#: packages/lib/constants/recipient-roles.ts:32
+#: packages/lib/constants/recipient-roles.ts:40
 msgctxt "Role name"
 msgid "Viewer"
 msgstr ""
 
-#: packages/lib/constants/recipient-roles.ts:33
+#: packages/lib/constants/recipient-roles.ts:41
 msgctxt "Role name"
 msgid "Viewers"
 msgstr ""
 
-#: packages/lib/constants/recipient-roles.ts:31
+#: packages/lib/constants/recipient-roles.ts:37
 msgctxt "Progressive verb"
 msgid "Viewing"
 msgstr ""
@@ -2072,9 +2178,17 @@ msgstr ""
 msgid "You have been requested to take ownership of team {0} on Documenso"
 msgstr ""
 
+#: packages/lib/jobs/definitions/emails/send-signing-email.ts:123
+msgid "You have initiated the document \"{0}\" that requires you to {actionVerb} it."
+msgstr ""
+
 #: packages/lib/jobs/definitions/emails/send-signing-email.ts:117
 #: packages/lib/server-only/document/resend-document.tsx:128
-msgid "You have initiated the document \"{0}\" that requires you to {recipientActionVerb} it."
+#~ msgid "You have initiated the document \"{0}\" that requires you to {recipientActionVerb} it."
+#~ msgstr ""
+
+#: packages/lib/server-only/document/resend-document.tsx:134
+msgid "You have initiated the document \"{0}\" that requires you to {subjunctiveVerb} it."
 msgstr ""
 
 #: packages/ui/primitives/document-dropzone.tsx:69

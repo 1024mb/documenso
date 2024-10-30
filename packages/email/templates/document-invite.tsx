@@ -39,7 +39,6 @@ export type DocumentInviteEmailTemplateProps = Partial<TemplateDocumentInvitePro
 };
 
 export type DocumentInviteEmailTemplateData = {
-  action: string;
   previewText1: string;
   previewText2: string;
   previewText3: string;
@@ -47,14 +46,16 @@ export type DocumentInviteEmailTemplateData = {
 };
 
 type DocumentInviteEmailTemplateParams = {
-  recipientActionVerb: string;
+  actionVerb: string;
+  imperativeVerb: string;
   documentName: string;
   inviterName: string | undefined;
   teamName: string | undefined;
 };
 
 export const documentInviteEmailTemplateData = async ({
-  recipientActionVerb,
+  actionVerb,
+  imperativeVerb,
   documentName,
   inviterName,
   teamName,
@@ -66,15 +67,14 @@ export const documentInviteEmailTemplateData = async ({
     headers: headers,
     cookies: cookies,
     message: [
-      msg`Please ${recipientActionVerb} your document ${documentName}`,
-      msg`${inviterName} on behalf of ${teamName} has invited you to ${recipientActionVerb} ${documentName}`,
-      msg`${inviterName} has invited you to ${recipientActionVerb} ${documentName}`,
-      msg`${inviterName} has invited you to ${recipientActionVerb} the document "${documentName}".`,
+      msg`Please ${imperativeVerb} your document ${documentName}`,
+      msg`${inviterName} on behalf of ${teamName} has invited you to ${actionVerb} ${documentName}`,
+      msg`${inviterName} has invited you to ${actionVerb} ${documentName}`,
+      msg`${inviterName} has invited you to ${actionVerb} the document "${documentName}".`,
     ],
   });
 
   return {
-    action: recipientActionVerb,
     previewText1: translations[0],
     previewText2: translations[1],
     previewText3: translations[2],

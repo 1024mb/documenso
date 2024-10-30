@@ -193,7 +193,7 @@ msgstr ""
 msgid "A new token was created successfully."
 msgstr "Un nouveau jeton a été créé avec succès."
 
-#: apps/web/src/app/(unauthenticated)/check-email/page.tsx:24
+#: apps/web/src/app/(unauthenticated)/check-email/page.tsx:35
 #: apps/web/src/components/forms/forgot-password.tsx:58
 msgid "A password reset email has been sent, if you have an account you should see it in your inbox shortly."
 msgstr "Un e-mail de réinitialisation de mot de passe a été envoyé, si vous avez un compte vous devriez le voir dans votre boîte de réception sous peu."
@@ -262,6 +262,7 @@ msgstr ""
 #: apps/web/src/app/(dashboard)/documents/data-table-action-dropdown.tsx:121
 #: apps/web/src/app/(dashboard)/settings/public-profile/public-templates-data-table.tsx:164
 #: apps/web/src/app/(dashboard)/settings/security/activity/user-security-activity-data-table.tsx:118
+#: apps/web/src/app/(dashboard)/templates/data-table-action-dropdown.tsx:57
 #: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/audit-log/data-table.tsx:47
 msgid "Action"
 msgstr "Action"
@@ -298,11 +299,11 @@ msgstr "Ajouter tous les champs pertinents pour chaque destinataire."
 msgid "Add all relevant placeholders for each recipient."
 msgstr "Ajouter tous les espaces réservés pertinents pour chaque destinataire."
 
-#: apps/web/src/app/(dashboard)/settings/security/page.tsx:62
+#: apps/web/src/app/(dashboard)/settings/security/page.tsx:73
 msgid "Add an authenticator to serve as a secondary authentication method for signing documents."
 msgstr "Ajouter un authentificateur pour servir de méthode d'authentification secondaire pour signer des documents."
 
-#: apps/web/src/app/(dashboard)/settings/security/page.tsx:57
+#: apps/web/src/app/(dashboard)/settings/security/page.tsx:68
 msgid "Add an authenticator to serve as a secondary authentication method when signing in, or when signing documents."
 msgstr "Ajouter un authentificateur pour servir de méthode d'authentification secondaire lors de la connexion ou lors de la signature de documents."
 
@@ -408,7 +409,7 @@ msgstr "Tous les modèles"
 msgid "All Time"
 msgstr "Tout le temps"
 
-#: apps/web/src/app/(dashboard)/settings/security/page.tsx:110
+#: apps/web/src/app/(dashboard)/settings/security/page.tsx:121
 msgid "Allows authenticating using biometrics, password managers, hardware keys, etc."
 msgstr "Permet d'authentifier en utilisant des biométries, des gestionnaires de mots de passe, des clés matérielles, etc."
 
@@ -1353,6 +1354,14 @@ msgstr "Voulez-vous supprimer ce modèle ?"
 msgid "Do you want to duplicate this template?"
 msgstr "Voulez-vous dupliquer ce modèle ?"
 
+#: apps/web/src/app/(share)/share/[slug]/page.tsx:28
+msgid "Documenso - Join the open source signing revolution"
+msgstr ""
+
+#: apps/web/src/app/(share)/share/[slug]/page.tsx:25
+msgid "Documenso - Share"
+msgstr ""
+
 #: apps/web/src/app/(dashboard)/settings/profile/delete-account-dialog.tsx:122
 msgid "Documenso will delete <0>all of your documents</0>, along with all of your completed documents, signatures, and all other resources belonging to your Account."
 msgstr "Documenso supprimera <0>tous vos documents</0>, ainsi que tous vos documents complétés, signatures, et toutes les autres ressources appartenant à votre compte."
@@ -1445,7 +1454,7 @@ msgstr "Document resealé"
 msgid "Document sent"
 msgstr "Document envoyé"
 
-#: apps/web/src/app/(share)/share/[slug]/opengraph/route.tsx:123
+#: apps/web/src/app/(share)/share/[slug]/opengraph/route.tsx:129
 msgid "Document Sent!"
 msgstr ""
 
@@ -1453,7 +1462,7 @@ msgstr ""
 msgid "Document Signed"
 msgstr "Document signé"
 
-#: apps/web/src/app/(share)/share/[slug]/opengraph/route.tsx:123
+#: apps/web/src/app/(share)/share/[slug]/opengraph/route.tsx:129
 msgid "Document Signed!"
 msgstr ""
 
@@ -1492,6 +1501,7 @@ msgstr "Le document sera supprimé de manière permanente"
 #: apps/web/src/app/(dashboard)/documents/[id]/loading.tsx:16
 #: apps/web/src/app/(dashboard)/documents/[id]/sent/page.tsx:15
 #: apps/web/src/app/(dashboard)/documents/documents-page-view.tsx:119
+#: apps/web/src/app/(dashboard)/documents/page.tsx:23
 #: apps/web/src/app/(profile)/p/[url]/page.tsx:166
 #: apps/web/src/app/not-found.tsx:21
 #: apps/web/src/components/(dashboard)/common/command-menu.tsx:205
@@ -1511,7 +1521,7 @@ msgid "Documents Viewed"
 msgstr "Documents consultés"
 
 #: apps/web/src/app/(unauthenticated)/reset-password/[token]/page.tsx:40
-#: apps/web/src/app/(unauthenticated)/signin/page.tsx:45
+#: apps/web/src/app/(unauthenticated)/signin/page.tsx:56
 msgid "Don't have an account? <0>Sign up</0>"
 msgstr "Vous n'avez pas de compte? <0>Inscrivez-vous</0>"
 
@@ -1642,7 +1652,7 @@ msgstr "Email confirmé !"
 msgid "Email is required"
 msgstr ""
 
-#: apps/web/src/app/(unauthenticated)/check-email/page.tsx:20
+#: apps/web/src/app/(unauthenticated)/check-email/page.tsx:31
 msgid "Email sent!"
 msgstr "Email envoyé !"
 
@@ -1825,7 +1835,15 @@ msgstr "Le fichier ne peut pas dépasser {APP_DOCUMENT_UPLOAD_SIZE_LIMIT} Mo"
 msgid "For any questions regarding this disclosure, electronic signatures, or any related process, please contact us at: <0>support@documenso.com</0>"
 msgstr ""
 
-#: apps/web/src/app/(unauthenticated)/forgot-password/page.tsx:21
+#: apps/web/src/app/(unauthenticated)/check-email/page.tsx:17
+msgid "Forgot password"
+msgstr ""
+
+#: apps/web/src/app/(unauthenticated)/forgot-password/page.tsx:18
+msgid "Forgot Password"
+msgstr ""
+
+#: apps/web/src/app/(unauthenticated)/forgot-password/page.tsx:32
 #: apps/web/src/components/forms/signin.tsx:391
 msgid "Forgot your password?"
 msgstr "Mot de passe oublié ?"
@@ -1863,7 +1881,7 @@ msgstr "Retourner"
 #: apps/web/src/app/(unauthenticated)/verify-email/[token]/client.tsx:48
 #: apps/web/src/app/(unauthenticated)/verify-email/[token]/page.tsx:76
 #: apps/web/src/app/(unauthenticated)/verify-email/[token]/page.tsx:104
-#: apps/web/src/app/(unauthenticated)/verify-email/page.tsx:38
+#: apps/web/src/app/(unauthenticated)/verify-email/page.tsx:49
 msgid "Go back home"
 msgstr "Retourner à la maison"
 
@@ -1884,7 +1902,7 @@ msgstr "Allez à vos <0>paramètres de profil public</0> pour ajouter des docume
 msgid "Google"
 msgstr ""
 
-#: apps/web/src/app/(dashboard)/settings/profile/page.tsx:29
+#: apps/web/src/app/(dashboard)/settings/profile/page.tsx:40
 msgid "Here you can edit your personal details."
 msgstr "Ici, vous pouvez modifier vos coordonnées personnelles."
 
@@ -1892,7 +1910,7 @@ msgstr "Ici, vous pouvez modifier vos coordonnées personnelles."
 msgid "Here you can edit your team's details."
 msgstr ""
 
-#: apps/web/src/app/(dashboard)/settings/security/page.tsx:35
+#: apps/web/src/app/(dashboard)/settings/security/page.tsx:46
 msgid "Here you can manage your password and security settings."
 msgstr "Ici, vous pouvez gérer votre mot de passe et vos paramètres de sécurité."
 
@@ -1921,6 +1939,15 @@ msgstr ""
 #: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:41
 msgid "I am the owner of this document"
 msgstr "I am the owner of this document"
+
+#: apps/web/src/app/(share)/share/[slug]/page.tsx:26
+msgid "I just signed a document in style with Documenso!"
+msgstr ""
+
+#: apps/web/src/app/(share)/share/[slug]/page.tsx:29
+#: apps/web/src/app/(share)/share/[slug]/page.tsx:37
+msgid "I just signed with Documenso!"
+msgstr ""
 
 #: apps/web/src/components/(dashboard)/settings/token/delete-token-dialog.tsx:186
 #: apps/web/src/components/(dashboard)/settings/webhooks/delete-webhook-dialog.tsx:173
@@ -2072,7 +2099,7 @@ msgstr "Il semble que {0} n'ait pas encore ajouté de documents à son profil."
 msgid "It seems that the provided token has expired. We've just sent you another token, please check your email and try again."
 msgstr "Il semble que le token fourni ait expiré. Nous venons de vous envoyer un autre token, veuillez vérifier votre email et réessayer."
 
-#: apps/web/src/app/(unauthenticated)/verify-email/page.tsx:30
+#: apps/web/src/app/(unauthenticated)/verify-email/page.tsx:41
 msgid "It seems that there is no token provided, if you are trying to verify your email please follow the link in your email."
 msgstr "Il semble qu'aucun token n'ait été fourni, si vous essayez de vérifier votre email, veuillez suivre le lien dans votre email."
 
@@ -2205,7 +2232,8 @@ msgstr "Gérer le lien direct"
 msgid "Manage documents"
 msgstr "Gérer les documents"
 
-#: apps/web/src/app/(dashboard)/settings/security/page.tsx:118
+#: apps/web/src/app/(dashboard)/settings/security/page.tsx:129
+#: apps/web/src/app/(dashboard)/settings/security/passkeys/page.tsx:23
 msgid "Manage passkeys"
 msgstr "Gérer les clés d'accès"
 
@@ -2241,7 +2269,7 @@ msgstr "Gérer les membres ou inviter de nouveaux membres."
 msgid "Manage users"
 msgstr "Gérer les utilisateurs"
 
-#: apps/web/src/app/(dashboard)/settings/security/passkeys/page.tsx:33
+#: apps/web/src/app/(dashboard)/settings/security/passkeys/page.tsx:44
 msgid "Manage your passkeys."
 msgstr "Gérer vos clés d'accès."
 
@@ -2425,7 +2453,7 @@ msgstr "Aucun destinataire valide trouvé"
 msgid "No value found."
 msgstr "Aucune valeur trouvée."
 
-#: apps/web/src/app/(unauthenticated)/forgot-password/page.tsx:25
+#: apps/web/src/app/(unauthenticated)/forgot-password/page.tsx:36
 msgid "No worries, it happens! Enter your email and we'll email you a special link to reset your password."
 msgstr "Pas de soucis, ça arrive ! Entrez votre email et nous vous enverrons un lien spécial pour réinitialiser votre mot de passe."
 
@@ -2565,8 +2593,8 @@ msgstr "Nom de la clé d'accès"
 msgid "Passkey Re-Authentication"
 msgstr ""
 
-#: apps/web/src/app/(dashboard)/settings/security/page.tsx:106
-#: apps/web/src/app/(dashboard)/settings/security/passkeys/page.tsx:32
+#: apps/web/src/app/(dashboard)/settings/security/page.tsx:117
+#: apps/web/src/app/(dashboard)/settings/security/passkeys/page.tsx:43
 msgid "Passkeys"
 msgstr "Clés d'accès"
 
@@ -2798,7 +2826,8 @@ msgstr "Privé"
 msgid "Private templates can only be modified and viewed by you."
 msgstr "Les modèles privés ne peuvent être modifiés et consultés que par vous."
 
-#: apps/web/src/app/(dashboard)/settings/profile/page.tsx:28
+#: apps/web/src/app/(dashboard)/settings/profile/page.tsx:23
+#: apps/web/src/app/(dashboard)/settings/profile/page.tsx:39
 #: apps/web/src/components/(dashboard)/common/command-menu.tsx:69
 #: apps/web/src/components/(dashboard)/settings/layout/desktop-nav.tsx:36
 #: apps/web/src/components/(dashboard)/settings/layout/mobile-nav.tsx:39
@@ -2865,7 +2894,7 @@ msgid "Reauthentication is required to sign this field"
 msgstr "Une nouvelle authentification est requise pour signer ce champ"
 
 #: apps/web/src/app/(dashboard)/documents/[id]/document-page-view-recent-activity.tsx:57
-#: apps/web/src/app/(dashboard)/settings/security/page.tsx:130
+#: apps/web/src/app/(dashboard)/settings/security/page.tsx:141
 msgid "Recent activity"
 msgstr "Activité récente"
 
@@ -2903,7 +2932,7 @@ msgstr "Les destinataires conservent toujours leur copie du document"
 msgid "Recovery code copied"
 msgstr "Code de récupération copié"
 
-#: apps/web/src/app/(dashboard)/settings/security/page.tsx:84
+#: apps/web/src/app/(dashboard)/settings/security/page.tsx:95
 msgid "Recovery codes"
 msgstr "Codes de récupération"
 
@@ -2913,7 +2942,7 @@ msgstr "Codes de récupération"
 msgid "Registration Successful"
 msgstr "Inscription réussie"
 
-#: apps/web/src/app/(unauthenticated)/forgot-password/page.tsx:34
+#: apps/web/src/app/(unauthenticated)/forgot-password/page.tsx:45
 msgid "Remembered your password? <0>Sign In</0>"
 msgstr "Vous vous souvenez de votre mot de passe ? <0>Connectez-vous</0>"
 
@@ -2978,6 +3007,7 @@ msgid "Reset email sent"
 msgstr "E-mail de réinitialisation envoyé"
 
 #: apps/web/src/app/(unauthenticated)/reset-password/[token]/page.tsx:30
+#: apps/web/src/app/(unauthenticated)/reset-password/page.tsx:17
 #: apps/web/src/components/forms/forgot-password.tsx:93
 #: apps/web/src/components/forms/reset-password.tsx:143
 msgid "Reset Password"
@@ -3022,8 +3052,8 @@ msgstr "Retour au tableau de bord"
 msgid "Return to Home"
 msgstr "Retour à l'accueil"
 
-#: apps/web/src/app/(unauthenticated)/check-email/page.tsx:32
-#: apps/web/src/app/(unauthenticated)/reset-password/page.tsx:32
+#: apps/web/src/app/(unauthenticated)/check-email/page.tsx:43
+#: apps/web/src/app/(unauthenticated)/reset-password/page.tsx:43
 msgid "Return to sign in"
 msgstr "Retour à la connexion"
 
@@ -3081,13 +3111,15 @@ msgstr ""
 msgid "Secret"
 msgstr "Secret"
 
-#: apps/web/src/app/(dashboard)/settings/security/page.tsx:34
+#: apps/web/src/app/(dashboard)/settings/security/page.tsx:27
+#: apps/web/src/app/(dashboard)/settings/security/page.tsx:45
 #: apps/web/src/components/(dashboard)/settings/layout/desktop-nav.tsx:77
 #: apps/web/src/components/(dashboard)/settings/layout/mobile-nav.tsx:80
 msgid "Security"
 msgstr "Sécurité"
 
-#: apps/web/src/app/(dashboard)/settings/security/activity/page.tsx:25
+#: apps/web/src/app/(dashboard)/settings/security/activity/page.tsx:21
+#: apps/web/src/app/(dashboard)/settings/security/activity/page.tsx:36
 msgid "Security activity"
 msgstr "Activité de sécurité"
 
@@ -3245,13 +3277,14 @@ msgstr "Champ de signature"
 msgid "Sign Here"
 msgstr "Signer ici"
 
+#: apps/web/src/app/(unauthenticated)/signin/page.tsx:24
 #: apps/web/src/app/not-found.tsx:29
 #: apps/web/src/components/forms/signin.tsx:404
 #: apps/web/src/components/forms/signin.tsx:533
 msgid "Sign In"
 msgstr "Se connecter"
 
-#: apps/web/src/app/(unauthenticated)/signin/page.tsx:29
+#: apps/web/src/app/(unauthenticated)/signin/page.tsx:40
 msgid "Sign in to your account"
 msgstr "Connectez-vous à votre compte"
 
@@ -3269,6 +3302,7 @@ msgstr "Signez le document pour terminer le processus."
 msgid "Sign up"
 msgstr "S'inscrire"
 
+#: apps/web/src/app/(unauthenticated)/signup/page.tsx:20
 #: apps/web/src/components/forms/signup.tsx:245
 msgid "Sign Up"
 msgstr "S'inscrire"
@@ -3654,6 +3688,7 @@ msgid "Template saved"
 msgstr "Modèle enregistré"
 
 #: apps/web/src/app/(dashboard)/templates/[id]/template-page-view.tsx:60
+#: apps/web/src/app/(dashboard)/templates/page.tsx:23
 #: apps/web/src/app/(dashboard)/templates/templates-page-view.tsx:55
 #: apps/web/src/components/(dashboard)/common/command-menu.tsx:208
 #: apps/web/src/components/(dashboard)/layout/desktop-nav.tsx:22
@@ -3803,7 +3838,7 @@ msgstr "Le jeton a été copié dans votre presse-papiers."
 msgid "The token was deleted successfully."
 msgstr "Le jeton a été supprimé avec succès."
 
-#: apps/web/src/app/(unauthenticated)/reset-password/page.tsx:24
+#: apps/web/src/app/(unauthenticated)/reset-password/page.tsx:35
 msgid "The token you have used to reset your password is either expired or it never existed. If you have still forgotten your password, please request a new reset link."
 msgstr "Le jeton que vous avez utilisé pour réinitialiser votre mot de passe a expiré ou n'a jamais existé. Si vous avez toujours oublié votre mot de passe, veuillez demander un nouveau lien de réinitialisation."
 
@@ -4091,11 +4126,11 @@ msgstr "Déclencheurs"
 msgid "True"
 msgstr ""
 
-#: apps/web/src/app/(dashboard)/settings/security/page.tsx:52
+#: apps/web/src/app/(dashboard)/settings/security/page.tsx:63
 msgid "Two factor authentication"
 msgstr "Authentification à deux facteurs"
 
-#: apps/web/src/app/(dashboard)/settings/security/page.tsx:88
+#: apps/web/src/app/(dashboard)/settings/security/page.tsx:99
 msgid "Two factor authentication recovery codes are used to access your account in the event that you lose access to your authenticator app."
 msgstr "Les codes de récupération de l'authentification à deux facteurs sont utilisés pour accéder à votre compte dans le cas où vous perdez l'accès à votre application d'authentification."
 
@@ -4133,7 +4168,7 @@ msgstr "Tapez 'supprimer' pour confirmer"
 msgid "Type a command or search..."
 msgstr "Tapez une commande ou recherchez..."
 
-#: apps/web/src/app/(unauthenticated)/verify-email/page.tsx:26
+#: apps/web/src/app/(unauthenticated)/verify-email/page.tsx:37
 msgid "Uh oh! Looks like you're missing a token"
 msgstr "Oh oh ! On dirait que vous manquez un jeton"
 
@@ -4198,7 +4233,7 @@ msgstr "Impossible de renvoyer l'invitation. Veuillez réessayer."
 msgid "Unable to resend verification at this time. Please try again."
 msgstr "Impossible de renvoyer la vérification pour le moment. Veuillez réessayer."
 
-#: apps/web/src/app/(unauthenticated)/reset-password/page.tsx:20
+#: apps/web/src/app/(unauthenticated)/reset-password/page.tsx:31
 msgid "Unable to reset password"
 msgstr "Impossible de réinitialiser le mot de passe"
 
@@ -4389,6 +4424,10 @@ msgstr "Email de vérification envoyé"
 msgid "Verification email sent successfully."
 msgstr "Email de vérification envoyé avec succès."
 
+#: apps/web/src/app/(unauthenticated)/verify-email/page.tsx:18
+msgid "Verify Email"
+msgstr ""
+
 #: apps/web/src/components/(dashboard)/layout/verify-email-banner.tsx:102
 msgid "Verify Now"
 msgstr "Vérifier maintenant"
@@ -4418,7 +4457,7 @@ msgstr ""
 msgid "View"
 msgstr "Voir"
 
-#: apps/web/src/app/(dashboard)/settings/security/page.tsx:140
+#: apps/web/src/app/(dashboard)/settings/security/page.tsx:151
 msgid "View activity"
 msgstr "Voir l'activité"
 
@@ -4426,11 +4465,11 @@ msgstr "Voir l'activité"
 msgid "View all documents sent to your account"
 msgstr "Voir tous les documents envoyés à votre compte"
 
-#: apps/web/src/app/(dashboard)/settings/security/page.tsx:134
+#: apps/web/src/app/(dashboard)/settings/security/page.tsx:145
 msgid "View all recent security activity related to your account."
 msgstr "Voir toute l'activité de sécurité récente liée à votre compte."
 
-#: apps/web/src/app/(dashboard)/settings/security/activity/page.tsx:26
+#: apps/web/src/app/(dashboard)/settings/security/activity/page.tsx:37
 msgid "View all security activity related to your account."
 msgstr "Voir toute l'activité de sécurité liée à votre compte."
 
@@ -4746,7 +4785,7 @@ msgstr "Hebdomadaire"
 msgid "Welcome"
 msgstr ""
 
-#: apps/web/src/app/(unauthenticated)/signin/page.tsx:33
+#: apps/web/src/app/(unauthenticated)/signin/page.tsx:44
 msgid "Welcome back, we are lucky to have you."
 msgstr "Contentieux, nous avons de la chance de vous avoir."
 

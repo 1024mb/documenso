@@ -1,10 +1,13 @@
 import { ImageResponse } from 'next/og';
 import { NextResponse } from 'next/server';
 
-import { Trans } from '@lingui/macro';
+import { i18n } from '@lingui/core';
+import { msg } from '@lingui/macro';
 import { P, match } from 'ts-pattern';
 
 import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
+import { extractLocaleDataFromHeadersAlt } from '@documenso/lib/utils/i18n';
+import { loadAndActivateLocale } from '@documenso/lib/utils/i18n.import';
 
 import type { ShareHandlerAPIResponse } from '~/pages/api/share';
 
@@ -25,6 +28,9 @@ type SharePageOpenGraphImageProps = {
 };
 
 export async function GET(_request: Request, { params: { slug } }: SharePageOpenGraphImageProps) {
+  const locale = extractLocaleDataFromHeadersAlt(_request.headers);
+  await loadAndActivateLocale(locale);
+
   const [interSemiBold, interRegular, caveatRegular, shareFrameImage] = await Promise.all([
     fetch(new URL('@documenso/assets/fonts/inter-semibold.ttf', import.meta.url)).then(
       async (res) => res.arrayBuffer(),
@@ -120,7 +126,7 @@ export async function GET(_request: Request, { params: { slug } }: SharePageOpen
               fontWeight: 700,
             }}
           >
-            {isRecipient ? <Trans>Document Signed!</Trans> : <Trans>Document Sent!</Trans>}
+            {isRecipient ? i18n._(msg`Document Signed!`) : i18n._(msg`Document Sent!`)}
           </h2>
         </div>
       </div>

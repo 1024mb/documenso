@@ -1,12 +1,16 @@
 import type { Metadata } from 'next';
+import { headers } from 'next/headers';
 import Link from 'next/link';
 
+import { i18n } from '@lingui/core';
 import { Trans, msg } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 
 import { setupI18nSSR } from '@documenso/lib/client-only/providers/i18n.server';
 import { getRequiredServerComponentSession } from '@documenso/lib/next-auth/get-server-component-session';
 import { getServerComponentFlag } from '@documenso/lib/server-only/feature-flags/get-server-component-feature-flag';
+import { extractLocaleDataFromHeadersAlt } from '@documenso/lib/utils/i18n';
+import { loadAndActivateLocale } from '@documenso/lib/utils/i18n.import';
 import { Alert, AlertDescription, AlertTitle } from '@documenso/ui/primitives/alert';
 import { Button } from '@documenso/ui/primitives/button';
 
@@ -16,8 +20,15 @@ import { EnableAuthenticatorAppDialog } from '~/components/forms/2fa/enable-auth
 import { ViewRecoveryCodesDialog } from '~/components/forms/2fa/view-recovery-codes-dialog';
 import { PasswordForm } from '~/components/forms/password';
 
-export const metadata: Metadata = {
-  title: 'Security',
+export const generateMetadata = async (): Promise<Metadata> => {
+  const locale = extractLocaleDataFromHeadersAlt(headers());
+  await loadAndActivateLocale(locale);
+
+  const title = i18n._(msg`Security`);
+
+  return {
+    title,
+  };
 };
 
 export default async function SecuritySettingsPage() {
