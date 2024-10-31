@@ -398,6 +398,10 @@ export const AddTemplateFieldsFormPartial = ({
     setShowAdvancedSettings((prev) => !prev);
   };
 
+  const CHECKBOX = _(msg`Checkbox`);
+  const RADIO = _(msg`Radio`);
+  const SELECT = _(msg`Select`);
+
   return (
     <>
       {showAdvancedSettings && currentField ? (
@@ -605,7 +609,7 @@ export const AddTemplateFieldsFormPartial = ({
                           )}
                         >
                           <Contact className="h-4 w-4" />
-                          Initials
+                          <Trans>Initials</Trans>
                         </p>
                       </CardContent>
                     </Card>
@@ -830,10 +834,10 @@ export const AddTemplateFieldsFormPartial = ({
                   <Trans>
                     To proceed further, please set at least one value for the{' '}
                     {emptyCheckboxFields.length > 0
-                      ? _(msg`Checkbox`)
+                      ? CHECKBOX
                       : emptyRadioFields.length > 0
-                      ? _(msg`Radio`)
-                      : _(msg`Select`)}{' '}
+                      ? RADIO
+                      : SELECT}{' '}
                     field.
                   </Trans>
                 </li>
