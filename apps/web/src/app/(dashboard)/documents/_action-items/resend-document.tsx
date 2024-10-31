@@ -3,6 +3,7 @@
 import { useState } from 'react';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { i18n } from '@lingui/core';
 import { Trans, msg } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 import { History } from 'lucide-react';
@@ -11,6 +12,7 @@ import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 
 import { getRecipientType } from '@documenso/lib/client-only/recipient-type';
+import { loadAndActivateLocale } from '@documenso/lib/utils/i18n.import';
 import { recipientAbbreviation } from '@documenso/lib/utils/recipient-formatter';
 import type { Team } from '@documenso/prisma/client';
 import { type Document, type Recipient, SigningStatus } from '@documenso/prisma/client';
@@ -49,13 +51,21 @@ export type ResendDocumentActionItemProps = {
   team?: Pick<Team, 'id' | 'url'>;
 };
 
-export const ZResendDocumentFormSchema = z.object({
-  recipients: z.array(z.number()).min(1, {
-    message: 'You must select at least one item.',
-  }),
-});
+export const ZResendDocumentFormSchema = (locale: string) => {
+  loadAndActivateLocale(locale)
+    .then(() => {})
+    .catch((err) => {
+      console.error(err);
+    });
 
-export type TResendDocumentFormSchema = z.infer<typeof ZResendDocumentFormSchema>;
+  return z.object({
+    recipients: z.array(z.number()).min(1, {
+      message: i18n._(msg`You must select at least one item.`),
+    }),
+  });
+};
+
+export type TResendDocumentFormSchema = z.infer<ReturnType<typeof ZResendDocumentFormSchema>>;
 
 export const ResendDocumentActionItem = ({
   document,
@@ -64,7 +74,9 @@ export const ResendDocumentActionItem = ({
 }: ResendDocumentActionItemProps) => {
   const { data: session } = useSession();
   const { toast } = useToast();
+
   const { _ } = useLingui();
+  const locale = useLingui().i18n.locale;
 
   const [isOpen, setIsOpen] = useState(false);
   const isOwner = document.userId === session?.user?.id;
@@ -78,7 +90,7 @@ export const ResendDocumentActionItem = ({
   const { mutateAsync: resendDocument } = trpcReact.document.resendDocument.useMutation();
 
   const form = useForm<TResendDocumentFormSchema>({
-    resolver: zodResolver(ZResendDocumentFormSchema),
+    resolver: zodResolver(ZResendDocumentFormSchema(locale)),
     defaultValues: {
       recipients: [],
     },

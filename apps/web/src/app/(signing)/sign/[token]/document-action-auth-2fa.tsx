@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Trans } from '@lingui/macro';
+import { i18n } from '@lingui/core';
+import { Trans, msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 import { AppError } from '@documenso/lib/errors/app-error';
 import { DocumentAuth, type TRecipientActionAuth } from '@documenso/lib/types/document-auth';
+import { loadAndActivateLocale } from '@documenso/lib/utils/i18n.import';
 import { RecipientRole } from '@documenso/prisma/client';
 import { Alert, AlertDescription, AlertTitle } from '@documenso/ui/primitives/alert';
 import { Button } from '@documenso/ui/primitives/button';
@@ -33,14 +36,26 @@ export type DocumentActionAuth2FAProps = {
   onReauthFormSubmit: (values?: TRecipientActionAuth) => Promise<void> | void;
 };
 
-const Z2FAAuthFormSchema = z.object({
-  token: z
-    .string()
-    .min(4, { message: 'Token must at least 4 characters long' })
-    .max(10, { message: 'Token must be at most 10 characters long' }),
-});
+const Z2FAAuthFormSchema = (locale: string) => {
+  loadAndActivateLocale(locale)
+    .then(() => {})
+    .catch((err) => {
+      console.error(err);
+    });
 
-type T2FAAuthFormSchema = z.infer<typeof Z2FAAuthFormSchema>;
+  return z.object({
+    token: z
+      .string()
+      .min(4, {
+        message: i18n._(msg`Token must at least 4 characters long`),
+      })
+      .max(10, {
+        message: i18n._(msg`Token must be at most 10 characters long`),
+      }),
+  });
+};
+
+type T2FAAuthFormSchema = z.infer<ReturnType<typeof Z2FAAuthFormSchema>>;
 
 export const DocumentActionAuth2FA = ({
   actionTarget = 'FIELD',
@@ -49,11 +64,13 @@ export const DocumentActionAuth2FA = ({
   open,
   onOpenChange,
 }: DocumentActionAuth2FAProps) => {
+  const locale = useLingui().i18n.locale;
+
   const { recipient, user, isCurrentlyAuthenticating, setIsCurrentlyAuthenticating } =
     useRequiredDocumentAuthContext();
 
   const form = useForm<T2FAAuthFormSchema>({
-    resolver: zodResolver(Z2FAAuthFormSchema),
+    resolver: zodResolver(Z2FAAuthFormSchema(locale)),
     defaultValues: {
       token: '',
     },

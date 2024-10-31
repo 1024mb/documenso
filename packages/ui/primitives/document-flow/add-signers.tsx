@@ -63,6 +63,8 @@ export const AddSignersFormPartial = ({
   isDocumentPdfLoaded,
 }: AddSignersFormProps) => {
   const { _ } = useLingui();
+  const locale = useLingui().i18n.locale;
+
   const { toast } = useToast();
   const { remaining } = useLimits();
   const { data: session } = useSession();
@@ -86,7 +88,7 @@ export const AddSignersFormPartial = ({
   ];
 
   const form = useForm<TAddSignersFormSchema>({
-    resolver: zodResolver(ZAddSignersFormSchema),
+    resolver: zodResolver(ZAddSignersFormSchema(locale)),
     defaultValues: {
       signers:
         recipients.length > 0

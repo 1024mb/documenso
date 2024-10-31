@@ -75,13 +75,14 @@ export const AddTemplateSettingsFormPartial = ({
   onSubmit,
 }: AddTemplateSettingsFormProps) => {
   const { _ } = useLingui();
+  const locale = useLingui().i18n.locale;
 
   const { documentAuthOption } = extractDocumentAuthMethods({
     documentAuth: template.authOptions,
   });
 
   const form = useForm<TAddTemplateSettingsFormSchema>({
-    resolver: zodResolver(ZAddTemplateSettingsFormSchema),
+    resolver: zodResolver(ZAddTemplateSettingsFormSchema(locale)),
     defaultValues: {
       title: template.title,
       externalId: template.externalId || undefined,

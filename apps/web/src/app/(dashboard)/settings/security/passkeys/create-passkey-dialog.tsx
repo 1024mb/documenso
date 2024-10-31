@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { i18n } from '@lingui/core';
 import { Trans, msg } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 import type * as DialogPrimitive from '@radix-ui/react-dialog';
@@ -15,6 +16,7 @@ import { z } from 'zod';
 
 import { MAXIMUM_PASSKEYS } from '@documenso/lib/constants/auth';
 import { AppError } from '@documenso/lib/errors/app-error';
+import { loadAndActivateLocale } from '@documenso/lib/utils/i18n.import';
 import { trpc } from '@documenso/trpc/react';
 import { Alert, AlertDescription, AlertTitle } from '@documenso/ui/primitives/alert';
 import { Button } from '@documenso/ui/primitives/button';
@@ -43,11 +45,21 @@ export type CreatePasskeyDialogProps = {
   onSuccess?: () => void;
 } & Omit<DialogPrimitive.DialogProps, 'children'>;
 
-const ZCreatePasskeyFormSchema = z.object({
-  passkeyName: z.string().min(3),
-});
+const ZCreatePasskeyFormSchema = (locale: string) => {
+  loadAndActivateLocale(locale)
+    .then(() => {})
+    .catch((err) => {
+      console.error(err);
+    });
 
-type TCreatePasskeyFormSchema = z.infer<typeof ZCreatePasskeyFormSchema>;
+  return z.object({
+    passkeyName: z.string().min(3, {
+      message: i18n._(msg`Name must be at least 3 characters long.`),
+    }),
+  });
+};
+
+type TCreatePasskeyFormSchema = z.infer<ReturnType<typeof ZCreatePasskeyFormSchema>>;
 
 const parser = new UAParser();
 
@@ -57,9 +69,10 @@ export const CreatePasskeyDialog = ({ trigger, onSuccess, ...props }: CreatePass
 
   const { _ } = useLingui();
   const { toast } = useToast();
+  const locale = useLingui().i18n.locale;
 
   const form = useForm<TCreatePasskeyFormSchema>({
-    resolver: zodResolver(ZCreatePasskeyFormSchema),
+    resolver: zodResolver(ZCreatePasskeyFormSchema(locale)),
     defaultValues: {
       passkeyName: '',
     },

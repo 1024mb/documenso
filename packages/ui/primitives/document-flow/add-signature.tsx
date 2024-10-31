@@ -61,12 +61,13 @@ export const AddSignatureFormPartial = ({
   requireSignature = true,
 }: AddSignatureFormProps) => {
   const { _ } = useLingui();
+  const locale = useLingui().i18n.locale;
 
   const { currentStep, totalSteps } = useStep();
   const [validateUninsertedFields, setValidateUninsertedFields] = useState(false);
 
   // Refined schema which takes into account whether to allow an empty name or signature.
-  const refinedSchema = ZAddSignatureFormSchema.superRefine((val, ctx) => {
+  const refinedSchema = ZAddSignatureFormSchema(locale).superRefine((val, ctx) => {
     if (requireName && val.name.length === 0) {
       ctx.addIssue({
         path: ['name'],

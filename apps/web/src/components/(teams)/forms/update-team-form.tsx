@@ -31,21 +31,25 @@ export type UpdateTeamDialogProps = {
   teamUrl: string;
 };
 
-const ZUpdateTeamFormSchema = ZUpdateTeamMutationSchema.shape.data.pick({
-  name: true,
-  url: true,
-});
+const ZUpdateTeamFormSchema = (locale: string) => {
+  return ZUpdateTeamMutationSchema(locale).shape.data.pick({
+    name: true,
+    url: true,
+  });
+};
 
-type TUpdateTeamFormSchema = z.infer<typeof ZUpdateTeamFormSchema>;
+type TUpdateTeamFormSchema = z.infer<ReturnType<typeof ZUpdateTeamFormSchema>>;
 
 export const UpdateTeamForm = ({ teamId, teamName, teamUrl }: UpdateTeamDialogProps) => {
   const router = useRouter();
 
   const { _ } = useLingui();
+  const locale = useLingui().i18n.locale;
+
   const { toast } = useToast();
 
   const form = useForm({
-    resolver: zodResolver(ZUpdateTeamFormSchema),
+    resolver: zodResolver(ZUpdateTeamFormSchema(locale)),
     defaultValues: {
       name: teamName,
       url: teamUrl,

@@ -1,6 +1,9 @@
+import { i18n } from '@lingui/core';
+import { msg } from '@lingui/macro';
 import { z } from 'zod';
 
 import { PROTECTED_TEAM_URLS } from '@documenso/lib/constants/teams';
+import { loadAndActivateLocale } from '@documenso/lib/utils/i18n.import';
 import { TeamMemberRole } from '@documenso/prisma/client';
 
 import { ZUpdatePublicProfileMutationSchema } from '../profile-router/schema';
@@ -27,27 +30,54 @@ const GenericFindQuerySchema = z.object({
  * - Cannot contain consecutive underscores or dashes.
  * - Cannot be a reserved URL in the PROTECTED_TEAM_URLS list
  */
-export const ZTeamUrlSchema = z
-  .string()
-  .trim()
-  .min(3, { message: 'Team URL must be at least 3 characters long.' })
-  .max(30, { message: 'Team URL must not exceed 30 characters.' })
-  .toLowerCase()
-  .regex(/^[a-z0-9].*[^_-]$/, 'Team URL cannot start or end with dashes or underscores.')
-  .regex(/^(?!.*[-_]{2})/, 'Team URL cannot contain consecutive dashes or underscores.')
-  .regex(
-    /^[a-z0-9]+(?:[-_][a-z0-9]+)*$/,
-    'Team URL can only contain letters, numbers, dashes and underscores.',
-  )
-  .refine((value) => !PROTECTED_TEAM_URLS.includes(value), {
-    message: 'This URL is already in use.',
-  });
+export const ZTeamUrlSchema = (locale: string) => {
+  loadAndActivateLocale(locale)
+    .then(() => {})
+    .catch((err) => {
+      console.error(err);
+    });
 
-export const ZTeamNameSchema = z
-  .string()
-  .trim()
-  .min(3, { message: 'Team name must be at least 3 characters long.' })
-  .max(30, { message: 'Team name must not exceed 30 characters.' });
+  return z
+    .string()
+    .trim()
+    .min(3, {
+      message: i18n._(msg`Team URL must be at least 3 characters long.`),
+    })
+    .max(30, {
+      message: i18n._(msg`Team URL must not exceed 30 characters.`),
+    })
+    .toLowerCase()
+    .regex(/^[a-z0-9].*[^_-]$/, {
+      message: i18n._(msg`Team URL cannot start or end with dashes or underscores.`),
+    })
+    .regex(/^(?!.*[-_]{2})/, {
+      message: i18n._(msg`Team URL cannot contain consecutive dashes or underscores.`),
+    })
+    .regex(/^[a-z0-9]+(?:[-_][a-z0-9]+)*$/, {
+      message: i18n._(msg`Team URL can only contain letters, numbers, dashes and underscores.`),
+    })
+    .refine((value) => !PROTECTED_TEAM_URLS.includes(value), {
+      message: i18n._(msg`This URL is already in use.`),
+    });
+};
+
+export const ZTeamNameSchema = (locale: string) => {
+  loadAndActivateLocale(locale)
+    .then(() => {})
+    .catch((err) => {
+      console.error(err);
+    });
+
+  return z
+    .string()
+    .trim()
+    .min(3, {
+      message: i18n._(msg`Team name must be at least 3 characters long.`),
+    })
+    .max(30, {
+      message: i18n._(msg`Team name must not exceed 30 characters.`),
+    });
+};
 
 export const ZAcceptTeamInvitationMutationSchema = z.object({
   teamId: z.number(),
@@ -61,16 +91,38 @@ export const ZCreateTeamBillingPortalMutationSchema = z.object({
   teamId: z.number(),
 });
 
-export const ZCreateTeamMutationSchema = z.object({
-  teamName: ZTeamNameSchema,
-  teamUrl: ZTeamUrlSchema,
-});
+export const ZCreateTeamMutationSchema = (locale: string = '') => {
+  return z.object({
+    teamName: ZTeamNameSchema(locale),
+    teamUrl: ZTeamUrlSchema(locale),
+  });
+};
 
-export const ZCreateTeamEmailVerificationMutationSchema = z.object({
-  teamId: z.number(),
-  name: z.string().trim().min(1, { message: 'Please enter a valid name.' }),
-  email: z.string().trim().email().toLowerCase().min(1, 'Please enter a valid email.'),
-});
+export const ZCreateTeamEmailVerificationMutationSchema = (locale: string = '') => {
+  loadAndActivateLocale(locale)
+    .then(() => {})
+    .catch((err) => {
+      console.error(err);
+    });
+
+  return z.object({
+    teamId: z.number(),
+    name: z
+      .string()
+      .trim()
+      .min(1, {
+        message: i18n._(msg`Please enter a valid name.`),
+      }),
+    email: z
+      .string()
+      .trim()
+      .email()
+      .toLowerCase()
+      .min(1, {
+        message: i18n._(msg`Please enter a valid email.`),
+      }),
+  });
+};
 
 export const ZCreateTeamMemberInvitesMutationSchema = z.object({
   teamId: z.number(),
@@ -145,13 +197,15 @@ export const ZLeaveTeamMutationSchema = z.object({
   teamId: z.number(),
 });
 
-export const ZUpdateTeamMutationSchema = z.object({
-  teamId: z.number(),
-  data: z.object({
-    name: ZTeamNameSchema,
-    url: ZTeamUrlSchema,
-  }),
-});
+export const ZUpdateTeamMutationSchema = (locale: string = '') => {
+  return z.object({
+    teamId: z.number(),
+    data: z.object({
+      name: ZTeamNameSchema(locale),
+      url: ZTeamUrlSchema(locale),
+    }),
+  });
+};
 
 export const ZUpdateTeamEmailMutationSchema = z.object({
   teamId: z.number(),
@@ -168,12 +222,14 @@ export const ZUpdateTeamMemberMutationSchema = z.object({
   }),
 });
 
-export const ZUpdateTeamPublicProfileMutationSchema = ZUpdatePublicProfileMutationSchema.pick({
-  bio: true,
-  enabled: true,
-}).extend({
-  teamId: z.number(),
-});
+export const ZUpdateTeamPublicProfileMutationSchema = ZUpdatePublicProfileMutationSchema()
+  .pick({
+    bio: true,
+    enabled: true,
+  })
+  .extend({
+    teamId: z.number(),
+  });
 
 export const ZRequestTeamOwnerhsipTransferMutationSchema = z.object({
   teamId: z.number(),
@@ -190,9 +246,9 @@ export const ZResendTeamMemberInvitationMutationSchema = z.object({
   invitationId: z.number(),
 });
 
-export type TCreateTeamMutationSchema = z.infer<typeof ZCreateTeamMutationSchema>;
+export type TCreateTeamMutationSchema = z.infer<ReturnType<typeof ZCreateTeamMutationSchema>>;
 export type TCreateTeamEmailVerificationMutationSchema = z.infer<
-  typeof ZCreateTeamEmailVerificationMutationSchema
+  ReturnType<typeof ZCreateTeamEmailVerificationMutationSchema>
 >;
 export type TCreateTeamMemberInvitesMutationSchema = z.infer<
   typeof ZCreateTeamMemberInvitesMutationSchema
@@ -214,7 +270,7 @@ export type TFindTeamsPendingQuerySchema = z.infer<typeof ZFindTeamsPendingQuery
 export type TGetTeamQuerySchema = z.infer<typeof ZGetTeamQuerySchema>;
 export type TGetTeamMembersQuerySchema = z.infer<typeof ZGetTeamMembersQuerySchema>;
 export type TLeaveTeamMutationSchema = z.infer<typeof ZLeaveTeamMutationSchema>;
-export type TUpdateTeamMutationSchema = z.infer<typeof ZUpdateTeamMutationSchema>;
+export type TUpdateTeamMutationSchema = z.infer<ReturnType<typeof ZUpdateTeamMutationSchema>>;
 export type TUpdateTeamEmailMutationSchema = z.infer<typeof ZUpdateTeamEmailMutationSchema>;
 export type TRequestTeamOwnerhsipTransferMutationSchema = z.infer<
   typeof ZRequestTeamOwnerhsipTransferMutationSchema

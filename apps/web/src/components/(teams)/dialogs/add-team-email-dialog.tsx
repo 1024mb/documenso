@@ -41,12 +41,14 @@ export type AddTeamEmailDialogProps = {
   trigger?: React.ReactNode;
 } & Omit<DialogPrimitive.DialogProps, 'children'>;
 
-const ZCreateTeamEmailFormSchema = ZCreateTeamEmailVerificationMutationSchema.pick({
-  name: true,
-  email: true,
-});
+const ZCreateTeamEmailFormSchema = (locale: string) => {
+  return ZCreateTeamEmailVerificationMutationSchema(locale).pick({
+    name: true,
+    email: true,
+  });
+};
 
-type TCreateTeamEmailFormSchema = z.infer<typeof ZCreateTeamEmailFormSchema>;
+type TCreateTeamEmailFormSchema = z.infer<ReturnType<typeof ZCreateTeamEmailFormSchema>>;
 
 export const AddTeamEmailDialog = ({ teamId, trigger, ...props }: AddTeamEmailDialogProps) => {
   const router = useRouter();
@@ -54,10 +56,12 @@ export const AddTeamEmailDialog = ({ teamId, trigger, ...props }: AddTeamEmailDi
   const [open, setOpen] = useState(false);
 
   const { _ } = useLingui();
+  const locale = useLingui().i18n.locale;
+
   const { toast } = useToast();
 
   const form = useForm<TCreateTeamEmailFormSchema>({
-    resolver: zodResolver(ZCreateTeamEmailFormSchema),
+    resolver: zodResolver(ZCreateTeamEmailFormSchema(locale)),
     defaultValues: {
       name: '',
       email: '',

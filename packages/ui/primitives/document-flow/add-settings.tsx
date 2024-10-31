@@ -80,13 +80,14 @@ export const AddSettingsFormPartial = ({
   onSubmit,
 }: AddSettingsFormProps) => {
   const { _ } = useLingui();
+  const locale = useLingui().i18n.locale;
 
   const { documentAuthOption } = extractDocumentAuthMethods({
     documentAuth: document.authOptions,
   });
 
   const form = useForm<TAddSettingsFormSchema>({
-    resolver: zodResolver(ZAddSettingsFormSchema),
+    resolver: zodResolver(ZAddSettingsFormSchema(locale)),
     defaultValues: {
       title: document.title,
       externalId: document.externalId || '',

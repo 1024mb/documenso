@@ -5,12 +5,14 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { i18n } from '@lingui/core';
 import { Trans, msg } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 import type * as DialogPrimitive from '@radix-ui/react-dialog';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
+import { loadAndActivateLocale } from '@documenso/lib/utils/i18n.import';
 import type { TeamEmail } from '@documenso/prisma/client';
 import { trpc } from '@documenso/trpc/react';
 import { Button } from '@documenso/ui/primitives/button';
@@ -39,11 +41,24 @@ export type UpdateTeamEmailDialogProps = {
   trigger?: React.ReactNode;
 } & Omit<DialogPrimitive.DialogProps, 'children'>;
 
-const ZUpdateTeamEmailFormSchema = z.object({
-  name: z.string().trim().min(1, { message: 'Please enter a valid name.' }),
-});
+const ZUpdateTeamEmailFormSchema = (locale: string) => {
+  loadAndActivateLocale(locale)
+    .then(() => {})
+    .catch((err) => {
+      console.error(err);
+    });
 
-type TUpdateTeamEmailFormSchema = z.infer<typeof ZUpdateTeamEmailFormSchema>;
+  return z.object({
+    name: z
+      .string()
+      .trim()
+      .min(1, {
+        message: i18n._(msg`Please enter a valid name.`),
+      }),
+  });
+};
+
+type TUpdateTeamEmailFormSchema = z.infer<ReturnType<typeof ZUpdateTeamEmailFormSchema>>;
 
 export const UpdateTeamEmailDialog = ({
   teamEmail,
@@ -55,10 +70,12 @@ export const UpdateTeamEmailDialog = ({
   const [open, setOpen] = useState(false);
 
   const { _ } = useLingui();
+  const locale = useLingui().i18n.locale;
+
   const { toast } = useToast();
 
   const form = useForm<TUpdateTeamEmailFormSchema>({
-    resolver: zodResolver(ZUpdateTeamEmailFormSchema),
+    resolver: zodResolver(ZUpdateTeamEmailFormSchema(locale)),
     defaultValues: {
       name: teamEmail.name,
     },

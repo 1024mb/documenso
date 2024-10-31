@@ -12,6 +12,7 @@ import { useForm } from 'react-hook-form';
 import { P, match } from 'ts-pattern';
 import { z } from 'zod';
 
+import { loadAndActivateLocale } from '@documenso/lib/utils/i18n.import';
 import type { Template, TemplateDirectLink } from '@documenso/prisma/client';
 import { TemplateType } from '@documenso/prisma/client';
 import { trpc } from '@documenso/trpc/react';
@@ -64,26 +65,38 @@ export type ManagePublicTemplateDialogProps = {
   onIsOpenChange?: (value: boolean) => unknown;
 } & Omit<DialogPrimitive.DialogProps, 'children'>;
 
-const ZUpdatePublicTemplateFormSchema = z.object({
-  publicTitle: z
-    .string()
-    .min(1, { message: i18n._(msg`Title is required`) })
-    .max(MAX_TEMPLATE_PUBLIC_TITLE_LENGTH, {
-      message: i18n._(
-        msg`Title cannot be longer than ${MAX_TEMPLATE_PUBLIC_TITLE_LENGTH} characters`,
-      ),
-    }),
-  publicDescription: z
-    .string()
-    .min(1, { message: i18n._(msg`Description is required`) })
-    .max(MAX_TEMPLATE_PUBLIC_DESCRIPTION_LENGTH, {
-      message: i18n._(
-        msg`Description cannot be longer than ${MAX_TEMPLATE_PUBLIC_DESCRIPTION_LENGTH} characters`,
-      ),
-    }),
-});
+const ZUpdatePublicTemplateFormSchema = (locale: string) => {
+  loadAndActivateLocale(locale)
+    .then(() => {})
+    .catch((err) => {
+      console.error(err);
+    });
 
-type TUpdatePublicTemplateFormSchema = z.infer<typeof ZUpdatePublicTemplateFormSchema>;
+  return z.object({
+    publicTitle: z
+      .string()
+      .min(1, {
+        message: i18n._(msg`Title is required`),
+      })
+      .max(MAX_TEMPLATE_PUBLIC_TITLE_LENGTH, {
+        message: i18n._(
+          msg`Title cannot be longer than ${MAX_TEMPLATE_PUBLIC_TITLE_LENGTH} characters`,
+        ),
+      }),
+    publicDescription: z
+      .string()
+      .min(1, {
+        message: i18n._(msg`Description is required`),
+      })
+      .max(MAX_TEMPLATE_PUBLIC_DESCRIPTION_LENGTH, {
+        message: i18n._(
+          msg`Description cannot be longer than ${MAX_TEMPLATE_PUBLIC_DESCRIPTION_LENGTH} characters`,
+        ),
+      }),
+  });
+};
+
+type TUpdatePublicTemplateFormSchema = z.infer<ReturnType<typeof ZUpdatePublicTemplateFormSchema>>;
 
 type ProfileTemplateStep = 'SELECT_TEMPLATE' | 'MANAGE' | 'CONFIRM_DISABLE';
 
@@ -97,6 +110,8 @@ export const ManagePublicTemplateDialog = ({
   ...props
 }: ManagePublicTemplateDialogProps) => {
   const { _, i18n } = useLingui();
+  const locale = useLingui().i18n.locale;
+
   const { toast } = useToast();
 
   const [open, onOpenChange] = useState(isOpen);
@@ -114,7 +129,7 @@ export const ManagePublicTemplateDialog = ({
   });
 
   const form = useForm({
-    resolver: zodResolver(ZUpdatePublicTemplateFormSchema),
+    resolver: zodResolver(ZUpdatePublicTemplateFormSchema(locale)),
     defaultValues: {
       publicTitle: '',
       publicDescription: '',

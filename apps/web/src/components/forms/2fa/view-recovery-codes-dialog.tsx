@@ -3,7 +3,9 @@
 import { useState } from 'react';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Trans } from '@lingui/macro';
+import { i18n } from '@lingui/core';
+import { Trans, msg } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
 import { useForm } from 'react-hook-form';
 import { match } from 'ts-pattern';
 import { z } from 'zod';
@@ -11,6 +13,7 @@ import { z } from 'zod';
 import { downloadFile } from '@documenso/lib/client-only/download-file';
 import { AppError } from '@documenso/lib/errors/app-error';
 import { ErrorCode } from '@documenso/lib/next-auth/error-codes';
+import { loadAndActivateLocale } from '@documenso/lib/utils/i18n.import';
 import { trpc } from '@documenso/trpc/react';
 import { Alert, AlertDescription } from '@documenso/ui/primitives/alert';
 import { Button } from '@documenso/ui/primitives/button';
@@ -35,14 +38,25 @@ import { PinInput, PinInputGroup, PinInputSlot } from '@documenso/ui/primitives/
 
 import { RecoveryCodeList } from './recovery-code-list';
 
-export const ZViewRecoveryCodesForm = z.object({
-  token: z.string().min(1, { message: 'Token is required' }),
-});
+export const ZViewRecoveryCodesForm = (locale: string) => {
+  loadAndActivateLocale(locale)
+    .then(() => {})
+    .catch((err) => {
+      console.error(err);
+    });
 
-export type TViewRecoveryCodesForm = z.infer<typeof ZViewRecoveryCodesForm>;
+  return z.object({
+    token: z.string().min(1, {
+      message: i18n._(msg`Token is required`),
+    }),
+  });
+};
+
+export type TViewRecoveryCodesForm = z.infer<ReturnType<typeof ZViewRecoveryCodesForm>>;
 
 export const ViewRecoveryCodesDialog = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const locale = useLingui().i18n.locale;
 
   const {
     data: recoveryCodes,
@@ -55,7 +69,7 @@ export const ViewRecoveryCodesDialog = () => {
     defaultValues: {
       token: '',
     },
-    resolver: zodResolver(ZViewRecoveryCodesForm),
+    resolver: zodResolver(ZViewRecoveryCodesForm(locale)),
   });
 
   const downloadRecoveryCodes = () => {

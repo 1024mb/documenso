@@ -59,6 +59,7 @@ export const EmbedDirectTemplateClientPage = ({
 }: EmbedDirectTemplateClientPageProps) => {
   const { _ } = useLingui();
   const { toast } = useToast();
+  const locale = useLingui().i18n.locale;
 
   const searchParams = useSearchParams();
 
@@ -253,7 +254,9 @@ export const EmbedDirectTemplateClientPage = ({
     const hash = window.location.hash.slice(1);
 
     try {
-      const data = ZDirectTemplateEmbedDataSchema.parse(JSON.parse(decodeURIComponent(atob(hash))));
+      const data = ZDirectTemplateEmbedDataSchema(locale).parse(
+        JSON.parse(decodeURIComponent(atob(hash))),
+      );
 
       if (data.email) {
         setEmail(data.email);

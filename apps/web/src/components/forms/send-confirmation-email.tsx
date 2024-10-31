@@ -1,11 +1,13 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { i18n } from '@lingui/core';
 import { Trans, msg } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
+import { loadAndActivateLocale } from '@documenso/lib/utils/i18n.import';
 import { trpc } from '@documenso/trpc/react';
 import { cn } from '@documenso/ui/lib/utils';
 import { Button } from '@documenso/ui/primitives/button';
@@ -20,11 +22,34 @@ import {
 import { Input } from '@documenso/ui/primitives/input';
 import { useToast } from '@documenso/ui/primitives/use-toast';
 
-export const ZSendConfirmationEmailFormSchema = z.object({
-  email: z.string().email().min(1),
-});
+export const ZSendConfirmationEmailFormSchema = (locale: string) => {
+  loadAndActivateLocale(locale)
+    .then(() => {})
+    .catch((err) => {
+      console.error(err);
+    });
 
-export type TSendConfirmationEmailFormSchema = z.infer<typeof ZSendConfirmationEmailFormSchema>;
+  return z.object({
+    email: z
+      .string()
+      .min(1, {
+        message: i18n._(msg`Email is required`),
+      })
+      .min(7, {
+        message: i18n._(msg`Please enter a valid email address.`),
+      }) // validation doesn't allow for one character on local part of email.
+      .regex(/^(?![-_.])[a-zA-Z0-9._%+-]{2,}(?<![-_.])@[a-zA-Z0-9-]{2,}\.[a-zA-Z]{2,63}$/, {
+        message: i18n._(msg`Please enter a valid email address.`),
+      })
+      .email({
+        message: i18n._(msg`Invalid email address`),
+      }),
+  });
+};
+
+export type TSendConfirmationEmailFormSchema = z.infer<
+  ReturnType<typeof ZSendConfirmationEmailFormSchema>
+>;
 
 export type SendConfirmationEmailFormProps = {
   className?: string;
@@ -32,13 +57,15 @@ export type SendConfirmationEmailFormProps = {
 
 export const SendConfirmationEmailForm = ({ className }: SendConfirmationEmailFormProps) => {
   const { _ } = useLingui();
+  const locale = useLingui().i18n.locale;
+
   const { toast } = useToast();
 
   const form = useForm<TSendConfirmationEmailFormSchema>({
     values: {
       email: '',
     },
-    resolver: zodResolver(ZSendConfirmationEmailFormSchema),
+    resolver: zodResolver(ZSendConfirmationEmailFormSchema(locale)),
   });
 
   const isSubmitting = form.formState.isSubmitting;
@@ -84,11 +111,11 @@ export const SendConfirmationEmailForm = ({ className }: SendConfirmationEmailFo
                 <FormControl>
                   <Input type="email" {...field} />
                 </FormControl>
+
+                <FormMessage />
               </FormItem>
             )}
           />
-
-          <FormMessage />
 
           <Button size="lg" type="submit" disabled={isSubmitting} loading={isSubmitting}>
             <Trans>Send confirmation email</Trans>

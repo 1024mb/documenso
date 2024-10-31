@@ -52,26 +52,36 @@ export const ZSignUpFormV2Schema = (locale: string) => {
       name: z
         .string()
         .trim()
-        .min(2, { message: i18n._(msg`Please enter a valid name.`) }),
+        .min(2, {
+          message: i18n._(msg`Please enter a valid name.`),
+        }),
       email: z
         .string()
-        .min(7, { message: i18n._(msg`Please enter a valid email address.`) }) // validation doesn't allow for one
-        // character on local part of email.
+        .min(1, {
+          message: i18n._(msg`Email is required`),
+        })
+        .min(7, {
+          message: i18n._(msg`Please enter a valid email address.`),
+        }) // validation doesn't allow for one character on local part of email.
         .regex(/^(?![-_.])[a-zA-Z0-9._%+-]{2,}(?<![-_.])@[a-zA-Z0-9-]{2,}\.[a-zA-Z]{2,63}$/, {
           message: i18n._(msg`Please enter a valid email address.`),
         })
-        .email({ message: i18n._(msg`Invalid email address`) }),
+        .email({
+          message: i18n._(msg`Invalid email address`),
+        }),
       password: ZPasswordSchema(locale),
-      signature: z
-        .string()
-        .min(1, { message: i18n._(msg`We need your signature to sign documents`) }),
+      signature: z.string().min(1, {
+        message: i18n._(msg`We need your signature to sign documents`),
+      }),
       url: z
         .string()
         .trim()
         .toLowerCase()
-        .min(1, { message: i18n._(msg`We need a username to create your profile`) })
+        .min(1, {
+          message: i18n._(msg`We need a username to create your profile`),
+        })
         .regex(/^[a-z0-9-]+$/, {
-          message: i18n._(msg`Username can only container alphanumeric characters and dashes.`),
+          message: i18n._(msg`Username can only contain alphanumeric characters and dashes.`),
         }),
     })
     .refine(

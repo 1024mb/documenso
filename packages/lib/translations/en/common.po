@@ -268,16 +268,16 @@ msgstr "access to:"
 msgid "Add a document"
 msgstr "Add a document"
 
-#: packages/ui/primitives/document-flow/add-settings.tsx:339
-#: packages/ui/primitives/template-flow/add-template-settings.tsx:339
+#: packages/ui/primitives/document-flow/add-settings.tsx:340
+#: packages/ui/primitives/template-flow/add-template-settings.tsx:340
 msgid "Add a URL to redirect the user to once the document is signed"
 msgstr "Add a URL to redirect the user to once the document is signed"
 
-#: packages/ui/primitives/document-flow/add-settings.tsx:251
+#: packages/ui/primitives/document-flow/add-settings.tsx:252
 msgid "Add an external ID to the document. This can be used to identify the document in external systems."
 msgstr "Add an external ID to the document. This can be used to identify the document in external systems."
 
-#: packages/ui/primitives/template-flow/add-template-settings.tsx:256
+#: packages/ui/primitives/template-flow/add-template-settings.tsx:257
 msgid "Add an external ID to the template. This can be used to identify in external systems."
 msgstr "Add an external ID to the template. This can be used to identify in external systems."
 
@@ -290,7 +290,7 @@ msgstr "Add another option"
 msgid "Add another value"
 msgstr "Add another value"
 
-#: packages/ui/primitives/document-flow/add-signers.tsx:662
+#: packages/ui/primitives/document-flow/add-signers.tsx:664
 msgid "Add myself"
 msgstr "Add myself"
 
@@ -302,7 +302,7 @@ msgstr "Add Myself"
 msgid "Add Placeholder Recipient"
 msgstr "Add Placeholder Recipient"
 
-#: packages/ui/primitives/document-flow/add-signers.tsx:651
+#: packages/ui/primitives/document-flow/add-signers.tsx:653
 msgid "Add Signer"
 msgstr "Add Signer"
 
@@ -342,8 +342,8 @@ msgstr "Admin"
 msgid "Admins only"
 msgstr "Admins only"
 
-#: packages/ui/primitives/document-flow/add-settings.tsx:233
-#: packages/ui/primitives/template-flow/add-template-settings.tsx:238
+#: packages/ui/primitives/document-flow/add-settings.tsx:234
+#: packages/ui/primitives/template-flow/add-template-settings.tsx:239
 msgid "Advanced Options"
 msgstr "Advanced Options"
 
@@ -377,51 +377,35 @@ msgctxt "Action verb"
 msgid "Approve"
 msgstr "Approve"
 
-#: packages/lib/constants/recipient-roles.ts:9
+#: packages/lib/constants/recipient-roles.ts:12
 msgctxt "Imperative verb"
 msgid "Approve"
 msgstr "Approve"
 
-#: packages/lib/constants/recipient-roles.ts:11
+#: packages/lib/constants/recipient-roles.ts:20
 msgctxt "Present subjunctive verb, expressing a required action"
 msgid "Approve"
 msgstr "Approve"
 
-#: packages/lib/constants/recipient-roles.ts:8
-#~ msgid "Approve"
-#~ msgstr "Approve"
-
-#: packages/lib/constants/recipient-roles.ts:15
+#: packages/lib/constants/recipient-roles.ts:24
 msgctxt "Past tense"
 msgid "Approved"
 msgstr "Approved"
 
-#: packages/lib/constants/recipient-roles.ts:9
-#~ msgid "Approved"
-#~ msgstr "Approved"
-
-#: packages/lib/constants/recipient-roles.ts:16
+#: packages/lib/constants/recipient-roles.ts:28
 msgctxt "Role name"
 msgid "Approver"
 msgstr "Approver"
 
-#: packages/lib/constants/recipient-roles.ts:11
-#~ msgid "Approver"
-#~ msgstr "Approver"
-
-#: packages/lib/constants/recipient-roles.ts:17
+#: packages/lib/constants/recipient-roles.ts:32
 msgctxt "Role name"
 msgid "Approvers"
 msgstr "Approvers"
 
-#: packages/lib/constants/recipient-roles.ts:10
+#: packages/lib/constants/recipient-roles.ts:16
 msgctxt "Progressive verb"
 msgid "Approving"
 msgstr "Approving"
-
-#: packages/lib/constants/recipient-roles.ts:10
-#~ msgid "Approving"
-#~ msgstr "Approving"
 
 #: packages/trpc/server/webhook-router/schema.ts:25
 msgid "At least one event trigger is required"
@@ -434,6 +418,10 @@ msgstr "At least one option must be added"
 #: packages/email/template-components/template-confirmation-email.tsx:34
 msgid "Before you get started, please confirm your email address by clicking the button below:"
 msgstr "Before you get started, please confirm your email address by clicking the button below:"
+
+#: packages/trpc/server/profile-router/schema.ts:43
+msgid "Bio must be shorter than {0} characters"
+msgstr "Bio must be shorter than {0} characters"
 
 #: packages/ui/primitives/signature-pad/signature-pad.tsx:379
 msgid "Black"
@@ -460,57 +448,50 @@ msgstr "By accepting this request, you will take responsibility for any billing 
 msgid "Cancel"
 msgstr "Cancel"
 
-#: packages/trpc/server/auth-router/schema.ts:53
+#: packages/trpc/server/auth-router/schema.ts:24
+#: packages/trpc/server/auth-router/schema.ts:54
 msgid "Cannot be more than 72 characters in length"
 msgstr "Cannot be more than 72 characters in length"
 
-#: packages/ui/primitives/document-flow/add-signers.tsx:193
+#: packages/ui/primitives/document-flow/add-signers.tsx:195
 msgid "Cannot remove signer"
 msgstr "Cannot remove signer"
 
-#: packages/lib/constants/recipient-roles.ts:28
+#: packages/lib/constants/recipient-roles.ts:58
 msgctxt "Role name"
 msgid "Cc"
 msgstr "Cc"
-
-#: packages/lib/constants/recipient-roles.ts:17
-#~ msgid "Cc"
-#~ msgstr "Cc"
-
-#: packages/lib/constants/recipient-roles.ts:20
-msgctxt "Action verb"
-msgid "CC"
-msgstr "CC"
-
-#: packages/lib/constants/recipient-roles.ts:21
-msgctxt "Imperative verb"
-msgid "CC"
-msgstr "CC"
-
-#: packages/lib/constants/recipient-roles.ts:22
-msgctxt "Progressive verb"
-msgid "CC"
-msgstr "CC"
-
-#: packages/lib/constants/recipient-roles.ts:23
-msgctxt "Present subjunctive verb, expressing a required action"
-msgid "CC"
-msgstr "CC"
 
 #: packages/lib/constants/document-audit-logs.ts:16
 msgid "CC"
 msgstr "CC"
 
-#: packages/lib/constants/recipient-roles.ts:27
+#: packages/lib/constants/recipient-roles.ts:38
+msgctxt "Action verb"
+msgid "CC"
+msgstr "CC"
+
+#: packages/lib/constants/recipient-roles.ts:42
+msgctxt "Imperative verb"
+msgid "CC"
+msgstr "CC"
+
+#: packages/lib/constants/recipient-roles.ts:46
+msgctxt "Progressive verb"
+msgid "CC"
+msgstr "CC"
+
+#: packages/lib/constants/recipient-roles.ts:50
+msgctxt "Present subjunctive verb, expressing a required action"
+msgid "CC"
+msgstr "CC"
+
+#: packages/lib/constants/recipient-roles.ts:54
 msgctxt "Past tense"
 msgid "CC'd"
 msgstr "CC'd"
 
-#: packages/lib/constants/recipient-roles.ts:15
-#~ msgid "CC'd"
-#~ msgstr "CC'd"
-
-#: packages/lib/constants/recipient-roles.ts:29
+#: packages/lib/constants/recipient-roles.ts:62
 msgctxt "Role name"
 msgid "Cc'ers"
 msgstr "Cc'ers"
@@ -549,7 +530,7 @@ msgstr "Clear filters"
 msgid "Clear Signature"
 msgstr "Clear Signature"
 
-#: packages/ui/primitives/document-flow/add-signature.tsx:397
+#: packages/ui/primitives/document-flow/add-signature.tsx:398
 msgid "Click to insert field"
 msgstr "Click to insert field"
 
@@ -634,7 +615,7 @@ msgctxt "Action performed by someone else"
 msgid "created the document"
 msgstr "created the document"
 
-#: packages/ui/primitives/document-flow/add-signature.tsx:363
+#: packages/ui/primitives/document-flow/add-signature.tsx:364
 msgid "Custom Text"
 msgstr "Custom Text"
 
@@ -645,8 +626,8 @@ msgstr "Custom Text"
 msgid "Date"
 msgstr "Date"
 
-#: packages/ui/primitives/document-flow/add-settings.tsx:274
-#: packages/ui/primitives/template-flow/add-template-settings.tsx:279
+#: packages/ui/primitives/document-flow/add-settings.tsx:275
+#: packages/ui/primitives/template-flow/add-template-settings.tsx:280
 msgid "Date Format"
 msgstr "Date Format"
 
@@ -698,8 +679,8 @@ msgid "Documenso."
 msgstr "Documenso."
 
 #: packages/ui/components/document/document-global-auth-access-select.tsx:62
-#: packages/ui/primitives/document-flow/add-settings.tsx:177
-#: packages/ui/primitives/template-flow/add-template-settings.tsx:151
+#: packages/ui/primitives/document-flow/add-settings.tsx:178
+#: packages/ui/primitives/template-flow/add-template-settings.tsx:152
 msgid "Document access"
 msgstr "Document access"
 
@@ -806,9 +787,9 @@ msgid "E.g. 100"
 msgstr "E.g. 100"
 
 #: packages/ui/primitives/document-flow/add-fields.tsx:879
-#: packages/ui/primitives/document-flow/add-signature.tsx:275
-#: packages/ui/primitives/document-flow/add-signers.tsx:500
-#: packages/ui/primitives/document-flow/add-signers.tsx:507
+#: packages/ui/primitives/document-flow/add-signature.tsx:276
+#: packages/ui/primitives/document-flow/add-signers.tsx:502
+#: packages/ui/primitives/document-flow/add-signers.tsx:509
 #: packages/ui/primitives/document-flow/field-icon.tsx:29
 #: packages/ui/primitives/document-flow/types.ts:54
 #: packages/ui/primitives/template-flow/add-template-fields.tsx:634
@@ -822,13 +803,14 @@ msgctxt "The performed action is in past participle"
 msgid "Email {actionPerformedByAnonymous}"
 msgstr "Email {actionPerformedByAnonymous}"
 
-#: packages/trpc/server/auth-router/schema.ts:67
-#: packages/ui/primitives/document-flow/add-signature.types.ts:8
-#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.types.ts:26
+#: packages/trpc/server/auth-router/schema.ts:71
+#: packages/ui/primitives/document-flow/add-signature.types.ts:18
+#: packages/ui/primitives/document-flow/add-signers.types.ts:28
+#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.types.ts:28
 msgid "Email is required"
 msgstr "Email is required"
 
-#: packages/ui/primitives/template-flow/add-template-settings.tsx:184
+#: packages/ui/primitives/template-flow/add-template-settings.tsx:185
 msgid "Email Options"
 msgstr "Email Options"
 
@@ -840,7 +822,7 @@ msgstr "Empty field"
 msgid "Enable Direct Link Signing"
 msgstr "Enable Direct Link Signing"
 
-#: packages/ui/primitives/document-flow/add-signers.tsx:401
+#: packages/ui/primitives/document-flow/add-signers.tsx:403
 #: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:363
 msgid "Enable signing order"
 msgstr "Enable signing order"
@@ -862,8 +844,8 @@ msgstr "Error"
 msgid "Everyone"
 msgstr "Everyone"
 
-#: packages/ui/primitives/document-flow/add-settings.tsx:244
-#: packages/ui/primitives/template-flow/add-template-settings.tsx:249
+#: packages/ui/primitives/document-flow/add-settings.tsx:245
+#: packages/ui/primitives/template-flow/add-template-settings.tsx:250
 msgid "External ID"
 msgstr "External ID"
 
@@ -972,19 +954,19 @@ msgstr "here."
 msgid "Hi, {userName}"
 msgstr "Hi, {userName}"
 
-#: packages/lib/constants/recipient-roles.ts:96
+#: packages/lib/constants/recipient-roles.ts:168
 msgid "I am a signer of this document"
 msgstr "I am a signer of this document"
 
-#: packages/lib/constants/recipient-roles.ts:99
+#: packages/lib/constants/recipient-roles.ts:171
 msgid "I am a viewer of this document"
 msgstr "I am a viewer of this document"
 
-#: packages/lib/constants/recipient-roles.ts:97
+#: packages/lib/constants/recipient-roles.ts:169
 msgid "I am an approver of this document"
 msgstr "I am an approver of this document"
 
-#: packages/lib/constants/recipient-roles.ts:98
+#: packages/lib/constants/recipient-roles.ts:170
 msgid "I am required to receive a copy of this document"
 msgstr "I am required to receive a copy of this document"
 
@@ -1006,9 +988,10 @@ msgstr "Inherit authentication method"
 msgid "Initials"
 msgstr "Initials"
 
-#: packages/trpc/server/auth-router/schema.ts:73
-#: packages/ui/primitives/document-flow/add-signature.types.ts:14
-#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.types.ts:32
+#: packages/trpc/server/auth-router/schema.ts:80
+#: packages/ui/primitives/document-flow/add-signature.types.ts:27
+#: packages/ui/primitives/document-flow/add-signers.types.ts:37
+#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.types.ts:37
 msgid "Invalid email address"
 msgstr "Invalid email address"
 
@@ -1060,7 +1043,7 @@ msgid "Member"
 msgstr "Member"
 
 #: packages/ui/primitives/document-flow/add-subject.tsx:95
-#: packages/ui/primitives/template-flow/add-template-settings.tsx:215
+#: packages/ui/primitives/template-flow/add-template-settings.tsx:216
 msgid "Message <0>(Optional)</0>"
 msgstr "Message <0>(Optional)</0>"
 
@@ -1090,18 +1073,18 @@ msgctxt "Action performed by someone else"
 msgid "moved the document to team"
 msgstr "moved the document to team"
 
-#: packages/trpc/server/auth-router/schema.ts:18
+#: packages/trpc/server/auth-router/schema.ts:21
 msgid "Must be at least 6 characters in length"
 msgstr "Must be at least 6 characters in length"
 
-#: packages/trpc/server/auth-router/schema.ts:52
+#: packages/trpc/server/auth-router/schema.ts:51
 msgid "Must be at least 8 characters in length"
 msgstr "Must be at least 8 characters in length"
 
 #: packages/ui/primitives/document-flow/add-fields.tsx:905
-#: packages/ui/primitives/document-flow/add-signature.tsx:301
-#: packages/ui/primitives/document-flow/add-signers.tsx:535
-#: packages/ui/primitives/document-flow/add-signers.tsx:541
+#: packages/ui/primitives/document-flow/add-signature.tsx:302
+#: packages/ui/primitives/document-flow/add-signers.tsx:537
+#: packages/ui/primitives/document-flow/add-signers.tsx:543
 #: packages/ui/primitives/document-flow/field-icon.tsx:30
 #: packages/ui/primitives/document-flow/types.ts:55
 #: packages/ui/primitives/template-flow/add-template-fields.tsx:660
@@ -1110,7 +1093,7 @@ msgstr "Must be at least 8 characters in length"
 msgid "Name"
 msgstr "Name"
 
-#: packages/ui/primitives/document-flow/add-signature.tsx:74
+#: packages/ui/primitives/document-flow/add-signature.tsx:75
 msgid "Name is required"
 msgstr "Name is required"
 
@@ -1188,19 +1171,19 @@ msgstr "Once enabled, you can select any active recipient to be a direct link si
 msgid "Once your template is set up, share the link anywhere you want. The person who opens the link will be able to enter their information in the direct link recipient field and complete any other fields assigned to them."
 msgstr "Once your template is set up, share the link anywhere you want. The person who opens the link will be able to enter their information in the direct link recipient field and complete any other fields assigned to them."
 
-#: packages/trpc/server/auth-router/schema.ts:47
+#: packages/trpc/server/auth-router/schema.ts:42
 msgid "One lowercase character"
 msgstr "One lowercase character"
 
-#: packages/trpc/server/auth-router/schema.ts:48
+#: packages/trpc/server/auth-router/schema.ts:45
 msgid "One number"
 msgstr "One number"
 
-#: packages/trpc/server/auth-router/schema.ts:50
+#: packages/trpc/server/auth-router/schema.ts:48
 msgid "One special character is required"
 msgstr "One special character is required"
 
-#: packages/trpc/server/auth-router/schema.ts:46
+#: packages/trpc/server/auth-router/schema.ts:39
 msgid "One uppercase character"
 msgstr "One uppercase character"
 
@@ -1312,14 +1295,33 @@ msgstr "Please confirm your email"
 msgid "Please confirm your email address"
 msgstr "Please confirm your email address"
 
-#: packages/trpc/server/auth-router/schema.ts:68
-#: packages/trpc/server/auth-router/schema.ts:71
-#: packages/ui/primitives/document-flow/add-signature.types.ts:9
-#: packages/ui/primitives/document-flow/add-signature.types.ts:12
-#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.types.ts:27
-#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.types.ts:30
+#: packages/trpc/server/auth-router/schema.ts:74
+#: packages/trpc/server/auth-router/schema.ts:77
+#: packages/ui/primitives/document-flow/add-signature.types.ts:21
+#: packages/ui/primitives/document-flow/add-signature.types.ts:24
+#: packages/ui/primitives/document-flow/add-signers.types.ts:31
+#: packages/ui/primitives/document-flow/add-signers.types.ts:34
+#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.types.ts:31
+#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.types.ts:34
 msgid "Please enter a valid email address."
 msgstr "Please enter a valid email address."
+
+#: packages/trpc/server/team-router/schema.ts:118
+msgid "Please enter a valid email."
+msgstr "Please enter a valid email."
+
+#: packages/trpc/server/team-router/schema.ts:115
+msgid "Please enter a valid name."
+msgstr "Please enter a valid name."
+
+#: packages/ui/primitives/document-flow/add-settings.types.ts:54
+#: packages/ui/primitives/template-flow/add-template-settings.types.tsx:45
+msgid "Please enter a valid URL, make sure you include http:// or https:// part of the url."
+msgstr "Please enter a valid URL, make sure you include http:// or https:// part of the url."
+
+#: packages/trpc/server/profile-router/schema.ts:52
+msgid "Please enter a valid username."
+msgstr "Please enter a valid username."
 
 #: packages/lib/constants/auth.ts:29
 msgid "Profile updated"
@@ -1359,8 +1361,8 @@ msgid "Recipient {performedAction}"
 msgstr "Recipient {performedAction}"
 
 #: packages/ui/components/recipient/recipient-action-auth-select.tsx:39
-#: packages/ui/primitives/document-flow/add-settings.tsx:218
-#: packages/ui/primitives/template-flow/add-template-settings.tsx:169
+#: packages/ui/primitives/document-flow/add-settings.tsx:219
+#: packages/ui/primitives/template-flow/add-template-settings.tsx:170
 msgid "Recipient action authentication"
 msgstr "Recipient action authentication"
 
@@ -1368,8 +1370,8 @@ msgstr "Recipient action authentication"
 msgid "Red"
 msgstr "Red"
 
-#: packages/ui/primitives/document-flow/add-settings.tsx:332
-#: packages/ui/primitives/template-flow/add-template-settings.tsx:332
+#: packages/ui/primitives/document-flow/add-settings.tsx:333
+#: packages/ui/primitives/template-flow/add-template-settings.tsx:333
 msgid "Redirect URL"
 msgstr "Redirect URL"
 
@@ -1555,29 +1557,25 @@ msgstr "Share the Link"
 msgid "Share your signing experience!"
 msgstr "Share your signing experience!"
 
-#: packages/ui/primitives/document-flow/add-signers.tsx:680
+#: packages/ui/primitives/document-flow/add-signers.tsx:682
 #: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:656
 msgid "Show advanced settings"
 msgstr "Show advanced settings"
 
-#: packages/lib/constants/recipient-roles.ts:32
+#: packages/lib/constants/recipient-roles.ts:68
 msgctxt "Action verb"
 msgid "Sign"
 msgstr "Sign"
 
-#: packages/lib/constants/recipient-roles.ts:33
+#: packages/lib/constants/recipient-roles.ts:72
 msgctxt "Imperative verb"
 msgid "Sign"
 msgstr "Sign"
 
-#: packages/lib/constants/recipient-roles.ts:35
+#: packages/lib/constants/recipient-roles.ts:80
 msgctxt "Present subjunctive verb, expressing a required action"
 msgid "Sign"
 msgstr "Sign"
-
-#: packages/lib/constants/recipient-roles.ts:20
-#~ msgid "Sign"
-#~ msgstr "Sign"
 
 #: packages/email/template-components/template-reset-password.tsx:30
 msgid "Sign In"
@@ -1592,14 +1590,14 @@ msgid "Sign in attempt failed"
 msgstr "Sign in attempt failed"
 
 #: packages/ui/primitives/document-flow/add-fields.tsx:827
-#: packages/ui/primitives/document-flow/add-signature.tsx:326
+#: packages/ui/primitives/document-flow/add-signature.tsx:327
 #: packages/ui/primitives/document-flow/field-icon.tsx:55
 #: packages/ui/primitives/document-flow/types.ts:49
 #: packages/ui/primitives/template-flow/add-template-fields.tsx:582
 msgid "Signature"
 msgstr "Signature"
 
-#: packages/ui/primitives/document-flow/add-signature.tsx:90
+#: packages/ui/primitives/document-flow/add-signature.tsx:91
 msgid "Signature is required"
 msgstr "Signature is required"
 
@@ -1607,14 +1605,10 @@ msgstr "Signature is required"
 msgid "signed"
 msgstr "signed"
 
-#: packages/lib/constants/recipient-roles.ts:39
+#: packages/lib/constants/recipient-roles.ts:84
 msgctxt "Past tense"
 msgid "Signed"
 msgstr "Signed"
-
-#: packages/lib/constants/recipient-roles.ts:21
-#~ msgid "Signed"
-#~ msgstr "Signed"
 
 #: packages/lib/utils/document-audit-logs.ts:422
 msgctxt "Action performed by the current user, line is prefixed with 'You'"
@@ -1634,32 +1628,25 @@ msgstr "Signed In"
 msgid "Signed Out"
 msgstr "Signed Out"
 
-#: packages/lib/constants/recipient-roles.ts:40
+#: packages/lib/constants/recipient-roles.ts:88
 msgctxt "Role name"
 msgid "Signer"
 msgstr "Signer"
 
-#: packages/lib/constants/recipient-roles.ts:23
-#~ msgid "Signer"
-#~ msgstr "Signer"
-
-#: packages/lib/constants/recipient-roles.ts:41
+#: packages/lib/constants/recipient-roles.ts:92
 msgctxt "Role name"
 msgid "Signers"
 msgstr "Signers"
 
-#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.types.ts:51
+#: packages/ui/primitives/document-flow/add-signers.types.ts:57
+#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.types.ts:57
 msgid "Signers must have unique emails"
 msgstr "Signers must have unique emails"
 
-#: packages/lib/constants/recipient-roles.ts:34
+#: packages/lib/constants/recipient-roles.ts:76
 msgctxt "Progressive verb"
 msgid "Signing"
 msgstr "Signing"
-
-#: packages/lib/constants/recipient-roles.ts:22
-#~ msgid "Signing"
-#~ msgstr "Signing"
 
 #: packages/email/templates/document-completed.tsx:49
 msgid "Signing Complete!"
@@ -1686,7 +1673,7 @@ msgid "Step <0>{step} of {maxStep}</0>"
 msgstr "Step <0>{step} of {maxStep}</0>"
 
 #: packages/ui/primitives/document-flow/add-subject.tsx:78
-#: packages/ui/primitives/template-flow/add-template-settings.tsx:195
+#: packages/ui/primitives/template-flow/add-template-settings.tsx:196
 msgid "Subject <0>(Optional)</0>"
 msgstr "Subject <0>(Optional)</0>"
 
@@ -1710,7 +1697,35 @@ msgstr "Team email removed"
 msgid "Team email removed for {teamName} on Documenso"
 msgstr "Team email removed for {teamName} on Documenso"
 
-#: packages/ui/primitives/template-flow/add-template-settings.tsx:134
+#: packages/trpc/server/team-router/schema.ts:78
+msgid "Team name must be at least 3 characters long."
+msgstr "Team name must be at least 3 characters long."
+
+#: packages/trpc/server/team-router/schema.ts:81
+msgid "Team name must not exceed 30 characters."
+msgstr "Team name must not exceed 30 characters."
+
+#: packages/trpc/server/team-router/schema.ts:59
+msgid "Team URL can only contain letters, numbers, dashes and underscores."
+msgstr "Team URL can only contain letters, numbers, dashes and underscores."
+
+#: packages/trpc/server/team-router/schema.ts:56
+msgid "Team URL cannot contain consecutive dashes or underscores."
+msgstr "Team URL cannot contain consecutive dashes or underscores."
+
+#: packages/trpc/server/team-router/schema.ts:53
+msgid "Team URL cannot start or end with dashes or underscores."
+msgstr "Team URL cannot start or end with dashes or underscores."
+
+#: packages/trpc/server/team-router/schema.ts:46
+msgid "Team URL must be at least 3 characters long."
+msgstr "Team URL must be at least 3 characters long."
+
+#: packages/trpc/server/team-router/schema.ts:49
+msgid "Team URL must not exceed 30 characters."
+msgstr "Team URL must not exceed 30 characters."
+
+#: packages/ui/primitives/template-flow/add-template-settings.tsx:135
 msgid "Template title"
 msgstr "Template title"
 
@@ -1721,7 +1736,7 @@ msgstr "Template title"
 msgid "Text"
 msgstr "Text"
 
-#: packages/ui/primitives/document-flow/add-signature.tsx:82
+#: packages/ui/primitives/document-flow/add-signature.tsx:83
 msgid "Text is required"
 msgstr "Text is required"
 
@@ -1801,6 +1816,10 @@ msgstr "The signer's name"
 msgid "The team email"
 msgstr "The team email"
 
+#: packages/trpc/server/api-token-router/schema.ts:23
+msgid "The token name should be 3 characters or longer"
+msgstr "The token name should be 3 characters or longer"
+
 #: packages/lib/advanced-fields-validation/validate-radio.ts:35
 msgid "There cannot be more than one checked option"
 msgstr "There cannot be more than one checked option"
@@ -1833,22 +1852,31 @@ msgstr "This field cannot be modified or deleted. When you share this template's
 msgid "This recipient can no longer be modified as they have signed a field, or completed the document."
 msgstr "This recipient can no longer be modified as they have signed a field, or completed the document."
 
-#: packages/ui/primitives/document-flow/add-signers.tsx:194
+#: packages/ui/primitives/document-flow/add-signers.tsx:196
 msgid "This signer has already signed the document."
 msgstr "This signer has already signed the document."
+
+#: packages/trpc/server/team-router/schema.ts:62
+msgid "This URL is already in use."
+msgstr "This URL is already in use."
 
 #: packages/ui/components/recipient/recipient-action-auth-select.tsx:48
 msgid "This will override any global settings."
 msgstr "This will override any global settings."
 
-#: packages/ui/primitives/document-flow/add-settings.tsx:308
-#: packages/ui/primitives/template-flow/add-template-settings.tsx:309
+#: packages/ui/primitives/document-flow/add-settings.tsx:309
+#: packages/ui/primitives/template-flow/add-template-settings.tsx:310
 msgid "Time Zone"
 msgstr "Time Zone"
 
-#: packages/ui/primitives/document-flow/add-settings.tsx:156
+#: packages/ui/primitives/document-flow/add-settings.tsx:157
 msgid "Title"
 msgstr "Title"
+
+#: packages/ui/primitives/document-flow/add-settings.types.ts:36
+#: packages/ui/primitives/template-flow/add-template-settings.types.tsx:26
+msgid "Title can't be empty"
+msgstr "Title can't be empty"
 
 #: packages/email/template-components/template-document-self-signed.tsx:41
 msgid "to access your signed documents at any time."
@@ -1984,9 +2012,14 @@ msgstr "Upgrade"
 msgid "Upload Template Document"
 msgstr "Upload Template Document"
 
-#: packages/trpc/server/auth-router/schema.ts:82
-msgid "Username can only container alphanumeric characters and dashes."
-msgstr "Username can only container alphanumeric characters and dashes."
+#: packages/trpc/server/auth-router/schema.ts:92
+#: packages/trpc/server/profile-router/schema.ts:55
+msgid "Username can only contain alphanumeric characters and dashes."
+msgstr "Username can only contain alphanumeric characters and dashes."
+
+#: packages/trpc/server/auth-router/schema.ts:89
+msgid "Username must be at least 1 character long."
+msgstr "Username must be at least 1 character long."
 
 #: packages/ui/primitives/document-flow/field-items-advanced-settings/checkbox-field.tsx:132
 #: packages/ui/primitives/document-flow/field-items-advanced-settings/number-field.tsx:167
@@ -2027,24 +2060,20 @@ msgstr "Value length ({0}) exceeds the character limit ({characterLimit})"
 msgid "Verify your team email address"
 msgstr "Verify your team email address"
 
-#: packages/lib/constants/recipient-roles.ts:44
+#: packages/lib/constants/recipient-roles.ts:98
 msgctxt "Action verb"
 msgid "View"
 msgstr "View"
 
-#: packages/lib/constants/recipient-roles.ts:45
+#: packages/lib/constants/recipient-roles.ts:102
 msgctxt "Imperative verb"
 msgid "View"
 msgstr "View"
 
-#: packages/lib/constants/recipient-roles.ts:47
+#: packages/lib/constants/recipient-roles.ts:110
 msgctxt "Present subjunctive verb, expressing a required action"
 msgid "View"
 msgstr "View"
-
-#: packages/lib/constants/recipient-roles.ts:26
-#~ msgid "View"
-#~ msgstr "View"
 
 #: packages/email/templates/confirm-team-email.tsx:64
 msgid "View all documents sent to and from this email address"
@@ -2058,37 +2087,25 @@ msgstr "View document"
 msgid "View plans"
 msgstr "View plans"
 
-#: packages/lib/constants/recipient-roles.ts:51
+#: packages/lib/constants/recipient-roles.ts:114
 msgctxt "Past tense"
 msgid "Viewed"
 msgstr "Viewed"
 
-#: packages/lib/constants/recipient-roles.ts:27
-#~ msgid "Viewed"
-#~ msgstr "Viewed"
-
-#: packages/lib/constants/recipient-roles.ts:52
+#: packages/lib/constants/recipient-roles.ts:118
 msgctxt "Role name"
 msgid "Viewer"
 msgstr "Viewer"
 
-#: packages/lib/constants/recipient-roles.ts:29
-#~ msgid "Viewer"
-#~ msgstr "Viewer"
-
-#: packages/lib/constants/recipient-roles.ts:53
+#: packages/lib/constants/recipient-roles.ts:122
 msgctxt "Role name"
 msgid "Viewers"
 msgstr "Viewers"
 
-#: packages/lib/constants/recipient-roles.ts:46
+#: packages/lib/constants/recipient-roles.ts:106
 msgctxt "Progressive verb"
 msgid "Viewing"
 msgstr "Viewing"
-
-#: packages/lib/constants/recipient-roles.ts:28
-#~ msgid "Viewing"
-#~ msgstr "Viewing"
 
 #: packages/lib/constants/document-audit-logs.ts:10
 msgid "Viewing request"

@@ -23,13 +23,18 @@ export const ZAddTemplatePlacholderRecipientsFormSchema = (locale: string) => {
           nativeId: z.number().optional(),
           email: z
             .string()
-            .min(1, { message: i18n._(msg`Email is required`) })
-            .min(7, { message: i18n._(msg`Please enter a valid email address.`) }) // validation doesn't allow for one
-            // character on local part of email.
+            .min(1, {
+              message: i18n._(msg`Email is required`),
+            })
+            .min(7, {
+              message: i18n._(msg`Please enter a valid email address.`),
+            }) // validation doesn't allow for one character on local part of email.
             .regex(/^(?![-_.])[a-zA-Z0-9._%+-]{2,}(?<![-_.])@[a-zA-Z0-9-]{2,}\.[a-zA-Z]{2,63}$/, {
               message: i18n._(msg`Please enter a valid email address.`),
             })
-            .email({ message: i18n._(msg`Invalid email address`) }),
+            .email({
+              message: i18n._(msg`Invalid email address`),
+            }),
           name: z.string(),
           role: z.nativeEnum(RecipientRole),
           signingOrder: z.number().optional(),

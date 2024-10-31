@@ -43,9 +43,11 @@ export const ZClaimPublicProfileFormSchema = z.object({
     .string()
     .trim()
     .toLowerCase()
-    .min(1, { message: i18n._(msg`Please enter a valid username.`) })
+    .min(1, {
+      message: i18n._(msg`Please enter a valid username.`),
+    })
     .regex(/^[a-z0-9-]+$/, {
-      message: i18n._(msg`Username can only container alphanumeric characters and dashes.`),
+      message: i18n._(msg`Username can only contain alphanumeric characters and dashes.`),
     }),
 });
 

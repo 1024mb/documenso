@@ -12,6 +12,7 @@ import { cn } from '@documenso/ui/lib/utils';
 
 type FriendlyStatus = {
   label: MessageDescriptor;
+  labelUpper: MessageDescriptor;
   labelExtended: MessageDescriptor;
   icon?: LucideIcon;
   color: string;

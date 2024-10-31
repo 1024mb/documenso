@@ -41,15 +41,19 @@ export type CreateTeamDialogProps = {
   trigger?: React.ReactNode;
 } & Omit<DialogPrimitive.DialogProps, 'children'>;
 
-const ZCreateTeamFormSchema = ZCreateTeamMutationSchema.pick({
-  teamName: true,
-  teamUrl: true,
-});
+const ZCreateTeamFormSchema = (locale: string) => {
+  return ZCreateTeamMutationSchema(locale).pick({
+    teamName: true,
+    teamUrl: true,
+  });
+};
 
-type TCreateTeamFormSchema = z.infer<typeof ZCreateTeamFormSchema>;
+type TCreateTeamFormSchema = z.infer<ReturnType<typeof ZCreateTeamFormSchema>>;
 
 export const CreateTeamDialog = ({ trigger, ...props }: CreateTeamDialogProps) => {
   const { _ } = useLingui();
+  const locale = useLingui().i18n.locale;
+
   const { toast } = useToast();
 
   const router = useRouter();
@@ -61,7 +65,7 @@ export const CreateTeamDialog = ({ trigger, ...props }: CreateTeamDialogProps) =
   const actionSearchParam = searchParams?.get('action');
 
   const form = useForm({
-    resolver: zodResolver(ZCreateTeamFormSchema),
+    resolver: zodResolver(ZCreateTeamFormSchema(locale)),
     defaultValues: {
       teamName: '',
       teamUrl: '',

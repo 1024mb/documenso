@@ -5,52 +5,124 @@ import { RecipientRole } from '@documenso/prisma/client';
 
 export const RECIPIENT_ROLES_DESCRIPTION = {
   [RecipientRole.APPROVER]: {
-    actionVerb: msg({ message: 'Approve', context: 'Action verb' }),
-    imperativeVerb: msg({ message: 'Approve', context: 'Imperative verb' }),
-    progressiveVerb: msg({ message: 'Approving', context: 'Progressive verb' }),
+    actionVerb: msg({
+      message: 'Approve',
+      context: 'Action verb',
+    }),
+    imperativeVerb: msg({
+      message: 'Approve',
+      context: 'Imperative verb',
+    }),
+    progressiveVerb: msg({
+      message: 'Approving',
+      context: 'Progressive verb',
+    }),
     subjunctiveVerb: msg({
       message: 'Approve',
       context: 'Present subjunctive verb, expressing a required action',
     }),
-    actioned: msg({ message: 'Approved', context: 'Past tense' }),
-    roleName: msg({ message: 'Approver', context: 'Role name' }),
-    roleNamePlural: msg({ message: 'Approvers', context: 'Role name' }),
+    actioned: msg({
+      message: 'Approved',
+      context: 'Past tense',
+    }),
+    roleName: msg({
+      message: 'Approver',
+      context: 'Role name',
+    }),
+    roleNamePlural: msg({
+      message: 'Approvers',
+      context: 'Role name',
+    }),
   },
   [RecipientRole.CC]: {
-    actionVerb: msg({ message: 'CC', context: 'Action verb' }),
-    imperativeVerb: msg({ message: 'CC', context: 'Imperative verb' }),
-    progressiveVerb: msg({ message: 'CC', context: 'Progressive verb' }),
+    actionVerb: msg({
+      message: 'CC',
+      context: 'Action verb',
+    }),
+    imperativeVerb: msg({
+      message: 'CC',
+      context: 'Imperative verb',
+    }),
+    progressiveVerb: msg({
+      message: 'CC',
+      context: 'Progressive verb',
+    }),
     subjunctiveVerb: msg({
       message: 'CC',
       context: 'Present subjunctive verb, expressing a required action',
     }),
-    actioned: msg({ message: "CC'd", context: 'Past tense' }),
-    roleName: msg({ message: 'Cc', context: 'Role name' }),
-    roleNamePlural: msg({ message: "Cc'ers", context: 'Role name' }),
+    actioned: msg({
+      message: "CC'd",
+      context: 'Past tense',
+    }),
+    roleName: msg({
+      message: 'Cc',
+      context: 'Role name',
+    }),
+    roleNamePlural: msg({
+      message: "Cc'ers",
+      context: 'Role name',
+    }),
   },
   [RecipientRole.SIGNER]: {
-    actionVerb: msg({ message: 'Sign', context: 'Action verb' }),
-    imperativeVerb: msg({ message: 'Sign', context: 'Imperative verb' }),
-    progressiveVerb: msg({ message: 'Signing', context: 'Progressive verb' }),
+    actionVerb: msg({
+      message: 'Sign',
+      context: 'Action verb',
+    }),
+    imperativeVerb: msg({
+      message: 'Sign',
+      context: 'Imperative verb',
+    }),
+    progressiveVerb: msg({
+      message: 'Signing',
+      context: 'Progressive verb',
+    }),
     subjunctiveVerb: msg({
       message: 'Sign',
       context: 'Present subjunctive verb, expressing a required action',
     }),
-    actioned: msg({ message: 'Signed', context: 'Past tense' }),
-    roleName: msg({ message: 'Signer', context: 'Role name' }),
-    roleNamePlural: msg({ message: 'Signers', context: 'Role name' }),
+    actioned: msg({
+      message: 'Signed',
+      context: 'Past tense',
+    }),
+    roleName: msg({
+      message: 'Signer',
+      context: 'Role name',
+    }),
+    roleNamePlural: msg({
+      message: 'Signers',
+      context: 'Role name',
+    }),
   },
   [RecipientRole.VIEWER]: {
-    actionVerb: msg({ message: 'View', context: 'Action verb' }),
-    imperativeVerb: msg({ message: 'View', context: 'Imperative verb' }),
-    progressiveVerb: msg({ message: 'Viewing', context: 'Progressive verb' }),
+    actionVerb: msg({
+      message: 'View',
+      context: 'Action verb',
+    }),
+    imperativeVerb: msg({
+      message: 'View',
+      context: 'Imperative verb',
+    }),
+    progressiveVerb: msg({
+      message: 'Viewing',
+      context: 'Progressive verb',
+    }),
     subjunctiveVerb: msg({
       message: 'View',
       context: 'Present subjunctive verb, expressing a required action',
     }),
-    actioned: msg({ message: 'Viewed', context: 'Past tense' }),
-    roleName: msg({ message: 'Viewer', context: 'Role name' }),
-    roleNamePlural: msg({ message: 'Viewers', context: 'Role name' }),
+    actioned: msg({
+      message: 'Viewed',
+      context: 'Past tense',
+    }),
+    roleName: msg({
+      message: 'Viewer',
+      context: 'Role name',
+    }),
+    roleNamePlural: msg({
+      message: 'Viewers',
+      context: 'Role name',
+    }),
   },
 } satisfies Record<keyof typeof RecipientRole, unknown>;
 

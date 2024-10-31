@@ -47,7 +47,7 @@ export const apiTokenRouter = router({
     }),
 
   createToken: authenticatedProcedure
-    .input(ZCreateTokenMutationSchema)
+    .input(ZCreateTokenMutationSchema())
     .mutation(async ({ input, ctx }) => {
       try {
         const { tokenName, teamId, expirationDate } = input;

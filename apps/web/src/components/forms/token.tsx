@@ -42,11 +42,13 @@ import { useToast } from '@documenso/ui/primitives/use-toast';
 
 import { EXPIRATION_DATES } from '../(dashboard)/settings/token/contants';
 
-const ZCreateTokenFormSchema = ZCreateTokenMutationSchema.extend({
-  enabled: z.boolean(),
-});
+const ZCreateTokenFormSchema = (locale: string) => {
+  return ZCreateTokenMutationSchema(locale).extend({
+    enabled: z.boolean(),
+  });
+};
 
-type TCreateTokenFormSchema = z.infer<typeof ZCreateTokenFormSchema>;
+type TCreateTokenFormSchema = z.infer<ReturnType<typeof ZCreateTokenFormSchema>>;
 
 type NewlyCreatedToken = {
   id: number;
@@ -66,6 +68,8 @@ export const ApiTokenForm = ({ className, teamId, tokens }: ApiTokenFormProps) =
   const [, copy] = useCopyToClipboard();
 
   const { _ } = useLingui();
+  const locale = useLingui().i18n.locale;
+
   const { toast } = useToast();
 
   const [newlyCreatedToken, setNewlyCreatedToken] = useState<NewlyCreatedToken | null>();
@@ -85,7 +89,7 @@ export const ApiTokenForm = ({ className, teamId, tokens }: ApiTokenFormProps) =
   });
 
   const form = useForm<TCreateTokenFormSchema>({
-    resolver: zodResolver(ZCreateTokenFormSchema),
+    resolver: zodResolver(ZCreateTokenFormSchema(locale)),
     defaultValues: {
       tokenName: '',
       expirationDate: '',

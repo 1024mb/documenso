@@ -31,7 +31,12 @@ export const DocumentPageViewInformation = ({
         description: msg`Uploaded by`,
         value:
           userId === document.userId
-            ? _(msg({ message: 'You', context: 'Used as the object after a preposition' }))
+            ? _(
+                msg({
+                  message: 'You',
+                  context: 'Used as the object after a preposition',
+                }),
+              )
             : document.User.name ?? document.User.email,
       },
       {

@@ -50,6 +50,8 @@ export const EmbedSignDocumentClientPage = ({
   isCompleted,
 }: EmbedSignDocumentClientPageProps) => {
   const { _ } = useLingui();
+  const locale = useLingui().i18n.locale;
+
   const { toast } = useToast();
 
   const { fullName, email, signature, setFullName, setSignature } = useRequiredSigningContext();
@@ -135,7 +137,9 @@ export const EmbedSignDocumentClientPage = ({
     const hash = window.location.hash.slice(1);
 
     try {
-      const data = ZSignDocumentEmbedDataSchema.parse(JSON.parse(decodeURIComponent(atob(hash))));
+      const data = ZSignDocumentEmbedDataSchema(locale).parse(
+        JSON.parse(decodeURIComponent(atob(hash))),
+      );
 
       if (!isCompleted && data.name) {
         setFullName(data.name);

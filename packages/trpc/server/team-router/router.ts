@@ -117,7 +117,7 @@ export const teamRouter = router({
     }),
 
   createTeam: authenticatedProcedure
-    .input(ZCreateTeamMutationSchema)
+    .input(ZCreateTeamMutationSchema())
     .mutation(async ({ input, ctx }) => {
       try {
         return await createTeam({
@@ -132,7 +132,7 @@ export const teamRouter = router({
     }),
 
   createTeamEmailVerification: authenticatedProcedure
-    .input(ZCreateTeamEmailVerificationMutationSchema)
+    .input(ZCreateTeamEmailVerificationMutationSchema())
     .mutation(async ({ input, ctx }) => {
       try {
         return await createTeamEmailVerification({
@@ -448,7 +448,7 @@ export const teamRouter = router({
     }),
 
   updateTeam: authenticatedProcedure
-    .input(ZUpdateTeamMutationSchema)
+    .input(ZUpdateTeamMutationSchema())
     .mutation(async ({ input, ctx }) => {
       try {
         return await updateTeam({

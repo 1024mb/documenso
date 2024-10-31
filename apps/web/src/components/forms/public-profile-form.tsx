@@ -33,13 +33,15 @@ import { Input } from '@documenso/ui/primitives/input';
 import { Textarea } from '@documenso/ui/primitives/textarea';
 import { useToast } from '@documenso/ui/primitives/use-toast';
 
-export const ZPublicProfileFormSchema = ZUpdatePublicProfileMutationSchema.pick({
-  bio: true,
-  enabled: true,
-  url: true,
-});
+export const ZPublicProfileFormSchema = (locale: string) => {
+  return ZUpdatePublicProfileMutationSchema(locale).pick({
+    bio: true,
+    enabled: true,
+    url: true,
+  });
+};
 
-export type TPublicProfileFormSchema = z.infer<typeof ZPublicProfileFormSchema>;
+export type TPublicProfileFormSchema = z.infer<ReturnType<typeof ZPublicProfileFormSchema>>;
 
 export type PublicProfileFormProps = {
   className?: string;
@@ -56,6 +58,8 @@ export const PublicProfileForm = ({
   onProfileUpdate,
 }: PublicProfileFormProps) => {
   const { _ } = useLingui();
+  const locale = useLingui().i18n.locale;
+
   const { toast } = useToast();
 
   const [, copy] = useCopyToClipboard();
@@ -67,7 +71,7 @@ export const PublicProfileForm = ({
       url: profileUrl ?? '',
       bio: profile?.bio ?? '',
     },
-    resolver: zodResolver(ZPublicProfileFormSchema),
+    resolver: zodResolver(ZPublicProfileFormSchema(locale)),
   });
 
   const isSubmitting = form.formState.isSubmitting;

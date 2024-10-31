@@ -14,6 +14,7 @@ import { z } from 'zod';
 
 import { downloadFile } from '@documenso/lib/client-only/download-file';
 import { TEAM_MEMBER_ROLE_HIERARCHY, TEAM_MEMBER_ROLE_MAP } from '@documenso/lib/constants/teams';
+import { loadAndActivateLocale } from '@documenso/lib/utils/i18n.import';
 import { TeamMemberRole } from '@documenso/prisma/client';
 import { trpc } from '@documenso/trpc/react';
 import { ZCreateTeamMemberInvitesMutationSchema } from '@documenso/trpc/server/team-router/schema';
@@ -92,20 +93,33 @@ type TInviteTeamMembersFormSchema = z.infer<typeof ZInviteTeamMembersFormSchema>
 
 type TabTypes = 'INDIVIDUAL' | 'BULK';
 
-const ZImportTeamMemberSchema = z.array(
-  z.object({
-    email: z
-      .string()
-      .min(1, { message: i18n._(msg`Email is required`) })
-      .min(7, { message: i18n._(msg`Please enter a valid email address.`) }) // validation doesn't allow for one
-      // character on local part of email.
-      .regex(/^(?![-_.])[a-zA-Z0-9._%+-]{2,}(?<![-_.])@[a-zA-Z0-9-]{2,}\.[a-zA-Z]{2,63}$/, {
-        message: i18n._(msg`Please enter a valid email address.`),
-      })
-      .email({ message: i18n._(msg`Invalid email address`) }),
-    role: z.nativeEnum(TeamMemberRole),
-  }),
-);
+const ZImportTeamMemberSchema = (locale: string) => {
+  loadAndActivateLocale(locale)
+    .then(() => {})
+    .catch((err) => {
+      console.error(err);
+    });
+
+  return z.array(
+    z.object({
+      email: z
+        .string()
+        .min(1, {
+          message: i18n._(msg`Email is required`),
+        })
+        .min(7, {
+          message: i18n._(msg`Please enter a valid email address.`),
+        }) // validation doesn't allow for one character on local part of email.
+        .regex(/^(?![-_.])[a-zA-Z0-9._%+-]{2,}(?<![-_.])@[a-zA-Z0-9-]{2,}\.[a-zA-Z]{2,63}$/, {
+          message: i18n._(msg`Please enter a valid email address.`),
+        })
+        .email({
+          message: i18n._(msg`Invalid email address`),
+        }),
+      role: z.nativeEnum(TeamMemberRole),
+    }),
+  );
+};
 
 export const InviteTeamMembersDialog = ({
   currentUserTeamRole,
@@ -118,6 +132,8 @@ export const InviteTeamMembersDialog = ({
   const [invitationType, setInvitationType] = useState<TabTypes>('INDIVIDUAL');
 
   const { _ } = useLingui();
+  const locale = useLingui().i18n.locale;
+
   const { toast } = useToast();
 
   const form = useForm<TInviteTeamMembersFormSchema>({
@@ -208,7 +224,7 @@ export const InviteTeamMembersDialog = ({
         }
 
         try {
-          const importedInvitations = ZImportTeamMemberSchema.parse(members);
+          const importedInvitations = ZImportTeamMemberSchema(locale).parse(members);
 
           form.setValue('invitations', importedInvitations);
           form.clearErrors('invitations');

@@ -3,11 +3,13 @@
 import { useRouter } from 'next/navigation';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { i18n } from '@lingui/core';
 import { Trans, msg } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
+import { loadAndActivateLocale } from '@documenso/lib/utils/i18n.import';
 import type { User } from '@documenso/prisma/client';
 import { TRPCClientError } from '@documenso/trpc/client';
 import { trpc } from '@documenso/trpc/react';
@@ -26,17 +28,32 @@ import { Label } from '@documenso/ui/primitives/label';
 import { SignaturePad } from '@documenso/ui/primitives/signature-pad';
 import { useToast } from '@documenso/ui/primitives/use-toast';
 
-export const ZProfileFormSchema = z.object({
-  name: z.string().trim().min(1, { message: 'Please enter a valid name.' }),
-  signature: z.string().min(1, 'Signature Pad cannot be empty'),
-});
+export const ZProfileFormSchema = (locale: string) => {
+  loadAndActivateLocale(locale)
+    .then(() => {})
+    .catch((err) => {
+      console.error(err);
+    });
+
+  return z.object({
+    name: z
+      .string()
+      .trim()
+      .min(1, {
+        message: i18n._(msg`Please enter a valid name.`),
+      }),
+    signature: z.string().min(1, {
+      message: i18n._(msg`Signature Pad cannot be empty`),
+    }),
+  });
+};
 
 export const ZTwoFactorAuthTokenSchema = z.object({
   token: z.string(),
 });
 
 export type TTwoFactorAuthTokenSchema = z.infer<typeof ZTwoFactorAuthTokenSchema>;
-export type TProfileFormSchema = z.infer<typeof ZProfileFormSchema>;
+export type TProfileFormSchema = z.infer<ReturnType<typeof ZProfileFormSchema>>;
 
 export type ProfileFormProps = {
   className?: string;
@@ -47,6 +64,8 @@ export const ProfileForm = ({ className, user }: ProfileFormProps) => {
   const router = useRouter();
 
   const { _ } = useLingui();
+  const locale = useLingui().i18n.locale;
+
   const { toast } = useToast();
 
   const form = useForm<TProfileFormSchema>({
@@ -54,7 +73,7 @@ export const ProfileForm = ({ className, user }: ProfileFormProps) => {
       name: user.name ?? '',
       signature: user.signature || '',
     },
-    resolver: zodResolver(ZProfileFormSchema),
+    resolver: zodResolver(ZProfileFormSchema(locale)),
   });
 
   const isSubmitting = form.formState.isSubmitting;

@@ -1,4 +1,8 @@
+import { i18n } from '@lingui/core';
+import { msg } from '@lingui/macro';
 import { z } from 'zod';
+
+import { loadAndActivateLocale } from '@documenso/lib/utils/i18n.import';
 
 import { ZCurrentPasswordSchema, ZPasswordSchema } from '../auth-router/schema';
 
@@ -24,26 +28,38 @@ export const ZUpdateProfileMutationSchema = z.object({
 
 export type TUpdateProfileMutationSchema = z.infer<typeof ZUpdateProfileMutationSchema>;
 
-export const ZUpdatePublicProfileMutationSchema = z.object({
-  bio: z
-    .string()
-    .max(MAX_PROFILE_BIO_LENGTH, {
-      message: `Bio must be shorter than ${MAX_PROFILE_BIO_LENGTH + 1} characters`,
-    })
-    .optional(),
-  enabled: z.boolean().optional(),
-  url: z
-    .string()
-    .trim()
-    .toLowerCase()
-    .min(1, { message: 'Please enter a valid username.' })
-    .regex(/^[a-z0-9-]+$/, {
-      message: 'Username can only container alphanumeric characters and dashes.',
-    })
-    .optional(),
-});
+export const ZUpdatePublicProfileMutationSchema = (locale: string = '') => {
+  loadAndActivateLocale(locale)
+    .then(() => {})
+    .catch((err) => {
+      console.error(err);
+    });
 
-export type TUpdatePublicProfileMutationSchema = z.infer<typeof ZUpdatePublicProfileMutationSchema>;
+  return z.object({
+    bio: z
+      .string()
+      .max(MAX_PROFILE_BIO_LENGTH, {
+        message: i18n._(msg`Bio must be shorter than ${MAX_PROFILE_BIO_LENGTH + 1} characters`),
+      })
+      .optional(),
+    enabled: z.boolean().optional(),
+    url: z
+      .string()
+      .trim()
+      .toLowerCase()
+      .min(1, {
+        message: i18n._(msg`Please enter a valid username.`),
+      })
+      .regex(/^[a-z0-9-]+$/, {
+        message: i18n._(msg`Username can only contain alphanumeric characters and dashes.`),
+      })
+      .optional(),
+  });
+};
+
+export type TUpdatePublicProfileMutationSchema = z.infer<
+  ReturnType<typeof ZUpdatePublicProfileMutationSchema>
+>;
 
 export const ZUpdatePasswordMutationSchema = z.object({
   currentPassword: ZCurrentPasswordSchema(),

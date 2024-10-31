@@ -24,7 +24,10 @@ export default async function handler(
       });
     }
 
-    const safeBody = ZClaimPlanRequestSchema.safeParse(req.body);
+    const safeBody = ZClaimPlanRequestSchema({
+      headers: req.headers,
+      cookies: req.cookies,
+    }).safeParse(req.body);
 
     if (!safeBody.success) {
       return res.status(400).json({

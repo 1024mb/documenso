@@ -87,7 +87,7 @@ export const profileRouter = router({
     }),
 
   updatePublicProfile: authenticatedProcedure
-    .input(ZUpdatePublicProfileMutationSchema)
+    .input(ZUpdatePublicProfileMutationSchema())
     .mutation(async ({ input, ctx }) => {
       try {
         const { url, bio, enabled } = input;

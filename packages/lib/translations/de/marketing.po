@@ -169,6 +169,10 @@ msgstr "Einfaches Teilen."
 msgid "Email and Discord Support"
 msgstr "E-Mail- und Discord-Support"
 
+#: apps/marketing/src/api/claim-plan/types.ts:23
+msgid "Email is required"
+msgstr ""
+
 #: apps/marketing/src/app/(marketing)/open/team-members.tsx:43
 msgid "Engagement"
 msgstr "Beteiligung"
@@ -295,6 +299,10 @@ msgstr "Integrierte Zahlungen mit Stripe, sodass Sie sich keine Sorgen ums Bezah
 msgid "Integrates with all your favourite tools."
 msgstr "Integriert sich mit all Ihren Lieblingstools."
 
+#: apps/marketing/src/api/claim-plan/types.ts:32
+msgid "Invalid email address"
+msgstr ""
+
 #: apps/marketing/src/app/(marketing)/open/page.tsx:289
 msgid "Is there more?"
 msgstr "Gibt es mehr?"
@@ -385,6 +393,11 @@ msgstr "Unsere Enterprise-Lizenz ist ideal für große Organisationen, die auf D
 #: apps/marketing/src/app/(marketing)/pricing/page.tsx:65
 msgid "Our self-hosted option is great for small teams and individuals who need a simple solution. You can use our docker based setup to get started in minutes. Take control with full customizability and data ownership."
 msgstr "Unsere selbstgehostete Option ist ideal für kleine Teams und Einzelpersonen, die eine einfache Lösung benötigen. Sie können unser docker-basiertes Setup verwenden, um in wenigen Minuten loszulegen. Übernehmen Sie die Kontrolle mit vollständiger Anpassbarkeit und Datenhoheit."
+
+#: apps/marketing/src/api/claim-plan/types.ts:26
+#: apps/marketing/src/api/claim-plan/types.ts:29
+msgid "Please enter a valid email address."
+msgstr ""
 
 #: apps/marketing/src/components/(marketing)/pricing-table.tsx:151
 msgid "Premium Profile Name"

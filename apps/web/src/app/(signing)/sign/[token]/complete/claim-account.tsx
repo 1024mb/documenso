@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { i18n } from '@lingui/core';
 import { Trans, msg } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 import { useForm } from 'react-hook-form';
@@ -34,8 +35,26 @@ export type ClaimAccountProps = {
 export const ZClaimAccountFormSchema = (locale: string) => {
   return z
     .object({
-      name: z.string().trim().min(1, { message: 'Please enter a valid name.' }),
-      email: z.string().email().min(1),
+      name: z
+        .string()
+        .trim()
+        .min(1, {
+          message: i18n._(msg`Please enter a valid name.`),
+        }),
+      email: z
+        .string()
+        .min(1, {
+          message: i18n._(msg`Email is required`),
+        })
+        .min(7, {
+          message: i18n._(msg`Please enter a valid email address.`),
+        }) // validation doesn't allow for one character on local part of email.
+        .regex(/^(?![-_.])[a-zA-Z0-9._%+-]{2,}(?<![-_.])@[a-zA-Z0-9-]{2,}\.[a-zA-Z]{2,63}$/, {
+          message: i18n._(msg`Please enter a valid email address.`),
+        })
+        .email({
+          message: i18n._(msg`Invalid email address`),
+        }),
       password: ZPasswordSchema(locale),
     })
     .refine(
@@ -44,7 +63,7 @@ export const ZClaimAccountFormSchema = (locale: string) => {
         return !password.includes(name) && !password.includes(email.split('@')[0]);
       },
       {
-        message: 'Password should not be common or based on personal information',
+        message: i18n._(msg`Password should not be common or based on personal information`),
         path: ['password'],
       },
     );
@@ -56,7 +75,7 @@ export const ClaimAccount = ({ defaultName, defaultEmail }: ClaimAccountProps) =
   const { _ } = useLingui();
   const { toast } = useToast();
 
-  const language = useLingui().i18n.locale;
+  const locale = useLingui().i18n.locale;
 
   const analytics = useAnalytics();
   const router = useRouter();
@@ -69,7 +88,7 @@ export const ClaimAccount = ({ defaultName, defaultEmail }: ClaimAccountProps) =
       email: defaultEmail,
       password: '',
     },
-    resolver: zodResolver(ZClaimAccountFormSchema(language)),
+    resolver: zodResolver(ZClaimAccountFormSchema(locale)),
   });
 
   const onFormSubmit = async ({ name, email, password }: TClaimAccountFormSchema) => {

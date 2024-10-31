@@ -6,7 +6,7 @@ import { ZBaseTableSearchParamsSchema } from '@documenso/lib/types/search-params
 import { ZRegistrationResponseJSONSchema } from '@documenso/lib/types/webauthn';
 import { loadAndActivateLocale } from '@documenso/lib/utils/i18n.import';
 
-export const ZCurrentPasswordSchema = (locale: string = 'en') => {
+export const ZCurrentPasswordSchema = (locale: string = '') => {
   loadAndActivateLocale(locale)
     .then(() => {})
     .catch((err) => {
@@ -15,45 +15,44 @@ export const ZCurrentPasswordSchema = (locale: string = 'en') => {
 
   return z
     .string()
-    .min(6, { message: i18n._(msg`Must be at least 6 characters in length`) })
-    .max(72);
+    .min(6, {
+      message: i18n._(msg`Must be at least 6 characters in length`),
+    })
+    .max(72, {
+      message: i18n._(msg`Cannot be more than 72 characters in length`),
+    });
 };
 
-export const ZPasswordSchema = (locale: string = 'en') => {
-  import(`../../../lib/translations/${locale}/web.js`)
-    .then(({ messages }) => {
-      i18n.loadAndActivate({ locale, messages });
-    })
-    .catch((error) => {
-      if (error instanceof Error && error.message.includes('404') && locale !== 'en') {
-        console.error(`Failed to load translations for locale ${locale}:`, error);
-        locale = 'en';
-
-        import(`../../../lib/translations/${locale}/web.js`)
-          .then(({ messages }) => {
-            i18n.loadAndActivate({ locale, messages });
-          })
-          .catch((fallbackError) => {
-            console.error(`Failed to load English translations:`, fallbackError);
-          });
-      } else {
-        console.error(error);
-      }
+export const ZPasswordSchema = (locale: string = '') => {
+  loadAndActivateLocale(locale)
+    .then(() => {})
+    .catch((err) => {
+      console.error(err);
     });
 
   return z
     .string()
-    .regex(new RegExp('.*[A-Z].*'), { message: i18n._(msg`One uppercase character`) })
-    .regex(new RegExp('.*[a-z].*'), { message: i18n._(msg`One lowercase character`) })
-    .regex(new RegExp('.*\\d.*'), { message: i18n._(msg`One number`) })
+    .regex(new RegExp('.*[A-Z].*'), {
+      message: i18n._(msg`One uppercase character`),
+    })
+    .regex(new RegExp('.*[a-z].*'), {
+      message: i18n._(msg`One lowercase character`),
+    })
+    .regex(new RegExp('.*\\d.*'), {
+      message: i18n._(msg`One number`),
+    })
     .regex(new RegExp('.*[`~<>?,./!@#$%^&*()\\-_+="\'|{}\\[\\];:\\\\].*'), {
       message: i18n._(msg`One special character is required`),
     })
-    .min(8, { message: i18n._(msg`Must be at least 8 characters in length`) })
-    .max(72, { message: i18n._(msg`Cannot be more than 72 characters in length`) });
+    .min(8, {
+      message: i18n._(msg`Must be at least 8 characters in length`),
+    })
+    .max(72, {
+      message: i18n._(msg`Cannot be more than 72 characters in length`),
+    });
 };
 
-export const ZSignUpMutationSchema = (locale: string = 'en') => {
+export const ZSignUpMutationSchema = (locale: string = '') => {
   loadAndActivateLocale(locale)
     .then(() => {})
     .catch((err) => {
@@ -64,22 +63,29 @@ export const ZSignUpMutationSchema = (locale: string = 'en') => {
     name: z.string().min(1),
     email: z
       .string()
-      .min(1, { message: i18n._(msg`Email is required`) })
-      .min(7, { message: i18n._(msg`Please enter a valid email address.`) }) // validation doesn't allow for one
-      // character on local part of email.
+      .min(1, {
+        message: i18n._(msg`Email is required`),
+      })
+      .min(7, {
+        message: i18n._(msg`Please enter a valid email address.`),
+      }) // validation doesn't allow for one character on local part of email.
       .regex(/^(?![-_.])[a-zA-Z0-9._%+-]{2,}(?<![-_.])@[a-zA-Z0-9-]{2,}\.[a-zA-Z]{2,63}$/, {
         message: i18n._(msg`Please enter a valid email address.`),
       })
-      .email({ message: i18n._(msg`Invalid email address`) }),
+      .email({
+        message: i18n._(msg`Invalid email address`),
+      }),
     password: ZPasswordSchema(locale),
     signature: z.string().nullish(),
     url: z
       .string()
       .trim()
       .toLowerCase()
-      .min(1)
+      .min(1, {
+        message: i18n._(msg`Username must be at least 1 character long.`),
+      })
       .regex(/^[a-z0-9-]+$/, {
-        message: i18n._(msg`Username can only container alphanumeric characters and dashes.`),
+        message: i18n._(msg`Username can only contain alphanumeric characters and dashes.`),
       })
       .optional(),
   });
@@ -116,6 +122,6 @@ export const ZFindPasskeysQuerySchema = ZBaseTableSearchParamsSchema.extend({
 
 export type TSignUpMutationSchema = z.infer<ReturnType<typeof ZSignUpMutationSchema>>;
 
-export const ZVerifyPasswordMutationSchema = (locale: string = 'en') => {
+export const ZVerifyPasswordMutationSchema = (locale: string = '') => {
   return ZSignUpMutationSchema(locale).pick({ password: true });
 };

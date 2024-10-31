@@ -38,12 +38,27 @@ export const ZSignUpFormSchema = (locale: string) => {
       name: z
         .string()
         .trim()
-        .min(1, { message: i18n._(msg`Please enter a valid name.`) }),
-      email: z.string().email().min(1),
-      password: ZPasswordSchema(locale),
-      signature: z
+        .min(1, {
+          message: i18n._(msg`Please enter a valid name.`),
+        }),
+      email: z
         .string()
-        .min(1, { message: i18n._(msg`We need your signature to sign documents`) }),
+        .min(1, {
+          message: i18n._(msg`Email is required`),
+        })
+        .min(7, {
+          message: i18n._(msg`Please enter a valid email address.`),
+        }) // validation doesn't allow for one character on local part of email.
+        .regex(/^(?![-_.])[a-zA-Z0-9._%+-]{2,}(?<![-_.])@[a-zA-Z0-9-]{2,}\.[a-zA-Z]{2,63}$/, {
+          message: i18n._(msg`Please enter a valid email address.`),
+        })
+        .email({
+          message: i18n._(msg`Invalid email address`),
+        }),
+      password: ZPasswordSchema(locale),
+      signature: z.string().min(1, {
+        message: i18n._(msg`We need your signature to sign documents`),
+      }),
     })
     .refine(
       (data) => {
@@ -74,7 +89,7 @@ export const SignUpForm = ({
   const { _ } = useLingui();
   const { toast } = useToast();
 
-  const language = useLingui().i18n.locale;
+  const locale = useLingui().i18n.locale;
 
   const analytics = useAnalytics();
   const router = useRouter();
@@ -86,7 +101,7 @@ export const SignUpForm = ({
       password: '',
       signature: '',
     },
-    resolver: zodResolver(ZSignUpFormSchema(language)),
+    resolver: zodResolver(ZSignUpFormSchema(locale)),
   });
 
   const isSubmitting = form.formState.isSubmitting;
