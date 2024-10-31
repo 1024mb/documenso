@@ -169,7 +169,7 @@ msgstr "Compartición fácil."
 msgid "Email and Discord Support"
 msgstr "Soporte por correo electrónico y Discord"
 
-#: apps/marketing/src/api/claim-plan/types.ts:23
+#: apps/marketing/src/api/claim-plan/types.ts:22
 msgid "Email is required"
 msgstr ""
 
@@ -299,7 +299,7 @@ msgstr "Pagos integrados con Stripe para que no tengas que preocuparte por cobra
 msgid "Integrates with all your favourite tools."
 msgstr "Se integra con todas tus herramientas favoritas."
 
-#: apps/marketing/src/api/claim-plan/types.ts:32
+#: apps/marketing/src/api/claim-plan/types.ts:31
 msgid "Invalid email address"
 msgstr ""
 
@@ -394,8 +394,8 @@ msgstr "Nuestra Licencia Empresarial es excelente para grandes organizaciones qu
 msgid "Our self-hosted option is great for small teams and individuals who need a simple solution. You can use our docker based setup to get started in minutes. Take control with full customizability and data ownership."
 msgstr "Nuestra opción de autoalojamiento es excelente para pequeños equipos e individuos que necesitan una solución simple. Puedes usar nuestra configuración basada en docker para empezar en minutos. Toma el control con total personalización y propiedad de los datos."
 
-#: apps/marketing/src/api/claim-plan/types.ts:26
-#: apps/marketing/src/api/claim-plan/types.ts:29
+#: apps/marketing/src/api/claim-plan/types.ts:25
+#: apps/marketing/src/api/claim-plan/types.ts:28
 msgid "Please enter a valid email address."
 msgstr ""
 

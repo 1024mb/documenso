@@ -419,7 +419,7 @@ msgstr "At least one option must be added"
 msgid "Before you get started, please confirm your email address by clicking the button below:"
 msgstr "Before you get started, please confirm your email address by clicking the button below:"
 
-#: packages/trpc/server/profile-router/schema.ts:43
+#: packages/trpc/server/profile-router/schema.ts:42
 msgid "Bio must be shorter than {0} characters"
 msgstr "Bio must be shorter than {0} characters"
 
@@ -448,8 +448,8 @@ msgstr "By accepting this request, you will take responsibility for any billing 
 msgid "Cancel"
 msgstr "Cancel"
 
-#: packages/trpc/server/auth-router/schema.ts:24
-#: packages/trpc/server/auth-router/schema.ts:54
+#: packages/trpc/server/auth-router/schema.ts:22
+#: packages/trpc/server/auth-router/schema.ts:51
 msgid "Cannot be more than 72 characters in length"
 msgstr "Cannot be more than 72 characters in length"
 
@@ -803,10 +803,10 @@ msgctxt "The performed action is in past participle"
 msgid "Email {actionPerformedByAnonymous}"
 msgstr "Email {actionPerformedByAnonymous}"
 
-#: packages/trpc/server/auth-router/schema.ts:71
+#: packages/trpc/server/auth-router/schema.ts:67
 #: packages/ui/primitives/document-flow/add-signature.types.ts:18
-#: packages/ui/primitives/document-flow/add-signers.types.ts:28
-#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.types.ts:28
+#: packages/ui/primitives/document-flow/add-signers.types.ts:27
+#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.types.ts:27
 msgid "Email is required"
 msgstr "Email is required"
 
@@ -988,10 +988,10 @@ msgstr "Inherit authentication method"
 msgid "Initials"
 msgstr "Initials"
 
-#: packages/trpc/server/auth-router/schema.ts:80
+#: packages/trpc/server/auth-router/schema.ts:76
 #: packages/ui/primitives/document-flow/add-signature.types.ts:27
-#: packages/ui/primitives/document-flow/add-signers.types.ts:37
-#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.types.ts:37
+#: packages/ui/primitives/document-flow/add-signers.types.ts:36
+#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.types.ts:36
 msgid "Invalid email address"
 msgstr "Invalid email address"
 
@@ -1073,11 +1073,11 @@ msgctxt "Action performed by someone else"
 msgid "moved the document to team"
 msgstr "moved the document to team"
 
-#: packages/trpc/server/auth-router/schema.ts:21
+#: packages/trpc/server/auth-router/schema.ts:19
 msgid "Must be at least 6 characters in length"
 msgstr "Must be at least 6 characters in length"
 
-#: packages/trpc/server/auth-router/schema.ts:51
+#: packages/trpc/server/auth-router/schema.ts:48
 msgid "Must be at least 8 characters in length"
 msgstr "Must be at least 8 characters in length"
 
@@ -1171,19 +1171,19 @@ msgstr "Once enabled, you can select any active recipient to be a direct link si
 msgid "Once your template is set up, share the link anywhere you want. The person who opens the link will be able to enter their information in the direct link recipient field and complete any other fields assigned to them."
 msgstr "Once your template is set up, share the link anywhere you want. The person who opens the link will be able to enter their information in the direct link recipient field and complete any other fields assigned to them."
 
-#: packages/trpc/server/auth-router/schema.ts:42
+#: packages/trpc/server/auth-router/schema.ts:39
 msgid "One lowercase character"
 msgstr "One lowercase character"
 
-#: packages/trpc/server/auth-router/schema.ts:45
+#: packages/trpc/server/auth-router/schema.ts:42
 msgid "One number"
 msgstr "One number"
 
-#: packages/trpc/server/auth-router/schema.ts:48
+#: packages/trpc/server/auth-router/schema.ts:45
 msgid "One special character is required"
 msgstr "One special character is required"
 
-#: packages/trpc/server/auth-router/schema.ts:39
+#: packages/trpc/server/auth-router/schema.ts:36
 msgid "One uppercase character"
 msgstr "One uppercase character"
 
@@ -1295,31 +1295,31 @@ msgstr "Please confirm your email"
 msgid "Please confirm your email address"
 msgstr "Please confirm your email address"
 
-#: packages/trpc/server/auth-router/schema.ts:74
-#: packages/trpc/server/auth-router/schema.ts:77
+#: packages/trpc/server/auth-router/schema.ts:70
+#: packages/trpc/server/auth-router/schema.ts:73
 #: packages/ui/primitives/document-flow/add-signature.types.ts:21
 #: packages/ui/primitives/document-flow/add-signature.types.ts:24
-#: packages/ui/primitives/document-flow/add-signers.types.ts:31
-#: packages/ui/primitives/document-flow/add-signers.types.ts:34
-#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.types.ts:31
-#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.types.ts:34
+#: packages/ui/primitives/document-flow/add-signers.types.ts:30
+#: packages/ui/primitives/document-flow/add-signers.types.ts:33
+#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.types.ts:30
+#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.types.ts:33
 msgid "Please enter a valid email address."
 msgstr "Please enter a valid email address."
 
-#: packages/trpc/server/team-router/schema.ts:118
+#: packages/trpc/server/team-router/schema.ts:122
 msgid "Please enter a valid email."
 msgstr "Please enter a valid email."
 
-#: packages/trpc/server/team-router/schema.ts:115
+#: packages/trpc/server/team-router/schema.ts:114
 msgid "Please enter a valid name."
 msgstr "Please enter a valid name."
 
-#: packages/ui/primitives/document-flow/add-settings.types.ts:54
-#: packages/ui/primitives/template-flow/add-template-settings.types.tsx:45
+#: packages/ui/primitives/document-flow/add-settings.types.ts:55
+#: packages/ui/primitives/template-flow/add-template-settings.types.tsx:47
 msgid "Please enter a valid URL, make sure you include http:// or https:// part of the url."
 msgstr "Please enter a valid URL, make sure you include http:// or https:// part of the url."
 
-#: packages/trpc/server/profile-router/schema.ts:52
+#: packages/trpc/server/profile-router/schema.ts:51
 msgid "Please enter a valid username."
 msgstr "Please enter a valid username."
 
@@ -1638,8 +1638,8 @@ msgctxt "Role name"
 msgid "Signers"
 msgstr "Signers"
 
-#: packages/ui/primitives/document-flow/add-signers.types.ts:57
-#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.types.ts:57
+#: packages/ui/primitives/document-flow/add-signers.types.ts:56
+#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.types.ts:56
 msgid "Signers must have unique emails"
 msgstr "Signers must have unique emails"
 
@@ -1697,31 +1697,31 @@ msgstr "Team email removed"
 msgid "Team email removed for {teamName} on Documenso"
 msgstr "Team email removed for {teamName} on Documenso"
 
-#: packages/trpc/server/team-router/schema.ts:78
+#: packages/trpc/server/team-router/schema.ts:75
 msgid "Team name must be at least 3 characters long."
 msgstr "Team name must be at least 3 characters long."
 
-#: packages/trpc/server/team-router/schema.ts:81
+#: packages/trpc/server/team-router/schema.ts:78
 msgid "Team name must not exceed 30 characters."
 msgstr "Team name must not exceed 30 characters."
 
-#: packages/trpc/server/team-router/schema.ts:59
+#: packages/trpc/server/team-router/schema.ts:57
 msgid "Team URL can only contain letters, numbers, dashes and underscores."
 msgstr "Team URL can only contain letters, numbers, dashes and underscores."
 
-#: packages/trpc/server/team-router/schema.ts:56
+#: packages/trpc/server/team-router/schema.ts:54
 msgid "Team URL cannot contain consecutive dashes or underscores."
 msgstr "Team URL cannot contain consecutive dashes or underscores."
 
-#: packages/trpc/server/team-router/schema.ts:53
+#: packages/trpc/server/team-router/schema.ts:51
 msgid "Team URL cannot start or end with dashes or underscores."
 msgstr "Team URL cannot start or end with dashes or underscores."
 
-#: packages/trpc/server/team-router/schema.ts:46
+#: packages/trpc/server/team-router/schema.ts:44
 msgid "Team URL must be at least 3 characters long."
 msgstr "Team URL must be at least 3 characters long."
 
-#: packages/trpc/server/team-router/schema.ts:49
+#: packages/trpc/server/team-router/schema.ts:47
 msgid "Team URL must not exceed 30 characters."
 msgstr "Team URL must not exceed 30 characters."
 
@@ -1856,7 +1856,7 @@ msgstr "This recipient can no longer be modified as they have signed a field, or
 msgid "This signer has already signed the document."
 msgstr "This signer has already signed the document."
 
-#: packages/trpc/server/team-router/schema.ts:62
+#: packages/trpc/server/team-router/schema.ts:60
 msgid "This URL is already in use."
 msgstr "This URL is already in use."
 
@@ -1873,8 +1873,8 @@ msgstr "Time Zone"
 msgid "Title"
 msgstr "Title"
 
-#: packages/ui/primitives/document-flow/add-settings.types.ts:36
-#: packages/ui/primitives/template-flow/add-template-settings.types.tsx:26
+#: packages/ui/primitives/document-flow/add-settings.types.ts:37
+#: packages/ui/primitives/template-flow/add-template-settings.types.tsx:28
 msgid "Title can't be empty"
 msgstr "Title can't be empty"
 
@@ -2012,12 +2012,12 @@ msgstr "Upgrade"
 msgid "Upload Template Document"
 msgstr "Upload Template Document"
 
-#: packages/trpc/server/auth-router/schema.ts:92
-#: packages/trpc/server/profile-router/schema.ts:55
+#: packages/trpc/server/auth-router/schema.ts:88
+#: packages/trpc/server/profile-router/schema.ts:54
 msgid "Username can only contain alphanumeric characters and dashes."
 msgstr "Username can only contain alphanumeric characters and dashes."
 
-#: packages/trpc/server/auth-router/schema.ts:89
+#: packages/trpc/server/auth-router/schema.ts:85
 msgid "Username must be at least 1 character long."
 msgstr "Username must be at least 1 character long."
 

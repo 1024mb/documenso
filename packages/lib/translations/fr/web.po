@@ -43,7 +43,7 @@ msgid "{0, plural, one {(1 character over)} other {(# characters over)}}"
 msgstr "{0, plural, one {(1 caractère de trop)} other {(# caractères de trop)}}"
 
 #: apps/web/src/components/forms/public-profile-form.tsx:243
-#: apps/web/src/components/templates/manage-public-template-dialog.tsx:420
+#: apps/web/src/components/templates/manage-public-template-dialog.tsx:419
 msgid "{0, plural, one {# character over the limit} other {# characters over the limit}}"
 msgstr "{0, plural, one {# caractère au-dessus de la limite} other {# caractères au-dessus de la limite}}"
 
@@ -72,7 +72,7 @@ msgstr "{0, plural, one {En attente d'1 destinataire} other {En attente de # des
 msgid "{0, plural, zero {Select values} other {# selected...}}"
 msgstr "{0, plural, zero {Sélectionner des valeurs} other {# sélectionnées...}}"
 
-#: apps/web/src/components/templates/manage-public-template-dialog.tsx:270
+#: apps/web/src/components/templates/manage-public-template-dialog.tsx:269
 msgid "{0} direct signing templates"
 msgstr "{0} modèles de signature directe"
 
@@ -105,7 +105,7 @@ msgid "{numberOfSeats, plural, one {# member} other {# members}}"
 msgstr "{numberOfSeats, plural, one {# membre} other {# membres}}"
 
 #: apps/web/src/components/forms/public-profile-form.tsx:237
-#: apps/web/src/components/templates/manage-public-template-dialog.tsx:414
+#: apps/web/src/components/templates/manage-public-template-dialog.tsx:413
 msgid "{remaningLength, plural, one {# character remaining} other {# characters remaining}}"
 msgstr "{remaningLength, plural, one {# caractère restant} other {# caractères restants}}"
 
@@ -141,7 +141,7 @@ msgstr ""
 msgid "20% off"
 msgstr ""
 
-#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-2fa.tsx:164
+#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-2fa.tsx:162
 msgid "2FA token"
 msgstr ""
 
@@ -173,7 +173,7 @@ msgstr ""
 msgid "7 days"
 msgstr ""
 
-#: apps/web/src/components/forms/send-confirmation-email.tsx:81
+#: apps/web/src/components/forms/send-confirmation-email.tsx:82
 msgid "A confirmation email has been sent, and it should arrive in your inbox shortly."
 msgstr "Un e-mail de confirmation a été envoyé et devrait arriver dans votre boîte de réception sous peu."
 
@@ -181,7 +181,7 @@ msgstr "Un e-mail de confirmation a été envoyé et devrait arriver dans votre 
 msgid "A device capable of accessing, opening, and reading documents"
 msgstr ""
 
-#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:229
+#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:228
 msgid "A draft document will be created"
 msgstr "Un document brouillon sera créé"
 
@@ -194,7 +194,7 @@ msgid "A new token was created successfully."
 msgstr "Un nouveau jeton a été créé avec succès."
 
 #: apps/web/src/app/(unauthenticated)/check-email/page.tsx:35
-#: apps/web/src/components/forms/forgot-password.tsx:85
+#: apps/web/src/components/forms/forgot-password.tsx:83
 msgid "A password reset email has been sent, if you have an account you should see it in your inbox shortly."
 msgstr "Un e-mail de réinitialisation de mot de passe a été envoyé, si vous avez un compte vous devriez le voir dans votre boîte de réception sous peu."
 
@@ -316,12 +316,12 @@ msgstr "Ajouter un e-mail"
 msgid "Add Fields"
 msgstr "Ajouter des champs"
 
-#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:392
+#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:391
 msgid "Add more"
 msgstr "Ajouter davantage"
 
-#: apps/web/src/app/(dashboard)/settings/security/passkeys/create-passkey-dialog.tsx:162
-#: apps/web/src/app/(dashboard)/settings/security/passkeys/create-passkey-dialog.tsx:170
+#: apps/web/src/app/(dashboard)/settings/security/passkeys/create-passkey-dialog.tsx:159
+#: apps/web/src/app/(dashboard)/settings/security/passkeys/create-passkey-dialog.tsx:167
 msgid "Add passkey"
 msgstr "Ajouter une clé de passe"
 
@@ -345,7 +345,7 @@ msgstr "Ajouter un e-mail d'équipe"
 msgid "Add the people who will sign the document."
 msgstr "Ajouter les personnes qui signeront le document."
 
-#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:231
+#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:230
 msgid "Add the recipients to create the document with"
 msgstr "Ajouter les destinataires pour créer le document avec"
 
@@ -413,7 +413,7 @@ msgstr "Tout le temps"
 msgid "Allows authenticating using biometrics, password managers, hardware keys, etc."
 msgstr "Permet d'authentifier en utilisant des biométries, des gestionnaires de mots de passe, des clés matérielles, etc."
 
-#: apps/web/src/components/forms/v2/signup.tsx:452
+#: apps/web/src/components/forms/v2/signup.tsx:450
 msgid "Already have an account? <0>Sign in instead</0>"
 msgstr "Vous avez déjà un compte ? <0>Connectez-vous plutôt</0>"
 
@@ -429,7 +429,7 @@ msgstr ""
 msgid "An email account"
 msgstr ""
 
-#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:290
+#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:289
 msgid "An email containing an invitation will be sent to each member."
 msgstr "Un e-mail contenant une invitation sera envoyé à chaque membre."
 
@@ -441,15 +441,15 @@ msgstr "Un e-mail demandant le transfert de cette équipe a été envoyé."
 #: apps/web/src/app/(dashboard)/admin/site-settings/banner-form.tsx:83
 #: apps/web/src/app/(dashboard)/admin/users/[id]/delete-user-dialog.tsx:60
 #: apps/web/src/app/(dashboard)/settings/profile/delete-account-dialog.tsx:57
-#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:114
+#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:115
 #: apps/web/src/components/forms/avatar-image.tsx:116
 #: apps/web/src/components/forms/password.tsx:122
-#: apps/web/src/components/forms/profile.tsx:104
+#: apps/web/src/components/forms/profile.tsx:100
 #: apps/web/src/components/forms/public-profile-claim-dialog.tsx:110
 #: apps/web/src/components/forms/reset-password.tsx:86
-#: apps/web/src/components/forms/signup.tsx:134
+#: apps/web/src/components/forms/signup.tsx:132
 #: apps/web/src/components/forms/token.tsx:141
-#: apps/web/src/components/forms/v2/signup.tsx:183
+#: apps/web/src/components/forms/v2/signup.tsx:181
 msgid "An error occurred"
 msgstr "Une erreur est survenue"
 
@@ -463,7 +463,7 @@ msgstr "Une erreur est survenue lors de l'ajout de signataires."
 msgid "An error occurred while adding the fields."
 msgstr "Une erreur est survenue lors de l'ajout des champs."
 
-#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:189
+#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:188
 msgid "An error occurred while creating document from template."
 msgstr "Une erreur est survenue lors de la création du document à partir d'un modèle."
 
@@ -522,7 +522,7 @@ msgstr "Une erreur est survenue lors de la suppression du texte."
 msgid "An error occurred while sending the document."
 msgstr "Une erreur est survenue lors de l'envoi du document."
 
-#: apps/web/src/components/forms/send-confirmation-email.tsx:89
+#: apps/web/src/components/forms/send-confirmation-email.tsx:90
 msgid "An error occurred while sending your confirmation email"
 msgstr "Une erreur est survenue lors de l'envoi de votre e-mail de confirmation"
 
@@ -564,7 +564,7 @@ msgstr "Une erreur est survenue lors du téléchargement de votre document."
 #: apps/web/src/app/(dashboard)/admin/site-settings/banner-form.tsx:89
 #: apps/web/src/app/(dashboard)/admin/users/[id]/delete-user-dialog.tsx:66
 #: apps/web/src/app/(dashboard)/settings/profile/delete-account-dialog.tsx:63
-#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:120
+#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:121
 #: apps/web/src/app/(teams)/t/[teamUrl]/settings/team-transfer-status.tsx:54
 #: apps/web/src/components/(dashboard)/common/command-menu.tsx:301
 #: apps/web/src/components/(dashboard)/settings/token/delete-token-dialog.tsx:97
@@ -573,16 +573,16 @@ msgstr "Une erreur est survenue lors du téléchargement de votre document."
 #: apps/web/src/components/(teams)/dialogs/create-team-dialog.tsx:109
 #: apps/web/src/components/(teams)/dialogs/delete-team-dialog.tsx:84
 #: apps/web/src/components/(teams)/dialogs/delete-team-member-dialog.tsx:58
-#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:186
+#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:185
 #: apps/web/src/components/(teams)/dialogs/leave-team-dialog.tsx:58
 #: apps/web/src/components/(teams)/dialogs/transfer-team-dialog.tsx:116
-#: apps/web/src/components/(teams)/dialogs/update-team-email-dialog.tsx:105
+#: apps/web/src/components/(teams)/dialogs/update-team-email-dialog.tsx:106
 #: apps/web/src/components/(teams)/dialogs/update-team-member-dialog.tsx:100
 #: apps/web/src/components/(teams)/forms/update-team-form.tsx:98
 #: apps/web/src/components/forms/avatar-image.tsx:94
 #: apps/web/src/components/forms/avatar-image.tsx:122
 #: apps/web/src/components/forms/password.tsx:128
-#: apps/web/src/components/forms/profile.tsx:110
+#: apps/web/src/components/forms/profile.tsx:106
 #: apps/web/src/components/forms/public-profile-claim-dialog.tsx:116
 #: apps/web/src/components/forms/public-profile-form.tsx:108
 #: apps/web/src/components/forms/reset-password.tsx:92
@@ -591,15 +591,15 @@ msgstr "Une erreur est survenue lors du téléchargement de votre document."
 #: apps/web/src/components/forms/signin.tsx:301
 #: apps/web/src/components/forms/signin.tsx:316
 #: apps/web/src/components/forms/signin.tsx:332
-#: apps/web/src/components/forms/signup.tsx:140
-#: apps/web/src/components/forms/signup.tsx:155
-#: apps/web/src/components/forms/signup.tsx:169
+#: apps/web/src/components/forms/signup.tsx:138
+#: apps/web/src/components/forms/signup.tsx:153
+#: apps/web/src/components/forms/signup.tsx:167
 #: apps/web/src/components/forms/token.tsx:147
-#: apps/web/src/components/forms/v2/signup.tsx:189
-#: apps/web/src/components/forms/v2/signup.tsx:212
-#: apps/web/src/components/forms/v2/signup.tsx:226
-#: apps/web/src/components/templates/manage-public-template-dialog.tsx:162
-#: apps/web/src/components/templates/manage-public-template-dialog.tsx:199
+#: apps/web/src/components/forms/v2/signup.tsx:187
+#: apps/web/src/components/forms/v2/signup.tsx:210
+#: apps/web/src/components/forms/v2/signup.tsx:224
+#: apps/web/src/components/templates/manage-public-template-dialog.tsx:161
+#: apps/web/src/components/templates/manage-public-template-dialog.tsx:198
 msgid "An unknown error occurred"
 msgstr "Une erreur inconnue est survenue"
 
@@ -654,7 +654,7 @@ msgstr "Êtes-vous sûr de vouloir supprimer cette équipe ?"
 #: apps/web/src/components/(teams)/dialogs/delete-team-member-dialog.tsx:81
 #: apps/web/src/components/(teams)/dialogs/leave-team-dialog.tsx:81
 #: apps/web/src/components/(teams)/dialogs/remove-team-email-dialog.tsx:116
-#: apps/web/src/components/templates/manage-public-template-dialog.tsx:464
+#: apps/web/src/components/templates/manage-public-template-dialog.tsx:463
 msgid "Are you sure?"
 msgstr "Êtes-vous sûr ?"
 
@@ -689,7 +689,7 @@ msgstr "En attente de confirmation par e-mail"
 
 #: apps/web/src/app/(recipient)/d/[token]/sign-direct-template.tsx:369
 #: apps/web/src/components/(dashboard)/settings/layout/activity-back.tsx:20
-#: apps/web/src/components/forms/v2/signup.tsx:538
+#: apps/web/src/components/forms/v2/signup.tsx:536
 msgid "Back"
 msgstr "Retour"
 
@@ -714,7 +714,7 @@ msgstr "Codes de sauvegarde"
 msgid "Banner Updated"
 msgstr "Bannière mise à jour"
 
-#: apps/web/src/components/forms/v2/signup.tsx:501
+#: apps/web/src/components/forms/v2/signup.tsx:499
 msgid "Basic details"
 msgstr "Détails de base"
 
@@ -741,7 +741,7 @@ msgstr "Navigateur"
 msgid "Browser:"
 msgstr ""
 
-#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:307
+#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:306
 msgid "Bulk Import"
 msgstr "Importation en masse"
 
@@ -749,7 +749,7 @@ msgstr "Importation en masse"
 msgid "By deleting this document, the following will occur:"
 msgstr "En supprimant ce document, les éléments suivants se produiront :"
 
-#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-2fa.tsx:133
+#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-2fa.tsx:131
 msgid "By enabling 2FA, you will be required to enter a code from your authenticator app every time you sign in."
 msgstr "En activant l'authentification à deux facteurs (2FA), vous devrez entrer un code provenant de votre application d'authentification chaque fois que vous vous connectez."
 
@@ -769,11 +769,11 @@ msgstr ""
 msgid "Can't wait!"
 msgstr ""
 
-#: apps/web/src/app/(dashboard)/documents/_action-items/resend-document.tsx:200
+#: apps/web/src/app/(dashboard)/documents/_action-items/resend-document.tsx:198
 #: apps/web/src/app/(dashboard)/documents/delete-document-dialog.tsx:190
 #: apps/web/src/app/(dashboard)/documents/duplicate-document-dialog.tsx:108
 #: apps/web/src/app/(dashboard)/documents/move-document-dialog.tsx:120
-#: apps/web/src/app/(dashboard)/settings/security/passkeys/create-passkey-dialog.tsx:264
+#: apps/web/src/app/(dashboard)/settings/security/passkeys/create-passkey-dialog.tsx:261
 #: apps/web/src/app/(dashboard)/settings/security/passkeys/user-passkeys-data-table-actions.tsx:157
 #: apps/web/src/app/(dashboard)/settings/security/passkeys/user-passkeys-data-table-actions.tsx:198
 #: apps/web/src/app/(dashboard)/settings/teams/team-email-usage.tsx:109
@@ -781,7 +781,7 @@ msgstr ""
 #: apps/web/src/app/(dashboard)/templates/duplicate-template-dialog.tsx:78
 #: apps/web/src/app/(dashboard)/templates/move-template-dialog.tsx:119
 #: apps/web/src/app/(dashboard)/templates/template-direct-link-dialog.tsx:472
-#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-2fa.tsx:199
+#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-2fa.tsx:197
 #: apps/web/src/app/(signing)/sign/[token]/document-action-auth-account.tsx:71
 #: apps/web/src/app/(signing)/sign/[token]/document-action-auth-passkey.tsx:165
 #: apps/web/src/app/(signing)/sign/[token]/document-action-auth-passkey.tsx:191
@@ -802,19 +802,19 @@ msgstr ""
 #: apps/web/src/components/(teams)/dialogs/create-team-dialog.tsx:222
 #: apps/web/src/components/(teams)/dialogs/delete-team-dialog.tsx:163
 #: apps/web/src/components/(teams)/dialogs/delete-team-member-dialog.tsx:104
-#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:397
+#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:396
 #: apps/web/src/components/(teams)/dialogs/leave-team-dialog.tsx:102
 #: apps/web/src/components/(teams)/dialogs/remove-team-email-dialog.tsx:150
 #: apps/web/src/components/(teams)/dialogs/transfer-team-dialog.tsx:278
-#: apps/web/src/components/(teams)/dialogs/update-team-email-dialog.tsx:178
+#: apps/web/src/components/(teams)/dialogs/update-team-email-dialog.tsx:179
 #: apps/web/src/components/(teams)/dialogs/update-team-member-dialog.tsx:187
 #: apps/web/src/components/forms/2fa/enable-authenticator-app-dialog.tsx:257
-#: apps/web/src/components/forms/2fa/view-recovery-codes-dialog.tsx:179
-#: apps/web/src/components/templates/manage-public-template-dialog.tsx:475
+#: apps/web/src/components/forms/2fa/view-recovery-codes-dialog.tsx:177
+#: apps/web/src/components/templates/manage-public-template-dialog.tsx:474
 msgid "Cancel"
 msgstr "Annuler"
 
-#: apps/web/src/app/(dashboard)/settings/security/passkeys/create-passkey-dialog.tsx:242
+#: apps/web/src/app/(dashboard)/settings/security/passkeys/create-passkey-dialog.tsx:239
 msgid "Cancelled by user"
 msgstr "Annulé par l'utilisateur"
 
@@ -846,11 +846,11 @@ msgstr "Choisissez un destinataire pour le lien direct"
 msgid "Choose..."
 msgstr "Choisissez..."
 
-#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:182
+#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:183
 msgid "Claim account"
 msgstr "Revendiquer le compte"
 
-#: apps/web/src/components/forms/v2/signup.tsx:510
+#: apps/web/src/components/forms/v2/signup.tsx:508
 msgid "Claim username"
 msgstr "Revendiquer le nom d'utilisateur"
 
@@ -862,7 +862,7 @@ msgstr "Revendiquer votre profil plus tard"
 msgid "Claim your username"
 msgstr ""
 
-#: apps/web/src/components/forms/v2/signup.tsx:308
+#: apps/web/src/components/forms/v2/signup.tsx:306
 msgid "Claim your username now"
 msgstr "Revendiquer votre nom d'utilisateur maintenant"
 
@@ -876,7 +876,7 @@ msgstr "Cliquez ici pour commencer"
 msgid "Click here to retry"
 msgstr "Cliquez ici pour réessayer"
 
-#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:420
+#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:419
 msgid "Click here to upload"
 msgstr "Cliquez ici pour télécharger"
 
@@ -887,27 +887,27 @@ msgstr "Cliquez pour copier le lien de signature à envoyer au destinataire"
 
 #: apps/web/src/app/(recipient)/d/[token]/sign-direct-template.tsx:175
 #: apps/web/src/app/(signing)/sign/[token]/form.tsx:118
-#: apps/web/src/app/embed/direct/[[...url]]/client.tsx:440
-#: apps/web/src/app/embed/sign/[[...url]]/client.tsx:320
+#: apps/web/src/app/embed/direct/[[...url]]/client.tsx:442
+#: apps/web/src/app/embed/sign/[[...url]]/client.tsx:322
 msgid "Click to insert field"
 msgstr "Cliquez pour insérer le champ"
 
 #: apps/web/src/app/(dashboard)/templates/new-template-dialog.tsx:126
-#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:367
-#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-2fa.tsx:144
+#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:366
+#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-2fa.tsx:142
 #: apps/web/src/app/(signing)/sign/[token]/document-action-auth-passkey.tsx:139
 #: apps/web/src/app/(teams)/t/[teamUrl]/settings/team-transfer-status.tsx:121
 #: apps/web/src/components/forms/2fa/enable-authenticator-app-dialog.tsx:180
-#: apps/web/src/components/forms/2fa/view-recovery-codes-dialog.tsx:118
-#: apps/web/src/components/templates/manage-public-template-dialog.tsx:340
-#: apps/web/src/components/templates/manage-public-template-dialog.tsx:448
+#: apps/web/src/components/forms/2fa/view-recovery-codes-dialog.tsx:116
+#: apps/web/src/components/templates/manage-public-template-dialog.tsx:339
+#: apps/web/src/components/templates/manage-public-template-dialog.tsx:447
 msgid "Close"
 msgstr "Fermer"
 
 #: apps/web/src/app/(signing)/sign/[token]/sign-dialog.tsx:61
-#: apps/web/src/app/embed/direct/[[...url]]/client.tsx:430
-#: apps/web/src/app/embed/sign/[[...url]]/client.tsx:310
-#: apps/web/src/components/forms/v2/signup.tsx:563
+#: apps/web/src/app/embed/direct/[[...url]]/client.tsx:432
+#: apps/web/src/app/embed/sign/[[...url]]/client.tsx:312
+#: apps/web/src/components/forms/v2/signup.tsx:561
 msgid "Complete"
 msgstr "Compléter"
 
@@ -948,12 +948,12 @@ msgstr "Configurer les paramètres généraux pour le document."
 msgid "Configure general settings for the template."
 msgstr "Configurer les paramètres généraux pour le modèle."
 
-#: apps/web/src/components/templates/manage-public-template-dialog.tsx:358
+#: apps/web/src/components/templates/manage-public-template-dialog.tsx:357
 msgid "Configure template"
 msgstr "Configurer le modèle"
 
 #: apps/web/src/app/(dashboard)/templates/template-direct-link-dialog.tsx:481
-#: apps/web/src/components/templates/manage-public-template-dialog.tsx:485
+#: apps/web/src/components/templates/manage-public-template-dialog.tsx:484
 msgid "Confirm"
 msgstr "Confirmer"
 
@@ -978,7 +978,7 @@ msgstr "Confirmer la suppression"
 msgid "Confirm email"
 msgstr "Confirmer l'email"
 
-#: apps/web/src/components/forms/send-confirmation-email.tsx:79
+#: apps/web/src/components/forms/send-confirmation-email.tsx:80
 msgid "Confirmation email sent"
 msgstr "Email de confirmation envoyé"
 
@@ -994,13 +994,13 @@ msgstr ""
 msgid "Content"
 msgstr "Contenu"
 
-#: apps/web/src/app/(dashboard)/settings/security/passkeys/create-passkey-dialog.tsx:268
+#: apps/web/src/app/(dashboard)/settings/security/passkeys/create-passkey-dialog.tsx:265
 #: apps/web/src/app/(unauthenticated)/team/invite/[token]/page.tsx:135
 #: apps/web/src/app/(unauthenticated)/team/verify/email/[token]/page.tsx:69
 #: apps/web/src/app/(unauthenticated)/team/verify/email/[token]/page.tsx:143
 #: apps/web/src/app/(unauthenticated)/team/verify/transfer/[token]/page.tsx:72
 #: apps/web/src/app/(unauthenticated)/team/verify/transfer/[token]/page.tsx:122
-#: apps/web/src/components/templates/manage-public-template-dialog.tsx:349
+#: apps/web/src/components/templates/manage-public-template-dialog.tsx:348
 msgid "Continue"
 msgstr "Continuer"
 
@@ -1037,7 +1037,7 @@ msgstr "Copier le jeton"
 msgid "Create"
 msgstr "Créer"
 
-#: apps/web/src/components/forms/v2/signup.tsx:293
+#: apps/web/src/components/forms/v2/signup.tsx:291
 msgid "Create a new account"
 msgstr "Créer un nouveau compte"
 
@@ -1050,11 +1050,11 @@ msgstr "Créer une équipe pour collaborer avec vos membres."
 msgid "Create account"
 msgstr "Créer un compte"
 
-#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:373
+#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:372
 msgid "Create and send"
 msgstr "Créer et envoyer"
 
-#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:375
+#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:374
 msgid "Create as draft"
 msgstr "Créer en tant que brouillon"
 
@@ -1066,7 +1066,7 @@ msgstr "Créer un lien direct"
 msgid "Create Direct Signing Link"
 msgstr "Créer un lien de signature directe"
 
-#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:225
+#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:224
 msgid "Create document from template"
 msgstr "Créer un document à partir du modèle"
 
@@ -1106,16 +1106,16 @@ msgstr "Créer un Webhook"
 msgid "Create your account and start using state-of-the-art document signing."
 msgstr "Créez votre compte et commencez à utiliser la signature de documents à la pointe de la technologie."
 
-#: apps/web/src/components/forms/v2/signup.tsx:297
+#: apps/web/src/components/forms/v2/signup.tsx:295
 msgid "Create your account and start using state-of-the-art document signing. Open and beautiful signing is within your grasp."
 msgstr "Créez votre compte et commencez à utiliser la signature de documents à la pointe de la technologie. Une signature ouverte et magnifique est à votre portée."
 
 #: apps/web/src/app/(dashboard)/admin/documents/document-results.tsx:62
-#: apps/web/src/app/(dashboard)/documents/[id]/document-page-view-information.tsx:42
+#: apps/web/src/app/(dashboard)/documents/[id]/document-page-view-information.tsx:43
 #: apps/web/src/app/(dashboard)/documents/data-table.tsx:54
 #: apps/web/src/app/(dashboard)/settings/security/passkeys/user-passkeys-data-table.tsx:65
 #: apps/web/src/app/(dashboard)/templates/data-table-templates.tsx:56
-#: apps/web/src/components/templates/manage-public-template-dialog.tsx:295
+#: apps/web/src/components/templates/manage-public-template-dialog.tsx:294
 msgid "Created"
 msgstr "Créé"
 
@@ -1258,15 +1258,15 @@ msgstr ""
 msgid "Deleting account..."
 msgstr "Suppression du compte..."
 
-#: apps/web/src/components/templates/manage-public-template-dialog.tsx:400
+#: apps/web/src/components/templates/manage-public-template-dialog.tsx:399
 msgid "Description"
 msgstr ""
 
-#: apps/web/src/components/templates/manage-public-template-dialog.tsx:94
+#: apps/web/src/components/templates/manage-public-template-dialog.tsx:93
 msgid "Description cannot be longer than {MAX_TEMPLATE_PUBLIC_DESCRIPTION_LENGTH} characters"
 msgstr ""
 
-#: apps/web/src/components/templates/manage-public-template-dialog.tsx:90
+#: apps/web/src/components/templates/manage-public-template-dialog.tsx:89
 msgid "Description is required"
 msgstr ""
 
@@ -1319,7 +1319,7 @@ msgstr "Modèle de lien direct supprimé"
 msgid "Direct template link usage exceeded ({0}/{1})"
 msgstr "L'utilisation du lien de modèle direct a été dépassée ({0}/{1})"
 
-#: apps/web/src/components/templates/manage-public-template-dialog.tsx:442
+#: apps/web/src/components/templates/manage-public-template-dialog.tsx:441
 msgid "Disable"
 msgstr "Désactiver"
 
@@ -1390,7 +1390,7 @@ msgstr "Document complété"
 msgid "Document Completed!"
 msgstr "Document Complété !"
 
-#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:178
+#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:177
 msgid "Document created"
 msgstr "Document créé"
 
@@ -1442,7 +1442,7 @@ msgstr "Document non disponible pour signature"
 msgid "Document pending"
 msgstr "Document en attente"
 
-#: apps/web/src/app/(dashboard)/documents/_action-items/resend-document.tsx:111
+#: apps/web/src/app/(dashboard)/documents/_action-items/resend-document.tsx:109
 msgid "Document re-sent"
 msgstr "Document renvoyé"
 
@@ -1531,7 +1531,7 @@ msgstr "Vous n'avez pas de compte? <0>Inscrivez-vous</0>"
 #: apps/web/src/app/(dashboard)/documents/data-table-action-dropdown.tsx:160
 #: apps/web/src/components/(teams)/tables/team-billing-invoices-data-table.tsx:110
 #: apps/web/src/components/forms/2fa/enable-authenticator-app-dialog.tsx:185
-#: apps/web/src/components/forms/2fa/view-recovery-codes-dialog.tsx:123
+#: apps/web/src/components/forms/2fa/view-recovery-codes-dialog.tsx:121
 msgid "Download"
 msgstr "Télécharger"
 
@@ -1591,11 +1591,11 @@ msgid "Edit webhook"
 msgstr "Modifier le webhook"
 
 #: apps/web/src/components/(teams)/dialogs/add-team-email-dialog.tsx:160
-#: apps/web/src/components/(teams)/dialogs/update-team-email-dialog.tsx:160
+#: apps/web/src/components/(teams)/dialogs/update-team-email-dialog.tsx:161
 msgid "eg. Legal"
 msgstr ""
 
-#: apps/web/src/app/(dashboard)/settings/security/passkeys/create-passkey-dialog.tsx:196
+#: apps/web/src/app/(dashboard)/settings/security/passkeys/create-passkey-dialog.tsx:193
 msgid "eg. Mac"
 msgstr ""
 
@@ -1610,31 +1610,31 @@ msgstr ""
 #: apps/web/src/app/(dashboard)/admin/documents/[id]/recipient-item.tsx:168
 #: apps/web/src/app/(dashboard)/admin/users/[id]/page.tsx:114
 #: apps/web/src/app/(dashboard)/admin/users/data-table-users.tsx:71
-#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:276
-#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:283
+#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:275
+#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:282
 #: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:106
 #: apps/web/src/app/(internal)/%5F%5Fhtmltopdf/certificate/page.tsx:113
 #: apps/web/src/app/(recipient)/d/[token]/configure-direct-template.tsx:145
 #: apps/web/src/app/(signing)/sign/[token]/email-field.tsx:126
-#: apps/web/src/app/embed/direct/[[...url]]/client.tsx:377
-#: apps/web/src/app/embed/sign/[[...url]]/client.tsx:258
+#: apps/web/src/app/embed/direct/[[...url]]/client.tsx:379
+#: apps/web/src/app/embed/sign/[[...url]]/client.tsx:260
 #: apps/web/src/components/(teams)/dialogs/add-team-email-dialog.tsx:173
-#: apps/web/src/components/(teams)/dialogs/update-team-email-dialog.tsx:169
+#: apps/web/src/components/(teams)/dialogs/update-team-email-dialog.tsx:170
 #: apps/web/src/components/document/document-history-sheet.tsx:182
-#: apps/web/src/components/forms/forgot-password.tsx:108
-#: apps/web/src/components/forms/profile.tsx:145
+#: apps/web/src/components/forms/forgot-password.tsx:106
+#: apps/web/src/components/forms/profile.tsx:141
 #: apps/web/src/components/forms/signin.tsx:369
-#: apps/web/src/components/forms/signup.tsx:207
+#: apps/web/src/components/forms/signup.tsx:205
 msgid "Email"
 msgstr "Email"
 
-#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:156
-#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:328
-#: apps/web/src/components/forms/send-confirmation-email.tsx:108
+#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:157
+#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:327
+#: apps/web/src/components/forms/send-confirmation-email.tsx:109
 msgid "Email address"
 msgstr "Adresse email"
 
-#: apps/web/src/components/forms/v2/signup.tsx:357
+#: apps/web/src/components/forms/v2/signup.tsx:355
 msgid "Email Address"
 msgstr "Adresse e-mail"
 
@@ -1646,14 +1646,14 @@ msgstr ""
 msgid "Email Confirmed!"
 msgstr "Email confirmé !"
 
-#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:68
+#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:67
 #: apps/web/src/app/(recipient)/d/[token]/configure-direct-template.tsx:47
-#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:46
+#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:47
 #: apps/web/src/app/embed/direct/[[...url]]/schema.ts:23
 #: apps/web/src/app/embed/sign/[[...url]]/schema.ts:23
-#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:109
-#: apps/web/src/components/forms/forgot-password.tsx:40
-#: apps/web/src/components/forms/send-confirmation-email.tsx:37
+#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:108
+#: apps/web/src/components/forms/forgot-password.tsx:38
+#: apps/web/src/components/forms/send-confirmation-email.tsx:36
 #: apps/web/src/components/forms/signin.tsx:67
 #: apps/web/src/components/forms/signup.tsx:47
 #: apps/web/src/components/forms/v2/signup.tsx:61
@@ -1672,8 +1672,8 @@ msgstr "La vérification par email a été supprimée"
 msgid "Email verification has been resent"
 msgstr "La vérification par email a été renvoyée"
 
-#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:99
-#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:105
+#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:98
+#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:104
 #: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:80
 #: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:86
 msgid "Emails must be unique"
@@ -1713,7 +1713,7 @@ msgstr ""
 msgid "Ends On"
 msgstr "Se termine le"
 
-#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:159
+#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:160
 msgid "Enter your email"
 msgstr "Entrez votre email"
 
@@ -1721,7 +1721,7 @@ msgstr "Entrez votre email"
 msgid "Enter your email address to receive the completed document."
 msgstr "Entrez votre adresse e-mail pour recevoir le document complété."
 
-#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:144
+#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:145
 msgid "Enter your name"
 msgstr "Entrez votre nom"
 
@@ -1743,7 +1743,7 @@ msgstr "Entrez votre texte ici"
 #: apps/web/src/app/(dashboard)/templates/[id]/edit-template.tsx:230
 #: apps/web/src/app/(dashboard)/templates/duplicate-template-dialog.tsx:51
 #: apps/web/src/app/(dashboard)/templates/move-template-dialog.tsx:56
-#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:188
+#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:187
 #: apps/web/src/app/(signing)/sign/[token]/checkbox-field.tsx:122
 #: apps/web/src/app/(signing)/sign/[token]/checkbox-field.tsx:151
 #: apps/web/src/app/(signing)/sign/[token]/checkbox-field.tsx:212
@@ -1782,7 +1782,7 @@ msgstr "Tout le monde a signé ! Vous recevrez une copie par email du document s
 msgid "example@example.com"
 msgstr ""
 
-#: apps/web/src/app/(dashboard)/settings/security/passkeys/create-passkey-dialog.tsx:248
+#: apps/web/src/app/(dashboard)/settings/security/passkeys/create-passkey-dialog.tsx:245
 msgid "Exceeded timeout"
 msgstr "Délai dépassé"
 
@@ -1859,10 +1859,10 @@ msgstr "Mot de passe oublié ?"
 #: apps/web/src/app/(recipient)/d/[token]/sign-direct-template.tsx:326
 #: apps/web/src/app/(signing)/sign/[token]/form.tsx:181
 #: apps/web/src/app/(signing)/sign/[token]/name-field.tsx:193
-#: apps/web/src/app/embed/direct/[[...url]]/client.tsx:362
-#: apps/web/src/app/embed/sign/[[...url]]/client.tsx:243
-#: apps/web/src/components/forms/profile.tsx:133
-#: apps/web/src/components/forms/v2/signup.tsx:341
+#: apps/web/src/app/embed/direct/[[...url]]/client.tsx:364
+#: apps/web/src/app/embed/sign/[[...url]]/client.tsx:245
+#: apps/web/src/components/forms/profile.tsx:129
+#: apps/web/src/components/forms/v2/signup.tsx:339
 msgid "Full Name"
 msgstr "Nom complet"
 
@@ -1971,7 +1971,7 @@ msgstr ""
 msgid "If they accept this request, the team will be transferred to their account."
 msgstr "S'ils acceptent cette demande, l'équipe sera transférée à leur compte."
 
-#: apps/web/src/app/(dashboard)/settings/security/passkeys/create-passkey-dialog.tsx:212
+#: apps/web/src/app/(dashboard)/settings/security/passkeys/create-passkey-dialog.tsx:209
 msgid "If you do not want to use the authenticator prompted, you can close it, which will then display the next available authenticator."
 msgstr "Si vous ne souhaitez pas utiliser l'authentificateur proposé, vous pouvez le fermer, ce qui affichera l'authentificateur suivant disponible."
 
@@ -1995,7 +1995,7 @@ msgstr ""
 msgid "Inbox documents"
 msgstr "Documents de la boîte de réception"
 
-#: apps/web/src/app/(dashboard)/documents/[id]/document-page-view-information.tsx:60
+#: apps/web/src/app/(dashboard)/documents/[id]/document-page-view-information.tsx:61
 msgid "Information"
 msgstr "Information"
 
@@ -2015,18 +2015,18 @@ msgstr "Statistiques de l'instance"
 msgid "Introducing public profiles!"
 msgstr ""
 
-#: apps/web/src/components/forms/2fa/view-recovery-codes-dialog.tsx:167
+#: apps/web/src/components/forms/2fa/view-recovery-codes-dialog.tsx:165
 msgid "Invalid code. Please try again."
 msgstr "Code invalide. Veuillez réessayer."
 
-#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:77
+#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:76
 #: apps/web/src/app/(recipient)/d/[token]/configure-direct-template.tsx:56
-#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:55
+#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:56
 #: apps/web/src/app/embed/direct/[[...url]]/schema.ts:32
 #: apps/web/src/app/embed/sign/[[...url]]/schema.ts:32
-#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:118
-#: apps/web/src/components/forms/forgot-password.tsx:49
-#: apps/web/src/components/forms/send-confirmation-email.tsx:46
+#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:117
+#: apps/web/src/components/forms/forgot-password.tsx:47
+#: apps/web/src/components/forms/send-confirmation-email.tsx:45
 #: apps/web/src/components/forms/signin.tsx:76
 #: apps/web/src/components/forms/signup.tsx:56
 #: apps/web/src/components/forms/v2/signup.tsx:70
@@ -2063,19 +2063,19 @@ msgstr "L'invitation a été supprimée"
 msgid "Invitation has been resent"
 msgstr "L'invitation a été renvoyée"
 
-#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:402
+#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:401
 msgid "Invite"
 msgstr "Inviter"
 
-#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:278
+#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:277
 msgid "Invite member"
 msgstr "Inviter un membre"
 
-#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:303
+#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:302
 msgid "Invite Members"
 msgstr "Inviter des membres"
 
-#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:286
+#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:285
 msgid "Invite team members"
 msgstr "Inviter des membres d'équipe"
 
@@ -2141,7 +2141,7 @@ msgstr "Derniers 30 jours"
 msgid "Last 7 days"
 msgstr "Derniers 7 jours"
 
-#: apps/web/src/app/(dashboard)/documents/[id]/document-page-view-information.tsx:48
+#: apps/web/src/app/(dashboard)/documents/[id]/document-page-view-information.tsx:49
 msgid "Last modified"
 msgstr "Dernière modification"
 
@@ -2234,7 +2234,7 @@ msgstr "Gérer le profil de {0}"
 msgid "Manage all teams you are currently associated with."
 msgstr "Gérer toutes les équipes avec lesquelles vous êtes actuellement associé."
 
-#: apps/web/src/components/templates/manage-public-template-dialog.tsx:362
+#: apps/web/src/components/templates/manage-public-template-dialog.tsx:361
 msgid "Manage details for this public template"
 msgstr "Gérer les détails de ce modèle public"
 
@@ -2377,18 +2377,18 @@ msgstr ""
 #: apps/web/src/app/(dashboard)/admin/users/data-table-users.tsx:66
 #: apps/web/src/app/(dashboard)/settings/security/passkeys/user-passkeys-data-table-actions.tsx:144
 #: apps/web/src/app/(dashboard)/settings/security/passkeys/user-passkeys-data-table.tsx:61
-#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:298
-#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:305
-#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:141
+#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:297
+#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:304
+#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:142
 #: apps/web/src/app/(signing)/sign/[token]/name-field.tsx:170
 #: apps/web/src/components/(teams)/dialogs/add-team-email-dialog.tsx:157
-#: apps/web/src/components/(teams)/dialogs/update-team-email-dialog.tsx:157
+#: apps/web/src/components/(teams)/dialogs/update-team-email-dialog.tsx:158
 #: apps/web/src/components/document/document-history-sheet.tsx:194
-#: apps/web/src/components/forms/signup.tsx:191
+#: apps/web/src/components/forms/signup.tsx:189
 msgid "Name"
 msgstr "Nom"
 
-#: apps/web/src/app/(dashboard)/settings/security/passkeys/create-passkey-dialog.tsx:60
+#: apps/web/src/app/(dashboard)/settings/security/passkeys/create-passkey-dialog.tsx:57
 msgid "Name must be at least 3 characters long."
 msgstr ""
 
@@ -2420,9 +2420,9 @@ msgstr "Nouveau propriétaire d'équipe"
 msgid "New Template"
 msgstr "Nouveau modèle"
 
-#: apps/web/src/app/embed/direct/[[...url]]/client.tsx:421
-#: apps/web/src/app/embed/sign/[[...url]]/client.tsx:301
-#: apps/web/src/components/forms/v2/signup.tsx:550
+#: apps/web/src/app/embed/direct/[[...url]]/client.tsx:423
+#: apps/web/src/app/embed/sign/[[...url]]/client.tsx:303
+#: apps/web/src/components/forms/v2/signup.tsx:548
 msgid "Next"
 msgstr "Suivant"
 
@@ -2458,7 +2458,7 @@ msgstr "Aucun résultat trouvé."
 msgid "No token provided"
 msgstr "Aucun jeton fourni"
 
-#: apps/web/src/components/templates/manage-public-template-dialog.tsx:305
+#: apps/web/src/components/templates/manage-public-template-dialog.tsx:304
 msgid "No valid direct templates found"
 msgstr "Aucun modèle direct valide trouvé"
 
@@ -2556,9 +2556,9 @@ msgid "Opened"
 msgstr "Ouvert"
 
 #: apps/web/src/app/(dashboard)/templates/template-direct-link-dialog.tsx:337
-#: apps/web/src/components/forms/signup.tsx:270
-#: apps/web/src/components/forms/signup.tsx:294
-#: apps/web/src/components/forms/v2/signup.tsx:412
+#: apps/web/src/components/forms/signup.tsx:268
+#: apps/web/src/components/forms/signup.tsx:292
+#: apps/web/src/components/forms/v2/signup.tsx:410
 msgid "Or"
 msgstr "Ou"
 
@@ -2566,7 +2566,7 @@ msgstr "Ou"
 msgid "Or continue with"
 msgstr "Ou continuez avec"
 
-#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:352
+#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:351
 msgid "Otherwise, the document will be created as a draft."
 msgstr "Sinon, le document sera créé sous forme de brouillon."
 
@@ -2587,11 +2587,11 @@ msgstr "Payé"
 msgid "Passkey"
 msgstr "Clé d'accès"
 
-#: apps/web/src/app/(dashboard)/settings/security/passkeys/create-passkey-dialog.tsx:245
+#: apps/web/src/app/(dashboard)/settings/security/passkeys/create-passkey-dialog.tsx:242
 msgid "Passkey already exists for the provided authenticator"
 msgstr "La clé d'accès existe déjà pour l'authentificateur fourni"
 
-#: apps/web/src/app/(dashboard)/settings/security/passkeys/create-passkey-dialog.tsx:235
+#: apps/web/src/app/(dashboard)/settings/security/passkeys/create-passkey-dialog.tsx:232
 msgid "Passkey creation cancelled due to one of the following reasons:"
 msgstr "La création de la clé d'accès a été annulée pour l'une des raisons suivantes :"
 
@@ -2603,7 +2603,7 @@ msgstr "La clé d'accès a été supprimée"
 msgid "Passkey has been updated"
 msgstr "La clé d'accès a été mise à jour"
 
-#: apps/web/src/app/(dashboard)/settings/security/passkeys/create-passkey-dialog.tsx:193
+#: apps/web/src/app/(dashboard)/settings/security/passkeys/create-passkey-dialog.tsx:190
 msgid "Passkey name"
 msgstr "Nom de la clé d'accès"
 
@@ -2616,7 +2616,7 @@ msgstr ""
 msgid "Passkeys"
 msgstr "Clés d'accès"
 
-#: apps/web/src/app/(dashboard)/settings/security/passkeys/create-passkey-dialog.tsx:174
+#: apps/web/src/app/(dashboard)/settings/security/passkeys/create-passkey-dialog.tsx:171
 msgid "Passkeys allow you to sign in and authenticate using biometrics, password managers, etc."
 msgstr "Les clés d'accès vous permettent de vous connecter et de vous authentifier en utilisant des biométries, des gestionnaires de mots de passe, etc."
 
@@ -2628,14 +2628,14 @@ msgstr "Les clés d'accès ne sont pas prises en charge sur ce navigateur"
 #: apps/web/src/components/forms/password.tsx:167
 #: apps/web/src/components/forms/reset-password.tsx:115
 #: apps/web/src/components/forms/signin.tsx:387
-#: apps/web/src/components/forms/signup.tsx:223
-#: apps/web/src/components/forms/v2/signup.tsx:373
+#: apps/web/src/components/forms/signup.tsx:221
+#: apps/web/src/components/forms/v2/signup.tsx:371
 msgid "Password"
 msgstr "Mot de passe"
 
-#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:65
-#: apps/web/src/components/forms/signup.tsx:71
-#: apps/web/src/components/forms/v2/signup.tsx:95
+#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:66
+#: apps/web/src/components/forms/signup.tsx:69
+#: apps/web/src/components/forms/v2/signup.tsx:93
 msgid "Password should not be common or based on personal information"
 msgstr ""
 
@@ -2705,7 +2705,7 @@ msgstr "Personnel"
 msgid "Personal Account"
 msgstr "Compte personnel"
 
-#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:174
+#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:175
 msgid "Pick a password"
 msgstr "Choisir un mot de passe"
 
@@ -2713,7 +2713,7 @@ msgstr "Choisir un mot de passe"
 msgid "Pick any of the following agreements below and start signing to get started"
 msgstr "Choisissez l'un des accords suivants ci-dessous et commencez à signer pour commencer"
 
-#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:240
+#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:239
 msgid "Please check the CSV file and make sure it is according to our format"
 msgstr "Veuillez vérifier le fichier CSV et vous assurer qu'il est conforme à notre format"
 
@@ -2737,22 +2737,22 @@ msgstr "Veuillez entrer un nom significatif pour votre jeton. Cela vous aidera �
 msgid "Please enter a valid backup code."
 msgstr ""
 
-#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:71
-#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:74
+#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:70
+#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:73
 #: apps/web/src/app/(recipient)/d/[token]/configure-direct-template.tsx:50
 #: apps/web/src/app/(recipient)/d/[token]/configure-direct-template.tsx:53
-#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:49
-#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:52
+#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:50
+#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:53
 #: apps/web/src/app/embed/direct/[[...url]]/schema.ts:26
 #: apps/web/src/app/embed/direct/[[...url]]/schema.ts:29
 #: apps/web/src/app/embed/sign/[[...url]]/schema.ts:26
 #: apps/web/src/app/embed/sign/[[...url]]/schema.ts:29
-#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:112
-#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:115
-#: apps/web/src/components/forms/forgot-password.tsx:43
-#: apps/web/src/components/forms/forgot-password.tsx:46
-#: apps/web/src/components/forms/send-confirmation-email.tsx:40
-#: apps/web/src/components/forms/send-confirmation-email.tsx:43
+#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:111
+#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:114
+#: apps/web/src/components/forms/forgot-password.tsx:41
+#: apps/web/src/components/forms/forgot-password.tsx:44
+#: apps/web/src/components/forms/send-confirmation-email.tsx:39
+#: apps/web/src/components/forms/send-confirmation-email.tsx:42
 #: apps/web/src/components/forms/signin.tsx:70
 #: apps/web/src/components/forms/signin.tsx:73
 #: apps/web/src/components/forms/signup.tsx:50
@@ -2762,9 +2762,9 @@ msgstr ""
 msgid "Please enter a valid email address."
 msgstr ""
 
-#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:41
-#: apps/web/src/components/(teams)/dialogs/update-team-email-dialog.tsx:55
-#: apps/web/src/components/forms/profile.tsx:45
+#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:42
+#: apps/web/src/components/(teams)/dialogs/update-team-email-dialog.tsx:56
+#: apps/web/src/components/forms/profile.tsx:43
 #: apps/web/src/components/forms/signup.tsx:42
 #: apps/web/src/components/forms/v2/signup.tsx:56
 msgid "Please enter a valid name."
@@ -2814,7 +2814,7 @@ msgstr "Veuillez noter que vous perdrez l'accès à tous les documents associés
 msgid "Please provide a token from the authenticator, or a backup code. If you do not have a backup code available, please contact support."
 msgstr "Veuillez fournir un jeton de l'authentificateur, ou un code de secours. Si vous n'avez pas de code de secours disponible, veuillez contacter le support."
 
-#: apps/web/src/components/forms/2fa/view-recovery-codes-dialog.tsx:136
+#: apps/web/src/components/forms/2fa/view-recovery-codes-dialog.tsx:134
 msgid "Please provide a token from your authenticator, or a backup code."
 msgstr "Veuillez fournir un jeton de votre authentificateur, ou un code de secours."
 
@@ -2822,7 +2822,7 @@ msgstr "Veuillez fournir un jeton de votre authentificateur, ou un code de secou
 msgid "Please review the document before signing."
 msgstr ""
 
-#: apps/web/src/components/forms/send-confirmation-email.tsx:90
+#: apps/web/src/components/forms/send-confirmation-email.tsx:91
 msgid "Please try again and make sure you enter the correct email address."
 msgstr "Veuillez réessayer et assurez-vous d'entrer la bonne adresse email."
 
@@ -2838,8 +2838,8 @@ msgstr "Veuillez réessayer plus tard."
 msgid "Please type <0>{0}</0> to confirm."
 msgstr "Veuillez taper <0>{0}</0> pour confirmer."
 
-#: apps/web/src/app/embed/direct/[[...url]]/client.tsx:457
-#: apps/web/src/app/embed/sign/[[...url]]/client.tsx:331
+#: apps/web/src/app/embed/direct/[[...url]]/client.tsx:459
+#: apps/web/src/app/embed/sign/[[...url]]/client.tsx:333
 msgid "Powered by"
 msgstr ""
 
@@ -2877,7 +2877,7 @@ msgid "Profile is currently <0>visible</0>."
 msgstr "Le profil est actuellement <0>visible</0>."
 
 #: apps/web/src/app/(dashboard)/admin/users/[id]/page.tsx:72
-#: apps/web/src/components/forms/profile.tsx:95
+#: apps/web/src/components/forms/profile.tsx:91
 msgid "Profile updated"
 msgstr "Profil mis à jour"
 
@@ -2899,7 +2899,7 @@ msgid "Public profile URL"
 msgstr "URL du profil public"
 
 #: apps/web/src/components/forms/public-profile-claim-dialog.tsx:157
-#: apps/web/src/components/forms/v2/signup.tsx:479
+#: apps/web/src/components/forms/v2/signup.tsx:477
 msgid "Public profile username"
 msgstr "Nom d'utilisateur du profil public"
 
@@ -2970,9 +2970,9 @@ msgstr "Code de récupération copié"
 msgid "Recovery codes"
 msgstr "Codes de récupération"
 
-#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:100
-#: apps/web/src/components/forms/signup.tsx:120
-#: apps/web/src/components/forms/v2/signup.tsx:156
+#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:101
+#: apps/web/src/components/forms/signup.tsx:118
+#: apps/web/src/components/forms/v2/signup.tsx:154
 msgid "Registration Successful"
 msgstr "Inscription réussie"
 
@@ -3014,7 +3014,7 @@ msgstr "Demander le transfert"
 msgid "Reseal document"
 msgstr "Rescellage du document"
 
-#: apps/web/src/app/(dashboard)/documents/_action-items/resend-document.tsx:132
+#: apps/web/src/app/(dashboard)/documents/_action-items/resend-document.tsx:130
 #: apps/web/src/components/(teams)/tables/team-member-invites-data-table.tsx:154
 msgid "Resend"
 msgstr "Renvoyer"
@@ -3036,13 +3036,13 @@ msgstr ""
 msgid "Reset"
 msgstr "Réinitialiser"
 
-#: apps/web/src/components/forms/forgot-password.tsx:83
+#: apps/web/src/components/forms/forgot-password.tsx:81
 msgid "Reset email sent"
 msgstr "E-mail de réinitialisation envoyé"
 
 #: apps/web/src/app/(unauthenticated)/reset-password/[token]/page.tsx:30
 #: apps/web/src/app/(unauthenticated)/reset-password/page.tsx:17
-#: apps/web/src/components/forms/forgot-password.tsx:120
+#: apps/web/src/components/forms/forgot-password.tsx:118
 #: apps/web/src/components/forms/reset-password.tsx:143
 msgid "Reset Password"
 msgstr "Réinitialiser le mot de passe"
@@ -3100,7 +3100,7 @@ msgid "Revoke access"
 msgstr "Révoquer l'accès"
 
 #: apps/web/src/app/(dashboard)/templates/template-direct-link-dialog.tsx:283
-#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:346
+#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:345
 #: apps/web/src/components/(teams)/dialogs/update-team-member-dialog.tsx:163
 #: apps/web/src/components/(teams)/tables/current-user-teams-data-table.tsx:82
 #: apps/web/src/components/(teams)/tables/team-member-invites-data-table.tsx:123
@@ -3174,11 +3174,11 @@ msgstr "Sélectionnez une équipe pour déplacer ce document. Cette action ne pe
 msgid "Select a team to move this template to. This action cannot be undone."
 msgstr "Sélectionnez une équipe pour déplacer ce modèle. Cette action ne peut pas être annulée."
 
-#: apps/web/src/components/templates/manage-public-template-dialog.tsx:282
+#: apps/web/src/components/templates/manage-public-template-dialog.tsx:281
 msgid "Select a template you'd like to display on your public profile"
 msgstr "Sélectionnez un modèle que vous souhaitez afficher sur votre profil public"
 
-#: apps/web/src/components/templates/manage-public-template-dialog.tsx:278
+#: apps/web/src/components/templates/manage-public-template-dialog.tsx:277
 msgid "Select a template you'd like to display on your team's public profile"
 msgstr "Sélectionnez un modèle que vous souhaitez afficher sur le profil public de votre équipe"
 
@@ -3190,15 +3190,15 @@ msgstr "Sélectionner la clé d'authentification"
 msgid "Select values..."
 msgstr ""
 
-#: apps/web/src/components/forms/send-confirmation-email.tsx:120
+#: apps/web/src/components/forms/send-confirmation-email.tsx:121
 msgid "Send confirmation email"
 msgstr "Envoyer l'e-mail de confirmation"
 
-#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:336
+#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:335
 msgid "Send document"
 msgstr "Envoyer le document"
 
-#: apps/web/src/app/(dashboard)/documents/_action-items/resend-document.tsx:205
+#: apps/web/src/app/(dashboard)/documents/_action-items/resend-document.tsx:203
 msgid "Send reminder"
 msgstr "Envoyer un rappel"
 
@@ -3206,7 +3206,7 @@ msgstr "Envoyer un rappel"
 msgid "Sender"
 msgstr "Expéditeur"
 
-#: apps/web/src/components/forms/forgot-password.tsx:120
+#: apps/web/src/components/forms/forgot-password.tsx:118
 msgid "Sending Reset Email..."
 msgstr "Envoi de l'e-mail de réinitialisation..."
 
@@ -3226,7 +3226,7 @@ msgstr ""
 msgid "Sent:"
 msgstr ""
 
-#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:171
+#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:172
 msgid "Set a password"
 msgstr "Définir un mot de passe"
 
@@ -3275,7 +3275,7 @@ msgstr "Afficher des modèles dans le profil public de votre équipe pour que vo
 #: apps/web/src/app/(dashboard)/documents/data-table-action-button.tsx:114
 #: apps/web/src/app/(dashboard)/documents/data-table-action-dropdown.tsx:137
 #: apps/web/src/app/(profile)/p/[url]/page.tsx:192
-#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-2fa.tsx:203
+#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-2fa.tsx:201
 #: apps/web/src/app/(signing)/sign/[token]/document-action-auth-passkey.tsx:264
 #: apps/web/src/app/(signing)/sign/[token]/name-field.tsx:224
 #: apps/web/src/app/(signing)/sign/[token]/sign-dialog.tsx:124
@@ -3293,8 +3293,8 @@ msgstr "Signer comme {0} <0>({1})</0>"
 msgid "Sign as<0>{0} <1>({1})</1></0>"
 msgstr "Signer comme<0>{0} <1>({1})</1></0>"
 
-#: apps/web/src/app/embed/direct/[[...url]]/client.tsx:330
-#: apps/web/src/app/embed/sign/[[...url]]/client.tsx:211
+#: apps/web/src/app/embed/direct/[[...url]]/client.tsx:332
+#: apps/web/src/app/embed/sign/[[...url]]/client.tsx:213
 msgid "Sign document"
 msgstr "Signer le document"
 
@@ -3306,8 +3306,8 @@ msgstr ""
 msgid "Sign field"
 msgstr "Champ de signature"
 
-#: apps/web/src/components/forms/signup.tsx:239
-#: apps/web/src/components/forms/v2/signup.tsx:391
+#: apps/web/src/components/forms/signup.tsx:237
+#: apps/web/src/components/forms/v2/signup.tsx:389
 msgid "Sign Here"
 msgstr "Signer ici"
 
@@ -3327,8 +3327,8 @@ msgstr "Connectez-vous à votre compte"
 msgid "Sign Out"
 msgstr "Déconnexion"
 
-#: apps/web/src/app/embed/direct/[[...url]]/client.tsx:351
-#: apps/web/src/app/embed/sign/[[...url]]/client.tsx:232
+#: apps/web/src/app/embed/direct/[[...url]]/client.tsx:353
+#: apps/web/src/app/embed/sign/[[...url]]/client.tsx:234
 msgid "Sign the document to complete the process."
 msgstr "Signez le document pour terminer le processus."
 
@@ -3337,17 +3337,17 @@ msgid "Sign up"
 msgstr "S'inscrire"
 
 #: apps/web/src/app/(unauthenticated)/signup/page.tsx:20
-#: apps/web/src/components/forms/signup.tsx:262
+#: apps/web/src/components/forms/signup.tsx:260
 msgid "Sign Up"
 msgstr "S'inscrire"
 
-#: apps/web/src/components/forms/signup.tsx:284
-#: apps/web/src/components/forms/v2/signup.tsx:430
+#: apps/web/src/components/forms/signup.tsx:282
+#: apps/web/src/components/forms/v2/signup.tsx:428
 msgid "Sign Up with Google"
 msgstr "S'inscrire avec Google"
 
-#: apps/web/src/components/forms/signup.tsx:308
-#: apps/web/src/components/forms/v2/signup.tsx:446
+#: apps/web/src/components/forms/signup.tsx:306
+#: apps/web/src/components/forms/v2/signup.tsx:444
 msgid "Sign Up with OIDC"
 msgstr "S'inscrire avec OIDC"
 
@@ -3357,9 +3357,9 @@ msgstr "S'inscrire avec OIDC"
 #: apps/web/src/app/(signing)/sign/[token]/form.tsx:195
 #: apps/web/src/app/(signing)/sign/[token]/signature-field.tsx:195
 #: apps/web/src/app/(signing)/sign/[token]/signature-field.tsx:225
-#: apps/web/src/app/embed/direct/[[...url]]/client.tsx:392
-#: apps/web/src/app/embed/sign/[[...url]]/client.tsx:272
-#: apps/web/src/components/forms/profile.tsx:155
+#: apps/web/src/app/embed/direct/[[...url]]/client.tsx:394
+#: apps/web/src/app/embed/sign/[[...url]]/client.tsx:274
+#: apps/web/src/components/forms/profile.tsx:151
 msgid "Signature"
 msgstr "Signature"
 
@@ -3367,7 +3367,7 @@ msgstr "Signature"
 msgid "Signature ID:"
 msgstr ""
 
-#: apps/web/src/components/forms/profile.tsx:50
+#: apps/web/src/components/forms/profile.tsx:46
 msgid "Signature Pad cannot be empty"
 msgstr ""
 
@@ -3409,7 +3409,7 @@ msgstr ""
 msgid "Signing in..."
 msgstr "Connexion en cours..."
 
-#: apps/web/src/components/forms/signup.tsx:262
+#: apps/web/src/components/forms/signup.tsx:260
 msgid "Signing up..."
 msgstr "Inscription en cours..."
 
@@ -3426,7 +3426,7 @@ msgstr "Bannière du site"
 msgid "Site Settings"
 msgstr "Paramètres du site"
 
-#: apps/web/src/app/(dashboard)/documents/_action-items/resend-document.tsx:119
+#: apps/web/src/app/(dashboard)/documents/_action-items/resend-document.tsx:117
 #: apps/web/src/app/(dashboard)/documents/[id]/document-page-view-button.tsx:63
 #: apps/web/src/app/(dashboard)/documents/[id]/document-page-view-dropdown.tsx:88
 #: apps/web/src/app/(dashboard)/documents/[id]/logs/download-audit-log-button.tsx:65
@@ -3458,7 +3458,7 @@ msgstr "Paramètres du site"
 #: apps/web/src/app/embed/sign/[[...url]]/client.tsx:127
 #: apps/web/src/components/(teams)/dialogs/create-team-checkout-dialog.tsx:50
 #: apps/web/src/components/(teams)/dialogs/create-team-checkout-dialog.tsx:99
-#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:238
+#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:237
 #: apps/web/src/components/(teams)/dialogs/remove-team-email-dialog.tsx:64
 #: apps/web/src/components/(teams)/dialogs/remove-team-email-dialog.tsx:83
 #: apps/web/src/components/(teams)/tables/pending-user-teams-data-table-actions.tsx:33
@@ -3493,8 +3493,8 @@ msgstr "Quelque chose a mal tourné lors de la mise à jour de l'abonnement de l
 msgid "Something went wrong."
 msgstr ""
 
-#: apps/web/src/app/(dashboard)/settings/security/passkeys/create-passkey-dialog.tsx:256
-#: apps/web/src/components/forms/2fa/view-recovery-codes-dialog.tsx:170
+#: apps/web/src/app/(dashboard)/settings/security/passkeys/create-passkey-dialog.tsx:253
+#: apps/web/src/components/forms/2fa/view-recovery-codes-dialog.tsx:168
 msgid "Something went wrong. Please try again or contact support."
 msgstr "Quelque chose a mal tourné. Veuillez réessayer ou contacter le support."
 
@@ -3545,24 +3545,24 @@ msgstr "Abonnements"
 #: apps/web/src/components/(teams)/dialogs/create-team-dialog.tsx:92
 #: apps/web/src/components/(teams)/dialogs/delete-team-dialog.tsx:72
 #: apps/web/src/components/(teams)/dialogs/delete-team-member-dialog.tsx:49
-#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:178
+#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:177
 #: apps/web/src/components/(teams)/dialogs/leave-team-dialog.tsx:49
 #: apps/web/src/components/(teams)/dialogs/remove-team-email-dialog.tsx:57
 #: apps/web/src/components/(teams)/dialogs/remove-team-email-dialog.tsx:76
 #: apps/web/src/components/(teams)/dialogs/transfer-team-dialog.tsx:108
-#: apps/web/src/components/(teams)/dialogs/update-team-email-dialog.tsx:95
+#: apps/web/src/components/(teams)/dialogs/update-team-email-dialog.tsx:96
 #: apps/web/src/components/(teams)/dialogs/update-team-member-dialog.tsx:92
 #: apps/web/src/components/(teams)/forms/update-team-form.tsx:72
 #: apps/web/src/components/(teams)/tables/pending-user-teams-data-table-actions.tsx:27
 #: apps/web/src/components/(teams)/tables/team-member-invites-data-table.tsx:62
 #: apps/web/src/components/(teams)/tables/team-member-invites-data-table.tsx:79
 #: apps/web/src/components/forms/public-profile-form.tsx:84
-#: apps/web/src/components/templates/manage-public-template-dialog.tsx:154
-#: apps/web/src/components/templates/manage-public-template-dialog.tsx:191
+#: apps/web/src/components/templates/manage-public-template-dialog.tsx:153
+#: apps/web/src/components/templates/manage-public-template-dialog.tsx:190
 msgid "Success"
 msgstr "Succès"
 
-#: apps/web/src/app/(dashboard)/settings/security/passkeys/create-passkey-dialog.tsx:103
+#: apps/web/src/app/(dashboard)/settings/security/passkeys/create-passkey-dialog.tsx:100
 msgid "Successfully created passkey"
 msgstr "Clé d'authentification créée avec succès"
 
@@ -3608,7 +3608,7 @@ msgstr "Vérification de l'e-mail de l'équipe"
 msgid "Team email verified!"
 msgstr "E-mail de l'équipe vérifié !"
 
-#: apps/web/src/components/(teams)/dialogs/update-team-email-dialog.tsx:96
+#: apps/web/src/components/(teams)/dialogs/update-team-email-dialog.tsx:97
 msgid "Team email was updated."
 msgstr "L'e-mail de l'équipe a été mis à jour."
 
@@ -3617,7 +3617,7 @@ msgstr "L'e-mail de l'équipe a été mis à jour."
 msgid "Team invitation"
 msgstr "Invitation d'équipe"
 
-#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:179
+#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:178
 msgid "Team invitations have been sent."
 msgstr "Les invitations d'équipe ont été envoyées."
 
@@ -3692,8 +3692,8 @@ msgstr "Équipes"
 msgid "Teams restricted"
 msgstr "Équipes restreintes"
 
-#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:436
-#: apps/web/src/components/templates/manage-public-template-dialog.tsx:292
+#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:435
+#: apps/web/src/components/templates/manage-public-template-dialog.tsx:291
 msgid "Template"
 msgstr "Modèle"
 
@@ -3709,11 +3709,11 @@ msgstr "Document modèle téléchargé"
 msgid "Template duplicated"
 msgstr "Modèle dupliqué"
 
-#: apps/web/src/components/templates/manage-public-template-dialog.tsx:155
+#: apps/web/src/components/templates/manage-public-template-dialog.tsx:154
 msgid "Template has been removed from your public profile."
 msgstr "Le modèle a été retiré de votre profil public."
 
-#: apps/web/src/components/templates/manage-public-template-dialog.tsx:192
+#: apps/web/src/components/templates/manage-public-template-dialog.tsx:191
 msgid "Template has been updated."
 msgstr "Le modèle a été mis à jour."
 
@@ -3781,7 +3781,7 @@ msgstr "Le document a été déplacé avec succès vers l'équipe sélectionnée
 msgid "The document is now completed, please follow any instructions provided within the parent application."
 msgstr "Le document est maintenant complet, veuillez suivre toutes les instructions fournies dans l'application parente."
 
-#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:195
+#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:194
 msgid "The document was created but could not be sent to recipients."
 msgstr "Le document a été créé mais n'a pas pu être envoyé aux destinataires."
 
@@ -3789,7 +3789,7 @@ msgstr "Le document a été créé mais n'a pas pu être envoyé aux destinatair
 msgid "The document will be hidden from your account"
 msgstr "Le document sera caché de votre compte"
 
-#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:344
+#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:343
 msgid "The document will be immediately sent to recipients if this is checked."
 msgstr "Le document sera immédiatement envoyé aux destinataires si cela est coché."
 
@@ -3820,11 +3820,11 @@ msgstr "Le lien de profil a été copié dans votre presse-papiers"
 msgid "The profile you are looking for could not be found."
 msgstr "Le profil que vous recherchez n'a pas pu être trouvé."
 
-#: apps/web/src/components/templates/manage-public-template-dialog.tsx:405
+#: apps/web/src/components/templates/manage-public-template-dialog.tsx:404
 msgid "The public description that will be displayed with this template"
 msgstr "La description publique qui sera affichée avec ce modèle"
 
-#: apps/web/src/components/templates/manage-public-template-dialog.tsx:381
+#: apps/web/src/components/templates/manage-public-template-dialog.tsx:380
 msgid "The public name for your template"
 msgstr "Le nom public pour votre modèle"
 
@@ -3860,7 +3860,7 @@ msgstr "L'équipe que vous recherchez a peut-être été supprimée, renommée o
 msgid "The template has been successfully moved to the selected team."
 msgstr "Le modèle a été déplacé avec succès vers l'équipe sélectionnée."
 
-#: apps/web/src/components/templates/manage-public-template-dialog.tsx:468
+#: apps/web/src/components/templates/manage-public-template-dialog.tsx:467
 msgid "The template will be removed from your profile"
 msgstr "Le modèle sera retiré de votre profil"
 
@@ -3937,7 +3937,7 @@ msgstr "Ce document n'a pas pu être supprimé pour le moment. Veuillez réessay
 msgid "This document could not be duplicated at this time. Please try again."
 msgstr "Ce document n'a pas pu être dupliqué pour le moment. Veuillez réessayer."
 
-#: apps/web/src/app/(dashboard)/documents/_action-items/resend-document.tsx:120
+#: apps/web/src/app/(dashboard)/documents/_action-items/resend-document.tsx:118
 msgid "This document could not be re-sent at this time. Please try again."
 msgstr "Ce document n'a pas pu être renvoyé pour le moment. Veuillez réessayer."
 
@@ -3969,7 +3969,7 @@ msgstr "Ce lien est invalide ou a expiré. Veuillez contacter votre équipe pour
 msgid "This link is invalid or has expired. Please contact your team to resend a verification."
 msgstr "Ce lien est invalide ou a expiré. Veuillez contacter votre équipe pour renvoyer une vérification."
 
-#: apps/web/src/app/(dashboard)/settings/security/passkeys/create-passkey-dialog.tsx:224
+#: apps/web/src/app/(dashboard)/settings/security/passkeys/create-passkey-dialog.tsx:221
 msgid "This passkey has already been registered."
 msgstr "Cette clé d'accès a déjà été enregistrée."
 
@@ -4006,7 +4006,7 @@ msgstr "Ce jeton est invalide ou a expiré. Veuillez contacter votre équipe pou
 msgid "This URL is already in use."
 msgstr "Cette URL est déjà utilisée."
 
-#: apps/web/src/components/forms/v2/signup.tsx:174
+#: apps/web/src/components/forms/v2/signup.tsx:172
 msgid "This username has already been taken"
 msgstr "Ce nom d'utilisateur a déjà été pris"
 
@@ -4030,15 +4030,15 @@ msgstr ""
 #: apps/web/src/app/(dashboard)/admin/documents/document-results.tsx:67
 #: apps/web/src/app/(dashboard)/documents/data-table.tsx:60
 #: apps/web/src/app/(dashboard)/templates/data-table-templates.tsx:61
-#: apps/web/src/components/templates/manage-public-template-dialog.tsx:377
+#: apps/web/src/components/templates/manage-public-template-dialog.tsx:376
 msgid "Title"
 msgstr "Titre"
 
-#: apps/web/src/components/templates/manage-public-template-dialog.tsx:84
+#: apps/web/src/components/templates/manage-public-template-dialog.tsx:83
 msgid "Title cannot be longer than {MAX_TEMPLATE_PUBLIC_TITLE_LENGTH} characters"
 msgstr ""
 
-#: apps/web/src/components/templates/manage-public-template-dialog.tsx:80
+#: apps/web/src/components/templates/manage-public-template-dialog.tsx:79
 msgid "Title is required"
 msgstr ""
 
@@ -4046,7 +4046,7 @@ msgstr ""
 msgid "To accept this invitation you must create an account."
 msgstr "Pour accepter cette invitation, vous devez créer un compte."
 
-#: apps/web/src/components/(teams)/dialogs/update-team-email-dialog.tsx:141
+#: apps/web/src/components/(teams)/dialogs/update-team-email-dialog.tsx:142
 msgid "To change the email you must remove and add a new email address."
 msgstr "Pour changer l'e-mail, vous devez supprimer et ajouter une nouvelle adresse e-mail."
 
@@ -4116,15 +4116,15 @@ msgstr "Le jeton n'a pas de date d'expiration"
 msgid "Token expiration date"
 msgstr "Date d'expiration du jeton"
 
-#: apps/web/src/components/forms/2fa/view-recovery-codes-dialog.tsx:52
+#: apps/web/src/components/forms/2fa/view-recovery-codes-dialog.tsx:50
 msgid "Token is required"
 msgstr ""
 
-#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-2fa.tsx:52
+#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-2fa.tsx:50
 msgid "Token must at least 4 characters long"
 msgstr ""
 
-#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-2fa.tsx:55
+#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-2fa.tsx:53
 msgid "Token must be at most 10 characters long"
 msgstr ""
 
@@ -4297,7 +4297,7 @@ msgstr "Impossible de configurer l'authentification à deux facteurs"
 msgid "Unable to sign in"
 msgstr "Impossible de se connecter"
 
-#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-2fa.tsx:187
+#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-2fa.tsx:185
 #: apps/web/src/app/(signing)/sign/[token]/document-action-auth-passkey.tsx:248
 #: apps/web/src/app/(teams)/t/[teamUrl]/error.tsx:27
 msgid "Unauthorized"
@@ -4332,10 +4332,10 @@ msgstr "Non payé"
 
 #: apps/web/src/app/(dashboard)/settings/public-profile/public-templates-data-table.tsx:181
 #: apps/web/src/app/(dashboard)/settings/security/passkeys/user-passkeys-data-table-actions.tsx:162
-#: apps/web/src/components/(teams)/dialogs/update-team-email-dialog.tsx:182
+#: apps/web/src/components/(teams)/dialogs/update-team-email-dialog.tsx:183
 #: apps/web/src/components/(teams)/dialogs/update-team-member-dialog.tsx:191
 #: apps/web/src/components/forms/public-profile-form.tsx:285
-#: apps/web/src/components/templates/manage-public-template-dialog.tsx:453
+#: apps/web/src/components/templates/manage-public-template-dialog.tsx:452
 msgid "Update"
 msgstr "Mettre à jour"
 
@@ -4351,7 +4351,7 @@ msgstr "Mettre à jour la clé d'accès"
 msgid "Update password"
 msgstr "Mettre à jour le mot de passe"
 
-#: apps/web/src/components/forms/profile.tsx:173
+#: apps/web/src/components/forms/profile.tsx:169
 msgid "Update profile"
 msgstr "Mettre à jour le profil"
 
@@ -4367,8 +4367,8 @@ msgstr "Mettre à jour le rôle"
 msgid "Update team"
 msgstr "Mettre à jour l'équipe"
 
-#: apps/web/src/components/(teams)/dialogs/update-team-email-dialog.tsx:129
-#: apps/web/src/components/(teams)/dialogs/update-team-email-dialog.tsx:137
+#: apps/web/src/components/(teams)/dialogs/update-team-email-dialog.tsx:130
+#: apps/web/src/components/(teams)/dialogs/update-team-email-dialog.tsx:138
 msgid "Update team email"
 msgstr "Mettre à jour l'e-mail de l'équipe"
 
@@ -4394,7 +4394,7 @@ msgstr "Mettre à jour le webhook"
 msgid "Updating password..."
 msgstr "Mise à jour du mot de passe..."
 
-#: apps/web/src/components/forms/profile.tsx:173
+#: apps/web/src/components/forms/profile.tsx:169
 msgid "Updating profile..."
 msgstr "Mise à jour du profil..."
 
@@ -4432,7 +4432,7 @@ msgstr "Utiliser l'authentificateur"
 msgid "Use Backup Code"
 msgstr "Utiliser le code de secours"
 
-#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:219
+#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:218
 msgid "Use Template"
 msgstr "Utiliser le modèle"
 
@@ -4445,7 +4445,7 @@ msgstr "Utilisateur"
 msgid "User ID"
 msgstr "ID utilisateur"
 
-#: apps/web/src/components/forms/v2/signup.tsx:263
+#: apps/web/src/components/forms/v2/signup.tsx:261
 msgid "User profiles are here!"
 msgstr "Les profils des utilisateurs sont ici !"
 
@@ -4454,7 +4454,7 @@ msgid "User settings"
 msgstr "Paramètres de l'utilisateur"
 
 #: apps/web/src/components/forms/public-profile-claim-dialog.tsx:50
-#: apps/web/src/components/forms/v2/signup.tsx:86
+#: apps/web/src/components/forms/v2/signup.tsx:84
 msgid "Username can only contain alphanumeric characters and dashes."
 msgstr ""
 
@@ -4503,7 +4503,7 @@ msgstr ""
 #: apps/web/src/app/(dashboard)/documents/data-table-action-button.tsx:135
 #: apps/web/src/app/(dashboard)/documents/data-table-action-dropdown.tsx:130
 #: apps/web/src/components/(teams)/tables/team-billing-invoices-data-table.tsx:100
-#: apps/web/src/components/forms/2fa/view-recovery-codes-dialog.tsx:184
+#: apps/web/src/components/forms/2fa/view-recovery-codes-dialog.tsx:182
 msgid "View"
 msgstr "Voir"
 
@@ -4523,7 +4523,7 @@ msgstr "Voir toute l'activité de sécurité récente liée à votre compte."
 msgid "View all security activity related to your account."
 msgstr "Voir toute l'activité de sécurité liée à votre compte."
 
-#: apps/web/src/components/forms/2fa/view-recovery-codes-dialog.tsx:94
+#: apps/web/src/components/forms/2fa/view-recovery-codes-dialog.tsx:92
 msgid "View Codes"
 msgstr "Voir les codes"
 
@@ -4543,8 +4543,8 @@ msgstr "Voir les invitations"
 msgid "View Original Document"
 msgstr "Voir le document original"
 
-#: apps/web/src/components/forms/2fa/view-recovery-codes-dialog.tsx:103
-#: apps/web/src/components/forms/2fa/view-recovery-codes-dialog.tsx:132
+#: apps/web/src/components/forms/2fa/view-recovery-codes-dialog.tsx:101
+#: apps/web/src/components/forms/2fa/view-recovery-codes-dialog.tsx:130
 msgid "View Recovery Codes"
 msgstr "Voir les codes de récupération"
 
@@ -4640,7 +4640,7 @@ msgstr "Une erreur inconnue s'est produite lors de la suppression de votre compt
 msgid "We encountered an unknown error while attempting to delete your document. Please try again later."
 msgstr ""
 
-#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:188
+#: apps/web/src/components/(teams)/dialogs/invite-team-member-dialog.tsx:187
 msgid "We encountered an unknown error while attempting to invite team members. Please try again later."
 msgstr "Une erreur inconnue s'est produite lors de l'invitation de membres de l'équipe. Veuillez réessayer plus tard."
 
@@ -4648,7 +4648,7 @@ msgstr "Une erreur inconnue s'est produite lors de l'invitation de membres de l'
 msgid "We encountered an unknown error while attempting to leave this team. Please try again later."
 msgstr "Une erreur inconnue s'est produite lors de votre départ de cette équipe. Veuillez réessayer plus tard."
 
-#: apps/web/src/components/templates/manage-public-template-dialog.tsx:164
+#: apps/web/src/components/templates/manage-public-template-dialog.tsx:163
 msgid "We encountered an unknown error while attempting to remove this template from your profile. Please try again later."
 msgstr "Une erreur inconnue s'est produite lors de la suppression de ce modèle de votre profil. Veuillez réessayer plus tard."
 
@@ -4676,23 +4676,23 @@ msgstr "Une erreur inconnue s'est produite lors de la révocation de l'accès. V
 msgid "We encountered an unknown error while attempting to save your details. Please try again later."
 msgstr "Une erreur inconnue s'est produite lors de l'enregistrement de vos détails. Veuillez réessayer plus tard."
 
-#: apps/web/src/components/forms/profile.tsx:112
+#: apps/web/src/components/forms/profile.tsx:108
 #: apps/web/src/components/forms/signin.tsx:303
 #: apps/web/src/components/forms/signin.tsx:318
 #: apps/web/src/components/forms/signin.tsx:334
 msgid "We encountered an unknown error while attempting to sign you In. Please try again later."
 msgstr "Une erreur inconnue s'est produite lors de la connexion. Veuillez réessayer plus tard."
 
-#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:122
-#: apps/web/src/components/forms/signup.tsx:142
-#: apps/web/src/components/forms/v2/signup.tsx:191
+#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:123
+#: apps/web/src/components/forms/signup.tsx:140
+#: apps/web/src/components/forms/v2/signup.tsx:189
 msgid "We encountered an unknown error while attempting to sign you up. Please try again later."
 msgstr "Une erreur inconnue s'est produite lors de l'inscription. Veuillez réessayer plus tard."
 
-#: apps/web/src/components/forms/signup.tsx:157
-#: apps/web/src/components/forms/signup.tsx:171
-#: apps/web/src/components/forms/v2/signup.tsx:214
-#: apps/web/src/components/forms/v2/signup.tsx:228
+#: apps/web/src/components/forms/signup.tsx:155
+#: apps/web/src/components/forms/signup.tsx:169
+#: apps/web/src/components/forms/v2/signup.tsx:212
+#: apps/web/src/components/forms/v2/signup.tsx:226
 msgid "We encountered an unknown error while attempting to sign you Up. Please try again later."
 msgstr "Une erreur inconnue s'est produite lors de l'inscription. Veuillez réessayer plus tard."
 
@@ -4704,7 +4704,7 @@ msgstr "Une erreur inconnue s'est produite lors de la mise à jour de l'avatar. 
 msgid "We encountered an unknown error while attempting to update the banner. Please try again later."
 msgstr "Une erreur inconnue s'est produite lors de la mise à jour de la bannière. Veuillez réessayer plus tard."
 
-#: apps/web/src/components/templates/manage-public-template-dialog.tsx:201
+#: apps/web/src/components/templates/manage-public-template-dialog.tsx:200
 msgid "We encountered an unknown error while attempting to update the template. Please try again later."
 msgstr "Une erreur inconnue s'est produite lors de la mise à jour du modèle. Veuillez réessayer plus tard."
 
@@ -4724,7 +4724,7 @@ msgstr "Une erreur inconnue s'est produite lors de la mise à jour de votre prof
 msgid "We encountered an unknown error while attempting to update your team. Please try again later."
 msgstr "Une erreur inconnue s'est produite lors de la mise à jour de votre équipe. Veuillez réessayer plus tard."
 
-#: apps/web/src/components/(teams)/dialogs/update-team-email-dialog.tsx:107
+#: apps/web/src/components/(teams)/dialogs/update-team-email-dialog.tsx:108
 msgid "We encountered an unknown error while attempting update the team email. Please try again later."
 msgstr "Une erreur inconnue s'est produite lors de la mise à jour de l'e-mail de l'équipe. Veuillez réessayer plus tard."
 
@@ -4732,12 +4732,12 @@ msgstr "Une erreur inconnue s'est produite lors de la mise à jour de l'e-mail d
 msgid "We have sent a confirmation email for verification."
 msgstr "Nous avons envoyé un e-mail de confirmation pour vérification."
 
-#: apps/web/src/components/forms/v2/signup.tsx:83
+#: apps/web/src/components/forms/v2/signup.tsx:81
 msgid "We need a username to create your profile"
 msgstr ""
 
-#: apps/web/src/components/forms/signup.tsx:62
-#: apps/web/src/components/forms/v2/signup.tsx:76
+#: apps/web/src/components/forms/signup.tsx:60
+#: apps/web/src/components/forms/v2/signup.tsx:74
 msgid "We need your signature to sign documents"
 msgstr ""
 
@@ -4777,7 +4777,7 @@ msgstr "Nous n'avons pas pu configurer l'authentification à deux facteurs pour 
 msgid "We were unable to submit this document at this time. Please try again later."
 msgstr "Nous n'avons pas pu soumettre ce document pour le moment. Veuillez réessayer plus tard."
 
-#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-2fa.tsx:190
+#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-2fa.tsx:188
 #: apps/web/src/app/(signing)/sign/[token]/document-action-auth-passkey.tsx:251
 msgid "We were unable to verify your details. Please try again or contact support"
 msgstr "Nous n'avons pas pu vérifier vos détails. Veuillez réessayer ou contacter le support"
@@ -4843,7 +4843,7 @@ msgstr "Contentieux, nous avons de la chance de vous avoir."
 msgid "Were you trying to edit this document instead?"
 msgstr "Essayiez-vous d'éditer ce document à la place ?"
 
-#: apps/web/src/app/(dashboard)/settings/security/passkeys/create-passkey-dialog.tsx:205
+#: apps/web/src/app/(dashboard)/settings/security/passkeys/create-passkey-dialog.tsx:202
 msgid "When you click continue, you will be prompted to add the first available authenticator on your system."
 msgstr "Lorsque vous cliquez sur continuer, vous serez invité à ajouter le premier authentificateur disponible sur votre système."
 
@@ -4855,7 +4855,7 @@ msgstr ""
 msgid "While waiting for them to do so you can create your own Documenso account and get started with document signing right away."
 msgstr "En attendant qu'ils le fassent, vous pouvez créer votre propre compte Documenso et commencer à signer des documents dès maintenant."
 
-#: apps/web/src/app/(dashboard)/documents/_action-items/resend-document.tsx:140
+#: apps/web/src/app/(dashboard)/documents/_action-items/resend-document.tsx:138
 msgid "Who do you want to remind?"
 msgstr "Qui voulez-vous rappeler ?"
 
@@ -4875,7 +4875,7 @@ msgstr "Écrivez sur vous-même"
 msgid "Yearly"
 msgstr "Annuel"
 
-#: apps/web/src/app/(dashboard)/documents/[id]/document-page-view-information.tsx:34
+#: apps/web/src/app/(dashboard)/documents/[id]/document-page-view-information.tsx:35
 msgctxt "Used as the object after a preposition"
 msgid "You"
 msgstr ""
@@ -4952,7 +4952,7 @@ msgstr "Vous pouvez mettre à jour l'URL de profil en mettant à jour l'URL de l
 msgid "You can view documents associated with this email and use this identity when sending documents."
 msgstr "Vous pouvez voir les documents associés à cet e-mail et utiliser cette identité lors de l'envoi de documents."
 
-#: apps/web/src/app/(dashboard)/settings/security/passkeys/create-passkey-dialog.tsx:229
+#: apps/web/src/app/(dashboard)/settings/security/passkeys/create-passkey-dialog.tsx:226
 msgid "You cannot have more than {MAXIMUM_PASSKEYS} passkeys."
 msgstr "Vous ne pouvez pas avoir plus de {MAXIMUM_PASSKEYS} clés de passkey."
 
@@ -5018,9 +5018,9 @@ msgstr "Vous avez atteint votre limite de documents. <0>Mettez à niveau votre c
 msgid "You have successfully left this team."
 msgstr "Vous avez quitté cette équipe avec succès."
 
-#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:102
-#: apps/web/src/components/forms/signup.tsx:122
-#: apps/web/src/components/forms/v2/signup.tsx:158
+#: apps/web/src/app/(signing)/sign/[token]/complete/claim-account.tsx:103
+#: apps/web/src/components/forms/signup.tsx:120
+#: apps/web/src/components/forms/v2/signup.tsx:156
 msgid "You have successfully registered. Please verify your account by clicking on the link you received in the email."
 msgstr "Vous vous êtes inscrit avec succès. Veuillez vérifier votre compte en cliquant sur le lien que vous avez reçu dans l'e-mail."
 
@@ -5062,7 +5062,7 @@ msgstr "Vous devez entrer '{deleteMessage}' pour continuer"
 msgid "You must have at least one other team member to transfer ownership."
 msgstr "Vous devez avoir au moins un autre membre de l'équipe pour transférer la propriété."
 
-#: apps/web/src/app/(dashboard)/documents/_action-items/resend-document.tsx:65
+#: apps/web/src/app/(dashboard)/documents/_action-items/resend-document.tsx:63
 msgid "You must select at least one item."
 msgstr ""
 
@@ -5078,7 +5078,7 @@ msgstr "Vous devez être connecté en tant que <0>{email}</0> pour voir cette pa
 msgid "You need to be logged in to view this page."
 msgstr "Vous devez être connecté pour voir cette page."
 
-#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-2fa.tsx:124
+#: apps/web/src/app/(signing)/sign/[token]/document-action-auth-2fa.tsx:122
 msgid "You need to setup 2FA to mark this document as viewed."
 msgstr "Vous devez configurer 2FA pour marquer ce document comme vu."
 
@@ -5090,7 +5090,7 @@ msgstr ""
 msgid "You need to setup a passkey to mark this document as viewed."
 msgstr ""
 
-#: apps/web/src/components/forms/v2/signup.tsx:312
+#: apps/web/src/components/forms/v2/signup.tsx:310
 msgid "You will get notified & be able to set up your documenso public profile when we launch the feature."
 msgstr "Vous serez notifié et pourrez configurer votre profil public Documenso lorsque nous lancerons la fonctionnalité."
 
@@ -5122,7 +5122,7 @@ msgstr ""
 msgid "Your current plan is past due. Please update your payment information."
 msgstr "Votre plan actuel est en retard. Veuillez mettre à jour vos informations de paiement."
 
-#: apps/web/src/components/templates/manage-public-template-dialog.tsx:272
+#: apps/web/src/components/templates/manage-public-template-dialog.tsx:271
 msgid "Your direct signing templates"
 msgstr "Vos modèles de signature directe"
 
@@ -5130,11 +5130,11 @@ msgstr "Vos modèles de signature directe"
 msgid "Your document failed to upload."
 msgstr "Votre document a échoué à se télécharger."
 
-#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:179
+#: apps/web/src/app/(dashboard)/templates/use-template-dialog.tsx:178
 msgid "Your document has been created from the template successfully."
 msgstr "Votre document a été créé à partir du modèle avec succès."
 
-#: apps/web/src/app/(dashboard)/documents/_action-items/resend-document.tsx:112
+#: apps/web/src/app/(dashboard)/documents/_action-items/resend-document.tsx:110
 msgid "Your document has been re-sent successfully."
 msgstr "Votre document a été renvoyé avec succès."
 
@@ -5180,7 +5180,7 @@ msgstr "Votre mot de passe a été mis à jour avec succès."
 msgid "Your payment for teams is overdue. Please settle the payment to avoid any service disruptions."
 msgstr "Votre paiement pour les équipes est en retard. Veuillez régler le paiement pour éviter toute interruption de service."
 
-#: apps/web/src/components/forms/profile.tsx:96
+#: apps/web/src/components/forms/profile.tsx:92
 msgid "Your profile has been updated successfully."
 msgstr "Votre profil a été mis à jour avec succès."
 
@@ -5197,7 +5197,7 @@ msgid "Your recovery code has been copied to your clipboard."
 msgstr "Votre code de récupération a été copié dans votre presse-papiers."
 
 #: apps/web/src/components/forms/2fa/enable-authenticator-app-dialog.tsx:167
-#: apps/web/src/components/forms/2fa/view-recovery-codes-dialog.tsx:107
+#: apps/web/src/components/forms/2fa/view-recovery-codes-dialog.tsx:105
 msgid "Your recovery codes are listed below. Please store them in a safe place."
 msgstr "Vos codes de récupération sont listés ci-dessous. Veuillez les conserver dans un endroit sûr."
 
