@@ -308,7 +308,12 @@ export const templateRouter = router({
 
         const userId = ctx.user.id;
 
-        return await deleteTemplateDirectLink({ userId, templateId });
+        return await deleteTemplateDirectLink({
+          userId,
+          templateId,
+          headers: ctx.req.headers,
+          cookies: ctx.req.cookies,
+        });
       } catch (err) {
         console.error(err);
 

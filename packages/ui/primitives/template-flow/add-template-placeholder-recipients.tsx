@@ -82,14 +82,14 @@ export const AddTemplatePlaceholderRecipientsFormPartial = ({
 
   const { currentStep, totalSteps, previousStep } = useStep();
 
-  const generateDefaultFormSigners = () => {
+  const generateDefaultFormSigners = async () => {
     if (recipients.length === 0) {
       return [
         {
           formId: initialId,
           role: RecipientRole.SIGNER,
           actionAuth: undefined,
-          ...generateRecipientPlaceholder(1),
+          ...(await generateRecipientPlaceholder(1, locale)),
           signingOrder: 1,
         },
       ];
@@ -109,16 +109,21 @@ export const AddTemplatePlaceholderRecipientsFormPartial = ({
   const form = useForm<TAddTemplatePlacholderRecipientsFormSchema>({
     resolver: zodResolver(ZAddTemplatePlacholderRecipientsFormSchema(locale)),
     defaultValues: {
-      signers: generateDefaultFormSigners(),
+      signers: [],
       signingOrder: signingOrder || DocumentSigningOrder.PARALLEL,
     },
   });
 
   useEffect(() => {
-    form.reset({
-      signers: generateDefaultFormSigners(),
-      signingOrder: signingOrder || DocumentSigningOrder.PARALLEL,
-    });
+    const initializeForm = async () => {
+      const defaultSigners = await generateDefaultFormSigners();
+      form.reset({
+        signers: defaultSigners,
+        signingOrder: signingOrder || DocumentSigningOrder.PARALLEL,
+      });
+    };
+
+    void initializeForm();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [recipients]);
@@ -174,11 +179,11 @@ export const AddTemplatePlaceholderRecipientsFormPartial = ({
     });
   };
 
-  const onAddPlaceholderRecipient = () => {
+  const onAddPlaceholderRecipient = async () => {
     appendSigner({
       formId: nanoid(12),
       role: RecipientRole.SIGNER,
-      ...generateRecipientPlaceholder(placeholderRecipientCount),
+      ...(await generateRecipientPlaceholder(placeholderRecipientCount, locale)),
       signingOrder: signers.length > 0 ? (signers[signers.length - 1]?.signingOrder ?? 0) + 1 : 1,
     });
 
@@ -618,7 +623,7 @@ export const AddTemplatePlaceholderRecipientsFormPartial = ({
                 type="button"
                 className="flex-1"
                 disabled={isSubmitting}
-                onClick={() => onAddPlaceholderRecipient()}
+                onClick={async () => await onAddPlaceholderRecipient()}
               >
                 <Plus className="-ml-1 mr-2 h-5 w-5" />
                 <Trans>Add Placeholder Recipient</Trans>

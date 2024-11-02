@@ -294,11 +294,11 @@ msgstr "Add another value"
 msgid "Add myself"
 msgstr "Add myself"
 
-#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:638
+#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:643
 msgid "Add Myself"
 msgstr "Add Myself"
 
-#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:624
+#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:629
 msgid "Add Placeholder Recipient"
 msgstr "Add Placeholder Recipient"
 
@@ -662,7 +662,7 @@ msgstr "deleted the document"
 msgid "Didn't request a password change? We are here to help you secure your account, just"
 msgstr "Didn't request a password change? We are here to help you secure your account, just"
 
-#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:571
+#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:576
 msgid "Direct link receiver"
 msgstr "Direct link receiver"
 
@@ -793,8 +793,8 @@ msgstr "E.g. 100"
 #: packages/ui/primitives/document-flow/field-icon.tsx:29
 #: packages/ui/primitives/document-flow/types.ts:54
 #: packages/ui/primitives/template-flow/add-template-fields.tsx:638
-#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:464
-#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:471
+#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:469
+#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:476
 msgid "Email"
 msgstr "Email"
 
@@ -823,7 +823,7 @@ msgid "Enable Direct Link Signing"
 msgstr "Enable Direct Link Signing"
 
 #: packages/ui/primitives/document-flow/add-signers.tsx:403
-#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:363
+#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:368
 msgid "Enable signing order"
 msgstr "Enable signing order"
 
@@ -1089,8 +1089,8 @@ msgstr "Must be at least 8 characters in length"
 #: packages/ui/primitives/document-flow/field-icon.tsx:30
 #: packages/ui/primitives/document-flow/types.ts:55
 #: packages/ui/primitives/template-flow/add-template-fields.tsx:664
-#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:499
-#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:505
+#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:504
+#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:510
 msgid "Name"
 msgstr "Name"
 
@@ -1357,6 +1357,10 @@ msgstr "Read only"
 msgid "Receives copy"
 msgstr "Receives copy"
 
+#: packages/lib/utils/templates.ts:27
+msgid "Recipient {index}"
+msgstr "Recipient {index}"
+
 #: packages/lib/utils/document-audit-logs.ts:603
 msgid "Recipient {performedAction}"
 msgstr "Recipient {performedAction}"
@@ -1366,6 +1370,10 @@ msgstr "Recipient {performedAction}"
 #: packages/ui/primitives/template-flow/add-template-settings.tsx:170
 msgid "Recipient action authentication"
 msgstr "Recipient action authentication"
+
+#: packages/lib/utils/templates.ts:28
+msgid "recipient.{index}@documenso.com"
+msgstr "recipient.{index}@documenso.com"
 
 #: packages/ui/primitives/signature-pad/signature-pad.tsx:386
 msgid "Red"
@@ -1559,7 +1567,7 @@ msgid "Share your signing experience!"
 msgstr "Share your signing experience!"
 
 #: packages/ui/primitives/document-flow/add-signers.tsx:682
-#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:656
+#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:661
 msgid "Show advanced settings"
 msgstr "Show advanced settings"
 
@@ -1845,7 +1853,7 @@ msgstr "This document is password protected. Please enter the password to view t
 msgid "This document was sent using"
 msgstr "This document was sent using"
 
-#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:574
+#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:579
 msgid "This field cannot be modified or deleted. When you share this template's direct link or add it to your public profile, anyone who accesses it can input their name and email, and fill in the fields assigned to them."
 msgstr "This field cannot be modified or deleted. When you share this template's direct link or add it to your public profile, anyone who accesses it can input their name and email, and fill in the fields assigned to them."
 

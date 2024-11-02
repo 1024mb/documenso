@@ -299,11 +299,11 @@ msgstr "Weiteren Wert hinzufügen"
 msgid "Add myself"
 msgstr "Mich selbst hinzufügen"
 
-#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:638
+#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:643
 msgid "Add Myself"
 msgstr "Mich hinzufügen"
 
-#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:624
+#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:629
 msgid "Add Placeholder Recipient"
 msgstr "Platzhalterempfänger hinzufügen"
 
@@ -667,7 +667,7 @@ msgstr ""
 msgid "Didn't request a password change? We are here to help you secure your account, just"
 msgstr ""
 
-#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:571
+#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:576
 msgid "Direct link receiver"
 msgstr "Empfänger des direkten Links"
 
@@ -798,8 +798,8 @@ msgstr ""
 #: packages/ui/primitives/document-flow/field-icon.tsx:29
 #: packages/ui/primitives/document-flow/types.ts:54
 #: packages/ui/primitives/template-flow/add-template-fields.tsx:638
-#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:464
-#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:471
+#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:469
+#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:476
 msgid "Email"
 msgstr "E-Mail"
 
@@ -828,7 +828,7 @@ msgid "Enable Direct Link Signing"
 msgstr "Direktlink-Signierung aktivieren"
 
 #: packages/ui/primitives/document-flow/add-signers.tsx:403
-#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:363
+#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:368
 msgid "Enable signing order"
 msgstr "Aktiviere die Signaturreihenfolge"
 
@@ -1094,8 +1094,8 @@ msgstr ""
 #: packages/ui/primitives/document-flow/field-icon.tsx:30
 #: packages/ui/primitives/document-flow/types.ts:55
 #: packages/ui/primitives/template-flow/add-template-fields.tsx:664
-#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:499
-#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:505
+#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:504
+#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:510
 msgid "Name"
 msgstr "Name"
 
@@ -1362,6 +1362,10 @@ msgstr "Nur lesen"
 msgid "Receives copy"
 msgstr "Erhält Kopie"
 
+#: packages/lib/utils/templates.ts:27
+msgid "Recipient {index}"
+msgstr ""
+
 #: packages/lib/utils/document-audit-logs.ts:603
 msgid "Recipient {performedAction}"
 msgstr ""
@@ -1371,6 +1375,10 @@ msgstr ""
 #: packages/ui/primitives/template-flow/add-template-settings.tsx:170
 msgid "Recipient action authentication"
 msgstr "Empfängeraktion Authentifizierung"
+
+#: packages/lib/utils/templates.ts:28
+msgid "recipient.{index}@documenso.com"
+msgstr ""
 
 #: packages/ui/primitives/signature-pad/signature-pad.tsx:386
 msgid "Red"
@@ -1564,7 +1572,7 @@ msgid "Share your signing experience!"
 msgstr ""
 
 #: packages/ui/primitives/document-flow/add-signers.tsx:682
-#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:656
+#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:661
 msgid "Show advanced settings"
 msgstr "Erweiterte Einstellungen anzeigen"
 
@@ -1850,7 +1858,7 @@ msgstr "Dieses Dokument ist durch ein Passwort geschützt. Bitte geben Sie das P
 msgid "This document was sent using"
 msgstr ""
 
-#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:574
+#: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx:579
 msgid "This field cannot be modified or deleted. When you share this template's direct link or add it to your public profile, anyone who accesses it can input their name and email, and fill in the fields assigned to them."
 msgstr "Dieses Feld kann nicht geändert oder gelöscht werden. Wenn Sie den direkten Link dieser Vorlage teilen oder zu Ihrem öffentlichen Profil hinzufügen, kann jeder, der darauf zugreift, seinen Namen und seine E-Mail-Adresse eingeben und die ihm zugewiesenen Felder ausfüllen."
 

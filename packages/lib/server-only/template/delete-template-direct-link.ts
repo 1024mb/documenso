@@ -4,6 +4,8 @@ import { generateAvaliableRecipientPlaceholder } from '@documenso/lib/utils/temp
 import { prisma } from '@documenso/prisma';
 
 import { AppError, AppErrorCode } from '../../errors/app-error';
+import { getLocale } from '../../utils/i18n';
+import type { TranslationsProps } from '../../utils/i18n.import';
 
 export type DeleteTemplateDirectLinkOptions = {
   templateId: number;
@@ -13,7 +15,9 @@ export type DeleteTemplateDirectLinkOptions = {
 export const deleteTemplateDirectLink = async ({
   templateId,
   userId,
-}: DeleteTemplateDirectLinkOptions): Promise<void> => {
+  headers,
+  cookies,
+}: DeleteTemplateDirectLinkOptions & TranslationsProps): Promise<void> => {
   const template = await prisma.template.findFirst({
     where: {
       id: templateId,
@@ -48,6 +52,8 @@ export const deleteTemplateDirectLink = async ({
     return;
   }
 
+  const locale = getLocale({ headers, cookies });
+
   await prisma.$transaction(async (tx) => {
     await tx.recipient.update({
       where: {
@@ -55,7 +61,7 @@ export const deleteTemplateDirectLink = async ({
         id: directLink.directTemplateRecipientId,
       },
       data: {
-        ...generateAvaliableRecipientPlaceholder(template.Recipient),
+        ...(await generateAvaliableRecipientPlaceholder(template.Recipient, locale)),
       },
     });
 

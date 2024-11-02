@@ -1,6 +1,10 @@
+import { i18n } from '@lingui/core';
+import { msg } from '@lingui/macro';
+
 import type { Recipient } from '@documenso/prisma/client';
 
 import { WEBAPP_BASE_URL } from '../constants/app';
+import { loadAndActivateLocale } from './i18n.import';
 
 export const formatDirectTemplatePath = (token: string) => {
   return `${WEBAPP_BASE_URL}/d/${token}`;
@@ -16,10 +20,12 @@ export const formatDirectTemplatePath = (token: string) => {
  * - Update TEMPLATE_RECIPIENT_NAME_PLACEHOLDER_REGEX if this is ever changed.
  *
  */
-export const generateRecipientPlaceholder = (index: number) => {
+export const generateRecipientPlaceholder = async (index: number, locale: string) => {
+  await loadAndActivateLocale(locale);
+
   return {
-    name: `Recipient ${index}`,
-    email: `recipient.${index}@documenso.com`,
+    name: i18n._(msg`Recipient ${index}`),
+    email: i18n._(msg`recipient.${index}@documenso.com`),
   };
 };
 
@@ -28,12 +34,15 @@ export const generateRecipientPlaceholder = (index: number) => {
  *
  * @param currentRecipients The current recipients that exist for a template.
  */
-export const generateAvaliableRecipientPlaceholder = (currentRecipients: Recipient[]) => {
+export const generateAvaliableRecipientPlaceholder = async (
+  currentRecipients: Recipient[],
+  locale: string,
+) => {
   const recipientEmails = currentRecipients.map((recipient) => recipient.email);
-  let recipientPlaceholder = generateRecipientPlaceholder(0);
+  let recipientPlaceholder = await generateRecipientPlaceholder(0, locale);
 
   for (let i = 1; i <= currentRecipients.length + 1; i++) {
-    recipientPlaceholder = generateRecipientPlaceholder(i);
+    recipientPlaceholder = await generateRecipientPlaceholder(i, locale);
 
     if (!recipientEmails.includes(recipientPlaceholder.email)) {
       return recipientPlaceholder;
